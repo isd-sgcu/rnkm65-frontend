@@ -1,3 +1,13 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "prettier", "plugin:@next/next/recommended"],
+  "plugins": ["prettier", "simple-import-sort"],
+  "parser": "@typescript-eslint/parser",
+  "rules": {
+    "prettier/prettier": "error",
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error"
+  },
+  "parserOptions": {
+      "project": "./tsconfig.json"
+  }
 }
