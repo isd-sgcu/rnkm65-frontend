@@ -1,4 +1,4 @@
-import { styled } from 'config/theme'
+import { styled } from 'config/stitches.config'
 
 export const Button = styled('button', {
   backgroundColor: 'Chocolate',
