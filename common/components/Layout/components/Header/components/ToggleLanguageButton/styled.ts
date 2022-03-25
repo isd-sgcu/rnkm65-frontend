@@ -6,6 +6,10 @@ export const ButtonConatiner = styled('div', {
   borderRadius: '9px',
   padding: '3px',
   width: 'fit-content',
+
+  '@sm': {
+    padding: '2px',
+  },
 })
 
 export const StyledButton = styled('button', {
@@ -15,6 +19,9 @@ export const StyledButton = styled('button', {
   fontSize: '0.875rem',
   fontWeight: 'bold',
   fontFamily: '$FCSubjectRounded',
+  '@sm': {
+    padding: '5px 12px',
+  },
 
   variants: {
     selected: {
@@ -27,6 +34,9 @@ export const StyledButton = styled('button', {
         backgroundColor: 'transparent',
         padding: '7px 10px',
         cursor: 'pointer',
+        '@sm': {
+          padding: '5px 8px',
+        },
       },
     },
   },

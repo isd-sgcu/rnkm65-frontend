@@ -1,10 +1,10 @@
 import { styled } from 'config/stitches.config'
-import Div100vh from 'react-div-100vh'
 
-export const LayoutContainer = styled(Div100vh, {
+export const LayoutContainer = styled('div', {
   backgroundColor: '$yellow',
   display: 'flex',
   flexDirection: 'column',
+  minHeight: '100vh',
 })
 
 export const ContentContainer = styled('div', {

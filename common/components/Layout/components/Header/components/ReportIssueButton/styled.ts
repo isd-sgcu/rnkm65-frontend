@@ -5,4 +5,7 @@ export const StyledButton = styled('button', {
   backgroundColor: 'transparent',
   cursor: 'pointer',
   border: 'none',
+  '&:hover': {
+    textDecoration: 'underline',
+  },
 })
