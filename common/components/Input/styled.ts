@@ -1,6 +1,6 @@
 import { styled } from 'config/stitches.config'
 
-export const Input = styled('input', {
+export const InputBase = styled('input', {
   backgroundColor: '$purple400',
   fontFamily: '$FCSubjectRounded',
   borderRadius: '4px',

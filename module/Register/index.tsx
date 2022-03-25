@@ -1,46 +1,31 @@
-import { yupResolver } from '@hookform/resolvers/yup'
 import StyledButton from 'common/components/Button'
-import { Input } from 'common/components/Input'
+import { InputField } from 'common/components/Input'
 import { NextPage } from 'next'
-import { useCallback } from 'react'
-import { useForm } from 'react-hook-form'
+import { useTranslation } from 'next-i18next'
 
-import { formSchema } from './schema'
+import { UploadImage } from './components/UploadImage'
+import { useFormHooks } from './hooks/useFormHooks'
 import { FormContainer } from './styled'
 
 const RegisterForm: NextPage = () => {
-  const { register, handleSubmit } = useForm({
-    resolver: yupResolver(formSchema),
-  })
-
-  const handleSubmitSuccess = useCallback(async (e: Record<string, any>) => {
-    console.log(e)
-  }, [])
-
-  const handleSubmitFailed = useCallback((e) => {
-    console.log(e)
-  }, [])
+  const { register, handleSubmitForm } = useFormHooks()
+  const { t } = useTranslation('register')
 
   return (
-    <FormContainer
-      onSubmit={handleSubmit(handleSubmitSuccess, handleSubmitFailed)}
-    >
+    <FormContainer onSubmit={handleSubmitForm}>
       <div>
-        <div>
-          <div style={{ backgroundColor: '#ABCDEF' }}>Hello</div>
-          <StyledButton type="button">อัพโหลดรูป</StyledButton>
-        </div>
+        <UploadImage />
       </div>
       <div>
-        <Input placeholder="" {...register('title')} />
-        <Input placeholder="" {...register('firstname')} />
-        <Input {...register('lastname')} />
-        <Input {...register('nickname')} />
-        <Input {...register('phoneNumber')} />
-        <Input {...register('facebook')} />
-        <Input {...register('lineID')} />
+        <InputField title={t('nameTitle')} {...register('title')} />
+        <InputField title={t('firstname')} {...register('firstname')} />
+        <InputField title={t('lastname')} {...register('lastname')} />
+        <InputField title={t('nickname')} {...register('nickname')} />
+        <InputField title={t('phone')} {...register('phoneNumber')} />
+        <InputField title={t('facebook')} {...register('facebook')} />
+        <InputField title={t('lineID')} {...register('lineID')} />
 
-        <button type="submit">Submit Form</button>
+        <StyledButton type="submit">{t('submit')}</StyledButton>
       </div>
     </FormContainer>
   )
