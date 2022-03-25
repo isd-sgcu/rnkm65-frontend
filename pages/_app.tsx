@@ -1,5 +1,6 @@
 import 'styles/globals.css'
 
+import Layout from 'common/components/Layout'
 import { REMEMBER_LOCALE } from 'config/env'
 import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
@@ -20,7 +21,11 @@ function MyApp({ Component, pageProps }: AppProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  return <Component {...pageProps} />
+  return (
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
+  )
 }
 
 export default appWithTranslation(MyApp)
