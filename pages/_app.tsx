@@ -8,6 +8,7 @@ import { useEffect } from 'react'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter()
+
   useEffect(() => {
     if (typeof window !== 'undefined' && REMEMBER_LOCALE) {
       const lang = window.localStorage.getItem('locale')
@@ -18,6 +19,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
   return <Component {...pageProps} />
 }
 

@@ -1,31 +1,14 @@
+import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import { Button } from 'components/test'
-import { REMEMBER_LOCALE } from 'config/env'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
-import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { useCallback } from 'react'
 import styles from 'styles/Home.module.css'
 
 const Home: NextPage = () => {
-  const { t, i18n } = useTranslation()
-  const router = useRouter()
-
-  const changeLangage = useCallback(() => {
-    const lang = i18n.language === 'en' ? 'th' : 'en'
-
-    if (typeof window !== 'undefined' && REMEMBER_LOCALE) {
-      window.localStorage.setItem('locale', lang)
-      router.reload()
-      return
-    }
-
-    router.replace(router.asPath, undefined, { locale: lang })
-  }, [i18n, router])
-
+  const { t, toggleLanguage } = useSSRTranslation()
   return (
     <div className={styles.container}>
       <Head>
@@ -34,13 +17,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {t('test')}
-      <Button
-        onClick={() => {
-          changeLangage()
-        }}
-      >
-        Change language
-      </Button>
+      <Button onClick={toggleLanguage}>Change language</Button>
       <Link href="/test">Hello</Link>
 
       <main className={styles.main}>

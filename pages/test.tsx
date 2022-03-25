@@ -1,24 +1,13 @@
+import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import { Button } from 'components/test'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
-import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { useCallback } from 'react'
 import styles from 'styles/Home.module.css'
 
 const Home: NextPage = () => {
-  const { t, i18n } = useTranslation()
-  const router = useRouter()
-
-  const changeLangage = useCallback(() => {
-    if (i18n.language === 'en') {
-      router.replace(router.pathname, undefined, { locale: 'th' })
-    } else {
-      router.replace(router.pathname, undefined, { locale: 'en' })
-    }
-  }, [i18n.language, router])
+  const { t, toggleLanguage } = useSSRTranslation()
 
   return (
     <div className={styles.container}>
@@ -28,13 +17,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {t('test')}
-      <Button
-        onClick={() => {
-          changeLangage()
-        }}
-      >
-        Change language
-      </Button>
+      <Button onClick={toggleLanguage}>Change language</Button>
       <Link href="/">Back to page 1</Link>
     </div>
   )
