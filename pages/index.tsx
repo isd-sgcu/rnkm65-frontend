@@ -1,4 +1,5 @@
 import { Button } from 'components/test'
+import { REMEMBER_LOCALE } from 'config/env'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -14,12 +15,16 @@ const Home: NextPage = () => {
   const router = useRouter()
 
   const changeLangage = useCallback(() => {
-    if (i18n.language === 'en') {
-      router.replace(router.pathname, undefined, { locale: 'th' })
-    } else {
-      router.replace(router.pathname, undefined, { locale: 'en' })
+    const lang = i18n.language === 'en' ? 'th' : 'en'
+
+    if (typeof window !== 'undefined' && REMEMBER_LOCALE) {
+      window.localStorage.setItem('locale', lang)
+      router.reload()
+      return
     }
-  }, [i18n.language, router])
+
+    router.replace(router.asPath, undefined, { locale: lang })
+  }, [i18n, router])
 
   return (
     <div className={styles.container}>
