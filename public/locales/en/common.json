@@ -1,4 +1,5 @@
 {
   "test": "hello world",
-  "logout": "Logout"
+  "logout": "Logout",
+  "reportIssue": "Report Issue"
 }
