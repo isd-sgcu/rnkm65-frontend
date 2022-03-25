@@ -4,8 +4,9 @@ export const { styled, getCssText } = createStitches({
   theme: {
     colors: {
       blue: '#240668',
-      pink: '#DC28A3',
-      purple700: '#AC2682',
+      pink600: '#AC2682',
+      pink500: '#DC28A3',
+      pink400: '#E479C2',
       purple600: '#B660B5',
       purple500: '#BEA4FF',
       purple400: '#EEE7FF',
