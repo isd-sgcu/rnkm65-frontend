@@ -1,9 +1,16 @@
-import { useTranslation } from 'next-i18next'
+import Typography from 'common/components/Typography'
+import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import React from 'react'
 
+import { StyledButton } from './styled'
+
 const LogoutButton = () => {
-  const { t } = useTranslation()
-  return <div> {t('logout')}</div>
+  const { t } = useSSRTranslation()
+  return (
+    <StyledButton>
+      <Typography variant="subhead3"> {t('logout')}</Typography>
+    </StyledButton>
+  )
 }
 
 export default LogoutButton
