@@ -1,5 +1,4 @@
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
-import { Button } from 'components/test'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
@@ -7,7 +6,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import styles from 'styles/Home.module.css'
 
 const Home: NextPage = () => {
-  const { t, toggleLanguage } = useSSRTranslation()
+  const { t } = useSSRTranslation()
 
   return (
     <div className={styles.container}>
@@ -17,7 +16,6 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {t('test')}
-      <Button onClick={toggleLanguage}>Change language</Button>
       <Link href="/">Back to page 1</Link>
     </div>
   )

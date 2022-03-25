@@ -1,0 +1,12 @@
+{
+    "register": "Register",
+    "annoucement": "*กรุณาใส่ข้อมูลให้ครบทุกช่อง (หากไม่มีให้ใส่ -)",
+    "submit": "Submit",
+    "nameTitle": "Name Title",
+    "firstname": "Firstname",
+    "lastname": "Lastname",
+    "nickname": "Nickname",
+    "phone": "Phone number",
+    "facebook": "Facebook",
+    "lineID": "Line ID"
+}
