@@ -4,7 +4,7 @@ export const HeaderContainer = styled('div', {
   display: 'flex',
   alignItems: 'center',
   gap: '15px',
-  padding: '20px 50px',
+  padding: '10px 40px',
 })
 
 export const LogoContainer = styled('div', {
