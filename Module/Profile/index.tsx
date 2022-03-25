@@ -1,13 +1,24 @@
 import React from 'react'
 
+import GroupMember from './components/GroupMember'
 import InviteLink from './components/InviteLink'
 import UserProfile from './components/UserProfile'
-import { Container } from './styled'
+import { Container, GroupContainer } from './styled'
 
+const tmpUser = {
+  name: 'Kamisato',
+  surname: 'Ayaka',
+  imageUrl: '/tmp.jpg',
+}
 const Profile = () => (
   <Container>
-    <UserProfile name="Kamisato" surname="Ayaka" imageUrl="/tmp.jpg" />
-    <InviteLink inviteLink="www.youtube.com/watch?v=dQw4w9WgXcQ" />
+    <UserProfile {...tmpUser} />
+    <div style={{ flexGrow: 1 }}>
+      <InviteLink inviteLink="www.youtube.com/watch?v=dQw4w9WgXcQ" />
+      <GroupContainer>
+        <GroupMember members={[tmpUser, tmpUser, tmpUser]} />
+      </GroupContainer>
+    </div>
   </Container>
 )
 

@@ -3,5 +3,9 @@ import { styled } from 'config/stitches.config'
 export const Container = styled('div', {
   display: 'flex',
   gap: '20px',
-  alignItems: 'center',
+})
+
+export const GroupContainer = styled('div', {
+  display: 'flex',
+  marginTop: '20px',
 })
