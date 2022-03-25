@@ -21,8 +21,10 @@ export const Typography = styled('div', {
       h3: {
         fontSize: '2.25rem',
         fontWeight: 'bold',
+        lineHeight: '50.4px',
         '@sm': {
           fontSize: '1.5rem',
+          lineHeight: '33.6px',
         },
       },
       h4: {
@@ -61,6 +63,17 @@ export const Typography = styled('div', {
         '@sm': {
           fontSize: '0.625rem',
         },
+      },
+    },
+    color: {
+      pink: {
+        color: '$pink500',
+      },
+      blue: {
+        color: '$blue',
+      },
+      yellow: {
+        color: '$yellow',
       },
     },
   },
