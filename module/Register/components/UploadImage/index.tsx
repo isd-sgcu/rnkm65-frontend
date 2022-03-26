@@ -64,7 +64,9 @@ const UploadImage = () => {
             ))}
           </ul>
         </RootCropperContainer>
-        <StyledButton onClick={handleClose}>{t('modalSubmit')}</StyledButton>
+        {img && (
+          <StyledButton onClick={handleClose}>{t('modalSubmit')}</StyledButton>
+        )}
       </Modal>
     </UploadImageContainer>
   )

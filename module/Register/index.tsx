@@ -5,25 +5,28 @@ import { useTranslation } from 'next-i18next'
 import { FormUI } from './components/FormUI'
 import { UploadImage } from './components/UploadImage'
 import { useFormHooks } from './hooks/useFormHooks'
-import { RegisterContainer, SubmitButton } from './styled'
+import {
+  RegisterContainer,
+  RootContainer,
+  SubmitButton,
+  SubmitContainer,
+} from './styled'
 
 const RegisterForm: NextPage = () => {
   const { register, handleSubmitForm } = useFormHooks()
   const { t } = useTranslation('register')
 
   return (
-    <div
-      style={{ display: 'flex', flexDirection: 'column', padding: '2rem 4rem' }}
-    >
+    <RootContainer onSubmit={handleSubmitForm}>
       <Typography variant="h3">แก้ไขข้อมูล</Typography>
-      <RegisterContainer onSubmit={handleSubmitForm}>
+      <RegisterContainer>
         <UploadImage />
         <FormUI register={register} />
       </RegisterContainer>
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
+      <SubmitContainer>
         <SubmitButton type="submit">{t('submit')}</SubmitButton>
-      </div>
-    </div>
+      </SubmitContainer>
+    </RootContainer>
   )
 }
 

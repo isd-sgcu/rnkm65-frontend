@@ -29,3 +29,7 @@ export const InputBase = styled('input', {
 export const InputFieldContainer = styled('div', {
   width: '100%',
 })
+
+export const RequiredSymbol = styled('span', {
+  color: 'red',
+})
