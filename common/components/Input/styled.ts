@@ -6,6 +6,7 @@ export const InputBase = styled('input', {
   borderRadius: '4px',
   padding: '5px 8px',
   fontSize: '1rem',
+  width: '100%',
 
   outline: 'none',
 
@@ -23,4 +24,8 @@ export const InputBase = styled('input', {
   defaultVariants: {
     error: false,
   },
+})
+
+export const InputFieldContainer = styled('div', {
+  width: '100%',
 })

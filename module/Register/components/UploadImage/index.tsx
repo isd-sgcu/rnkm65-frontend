@@ -3,7 +3,7 @@ import { Modal } from 'common/components/Modal'
 import Typography from 'common/components/Typography'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import { useSwitch } from 'common/hooks/useSwitch'
-import { useMemo, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 
 import { ImageCropper } from './components/Cropper'
 import {
@@ -27,11 +27,25 @@ function UploadImage() {
   })
 
   const description = useMemo(() => t('modalDesc').split(' | '), [t])
+  const handleOpenModal = useCallback(() => {
+    setImg('')
+    setCropMetadata({
+      x: 0,
+      y: 0,
+      width: 0,
+      height: 0,
+    })
+    handleOpen()
+  }, [handleOpen])
 
   return (
     <UploadImageContainer>
       <FallbackImage />
-      <StyledButton onClick={handleOpen} type="button">
+      <StyledButton
+        css={{ width: '100%' }}
+        onClick={handleOpenModal}
+        type="button"
+      >
         อัพโหลดรูป
       </StyledButton>
       <Modal modalClassName={modalStyle()} open={state} onClose={handleClose}>
@@ -50,7 +64,7 @@ function UploadImage() {
             ))}
           </ul>
         </RootCropperContainer>
-        <StyledButton onClick={handleClose}>{t('submitModal')}</StyledButton>
+        <StyledButton onClick={handleClose}>{t('modalSubmit')}</StyledButton>
       </Modal>
     </UploadImageContainer>
   )

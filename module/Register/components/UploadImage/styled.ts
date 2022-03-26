@@ -11,7 +11,9 @@ export const FallbackImage = styled('div', {
 export const UploadImageContainer = styled('div', {
   display: 'flex',
   flexDirection: 'column',
-  paddingRight: '4rem',
+  alignItems: 'center',
+  width: 'fit-content',
+  paddingRight: '2rem',
 
   '@md': {
     paddingRight: '0rem',
