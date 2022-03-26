@@ -16,7 +16,7 @@ const Profile = () => (
     <div style={{ flexGrow: 1 }}>
       <InviteLink inviteLink="www.youtube.com/watch?v=dQw4w9WgXcQ" />
       <GroupContainer>
-        <GroupMember members={[tmpUser, tmpUser, tmpUser]} />
+        <GroupMember members={[tmpUser, tmpUser]} />
       </GroupContainer>
     </div>
   </Container>

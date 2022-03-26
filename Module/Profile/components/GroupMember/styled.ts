@@ -8,6 +8,12 @@ export const Container = styled('div', {
   padding: '20px',
 })
 
+export const MembersContainer = styled('div', {
+  display: 'flex',
+  gap: '16px',
+  marginTop: '20px',
+})
+
 export const ImageContainer = styled('div', {
   height: '160px',
   width: '120px',
@@ -16,10 +22,4 @@ export const ImageContainer = styled('div', {
   overflow: 'hidden',
   boxShadow: '2px 2px 2px 0px #24066840',
   marginBottom: '8px',
-})
-
-export const MemberContainer = styled('div', {
-  display: 'flex',
-  gap: '16px',
-  marginTop: '24px',
 })
