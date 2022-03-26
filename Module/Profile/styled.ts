@@ -5,6 +5,7 @@ export const Container = styled('div', {
   gap: '20px',
   maxWidth: '1200px',
   margin: 'auto',
+  marginBottom: '20px',
 })
 
 export const GroupContainer = styled('div', {
