@@ -1,6 +1,6 @@
 import { styled } from '@stitches/react'
 
-export const StyledButton = styled('button', {
+export const Button = styled('button', {
   fontSize: '1.5rem',
   fontWeight: 'bold',
   fontFamily: '$FCSubjectRounded',
