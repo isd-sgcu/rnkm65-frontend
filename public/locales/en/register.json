@@ -2,13 +2,15 @@
     "register": "Register",
     "annoucement": "*กรุณาใส่ข้อมูลให้ครบทุกช่อง (หากไม่มีให้ใส่ -)",
     "submit": "Submit",
-    "nameTitle": "Name Title",
+    "title": "Name Title",
     "firstname": "Firstname",
     "lastname": "Lastname",
     "nickname": "Nickname",
-    "phone": "Phone number",
+    "phoneNumber": "Phone number",
     "facebook": "Facebook",
     "lineID": "Line ID",
     "modalSubmit": "ยืนยัน",
-    "modalDesc": "ใช้รูปที่เห็นใบหน้าชัดเจน | ไม่ควรใส่ฟิลเตอร์ | ขนาดไฟล์ไม่ควรเกิน 1 MB"
+    "modalDesc": "ใช้รูปที่เห็นใบหน้าชัดเจน | ไม่ควรใส่ฟิลเตอร์ | ขนาดไฟล์ไม่ควรเกิน 1 MB",
+    "modalTitle": "แก้ไขรูปภาพ",
+    "uploadBtn": "อัพโหลดรูป"
 }

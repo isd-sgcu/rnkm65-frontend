@@ -3,7 +3,7 @@ import Typography from 'common/components/Typography'
 import { useTranslation } from 'next-i18next'
 import { FieldValues, UseFormRegister } from 'react-hook-form'
 
-import { FormContainer, FormRootContainer, SubmitButton } from './styled'
+import { FormContainer, FormRootContainer } from './styled'
 
 interface IFormUI {
   register: UseFormRegister<FieldValues>
@@ -15,21 +15,30 @@ export function FormUI(props: IFormUI) {
 
   return (
     <FormRootContainer>
-      <Typography variant="h4">
-        *กรุณาใส่ข้อมูลให้ครบทุกช่อง ( หากไม่มีให้ใส่ - )
-      </Typography>
+      <Typography variant="h3">{t('annoucement')}</Typography>
       <FormContainer>
-        <InputField title={t('nameTitle')} {...register('title')} />
-        <InputField title={t('firstname')} {...register('firstname')} />
-        <InputField title={t('lastname')} {...register('lastname')} />
-        <InputField title={t('nickname')} {...register('nickname')} />
-        <InputField title={t('phone')} {...register('phoneNumber')} />
-        <InputField title={t('facebook')} {...register('facebook')} />
-        <InputField title={t('lineID')} {...register('lineID')} />
+        <div style={{ gridColumn: '1 / 2', minWidth: '100px' }}>
+          <InputField title={t('title')} {...register('title')} />
+        </div>
+        <div style={{ gridColumn: '2 / 6' }}>
+          <InputField title={t('firstname')} {...register('firstname')} />
+        </div>
+        <div style={{ gridColumn: '6 / 10' }}>
+          <InputField title={t('lastname')} {...register('lastname')} />
+        </div>
+        <div style={{ gridColumn: '1 / 5' }}>
+          <InputField title={t('nickname')} {...register('nickname')} />
+        </div>
+        <div style={{ gridColumn: '5 / 10' }}>
+          <InputField title={t('phone')} {...register('phoneNumber')} />
+        </div>
+        <div style={{ gridColumn: '1 / 5' }}>
+          <InputField title={t('facebook')} {...register('facebook')} />
+        </div>
+        <div style={{ gridColumn: '5 / 10' }}>
+          <InputField title={t('lineID')} {...register('lineID')} />
+        </div>
       </FormContainer>
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <SubmitButton type="submit">{t('submit')}</SubmitButton>
-      </div>
     </FormRootContainer>
   )
 }

@@ -46,10 +46,10 @@ function UploadImage() {
         onClick={handleOpenModal}
         type="button"
       >
-        อัพโหลดรูป
+        {t('uploadBtn')}
       </StyledButton>
       <Modal modalClassName={modalStyle()} open={state} onClose={handleClose}>
-        <Typography variant="h2">แก้ไขรูปภาพ</Typography>
+        <Typography variant="h2">{t('modalTitle')}</Typography>
         <RootCropperContainer>
           <ImageCropper
             img={img}
