@@ -8,5 +8,7 @@
     "nickname": "Nickname",
     "phone": "Phone number",
     "facebook": "Facebook",
-    "lineID": "Line ID"
+    "lineID": "Line ID",
+    "modalSubmit": "ยืนยัน",
+    "modalDesc": "ใช้รูปที่เห็นใบหน้าชัดเจน | ไม่ควรใส่ฟิลเตอร์ | ขนาดไฟล์ไม่ควรเกิน 1 MB"
 }

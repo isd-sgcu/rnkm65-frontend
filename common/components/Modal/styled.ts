@@ -21,6 +21,9 @@ export const OpenAnimation = keyframes({
 
 export const BackdropContainer = styled('div', {
   backdropFilter: 'blur(10px)',
+  '-webkit-backdrop-filter': 'blur(10px)',
+  '-moz-backdrop-filter': 'blur(10px)',
+  backgroundColor: 'rgba(0, 0, 0, .4)',
   position: 'fixed',
   display: 'flex',
   justifyContent: 'center',
@@ -59,6 +62,9 @@ export const ModalContainer = styled('div', {
   backgroundColor: '$purple400',
   height: 'fit-content',
   padding: '2rem',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
   position: 'relative',
   borderRadius: '1rem',
   filter: 'drop-shadow(4px 4px 4px rgba(36, 6, 104, 0.25))',

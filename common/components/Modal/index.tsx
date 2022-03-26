@@ -19,7 +19,7 @@ export function Modal(props: React.PropsWithChildren<IModalProps>) {
     >
       <ModalContainer onClick={handleInnerClick}>
         <CloseIcon onClick={onClose} size={16} />
-        {children}
+        {isShow && children}
       </ModalContainer>
     </BackdropContainer>
   )

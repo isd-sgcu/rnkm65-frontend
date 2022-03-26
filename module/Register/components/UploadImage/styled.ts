@@ -1,10 +1,9 @@
-import StyledButton from 'common/components/Button'
 import { styled } from 'config/stitches.config'
 
 export const FallbackImage = styled('div', {
   backgroundColor: '$purple500',
   width: '200px',
-  height: '280px',
+  height: '300px',
   borderRadius: '1rem',
   marginBottom: '1rem',
 })
@@ -12,7 +11,6 @@ export const FallbackImage = styled('div', {
 export const UploadImageContainer = styled('div', {
   display: 'flex',
   flexDirection: 'column',
-  alignItems: 'center',
   paddingRight: '4rem',
 
   '@md': {
@@ -20,6 +18,8 @@ export const UploadImageContainer = styled('div', {
   },
 })
 
-export const UploadButton = styled(StyledButton, {
-  width: 'fit-content',
+export const DescriptionList = styled('li', {
+  color: '$black',
+  listStyleType: 'circle',
+  listStyle: 'outside',
 })

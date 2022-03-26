@@ -13,9 +13,7 @@ const RegisterForm: NextPage = () => {
 
   return (
     <FormContainer onSubmit={handleSubmitForm}>
-      <div>
-        <UploadImage />
-      </div>
+      <UploadImage />
       <div>
         <InputField title={t('nameTitle')} {...register('title')} />
         <InputField title={t('firstname')} {...register('firstname')} />
