@@ -1,13 +1,13 @@
 import Typography from 'common/components/Typography'
+import { User } from 'common/types/user'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { HiPencil } from 'react-icons/hi'
 
 import { EditProfileButton, ImageContainer } from './styled'
-import { UserProfileProps } from './types'
 
-const UserProfile = (props: UserProfileProps) => {
+const UserProfile = (props: User) => {
   const { name, surname, imageUrl } = props
   return (
     <div>

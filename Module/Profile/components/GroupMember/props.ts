@@ -1,5 +1,5 @@
-import { UserProfileProps } from '../UserProfile/types'
+import { User } from 'common/types/user'
 
 export interface GroupMemberProps {
-  members: UserProfileProps[]
+  members: User[]
 }
