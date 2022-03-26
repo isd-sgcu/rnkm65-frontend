@@ -9,7 +9,7 @@ interface IFormUI {
   register: UseFormRegister<FieldValues>
 }
 
-export function FormUI(props: IFormUI) {
+export const FormUI = (props: IFormUI) => {
   const { t } = useTranslation('register')
   const { register } = props
 

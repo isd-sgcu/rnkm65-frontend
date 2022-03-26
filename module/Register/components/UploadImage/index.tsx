@@ -15,7 +15,7 @@ import {
 } from './styled'
 import { ICropMetadata } from './types'
 
-function UploadImage() {
+const UploadImage = () => {
   const { state, handleOpen, handleClose } = useSwitch(false)
   const { t } = useSSRTranslation('register')
   const [img, setImg] = useState<string>('')

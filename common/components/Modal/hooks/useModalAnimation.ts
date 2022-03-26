@@ -3,10 +3,10 @@ import { useCallback } from 'react'
 
 import { CloseAnimation, OpenAnimation } from '../styled'
 
-export function useModalAnimation(
+export const useModalAnimation = (
   clickBackdrop?: boolean,
   onClose?: () => void
-) {
+) => {
   const { state: isShow, handleOpen, handleClose } = useSwitch(false)
 
   const handleAnimationStart = useCallback(

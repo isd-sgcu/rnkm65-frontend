@@ -5,7 +5,7 @@ import Cropper from 'react-easy-crop'
 import { CropperContainer, InputFileContainer, RootContainer } from './styled'
 import { IImageCropperProps } from './types'
 
-export function ImageCropper(props: IImageCropperProps) {
+export const ImageCropper = (props: IImageCropperProps) => {
   const { img, setImg, setCropMetaData } = props
   const [crop, setCrop] = useState({ x: 0, y: 0 })
   const [zoom, setZoom] = useState(1)
