@@ -1,63 +1,23 @@
-import { useSwitch } from 'common/hooks/useSwitch'
-import React, { useCallback, useEffect, useRef } from 'react'
+import React from 'react'
 
-import {
-  BackdropContainer,
-  CloseAnimation,
-  CloseIcon,
-  ModalContainer,
-  OpenAnimation,
-} from './styled'
+import { useModalAnimation } from './hooks/useModalAnimation'
+import { BackdropContainer, CloseIcon, ModalContainer } from './styled'
 import { IModalProps } from './types'
 
 export function Modal(props: React.PropsWithChildren<IModalProps>) {
   const { onClose, open, children } = props
-  const { state: show, handleOpen, handleClose } = useSwitch(false)
-  const backdropRef = useRef<HTMLDivElement | null>(null)
-
-  const handleAnimationStart = useCallback(
-    (e: React.AnimationEvent<HTMLDivElement>) => {
-      if (e.animationName === OpenAnimation.name) {
-        handleOpen()
-      }
-    },
-    [handleOpen]
-  )
-
-  const handleAnimationEnd = useCallback(
-    (e: React.AnimationEvent<HTMLDivElement>) => {
-      if (e.animationName === CloseAnimation.name) {
-        handleClose()
-      }
-    },
-    [handleClose]
-  )
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      window.addEventListener('click', onClose, true)
-    }
-    return () => {
-      if (typeof window !== 'undefined') {
-        window.removeEventListener('click', onClose, true)
-      }
-    }
-  }, [onClose])
+  const { isShow, handleAnimationStart, handleAnimationEnd, handleInnerClick } =
+    useModalAnimation()
 
   return (
     <BackdropContainer
       open={open}
-      show={show}
+      show={isShow}
       onAnimationStart={handleAnimationStart}
       onAnimationEnd={handleAnimationEnd}
-      ref={backdropRef}
+      onClick={onClose}
     >
-      <ModalContainer
-        onClick={(e) => {
-          e.stopPropagation()
-          console.log('Inner click')
-        }}
-      >
+      <ModalContainer onClick={handleInnerClick}>
         <CloseIcon onClick={onClose} size={16} />
         {children}
       </ModalContainer>

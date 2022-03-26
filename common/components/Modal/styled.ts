@@ -33,10 +33,10 @@ export const BackdropContainer = styled('div', {
   variants: {
     open: {
       true: {
-        animation: `${OpenAnimation()} 300ms ease-in-out`,
+        animation: `${OpenAnimation()} 200ms ease-in-out`,
       },
       false: {
-        animation: `${CloseAnimation()} 300ms ease-in-out`,
+        animation: `${CloseAnimation()} 200ms ease-in-out`,
       },
     },
     show: {
