@@ -9,3 +9,10 @@ export const Container = styled('div', {
   flexGrow: 1,
   flexBasis: 0,
 })
+
+export const HousesContainer = styled('div', {
+  display: 'flex',
+  gap: '16px',
+  marginTop: '20px',
+  justifyContent: 'center',
+})
