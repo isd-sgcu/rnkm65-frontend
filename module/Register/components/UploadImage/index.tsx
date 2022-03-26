@@ -6,7 +6,12 @@ import { useSwitch } from 'common/hooks/useSwitch'
 import { useMemo } from 'react'
 
 import { ImageCropper } from './components/Cropper'
-import { DescriptionList, FallbackImage, UploadImageContainer } from './styled'
+import {
+  DescriptionList,
+  FallbackImage,
+  modalStyle,
+  UploadImageContainer,
+} from './styled'
 
 function UploadImage() {
   const { state, handleOpen, handleClose } = useSwitch(false)
@@ -20,7 +25,7 @@ function UploadImage() {
       <StyledButton onClick={handleOpen} type="button">
         อัพโหลดรูป
       </StyledButton>
-      <Modal open={state} onClose={handleClose}>
+      <Modal modalClassName={modalStyle()} open={state} onClose={handleClose}>
         <Typography variant="h2">แก้ไขรูปภาพ</Typography>
         <div>
           <ImageCropper />

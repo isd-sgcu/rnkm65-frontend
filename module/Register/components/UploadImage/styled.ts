@@ -1,4 +1,4 @@
-import { styled } from 'config/stitches.config'
+import { css, styled } from 'config/stitches.config'
 
 export const FallbackImage = styled('div', {
   backgroundColor: '$purple500',
@@ -22,4 +22,9 @@ export const DescriptionList = styled('li', {
   color: '$black',
   listStyleType: 'circle',
   listStyle: 'outside',
+})
+
+export const modalStyle = css({
+  width: '100%',
+  maxWidth: '700px',
 })

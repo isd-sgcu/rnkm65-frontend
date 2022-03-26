@@ -68,6 +68,7 @@ export const ModalContainer = styled('div', {
   position: 'relative',
   borderRadius: '1rem',
   filter: 'drop-shadow(4px 4px 4px rgba(36, 6, 104, 0.25))',
+  margin: '0px 1rem',
 })
 
 export const CloseIcon = styled(GrClose, {

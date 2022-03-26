@@ -5,19 +5,35 @@ import { BackdropContainer, CloseIcon, ModalContainer } from './styled'
 import { IModalProps } from './types'
 
 export function Modal(props: React.PropsWithChildren<IModalProps>) {
-  const { onClose, open, children } = props
-  const { isShow, handleAnimationStart, handleAnimationEnd, handleInnerClick } =
-    useModalAnimation()
+  const {
+    onClose,
+    open,
+    children,
+    canClickBackdrop,
+    rootClassName,
+    modalClassName,
+  } = props
+  const {
+    isShow,
+    handleAnimationStart,
+    handleAnimationEnd,
+    handleInnerClick,
+    handleBackdropClick,
+  } = useModalAnimation(canClickBackdrop, onClose)
 
   return (
     <BackdropContainer
       open={open}
       show={isShow}
+      className={rootClassName || ''}
       onAnimationStart={handleAnimationStart}
       onAnimationEnd={handleAnimationEnd}
-      onClick={onClose}
+      onClick={handleBackdropClick}
     >
-      <ModalContainer onClick={handleInnerClick}>
+      <ModalContainer
+        className={modalClassName || ''}
+        onClick={handleInnerClick}
+      >
         <CloseIcon onClick={onClose} size={16} />
         {isShow && children}
       </ModalContainer>
