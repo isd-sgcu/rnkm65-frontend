@@ -8,4 +8,5 @@ export const Container = styled('div', {
 export const GroupContainer = styled('div', {
   display: 'flex',
   marginTop: '20px',
+  gap: '20px',
 })

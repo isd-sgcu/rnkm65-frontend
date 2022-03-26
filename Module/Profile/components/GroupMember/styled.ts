@@ -6,12 +6,15 @@ export const Container = styled('div', {
   borderRadius: '20px',
   textAlign: 'center',
   padding: '20px',
+  flexBasis: 0,
+  flexGrow: 1,
 })
 
 export const MembersContainer = styled('div', {
   display: 'flex',
   gap: '16px',
   marginTop: '20px',
+  justifyContent: 'center',
 })
 
 export const ImageContainer = styled('div', {
