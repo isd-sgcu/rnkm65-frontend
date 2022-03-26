@@ -1,9 +1,33 @@
 import { styled } from 'config/stitches.config'
 
+export const RootContainer = styled('div', {
+  width: '100%',
+  marginTop: '1rem',
+  marginBottom: '1rem',
+})
+
 export const CropperContainer = styled('div', {
   position: 'relative',
+  backgroundColor: '$black',
   display: 'flex',
   alignItems: 'center',
-  maxWidth: '100%',
-  height: '200px',
+  width: '100%',
+  height: '300px',
+  '@sm': {
+    height: '200px',
+  },
+})
+
+export const InputFileContainer = styled('div', {
+  width: '100%',
+  height: '300px',
+  borderRadius: '1rem',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  '@md': {
+    height: '200px',
+  },
+  backgroundColor: '$gray',
+  cursor: 'pointer',
 })
