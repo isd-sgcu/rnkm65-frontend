@@ -3,13 +3,14 @@ import { SelectField } from 'common/components/Select'
 import Typography from 'common/components/Typography'
 import { templateForm } from 'module/Register/schema'
 import { useTranslation } from 'next-i18next'
+import { Controller } from 'react-hook-form'
 
 import { useFormContext } from '../../hooks/useFormContext'
 import { FormContainer, FormRootContainer } from './styled'
 
 export const FormUI = () => {
   const { t } = useTranslation('register')
-  const { register, errors } = useFormContext()
+  const { control } = useFormContext()
 
   return (
     <FormRootContainer>
@@ -19,21 +20,29 @@ export const FormUI = () => {
       <FormContainer>
         {templateForm.map((val) => (
           <div key={val.key} style={val.style || {}}>
-            {val.type === 'text_input' && (
-              <InputField
-                error={!!errors[val.key]}
-                title={t(val.key)}
-                {...register(val.key)}
-              />
-            )}
-            {val.type === 'select_input' && (
-              <SelectField
-                error={!!errors[val.key]}
-                title={t(val.key)}
-                option={val.option || []}
-                {...register(val.key)}
-              />
-            )}
+            <Controller
+              control={control}
+              name={val.key}
+              render={({ field, fieldState }) => (
+                <>
+                  {val.type === 'text_input' && (
+                    <InputField
+                      error={!!fieldState.error}
+                      title={t(val.key)}
+                      {...field}
+                    />
+                  )}
+                  {val.type === 'select_input' && (
+                    <SelectField
+                      error={!!fieldState.error}
+                      title={t(val.key)}
+                      option={val.option || []}
+                      {...field}
+                    />
+                  )}
+                </>
+              )}
+            />
           </div>
         ))}
       </FormContainer>

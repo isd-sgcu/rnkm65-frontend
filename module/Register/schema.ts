@@ -39,6 +39,8 @@ interface ITemplateFormItem {
   option?: { value: string; i18nKey: string }[]
 }
 
+export type ITemplateFormKey = keyof IFormSchemaType
+
 export const templateForm: ITemplateFormItem[] = [
   {
     key: 'title',

@@ -6,18 +6,10 @@ import React, {
   useMemo,
   useState,
 } from 'react'
-import { FieldError, useForm, UseFormRegister } from 'react-hook-form'
+import { SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form'
 
-import { formSchema, IFormSchemaType, templateForm } from '../schema'
-
-interface IFormContext {
-  uploadImg: string
-  imgRequired: boolean
-  errors: Partial<Record<keyof IFormSchemaType, FieldError>>
-  register: UseFormRegister<IFormSchemaType>
-  setUploadImg: React.Dispatch<React.SetStateAction<string>>
-  setImgRequired: React.Dispatch<React.SetStateAction<boolean>>
-}
+import { formSchema, IFormSchemaType, templateForm } from '../../schema'
+import { IFormContext } from './types'
 
 const FormContext = createContext<IFormContext>({} as IFormContext)
 
@@ -26,16 +18,11 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
 
   const [uploadImg, setUploadImg] = useState('')
   const [imgRequired, setImgRequired] = useState(false)
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    setError,
-    clearErrors,
-  } = useForm<IFormSchemaType>({
-    resolver: yupResolver(formSchema),
-    shouldFocusError: false,
-  })
+  const { register, handleSubmit, clearErrors, setError, control } =
+    useForm<IFormSchemaType>({
+      resolver: yupResolver(formSchema),
+      shouldFocusError: false,
+    })
 
   const checkImageExisted = useCallback(() => {
     if (uploadImg === '') {
@@ -51,8 +38,8 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
     return true
   }, [uploadImg])
 
-  const handleSubmitSuccess = useCallback(
-    async (e: Record<string, any>) => {
+  const handleSubmitSuccess: SubmitHandler<IFormSchemaType> = useCallback(
+    async (e) => {
       clearErrors()
       if (!checkImageExisted()) return
       // TODO
@@ -61,7 +48,7 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
     [checkImageExisted, clearErrors]
   )
 
-  const handleSubmitFailed = useCallback(
+  const handleSubmitFailed: SubmitErrorHandler<IFormSchemaType> = useCallback(
     (e) => {
       const imageExisted = checkImageExisted()
 
@@ -73,10 +60,8 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
           foundFirst = false
         }
       })
-
-      console.log(errors)
     },
-    [checkImageExisted, errors, setError]
+    [checkImageExisted, setError]
   )
 
   const handleSubmitForm = handleSubmit(handleSubmitSuccess, handleSubmitFailed)
@@ -86,11 +71,11 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
       register,
       uploadImg,
       imgRequired,
-      errors,
+      control,
       setUploadImg,
       setImgRequired,
     }),
-    [errors, imgRequired, register, uploadImg]
+    [control, imgRequired, register, uploadImg]
   )
 
   return (
