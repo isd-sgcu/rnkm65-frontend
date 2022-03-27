@@ -6,8 +6,15 @@ import { IInputFieldProps } from './types'
 
 const InputField = React.memo(
   React.forwardRef<HTMLInputElement, IInputFieldProps>((props, ref) => {
-    const { title, children, error, outerClassName, required, ...remain } =
-      props
+    const {
+      title,
+      children,
+      error,
+      errorMessage,
+      outerClassName,
+      required,
+      ...remain
+    } = props
 
     return (
       <InputFieldContainer>
@@ -16,6 +23,7 @@ const InputField = React.memo(
           {required && <RequiredSymbol>*</RequiredSymbol>}
         </Typography>
         <InputBase error={!!error} {...remain} ref={ref} />
+        <Typography css={{ color: '$error' }}>{errorMessage}</Typography>
         {children}
       </InputFieldContainer>
     )

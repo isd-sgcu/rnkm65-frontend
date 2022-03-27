@@ -23,30 +23,37 @@ export const FormUI = () => {
             <Controller
               control={control}
               name={val.key}
-              render={({ field, fieldState }) => (
-                <>
-                  {val.type === 'text_input' && (
-                    <InputField
-                      error={!!fieldState.error}
-                      title={t(val.key)}
-                      {...field}
-                    />
-                  )}
-                  {val.type === 'select_input' && (
-                    <SelectField
-                      error={!!fieldState.error}
-                      title={t(val.key)}
-                      option={
-                        val.option?.map((_val) => ({
-                          ..._val,
-                          text: t(_val.i18nKey),
-                        })) || []
-                      }
-                      {...field}
-                    />
-                  )}
-                </>
-              )}
+              render={({ field, fieldState: { error } }) => {
+                const errorType = error?.message?.includes('Required')
+                  ? 'required'
+                  : 'format'
+                return (
+                  <>
+                    {val.type === 'text_input' && (
+                      <InputField
+                        error={!!error}
+                        title={t(val.key)}
+                        errorMessage={error ? t(`${errorType}TextError`) : ''}
+                        {...field}
+                      />
+                    )}
+                    {val.type === 'select_input' && (
+                      <SelectField
+                        error={!!error}
+                        title={t(val.key)}
+                        option={
+                          val.option?.map((_val) => ({
+                            ..._val,
+                            text: t(_val.i18nKey),
+                          })) || []
+                        }
+                        errorMessage={error ? t(`${errorType}SelectError`) : ''}
+                        {...field}
+                      />
+                    )}
+                  </>
+                )
+              }}
             />
           </div>
         ))}

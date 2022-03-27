@@ -15,5 +15,9 @@
     "uploadBtn": "อัพโหลดรูป",
     "Mr": "Mr.",
     "Mrs": "Mrs.",
-    "Ms": "Ms."
+    "Ms": "Ms.",
+    "requiredTextError": "กรุณากรอกข้อมูล",
+    "formatTextError": "รูปแบบไม่ถูกต้อง",
+    "requiredSelectError": "กรุณาเลือก",
+    "requiredUploadImage": "กรุณาอัพโหลดรูปภาพ"
 }

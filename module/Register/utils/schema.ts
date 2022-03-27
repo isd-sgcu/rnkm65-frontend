@@ -21,18 +21,18 @@ interface ITemplateFormItem {
 export const formSchema = yup
   .object()
   .shape({
-    title: yup.mixed().oneOf(['Mr.', 'Mrs.', 'Ms.']).defined(),
-    firstname: yup.string().required(),
-    lastname: yup.string().required(),
-    nickname: yup.string().required(),
+    title: yup.mixed().oneOf(['Mr.', 'Mrs.', 'Ms.']).defined('Required title'),
+    firstname: yup.string().required('Required firstname'),
+    lastname: yup.string().required('Required lastname'),
+    nickname: yup.string().required('Required nickname'),
     phoneNumber: yup
       .string()
       .trim()
-      .required()
-      .matches(/^(0[1-9][0-9]{7,8})|-$/),
+      .required('Required phone number')
+      .matches(/^(0[1-9][0-9]{7,8})|-$/, 'Phone number is in wrong format'),
 
-    facebook: yup.string().required(),
-    lineID: yup.string().required(),
+    facebook: yup.string().required('Required'),
+    lineID: yup.string().required('Required'),
   })
   .required()
 
@@ -44,7 +44,7 @@ export const templateForm: ITemplateFormItem[] = [
     type: 'select_input',
     style: {
       gridColumn: '1 / 2',
-      minWidth: '80px',
+      minWidth: '95px',
     },
     option: [
       { value: 'Mr.', i18nKey: 'Mr' },

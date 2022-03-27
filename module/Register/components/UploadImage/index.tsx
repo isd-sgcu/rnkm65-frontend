@@ -10,6 +10,7 @@ import { ImageCropper } from './components/Cropper'
 import {
   DescriptionList,
   FallbackImage,
+  FallbackImageContainer,
   modalStyle,
   RootCropperContainer,
   StyledImage,
@@ -62,7 +63,14 @@ const UploadImage = () => {
             height={300}
           />
         ) : (
-          <FallbackImage error={imgRequired} />
+          <FallbackImageContainer>
+            <FallbackImage error={imgRequired} />
+            {imgRequired && (
+              <Typography css={{ color: '$error' }}>
+                {t('requiredUploadImage')}
+              </Typography>
+            )}
+          </FallbackImageContainer>
         )}
       </div>
       <StyledButton

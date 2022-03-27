@@ -12,7 +12,7 @@ import { ISelectFieldProps } from './types'
 
 export const SelectField = React.memo(
   React.forwardRef<HTMLSelectElement, ISelectFieldProps>((props, ref) => {
-    const { error, option, title, required, ...remain } = props
+    const { error, errorMessage, option, title, required, ...remain } = props
     return (
       <SelectContainer>
         <Typography css={{ marginBottom: '0.5rem' }}>
@@ -39,6 +39,7 @@ export const SelectField = React.memo(
             }}
           />
         </div>
+        <Typography css={{ color: '$error' }}>{errorMessage}</Typography>
       </SelectContainer>
     )
   })

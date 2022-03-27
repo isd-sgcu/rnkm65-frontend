@@ -6,6 +6,7 @@ export const FallbackImage = styled('div', {
   width: '200px',
   height: '300px',
   borderRadius: '1rem',
+  marginBottom: '1rem',
   variants: {
     error: {
       true: {
@@ -37,6 +38,12 @@ export const UploadImageContainer = styled('div', {
   '@md': {
     paddingRight: '0rem',
   },
+})
+
+export const FallbackImageContainer = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
 })
 
 export const DescriptionList = styled('li', {

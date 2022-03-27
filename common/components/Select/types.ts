@@ -8,6 +8,7 @@ interface IOptions {
 export interface ISelectFieldProps
   extends PropsWithChildren<SelectHTMLAttributes<{}>> {
   error?: boolean
+  errorMessage?: string
   title?: string
   option: IOptions[]
 }
