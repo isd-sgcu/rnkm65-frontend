@@ -20,7 +20,9 @@ export const SelectField = React.memo(
           {required && <RequiredSymbol>*</RequiredSymbol>}
         </Typography>
         <div style={{ position: 'relative' }}>
-          <SelectElement {...remain} ref={ref}>
+          <SelectElement error={error} {...remain} ref={ref}>
+            {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+            <option hidden value="" />
             {option.map((val) => (
               <OptionElement key={val.i18nKey} value={val.value}>
                 {val.i18nKey}
@@ -32,6 +34,7 @@ export const SelectField = React.memo(
               position: 'absolute',
               transform: 'translateY(-50%)',
               right: 7,
+              padding: '0px 0px',
               top: '50%',
             }}
           />

@@ -1,52 +1,36 @@
 import { InputField } from 'common/components/Input'
 import { SelectField } from 'common/components/Select'
 import Typography from 'common/components/Typography'
+import { templateForm } from 'module/Register/schema'
 import { useTranslation } from 'next-i18next'
-import { FieldValues, UseFormRegister } from 'react-hook-form'
 
+import { useFormContext } from '../../../../common/hooks/useFormContext'
 import { FormContainer, FormRootContainer } from './styled'
 
-interface IFormUI {
-  register: UseFormRegister<FieldValues>
-}
-
-export const FormUI = (props: IFormUI) => {
+export const FormUI = () => {
   const { t } = useTranslation('register')
-  const { register } = props
+  const { register } = useFormContext()
 
   return (
     <FormRootContainer>
-      <Typography variant="h3">{t('annoucement')}</Typography>
+      <Typography css={{ color: '$error' }} variant="h3">
+        {t('annoucement')}
+      </Typography>
       <FormContainer>
-        <div style={{ gridColumn: '1 / 2', minWidth: '100px' }}>
-          <SelectField
-            title={t('title')}
-            option={[
-              { value: 'Mr.', i18nKey: 'Mr.' },
-              { value: 'Mrs.', i18nKey: 'Mrs.' },
-              { value: 'Ms.', i18nKey: 'Ms.' },
-            ]}
-            {...register('title')}
-          />
-        </div>
-        <div style={{ gridColumn: '2 / 6' }}>
-          <InputField title={t('firstname')} {...register('firstname')} />
-        </div>
-        <div style={{ gridColumn: '6 / 10' }}>
-          <InputField title={t('lastname')} {...register('lastname')} />
-        </div>
-        <div style={{ gridColumn: '1 / 5' }}>
-          <InputField title={t('nickname')} {...register('nickname')} />
-        </div>
-        <div style={{ gridColumn: '5 / 10' }}>
-          <InputField title={t('phone')} {...register('phoneNumber')} />
-        </div>
-        <div style={{ gridColumn: '1 / 5' }}>
-          <InputField title={t('facebook')} {...register('facebook')} />
-        </div>
-        <div style={{ gridColumn: '5 / 10' }}>
-          <InputField title={t('lineID')} {...register('lineID')} />
-        </div>
+        {templateForm.map((val) => (
+          <div key={val.key} style={val.style || {}}>
+            {val.type === 'text_input' && (
+              <InputField title={t(val.key)} {...register(val.key)} />
+            )}
+            {val.type === 'select_input' && (
+              <SelectField
+                title={t(val.key)}
+                option={val.option || []}
+                {...register(val.key)}
+              />
+            )}
+          </div>
+        ))}
       </FormContainer>
     </FormRootContainer>
   )

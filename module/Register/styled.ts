@@ -18,7 +18,7 @@ export const SubmitButton = styled(StyledButton, {
   maxWidth: '400px',
 })
 
-export const RootContainer = styled('form', {
+export const RootContainer = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   padding: '2rem 4rem',
