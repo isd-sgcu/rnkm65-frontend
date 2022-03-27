@@ -2,6 +2,7 @@ import Typography from 'common/components/Typography'
 import { useCallback, useRef, useState } from 'react'
 import Cropper from 'react-easy-crop'
 
+import { blobToDataURL } from '../../utils/imageHelper'
 import { CropperContainer, InputFileContainer, RootContainer } from './styled'
 import { IImageCropperProps } from './types'
 
@@ -18,25 +19,17 @@ export const ImageCropper = (props: IImageCropperProps) => {
     [setCropMetaData]
   )
 
-  const readFile = useCallback(
-    (e: ProgressEvent<FileReader>) => {
-      setImg(e.target?.result as string)
-    },
-    [setImg]
-  )
-
   const handleSelectFile = useCallback(
     async (e: React.ChangeEvent<HTMLInputElement>) => {
       e.preventDefault()
       if (e.target.files) {
         const imgFile = e.target.files[0]
 
-        const reader = new FileReader()
-        reader.addEventListener('load', readFile)
-        reader.readAsDataURL(imgFile)
+        const imageUrl = await blobToDataURL(imgFile)
+        setImg(imageUrl)
       }
     },
-    [readFile]
+    [setImg]
   )
 
   const handleInputClick = useCallback(() => {

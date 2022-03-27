@@ -53,11 +53,18 @@ const UploadImage = () => {
 
   return (
     <UploadImageContainer>
-      {uploadImg ? (
-        <StyledImage src={uploadImg} layout="fixed" width={200} height={300} />
-      ) : (
-        <FallbackImage error={imgRequired} id="image" />
-      )}
+      <div id="image_section">
+        {uploadImg ? (
+          <StyledImage
+            src={uploadImg}
+            layout="fixed"
+            width={200}
+            height={300}
+          />
+        ) : (
+          <FallbackImage error={imgRequired} />
+        )}
+      </div>
       <StyledButton
         css={{ width: '100%', marginTop: '1rem' }}
         onClick={handleOpenModal}

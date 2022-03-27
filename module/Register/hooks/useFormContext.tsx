@@ -3,13 +3,12 @@ import React, {
   createContext,
   useCallback,
   useContext,
-  useEffect,
   useMemo,
   useState,
 } from 'react'
 import { FieldError, useForm, UseFormRegister } from 'react-hook-form'
 
-import { formSchema, IFormSchemaType } from '../schema'
+import { formSchema, IFormSchemaType, templateForm } from '../schema'
 
 interface IFormContext {
   uploadImg: string
@@ -33,14 +32,18 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
     formState: { errors },
     setError,
     clearErrors,
-    watch,
   } = useForm<IFormSchemaType>({
     resolver: yupResolver(formSchema),
+    shouldFocusError: false,
   })
 
   const checkImageExisted = useCallback(() => {
     if (uploadImg === '') {
-      document.getElementById('image')?.focus()
+      const el = document.getElementById('image_section')
+      if (el) {
+        el.scrollIntoView()
+      }
+
       setImgRequired(true)
       return false
     }
@@ -51,7 +54,7 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
   const handleSubmitSuccess = useCallback(
     async (e: Record<string, any>) => {
       clearErrors()
-      checkImageExisted()
+      if (!checkImageExisted()) return
       // TODO
       console.log(e)
     },
@@ -60,14 +63,15 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
 
   const handleSubmitFailed = useCallback(
     (e) => {
-      const imageExist = checkImageExisted()
+      const imageExisted = checkImageExisted()
+
       // TODO
-      Object.keys(e).forEach((value) => {
-        setError(
-          value as keyof IFormSchemaType,
-          {},
-          { shouldFocus: imageExist }
-        )
+      let foundFirst = true
+      templateForm.forEach((val) => {
+        if (e[val.key]) {
+          setError(val.key, {}, { shouldFocus: imageExisted && foundFirst })
+          foundFirst = false
+        }
       })
 
       console.log(errors)
@@ -88,22 +92,6 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
     }),
     [errors, imgRequired, register, uploadImg]
   )
-
-  // Clear error in subscription actually not working
-  useEffect(() => {
-    const subscription = watch((data) => {
-      const entries = Object.entries(data)
-      entries.forEach(([key, value]) => {
-        if (value) {
-          clearErrors(key as keyof IFormSchemaType)
-        }
-      })
-    })
-
-    return () => {
-      subscription.unsubscribe()
-    }
-  }, [clearErrors, watch])
 
   return (
     <FormContext.Provider value={providerProps}>
