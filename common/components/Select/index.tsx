@@ -24,8 +24,8 @@ export const SelectField = React.memo(
             {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
             <option hidden value="" />
             {option.map((val) => (
-              <OptionElement key={val.i18nKey} value={val.value}>
-                {val.i18nKey}
+              <OptionElement key={val.text} value={val.value}>
+                {val.text}
               </OptionElement>
             ))}
           </SelectElement>

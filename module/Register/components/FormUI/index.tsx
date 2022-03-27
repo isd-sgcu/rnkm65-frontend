@@ -1,7 +1,7 @@
 import { InputField } from 'common/components/Input'
 import { SelectField } from 'common/components/Select'
 import Typography from 'common/components/Typography'
-import { templateForm } from 'module/Register/schema'
+import { templateForm } from 'module/Register/utils/schema'
 import { useTranslation } from 'next-i18next'
 import { Controller } from 'react-hook-form'
 
@@ -36,7 +36,12 @@ export const FormUI = () => {
                     <SelectField
                       error={!!fieldState.error}
                       title={t(val.key)}
-                      option={val.option || []}
+                      option={
+                        val.option?.map((_val) => ({
+                          ..._val,
+                          text: t(_val.i18nKey),
+                        })) || []
+                      }
                       {...field}
                     />
                   )}

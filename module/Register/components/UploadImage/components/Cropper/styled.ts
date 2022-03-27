@@ -14,7 +14,7 @@ export const CropperContainer = styled('div', {
   width: '100%',
   height: '300px',
   '@sm': {
-    height: '200px',
+    height: '250px',
   },
 })
 

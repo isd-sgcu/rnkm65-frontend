@@ -1,7 +1,7 @@
 import { PropsWithChildren, SelectHTMLAttributes } from 'react'
 
 interface IOptions {
-  i18nKey: string
+  text: string
   value: string
 }
 

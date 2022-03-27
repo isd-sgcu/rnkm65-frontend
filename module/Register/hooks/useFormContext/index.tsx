@@ -8,7 +8,7 @@ import React, {
 } from 'react'
 import { SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form'
 
-import { formSchema, IFormSchemaType, templateForm } from '../../schema'
+import { formSchema, IFormSchemaType, templateForm } from '../../utils/schema'
 import { IFormContext } from './types'
 
 const FormContext = createContext<IFormContext>({} as IFormContext)
@@ -52,11 +52,14 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
     (e) => {
       const imageExisted = checkImageExisted()
 
-      // TODO
       let foundFirst = true
       templateForm.forEach((val) => {
         if (e[val.key]) {
-          setError(val.key, {}, { shouldFocus: imageExisted && foundFirst })
+          setError(
+            val.key,
+            { ...e[val.key] },
+            { shouldFocus: imageExisted && foundFirst }
+          )
           foundFirst = false
         }
       })

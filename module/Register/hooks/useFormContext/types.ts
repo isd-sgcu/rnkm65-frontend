@@ -1,4 +1,4 @@
-import { IFormSchemaType, ITemplateFormKey } from 'module/Register/schema'
+import { IFormSchemaType, ITemplateFormKey } from 'module/Register/utils/schema'
 import { Control } from 'react-hook-form'
 
 export interface IFormContext {
