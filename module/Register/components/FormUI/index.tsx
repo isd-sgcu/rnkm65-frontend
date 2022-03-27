@@ -4,12 +4,12 @@ import Typography from 'common/components/Typography'
 import { templateForm } from 'module/Register/schema'
 import { useTranslation } from 'next-i18next'
 
-import { useFormContext } from '../../../../common/hooks/useFormContext'
+import { useFormContext } from '../../hooks/useFormContext'
 import { FormContainer, FormRootContainer } from './styled'
 
 export const FormUI = () => {
   const { t } = useTranslation('register')
-  const { register } = useFormContext()
+  const { register, errors } = useFormContext()
 
   return (
     <FormRootContainer>
@@ -20,10 +20,15 @@ export const FormUI = () => {
         {templateForm.map((val) => (
           <div key={val.key} style={val.style || {}}>
             {val.type === 'text_input' && (
-              <InputField title={t(val.key)} {...register(val.key)} />
+              <InputField
+                error={!!errors[val.key]}
+                title={t(val.key)}
+                {...register(val.key)}
+              />
             )}
             {val.type === 'select_input' && (
               <SelectField
+                error={!!errors[val.key]}
                 title={t(val.key)}
                 option={val.option || []}
                 {...register(val.key)}

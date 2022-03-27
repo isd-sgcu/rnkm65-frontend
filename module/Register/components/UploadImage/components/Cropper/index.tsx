@@ -13,7 +13,7 @@ export const ImageCropper = (props: IImageCropperProps) => {
 
   const onCropComplete = useCallback(
     (croppedArea, croppedAreaPixels) => {
-      setCropMetaData(croppedAreaPixels)
+      setCropMetaData({ ...croppedAreaPixels })
     },
     [setCropMetaData]
   )

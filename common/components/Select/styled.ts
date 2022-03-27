@@ -9,8 +9,6 @@ export const SelectElement = styled('select', {
   position: 'relative',
   width: '100%',
   padding: '5px 10px',
-  minHeight: '36px',
-  maxHeight: '36px',
   borderRadius: '4px',
   backgroundColor: '$purple400',
   fontSize: '1rem',
@@ -21,9 +19,18 @@ export const SelectElement = styled('select', {
     error: {
       false: {
         border: '$black 1px solid',
+
+        minHeight: '36px',
+        maxHeight: '36px',
       },
       true: {
-        border: '$error 1px solid',
+        border: '$error 2px solid',
+
+        minHeight: '38px',
+        maxHeight: '38px',
+        '&:focus': {
+          outline: 'none',
+        },
       },
     },
   },

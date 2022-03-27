@@ -12,7 +12,10 @@ export const formSchema = yup
       .string()
       .trim()
       .required()
-      .matches(/^(0[1-9][0-9]{7,8})$/, 'Phone number is not in correct format'),
+      .matches(
+        /^(0[1-9][0-9]{7,8})|-$/,
+        'Phone number is not in correct format'
+      ),
 
     facebook: yup.string().required(),
     lineID: yup.string().required(),

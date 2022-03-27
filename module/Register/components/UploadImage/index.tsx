@@ -3,6 +3,7 @@ import { Modal } from 'common/components/Modal'
 import Typography from 'common/components/Typography'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import { useSwitch } from 'common/hooks/useSwitch'
+import { useFormContext } from 'module/Register/hooks/useFormContext'
 import { useCallback, useMemo, useState } from 'react'
 
 import { ImageCropper } from './components/Cropper'
@@ -11,15 +12,19 @@ import {
   FallbackImage,
   modalStyle,
   RootCropperContainer,
+  StyledImage,
   UploadImageContainer,
 } from './styled'
 import { ICropMetadata } from './types'
+import { getCroppedImage } from './utils/imageHelper'
 
 const UploadImage = () => {
   const { state, handleOpen, handleClose } = useSwitch(false)
   const { t } = useSSRTranslation('register')
-  const [img, setImg] = useState<string>('')
-  const [, setCropMetadata] = useState<ICropMetadata>({
+  const [tmpImg, setTmpImg] = useState<string>('')
+  const { imgRequired, setImgRequired, uploadImg, setUploadImg } =
+    useFormContext()
+  const [cropMetadata, setCropMetadata] = useState<ICropMetadata>({
     x: 0,
     y: 0,
     width: 0,
@@ -28,7 +33,7 @@ const UploadImage = () => {
 
   const description = useMemo(() => t('modalDesc').split(' | '), [t])
   const handleOpenModal = useCallback(() => {
-    setImg('')
+    setTmpImg('')
     setCropMetadata({
       x: 0,
       y: 0,
@@ -38,11 +43,23 @@ const UploadImage = () => {
     handleOpen()
   }, [handleOpen])
 
+  const handleSubmitImage = useCallback(async () => {
+    const croppedImage = await getCroppedImage(tmpImg, cropMetadata)
+    setUploadImg(croppedImage)
+    setImgRequired(false)
+
+    handleClose()
+  }, [cropMetadata, handleClose, setImgRequired, setUploadImg, tmpImg])
+
   return (
     <UploadImageContainer>
-      <FallbackImage />
+      {uploadImg ? (
+        <StyledImage src={uploadImg} layout="fixed" width={200} height={300} />
+      ) : (
+        <FallbackImage error={imgRequired} id="image" />
+      )}
       <StyledButton
-        css={{ width: '100%' }}
+        css={{ width: '100%', marginTop: '1rem' }}
         onClick={handleOpenModal}
         type="button"
       >
@@ -52,8 +69,8 @@ const UploadImage = () => {
         <Typography variant="h2">{t('modalTitle')}</Typography>
         <RootCropperContainer>
           <ImageCropper
-            img={img}
-            setImg={setImg}
+            img={tmpImg}
+            setImg={setTmpImg}
             setCropMetaData={setCropMetadata}
           />
           <ul>
@@ -64,8 +81,10 @@ const UploadImage = () => {
             ))}
           </ul>
         </RootCropperContainer>
-        {img && (
-          <StyledButton onClick={handleClose}>{t('modalSubmit')}</StyledButton>
+        {tmpImg && (
+          <StyledButton onClick={handleSubmitImage} type="button">
+            {t('modalSubmit')}
+          </StyledButton>
         )}
       </Modal>
     </UploadImageContainer>
