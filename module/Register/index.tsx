@@ -18,7 +18,7 @@ const RegisterForm: NextPage = () => {
   return (
     <FormProvider>
       <RootContainer>
-        <Typography variant="h3">แก้ไขข้อมูล</Typography>
+        <Typography variant="h1">{t('register')}</Typography>
         <RegisterContainer>
           <UploadImage />
           <FormUI />

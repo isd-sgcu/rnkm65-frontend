@@ -1,5 +1,5 @@
 import { useSwitch } from 'common/hooks/useSwitch'
-import { useCallback } from 'react'
+import { useCallback, useEffect } from 'react'
 
 import { CloseAnimation, OpenAnimation } from '../styled'
 
@@ -45,8 +45,22 @@ export const useModalAnimation = (
   )
 
   const handleBackdropClick = useCallback(() => {
-    if (clickBackdrop && onClose) onClose()
+    if (onClose && clickBackdrop) onClose()
   }, [clickBackdrop, onClose])
+
+  const handleKeyboardClick = useCallback(
+    (e: KeyboardEvent) => {
+      if (onClose && e.key === 'Escape' && isShow) onClose()
+    },
+    [isShow, onClose]
+  )
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyboardClick, true)
+    return () => {
+      document.removeEventListener('keydown', handleKeyboardClick, true)
+    }
+  }, [handleKeyboardClick])
 
   return {
     isShow,
