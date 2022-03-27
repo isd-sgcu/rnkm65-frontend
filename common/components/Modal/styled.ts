@@ -74,6 +74,6 @@ export const ModalContainer = styled('div', {
 export const CloseIcon = styled(GrClose, {
   cursor: 'pointer',
   position: 'absolute',
-  right: '0.8rem',
-  top: '0.8rem',
+  right: '1.5rem',
+  top: '1.5rem',
 })

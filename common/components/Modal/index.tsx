@@ -34,7 +34,7 @@ export const Modal = (props: React.PropsWithChildren<IModalProps>) => {
         className={modalClassName || ''}
         onClick={handleInnerClick}
       >
-        <CloseIcon onClick={onClose} size={16} />
+        <CloseIcon onClick={onClose} size={24} />
         {isShow && children}
       </ModalContainer>
     </BackdropContainer>

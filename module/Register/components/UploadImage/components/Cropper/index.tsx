@@ -1,9 +1,16 @@
 import Typography from 'common/components/Typography'
 import { useCallback, useRef, useState } from 'react'
 import Cropper from 'react-easy-crop'
+import { FiZoomIn, FiZoomOut } from 'react-icons/fi'
 
 import { blobToDataURL } from '../../utils/imageHelper'
-import { CropperContainer, InputFileContainer, RootContainer } from './styled'
+import {
+  CropperContainer,
+  InputFileContainer,
+  RootContainer,
+  ZoomContainer,
+  ZoomInput,
+} from './styled'
 import { IImageCropperProps } from './types'
 
 export const ImageCropper = (props: IImageCropperProps) => {
@@ -55,18 +62,35 @@ export const ImageCropper = (props: IImageCropperProps) => {
         </InputFileContainer>
       )}
       {img && (
-        <CropperContainer>
-          <Cropper
-            image={img}
-            crop={crop}
-            zoom={zoom}
-            cropShape="rect"
-            aspect={2 / 3}
-            onCropChange={setCrop}
-            onCropComplete={onCropComplete}
-            onZoomChange={setZoom}
-          />
-        </CropperContainer>
+        <>
+          <CropperContainer>
+            <Cropper
+              image={img}
+              crop={crop}
+              zoom={zoom}
+              cropShape="rect"
+              aspect={2 / 3}
+              minZoom={1}
+              maxZoom={9}
+              zoomSpeed={0.5}
+              onCropChange={setCrop}
+              onCropComplete={onCropComplete}
+              onZoomChange={setZoom}
+            />
+          </CropperContainer>
+          <ZoomContainer>
+            <FiZoomOut size={24} />
+            <ZoomInput
+              type="range"
+              min={1}
+              max={9}
+              step={0.5}
+              value={zoom}
+              onChange={(e) => setZoom(+e.currentTarget.value)}
+            />
+            <FiZoomIn size={24} />
+          </ZoomContainer>
+        </>
       )}
     </RootContainer>
   )

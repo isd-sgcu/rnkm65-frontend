@@ -3,7 +3,6 @@ import { styled } from 'config/stitches.config'
 export const RootContainer = styled('div', {
   width: '100%',
   marginTop: '1rem',
-  marginBottom: '1rem',
 })
 
 export const CropperContainer = styled('div', {
@@ -30,4 +29,16 @@ export const InputFileContainer = styled('div', {
   },
   backgroundColor: '$gray',
   cursor: 'pointer',
+})
+
+export const ZoomContainer = styled('div', {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  marginTop: '1rem',
+})
+
+export const ZoomInput = styled('input', {
+  marginRight: '1rem',
+  marginLeft: '1rem',
 })
