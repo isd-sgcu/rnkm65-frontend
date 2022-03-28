@@ -9,4 +9,7 @@ export const LayoutContainer = styled('div', {
 
 export const ContentContainer = styled('div', {
   flexGrow: 1,
+  display: 'flex',
+  justifyContent: 'center',
+  width: '100%',
 })

@@ -8,6 +8,9 @@ export const Container = styled('div', {
   padding: '20px',
   flexBasis: 0,
   flexGrow: 1,
+  '@md': {
+    padding: '10px',
+  },
 })
 
 export const MembersContainer = styled('div', {
@@ -15,11 +18,12 @@ export const MembersContainer = styled('div', {
   gap: '16px',
   marginTop: '20px',
   justifyContent: 'center',
+  '@sm': { gap: '10px' },
 })
 
 export const ImageContainer = styled('div', {
-  height: '160px',
-  width: '120px',
+  height: 'min(35vw, 160px)',
+  width: 'min(25vw, 120px)',
   position: 'relative',
   borderRadius: '5px',
   overflow: 'hidden',

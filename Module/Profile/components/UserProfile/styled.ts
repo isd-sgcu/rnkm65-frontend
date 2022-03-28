@@ -1,5 +1,12 @@
 import { styled } from 'config/stitches.config'
 
+export const Container = styled('div', {
+  '@md': {
+    display: 'flex',
+    gap: '20px',
+  },
+})
+
 export const ImageContainer = styled('div', {
   height: '280px',
   width: '200px',

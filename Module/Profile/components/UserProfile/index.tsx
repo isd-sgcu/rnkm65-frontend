@@ -5,27 +5,29 @@ import Link from 'next/link'
 import React from 'react'
 import { HiPencil } from 'react-icons/hi'
 
-import { EditProfileButton, ImageContainer } from './styled'
+import { Container, EditProfileButton, ImageContainer } from './styled'
 
 const UserProfile = (props: User) => {
   const { name, surname, imageUrl } = props
   return (
-    <div>
+    <Container>
       <ImageContainer>
         <Image src={imageUrl} layout="fill" objectFit="cover" />
       </ImageContainer>
-      <Typography variant="h3" color="blue">
-        {name}
-        <br />
-        {surname}
-      </Typography>
-      <Link href="/register" passHref>
-        <EditProfileButton>
-          <Typography variant="body">แก้ไขข้อมูล</Typography>
-          <HiPencil />
-        </EditProfileButton>
-      </Link>
-    </div>
+      <div>
+        <Typography variant="h3" color="blue">
+          {name}
+          <br />
+          {surname}
+        </Typography>
+        <Link href="/register" passHref>
+          <EditProfileButton>
+            <Typography variant="body">แก้ไขข้อมูล</Typography>
+            <HiPencil />
+          </EditProfileButton>
+        </Link>
+      </div>
+    </Container>
   )
 }
 

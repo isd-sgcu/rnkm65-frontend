@@ -20,7 +20,12 @@ const tmpHouse = {
 const Profile = () => (
   <Container>
     <UserProfile {...tmpUser} />
-    <div style={{ flexGrow: 1 }}>
+    <div
+      style={{
+        flexGrow: 1,
+        width: '100%',
+      }}
+    >
       <InviteLink inviteLink="www.youtube.com/watch?v=dQw4w9WgXcQ" />
       <GroupContainer>
         <GroupMember members={[tmpUser, tmpUser]} />
