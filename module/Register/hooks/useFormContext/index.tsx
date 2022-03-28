@@ -1,4 +1,9 @@
 import { yupResolver } from '@hookform/resolvers/yup'
+import {
+  formSchema,
+  IFormSchemaType,
+  templateForm,
+} from 'module/Register/utils/schema'
 import React, {
   createContext,
   useCallback,
@@ -8,7 +13,6 @@ import React, {
 } from 'react'
 import { SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form'
 
-import { formSchema, IFormSchemaType, templateForm } from '../../utils/schema'
 import { IFormContext } from './types'
 
 const FormContext = createContext<IFormContext>({} as IFormContext)

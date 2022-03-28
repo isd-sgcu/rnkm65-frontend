@@ -1,3 +1,5 @@
+import { ICropMetadata } from 'module/Register/components/UploadImage/types'
+import { blobToDataURL } from 'module/Register/components/UploadImage/utils/imageHelper'
 import {
   ChangeEvent,
   Dispatch,
@@ -7,9 +9,6 @@ import {
   useCallback,
   useState,
 } from 'react'
-
-import { ICropMetadata } from '../../../types'
-import { blobToDataURL } from '../../../utils/imageHelper'
 
 const ALLOW_EXT = ['image/png', 'image/jpeg', 'image/webp']
 const FILE_LIMIT = 4 * 1048567

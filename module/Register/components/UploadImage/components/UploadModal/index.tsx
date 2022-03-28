@@ -3,9 +3,9 @@ import Typography from 'common/components/Typography'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import { memo, useMemo } from 'react'
 
-import { DescriptionList, RootCropperContainer } from '../../styled'
 import { ImageCropper } from '../Cropper'
 import { useImageHooks } from './hooks/useImageHooks'
+import { DescriptionList, RootCropperContainer } from './styled'
 import { IUploadModalProps } from './types'
 
 export const UploadModal = memo((props: IUploadModalProps) => {

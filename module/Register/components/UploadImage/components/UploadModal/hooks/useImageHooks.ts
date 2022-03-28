@@ -1,8 +1,7 @@
+import { ICropMetadata } from 'module/Register/components/UploadImage/types'
+import { getCroppedImage } from 'module/Register/components/UploadImage/utils/imageHelper'
 import { useFormContext } from 'module/Register/hooks/useFormContext'
 import { useCallback, useState } from 'react'
-
-import { getCroppedImage } from '../../../utils/imageHelper'
-import { ICropMetadata } from '../types'
 
 export const useImageHooks = (handleClose: () => void) => {
   const [cropMetadata, setCropMetadata] = useState<ICropMetadata>({

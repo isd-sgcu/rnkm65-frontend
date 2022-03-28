@@ -37,6 +37,7 @@ export const ZoomContainer = styled('div', {
   justifyContent: 'center',
   alignItems: 'center',
   marginTop: '1rem',
+  marginBottom: '1rem',
 })
 
 export const ZoomInput = styled('input', {

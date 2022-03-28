@@ -89,7 +89,7 @@ export const ImageCropper = memo((props: IImageCropperProps) => {
           </ZoomContainer>
         </>
       )}
-      <Typography css={{ color: '$error' }}>
+      <Typography css={{ color: '$error', fontWeight: 'bold' }}>
         {errorType && t(`${errorType}Error`)}
       </Typography>
     </RootContainer>
