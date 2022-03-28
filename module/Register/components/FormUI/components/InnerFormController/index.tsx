@@ -31,7 +31,7 @@ export const InnerFormController = memo((props: IInnerFormControllerProps) => {
                 <InputField
                   error={!!error}
                   title={t(fieldKey)}
-                  errorMessage={error ? t(`${errorType}TextError`) : ''}
+                  errorMessage={error ? t(`error.${errorType}Text`) : ''}
                   {...field}
                 />
               )}
@@ -40,7 +40,7 @@ export const InnerFormController = memo((props: IInnerFormControllerProps) => {
                   error={!!error}
                   title={t(fieldKey)}
                   option={options || []}
-                  errorMessage={error ? t(`${errorType}SelectError`) : ''}
+                  errorMessage={error ? t(`error.${errorType}Select`) : ''}
                   {...field}
                 />
               )}

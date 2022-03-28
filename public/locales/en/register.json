@@ -9,19 +9,23 @@
     "phoneNumber": "Phone number",
     "facebook": "Facebook",
     "lineID": "Line ID",
-    "modalSubmit": "ยืนยัน",
-    "modalDesc": "ใช้รูปที่เห็นใบหน้าชัดเจน | ไม่ควรใส่ฟิลเตอร์ | ขนาดไฟล์ไม่ควรเกิน 1 MB",
-    "modalTitle": "แก้ไขรูปภาพ",
-    "uploadFallback": "คลิกเพื่ออัพโหลดรูป",
-    "dragDropFallback": "ปล่อยเพื่ออัพโหลด",
+    "uploadModal": {
+        "title": "แก้ไขรูปภาพ",
+        "submit": "ยืนยัน",
+        "desc": "ใช้รูปที่เห็นใบหน้าชัดเจน | ไม่ควรใส่ฟิลเตอร์ | ขนาดไฟล์ไม่ควรเกิน 1 MB",
+        "uploadFallback": "คลิกเพื่ออัพโหลดรูป",
+        "dragDropFallback": "ปล่อยเพื่ออัพโหลด"
+    },
     "uploadBtn": "อัพโหลดรูป",
     "Mr": "Mr.",
     "Mrs": "Mrs.",
     "Ms": "Ms.",
-    "requiredTextError": "กรุณากรอกข้อมูล",
-    "formatTextError": "รูปแบบไม่ถูกต้อง",
-    "requiredSelectError": "กรุณาเลือก",
-    "requiredUploadImage": "กรุณาอัพโหลดรูปภาพ",
-    "fileLimitError": "ไฟล์มีขนาดเกิน 4 MB",
-    "invalidMimeError": "ไฟล์รูปภาพต้องเป็นประเภท PNG หรือ JPEG"
+    "error": {
+        "requiredText": "กรุณากรอกข้อมูล",
+        "formatText": "รูปแบบไม่ถูกต้อง",
+        "requiredSelect": "กรุณาเลือก",
+        "requiredUploadImage": "กรุณาอัพโหลดรูปภาพ",
+        "fileLimit": "ไฟล์มีขนาดเกิน 4 MB",
+        "invalidMime": "ไฟล์รูปภาพต้องเป็นประเภท PNG หรือ JPEG"
+    }
 }

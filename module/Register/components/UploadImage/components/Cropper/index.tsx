@@ -46,7 +46,9 @@ export const ImageCropper = memo((props: IImageCropperProps) => {
       {!img && (
         <InputFileContainer>
           <Typography variant="subhead3">
-            {isDrag ? t('dragDropFallback') : t('uploadFallback')}
+            {isDrag
+              ? t('uploadModal.dragDropFallback')
+              : t('uploadModal.uploadFallback')}
           </Typography>
           <InputFileZone
             role="none"
@@ -92,8 +94,10 @@ export const ImageCropper = memo((props: IImageCropperProps) => {
           </ZoomContainer>
         </>
       )}
-      <Typography css={{ color: '$error', fontWeight: 'bold' }}>
-        {errorType && t(`${errorType}Error`)}
+      <Typography
+        css={{ color: '$error', fontWeight: 'bold', marginTop: '1rem' }}
+      >
+        {errorType && t(`error.${errorType}`)}
       </Typography>
     </RootContainer>
   )

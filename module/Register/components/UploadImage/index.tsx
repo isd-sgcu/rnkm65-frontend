@@ -35,7 +35,7 @@ const UploadImage = memo(() => {
             <FallbackImage error={imgRequired} />
             {imgRequired && (
               <Typography css={{ color: '$error' }}>
-                {t('requiredUploadImage')}
+                {t('error.requiredUploadImage')}
               </Typography>
             )}
           </FallbackImageContainer>

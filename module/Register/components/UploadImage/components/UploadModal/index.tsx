@@ -14,12 +14,12 @@ export const UploadModal = memo((props: IUploadModalProps) => {
   const { tmpImg, setTmpImg, setCropMetadata, handleSubmitImage } =
     useImageHooks(handleClose)
 
-  const description = useMemo(() => t('modalDesc').split(' | '), [t])
+  const description = useMemo(() => t('uploadModal.desc').split(' | '), [t])
 
   return (
     <>
       <Typography css={{ color: '$blue' }} variant="h2">
-        {t('modalTitle')}
+        {t('uploadModal.title')}
       </Typography>
       <RootCropperContainer>
         <ImageCropper
@@ -31,7 +31,7 @@ export const UploadModal = memo((props: IUploadModalProps) => {
           {description.map((val) => (
             <DescriptionList key={val}>
               <Typography css={{ color: '$blue' }} variant="body">
-                {t(val)}
+                {val}
               </Typography>
             </DescriptionList>
           ))}
@@ -39,7 +39,7 @@ export const UploadModal = memo((props: IUploadModalProps) => {
       </RootCropperContainer>
       {tmpImg && (
         <StyledButton onClick={handleSubmitImage} type="button">
-          {t('modalSubmit')}
+          {t('uploadModal.submit')}
         </StyledButton>
       )}
     </>
