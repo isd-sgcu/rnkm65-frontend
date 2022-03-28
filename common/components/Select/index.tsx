@@ -1,8 +1,8 @@
 import React from 'react'
-import { BsChevronDown } from 'react-icons/bs'
 
 import Typography from '../Typography'
 import {
+  DropdownIcon,
   OptionElement,
   RequiredSymbol,
   SelectContainer,
@@ -10,7 +10,7 @@ import {
 } from './styled'
 import { ISelectFieldProps } from './types'
 
-export const SelectField = React.memo(
+export default React.memo(
   React.forwardRef<HTMLSelectElement, ISelectFieldProps>((props, ref) => {
     const { error, errorMessage, option, title, required, ...remain } = props
     return (
@@ -29,15 +29,7 @@ export const SelectField = React.memo(
               </OptionElement>
             ))}
           </SelectElement>
-          <BsChevronDown
-            style={{
-              position: 'absolute',
-              transform: 'translateY(-50%)',
-              right: 7,
-              padding: '0px 0px',
-              top: '50%',
-            }}
-          />
+          <DropdownIcon />
         </div>
         <Typography css={{ color: '$error' }}>{errorMessage}</Typography>
       </SelectContainer>

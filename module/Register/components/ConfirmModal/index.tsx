@@ -1,4 +1,4 @@
-import { Modal } from 'common/components/Modal'
+import Modal from 'common/components/Modal'
 import { useFormContext } from 'module/Register/hooks/useFormContext'
 
 import {

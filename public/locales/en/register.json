@@ -27,5 +27,13 @@
         "requiredUploadImage": "กรุณาอัพโหลดรูปภาพ",
         "fileLimit": "ไฟล์มีขนาดเกิน 4 MB",
         "invalidMime": "ไฟล์รูปภาพต้องเป็นประเภท PNG หรือ JPEG"
+    },
+    "placeholder": {
+        "firstname": "กรุงเทพ",
+        "lastname": "มหานคร",
+        "nickname": "ตาต้า",
+        "phoneNumber": "0222222222",
+        "facebook": "Facebook",
+        "lineID": "Line ID"
     }
 }

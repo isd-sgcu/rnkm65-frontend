@@ -30,4 +30,5 @@ const InputField = React.memo(
   })
 )
 
-export { InputBase, InputField }
+export default InputField
+export { InputBase }

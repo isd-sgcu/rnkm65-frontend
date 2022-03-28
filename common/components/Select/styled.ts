@@ -1,4 +1,5 @@
 import { styled } from 'config/stitches.config'
+import { BsChevronDown } from 'react-icons/bs'
 
 export const SelectContainer = styled('div', {
   width: '100%',
@@ -15,11 +16,11 @@ export const SelectElement = styled('select', {
   appearance: 'none',
   '-webkit-appearance': 'none',
   '-moz-appearance': 'none',
+  color: '$black',
   variants: {
     error: {
       false: {
         border: '$black 1px solid',
-
         minHeight: '36px',
         maxHeight: '36px',
       },
@@ -34,6 +35,9 @@ export const SelectElement = styled('select', {
       },
     },
   },
+  '&::placeholder': {
+    color: '$gray',
+  },
   defaultVariants: {
     error: false,
   },
@@ -42,8 +46,17 @@ export const SelectElement = styled('select', {
 export const OptionElement = styled('option', {
   fontFamily: '$FCSubjectRounded',
   borderRadius: '4px',
+  color: '$black',
 })
 
 export const RequiredSymbol = styled('span', {
   color: '$error',
+})
+
+export const DropdownIcon = styled(BsChevronDown, {
+  position: 'absolute',
+  transform: 'translateY(-50%)',
+  right: 7,
+  padding: '0px 0px',
+  top: '50%',
 })

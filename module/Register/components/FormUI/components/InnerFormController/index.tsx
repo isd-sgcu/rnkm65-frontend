@@ -1,5 +1,5 @@
-import { InputField } from 'common/components/Input'
-import { SelectField } from 'common/components/Select'
+import InputField from 'common/components/Input'
+import SelectField from 'common/components/Select'
 import { useFormContext } from 'module/Register/hooks/useFormContext'
 import { useTranslation } from 'next-i18next'
 import { memo } from 'react'
@@ -7,7 +7,7 @@ import { Controller } from 'react-hook-form'
 
 import { IInnerFormControllerProps } from './types'
 
-export const InnerFormController = memo((props: IInnerFormControllerProps) => {
+export default memo((props: IInnerFormControllerProps) => {
   const { fieldKey, type, option, style, translateNs } = props
   const { t } = useTranslation(translateNs)
   const { control } = useFormContext()
@@ -32,6 +32,7 @@ export const InnerFormController = memo((props: IInnerFormControllerProps) => {
                   error={!!error}
                   title={t(fieldKey)}
                   errorMessage={error ? t(`error.${errorType}Text`) : ''}
+                  placeholder={t(`placeholder.${fieldKey}`)}
                   {...field}
                 />
               )}
@@ -41,6 +42,7 @@ export const InnerFormController = memo((props: IInnerFormControllerProps) => {
                   title={t(fieldKey)}
                   option={options || []}
                   errorMessage={error ? t(`error.${errorType}Select`) : ''}
+                  placeholder={t(`placeholder.${fieldKey}`)}
                   {...field}
                 />
               )}

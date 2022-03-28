@@ -1,5 +1,5 @@
 import StyledButton from 'common/components/Button'
-import { Modal } from 'common/components/Modal'
+import Modal from 'common/components/Modal'
 import Typography from 'common/components/Typography'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import { useSwitch } from 'common/hooks/useSwitch'

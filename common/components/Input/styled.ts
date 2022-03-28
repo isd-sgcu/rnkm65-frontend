@@ -21,6 +21,10 @@ export const InputBase = styled('input', {
     },
   },
 
+  '&::placeholder': {
+    color: '$gray',
+  },
+
   defaultVariants: {
     error: false,
   },
