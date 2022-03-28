@@ -3,10 +3,8 @@ import { styled } from 'config/stitches.config'
 export const FormContainer = styled('div', {
   display: 'grid',
   marginTop: '1rem',
-  marginBottom: '1rem',
   gridColumnGap: '1rem',
   gridRowGap: '0.5rem',
-  gridTemplateRows: 'repeat(3, 3fr)',
   gridTemplateColumns: 'repeat(9, 1fr)',
 
   '@md': {

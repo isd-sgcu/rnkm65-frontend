@@ -1,5 +1,5 @@
 import Typography from 'common/components/Typography'
-import { useCallback, useRef, useState } from 'react'
+import { memo, useCallback, useRef, useState } from 'react'
 import Cropper from 'react-easy-crop'
 import { FiZoomIn, FiZoomOut } from 'react-icons/fi'
 
@@ -13,7 +13,7 @@ import {
 } from './styled'
 import { IImageCropperProps } from './types'
 
-export const ImageCropper = (props: IImageCropperProps) => {
+export const ImageCropper = memo((props: IImageCropperProps) => {
   const { img, setImg, setCropMetaData } = props
   const [crop, setCrop] = useState({ x: 0, y: 0 })
   const [zoom, setZoom] = useState(1)
@@ -94,4 +94,4 @@ export const ImageCropper = (props: IImageCropperProps) => {
       )}
     </RootContainer>
   )
-}
+})

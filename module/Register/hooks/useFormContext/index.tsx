@@ -53,15 +53,19 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
       const imageExisted = checkImageExisted()
 
       let foundFirst = true
-      templateForm.forEach((val) => {
-        if (e[val.key]) {
-          setError(
-            val.key,
-            { ...e[val.key] },
-            { shouldFocus: imageExisted && foundFirst }
-          )
-          foundFirst = false
-        }
+
+      // Templates are 2D array
+      templateForm.forEach((row) => {
+        row.forEach((val) => {
+          if (e[val.fieldKey]) {
+            setError(
+              val.fieldKey,
+              { ...e[val.fieldKey] },
+              { shouldFocus: imageExisted && foundFirst }
+            )
+            foundFirst = false
+          }
+        })
       })
     },
     [checkImageExisted, setError]

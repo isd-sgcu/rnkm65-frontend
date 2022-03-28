@@ -11,13 +11,6 @@ export interface IFormSchemaType {
   lineID: string
 }
 
-interface ITemplateFormItem {
-  key: keyof IFormSchemaType
-  type: string
-  style?: CSSProperties
-  option?: { value: string; i18nKey: string }[]
-}
-
 export const formSchema = yup
   .object()
   .shape({
@@ -37,61 +30,71 @@ export const formSchema = yup
   .required()
 
 export type ITemplateFormKey = keyof IFormSchemaType
+export interface ITemplateFormItem {
+  fieldKey: keyof IFormSchemaType
+  type: string
+  style?: CSSProperties
+  option?: Array<{ value: string; i18nKey: string }>
+}
 
-export const templateForm: ITemplateFormItem[] = [
-  {
-    key: 'title',
-    type: 'select_input',
-    style: {
-      gridColumn: '1 / 2',
-      minWidth: '95px',
+export const templateForm: Array<Array<ITemplateFormItem>> = [
+  [
+    {
+      fieldKey: 'title',
+      type: 'select_input',
+      style: {
+        gridColumn: '1 / 2',
+        minWidth: '95px',
+      },
+      option: [
+        { value: 'Mr.', i18nKey: 'Mr' },
+        { value: 'Mrs.', i18nKey: 'Mrs' },
+        { value: 'Ms.', i18nKey: 'Ms' },
+      ],
     },
-    option: [
-      { value: 'Mr.', i18nKey: 'Mr' },
-      { value: 'Mrs.', i18nKey: 'Mrs' },
-      { value: 'Ms.', i18nKey: 'Ms' },
-    ],
-  },
-  {
-    key: 'firstname',
-    type: 'text_input',
-    style: {
-      gridColumn: '2 / 6',
+    {
+      fieldKey: 'firstname',
+      type: 'text_input',
+      style: {
+        gridColumn: '2 / 6',
+      },
     },
-  },
-  {
-    key: 'lastname',
-    type: 'text_input',
-    style: {
-      gridColumn: '6 / 10',
+    {
+      fieldKey: 'lastname',
+      type: 'text_input',
+      style: {
+        gridColumn: '6 / 10',
+      },
     },
-  },
-  {
-    key: 'nickname',
-    type: 'text_input',
-    style: {
-      gridColumn: '1 / 5',
+  ],
+  [
+    {
+      fieldKey: 'nickname',
+      type: 'text_input',
+      style: {
+        gridColumn: '1 / 5',
+      },
     },
-  },
-  {
-    key: 'phoneNumber',
-    type: 'text_input',
-    style: {
-      gridColumn: '5 / 10',
+    {
+      fieldKey: 'phoneNumber',
+      type: 'text_input',
+      style: {
+        gridColumn: '5 / 10',
+      },
     },
-  },
-  {
-    key: 'facebook',
-    type: 'text_input',
-    style: {
-      gridColumn: '1 / 5',
+    {
+      fieldKey: 'facebook',
+      type: 'text_input',
+      style: {
+        gridColumn: '1 / 5',
+      },
     },
-  },
-  {
-    key: 'lineID',
-    type: 'text_input',
-    style: {
-      gridColumn: '5 / 10',
+    {
+      fieldKey: 'lineID',
+      type: 'text_input',
+      style: {
+        gridColumn: '5 / 10',
+      },
     },
-  },
+  ],
 ]
