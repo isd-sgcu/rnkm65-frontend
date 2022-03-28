@@ -7,6 +7,9 @@ export interface IFormContext {
   control: Control<IFormSchemaType, any>
   setUploadImg: React.Dispatch<React.SetStateAction<string>>
   setImgRequired: React.Dispatch<React.SetStateAction<boolean>>
+  handleModalSubmit: () => void
+  handleCloseModal: () => void
+  openModal: boolean
 }
 
 export type IErrorState = Partial<Record<ITemplateFormKey, boolean>>

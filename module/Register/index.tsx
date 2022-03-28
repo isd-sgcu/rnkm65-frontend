@@ -2,6 +2,7 @@ import Typography from 'common/components/Typography'
 import { NextPage } from 'next'
 import { useTranslation } from 'next-i18next'
 
+import { ConfirmModal } from './components/ConfirmModal'
 import { FormUI } from './components/FormUI'
 import { UploadImage } from './components/UploadImage'
 import { FormProvider } from './hooks/useFormContext'
@@ -27,6 +28,7 @@ const RegisterForm: NextPage = () => {
           <SubmitButton type="submit">{t('submit')}</SubmitButton>
         </SubmitContainer>
       </RootContainer>
+      <ConfirmModal />
     </FormProvider>
   )
 }

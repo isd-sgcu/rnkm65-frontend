@@ -1,4 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup'
+import { useSwitch } from 'common/hooks/useSwitch'
 import {
   formSchema,
   IFormSchemaType,
@@ -22,7 +23,12 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
 
   const [uploadImg, setUploadImg] = useState('')
   const [imgRequired, setImgRequired] = useState(false)
-  const { register, handleSubmit, setError, control } =
+  const {
+    state: openModal,
+    handleOpen,
+    handleClose: handleCloseModal,
+  } = useSwitch(false)
+  const { register, handleSubmit, setError, control, getValues } =
     useForm<IFormSchemaType>({
       resolver: yupResolver(formSchema),
       shouldFocusError: false,
@@ -42,16 +48,17 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
     return true
   }, [uploadImg])
 
-  const handleSubmitSuccess: SubmitHandler<IFormSchemaType> = useCallback(
-    async (e) => {
-      if (!checkImageExisted()) return
-      // TODO
-      console.log(e)
-    },
-    [checkImageExisted]
-  )
+  const handleModalSubmit = useCallback(() => {
+    const data = getValues()
+    console.log(data)
+  }, [getValues])
 
-  const handleSubmitFailed: SubmitErrorHandler<IFormSchemaType> = useCallback(
+  const handleSuccess: SubmitHandler<IFormSchemaType> = useCallback(() => {
+    if (!checkImageExisted()) return
+    handleOpen()
+  }, [checkImageExisted, handleOpen])
+
+  const handleFailed: SubmitErrorHandler<IFormSchemaType> = useCallback(
     (e) => {
       const imageExisted = checkImageExisted()
 
@@ -74,7 +81,7 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
     [checkImageExisted, setError]
   )
 
-  const handleSubmitForm = handleSubmit(handleSubmitSuccess, handleSubmitFailed)
+  const handleClickSubmit = handleSubmit(handleSuccess, handleFailed)
 
   const providerProps = useMemo(
     () => ({
@@ -84,13 +91,24 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
       control,
       setUploadImg,
       setImgRequired,
+      handleModalSubmit,
+      handleCloseModal,
+      openModal,
     }),
-    [control, imgRequired, register, uploadImg]
+    [
+      control,
+      handleCloseModal,
+      handleModalSubmit,
+      imgRequired,
+      openModal,
+      register,
+      uploadImg,
+    ]
   )
 
   return (
     <FormContext.Provider value={providerProps}>
-      <form onSubmit={handleSubmitForm}>{children}</form>
+      <form onSubmit={handleClickSubmit}>{children}</form>
     </FormContext.Provider>
   )
 }
