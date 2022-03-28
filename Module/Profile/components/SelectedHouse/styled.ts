@@ -16,6 +16,9 @@ export const Container = styled('div', {
     padding: '20px 10px 10px 10px',
     borderRadius: '10px',
   },
+  '@xl': {
+    marginBottom: '20px',
+  },
 })
 
 export const HousesContainer = styled('div', {

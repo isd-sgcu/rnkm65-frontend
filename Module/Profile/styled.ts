@@ -20,6 +20,7 @@ export const GroupContainer = styled('div', {
   marginTop: '20px',
   gap: '20px',
   '@xl': {
-    flexDirection: 'column-reverse',
+    gap: 0,
+    flexDirection: 'column-reverse ',
   },
 })
