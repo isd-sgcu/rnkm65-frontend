@@ -18,7 +18,7 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
 
   const [uploadImg, setUploadImg] = useState('')
   const [imgRequired, setImgRequired] = useState(false)
-  const { register, handleSubmit, clearErrors, setError, control } =
+  const { register, handleSubmit, setError, control } =
     useForm<IFormSchemaType>({
       resolver: yupResolver(formSchema),
       shouldFocusError: false,
@@ -40,12 +40,11 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
 
   const handleSubmitSuccess: SubmitHandler<IFormSchemaType> = useCallback(
     async (e) => {
-      clearErrors()
       if (!checkImageExisted()) return
       // TODO
       console.log(e)
     },
-    [checkImageExisted, clearErrors]
+    [checkImageExisted]
   )
 
   const handleSubmitFailed: SubmitErrorHandler<IFormSchemaType> = useCallback(
