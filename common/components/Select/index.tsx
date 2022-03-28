@@ -31,7 +31,7 @@ const SelectField = React.memo(
           </SelectElement>
           <DropdownIcon />
         </div>
-        <Typography css={{ color: '$error' }}>{errorMessage}</Typography>
+        <Typography color="error">{errorMessage}</Typography>
       </SelectContainer>
     )
   })

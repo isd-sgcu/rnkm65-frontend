@@ -1,4 +1,4 @@
-import StyledButton from 'common/components/Button'
+import Button from 'common/components/Button'
 import Modal from 'common/components/Modal'
 import Typography from 'common/components/Typography'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
@@ -41,13 +41,13 @@ const UploadImage = memo(() => {
           </FallbackImageContainer>
         )}
       </div>
-      <StyledButton
+      <Button
         css={{ width: '100%', marginTop: '1rem' }}
         onClick={handleOpen}
         type="button"
       >
         {t('uploadBtn')}
-      </StyledButton>
+      </Button>
       <Modal modalClassName={modalStyle()} open={state} onClose={handleClose}>
         <UploadModal handleClose={handleClose} />
       </Modal>

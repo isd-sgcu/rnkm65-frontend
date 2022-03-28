@@ -23,7 +23,7 @@ const InputField = React.memo(
           {required && <RequiredSymbol>*</RequiredSymbol>}
         </Typography>
         <InputBase error={!!error} {...remain} ref={ref} />
-        <Typography css={{ color: '$error' }}>{errorMessage}</Typography>
+        <Typography color="error">{errorMessage}</Typography>
         {children}
       </InputFieldContainer>
     )

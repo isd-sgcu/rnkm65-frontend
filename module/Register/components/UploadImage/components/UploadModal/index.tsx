@@ -1,4 +1,4 @@
-import StyledButton from 'common/components/Button'
+import Button from 'common/components/Button'
 import Typography from 'common/components/Typography'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import { memo, useMemo } from 'react'
@@ -22,7 +22,7 @@ const UploadModal = memo((props: IUploadModalProps) => {
 
   return (
     <>
-      <Typography css={{ color: '$blue' }} variant="h2">
+      <Typography color="blue" variant="h2">
         {t('uploadModal.title')}
       </Typography>
       <RootCropperContainer>
@@ -34,7 +34,7 @@ const UploadModal = memo((props: IUploadModalProps) => {
         <UnorderedListContainer>
           {description.map((val) => (
             <DescriptionList key={val}>
-              <Typography css={{ color: '$blue' }} variant="body">
+              <Typography color="blue" variant="body">
                 {val}
               </Typography>
             </DescriptionList>
@@ -42,9 +42,9 @@ const UploadModal = memo((props: IUploadModalProps) => {
         </UnorderedListContainer>
       </RootCropperContainer>
       {tmpImg && (
-        <StyledButton onClick={handleSubmitImage} type="button">
+        <Button onClick={handleSubmitImage} type="button">
           {t('uploadModal.submit')}
-        </StyledButton>
+        </Button>
       )}
     </>
   )

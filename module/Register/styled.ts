@@ -1,4 +1,4 @@
-import StyledButton from 'common/components/Button'
+import Button from 'common/components/Button'
 import { styled } from 'config/stitches.config'
 
 export const RegisterContainer = styled('div', {
@@ -13,7 +13,7 @@ export const RegisterContainer = styled('div', {
   },
 })
 
-export const SubmitButton = styled(StyledButton, {
+export const SubmitButton = styled(Button, {
   width: '100%',
   maxWidth: '400px',
 })

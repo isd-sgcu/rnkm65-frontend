@@ -11,7 +11,7 @@ const FormUI = memo(() => {
 
   return (
     <FormRootContainer>
-      <Typography css={{ color: '$pink500' }} variant="h3">
+      <Typography color="pink" variant="h3">
         {t('annoucement')}
       </Typography>
       {templateForm.map((row) => (

@@ -1,4 +1,4 @@
-import StyledButton from 'common/components/Button'
+import Button from 'common/components/Button'
 import Typography from 'common/components/Typography'
 import { styled } from 'config/stitches.config'
 
@@ -24,11 +24,11 @@ export const ButtonContainer = styled('div', {
   },
 })
 
-export const BackButton = styled(StyledButton, {
+export const BackButton = styled(Button, {
   backgroundColor: '$error',
   width: '100%',
 })
 
-export const ConfirmButton = styled(StyledButton, {
+export const ConfirmButton = styled(Button, {
   width: '100%',
 })
