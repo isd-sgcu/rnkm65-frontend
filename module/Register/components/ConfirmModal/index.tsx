@@ -8,7 +8,7 @@ import {
   TitleConfirm,
 } from './styled'
 
-export const ConfirmModal = () => {
+const ConfirmModal = () => {
   const { openModal, handleCloseModal, handleModalSubmit } = useFormContext()
   return (
     <Modal open={openModal} onClose={handleCloseModal}>
@@ -24,3 +24,5 @@ export const ConfirmModal = () => {
     </Modal>
   )
 }
+
+export default ConfirmModal

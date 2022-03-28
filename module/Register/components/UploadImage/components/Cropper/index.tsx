@@ -15,7 +15,7 @@ import {
 } from './styled'
 import { IImageCropperProps } from './types'
 
-export const ImageCropper = memo((props: IImageCropperProps) => {
+const ImageCropper = memo((props: IImageCropperProps) => {
   const { img, setImg, setCropMetaData } = props
   const { t } = useTranslation('register')
   const inputRef = useRef<HTMLInputElement | null>(null)
@@ -102,3 +102,5 @@ export const ImageCropper = memo((props: IImageCropperProps) => {
     </RootContainer>
   )
 })
+
+export default ImageCropper

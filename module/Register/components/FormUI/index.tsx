@@ -6,7 +6,7 @@ import { Fragment, memo } from 'react'
 import InnerFormController from './components/InnerFormController'
 import { FormContainer, FormRootContainer } from './styled'
 
-export default memo(() => {
+const FormUI = memo(() => {
   const { t } = useTranslation('register')
 
   return (
@@ -30,3 +30,5 @@ export default memo(() => {
     </FormRootContainer>
   )
 })
+
+export default FormUI

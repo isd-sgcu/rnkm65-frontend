@@ -6,7 +6,7 @@ import { useSwitch } from 'common/hooks/useSwitch'
 import { useFormContext } from 'module/Register/hooks/useFormContext'
 import { memo } from 'react'
 
-import { UploadModal } from './components/UploadModal'
+import UploadModal from './components/UploadModal'
 import {
   FallbackImage,
   FallbackImageContainer,
@@ -55,4 +55,4 @@ const UploadImage = memo(() => {
   )
 })
 
-export { UploadImage }
+export default UploadImage

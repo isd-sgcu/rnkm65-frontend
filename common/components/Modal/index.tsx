@@ -4,7 +4,7 @@ import { useModalAnimation } from './hooks/useModalAnimation'
 import { BackdropContainer, CloseIcon, ModalContainer } from './styled'
 import { IModalProps } from './types'
 
-export default (props: React.PropsWithChildren<IModalProps>) => {
+const Modal = (props: React.PropsWithChildren<IModalProps>) => {
   const {
     onClose,
     open,
@@ -40,3 +40,5 @@ export default (props: React.PropsWithChildren<IModalProps>) => {
     </BackdropContainer>
   )
 }
+
+export default Modal

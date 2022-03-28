@@ -10,7 +10,7 @@ import {
 } from './styled'
 import { ISelectFieldProps } from './types'
 
-export default React.memo(
+const SelectField = React.memo(
   React.forwardRef<HTMLSelectElement, ISelectFieldProps>((props, ref) => {
     const { error, errorMessage, option, title, required, ...remain } = props
     return (
@@ -36,3 +36,5 @@ export default React.memo(
     )
   })
 )
+
+export default SelectField

@@ -7,7 +7,7 @@ import { Controller } from 'react-hook-form'
 
 import { IInnerFormControllerProps } from './types'
 
-export default memo((props: IInnerFormControllerProps) => {
+const InnerFormController = memo((props: IInnerFormControllerProps) => {
   const { fieldKey, type, option, style, translateNs } = props
   const { t } = useTranslation(translateNs)
   const { control } = useFormContext()
@@ -53,3 +53,5 @@ export default memo((props: IInnerFormControllerProps) => {
     </div>
   )
 })
+
+export default InnerFormController
