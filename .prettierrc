@@ -1,6 +1,5 @@
 {
   "semi": false,
   "singleQuote": true,
-  "tabWidth": 2,
-  "endOfLine": "crlf"
+  "tabWidth": 2
 }
