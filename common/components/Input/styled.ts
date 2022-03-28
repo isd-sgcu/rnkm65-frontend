@@ -31,5 +31,5 @@ export const InputFieldContainer = styled('div', {
 })
 
 export const RequiredSymbol = styled('span', {
-  color: 'red',
+  color: '$error',
 })

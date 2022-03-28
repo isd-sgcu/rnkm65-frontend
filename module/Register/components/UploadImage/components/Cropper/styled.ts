@@ -25,11 +25,20 @@ export const InputFileContainer = styled('div', {
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
+  position: 'relative',
   '@md': {
     height: '200px',
   },
   backgroundColor: '$gray',
   cursor: 'pointer',
+})
+
+export const InputFileZone = styled('div', {
+  position: 'absolute',
+  top: 0,
+  bottom: 0,
+  left: 0,
+  right: 0,
 })
 
 export const ZoomContainer = styled('div', {

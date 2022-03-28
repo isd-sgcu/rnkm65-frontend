@@ -19,7 +19,9 @@ const RegisterForm: NextPage = () => {
   return (
     <FormProvider>
       <RootContainer>
-        <Typography variant="h1">{t('register')}</Typography>
+        <Typography css={{ color: '$blue' }} variant="h1">
+          {t('register')}
+        </Typography>
         <RegisterContainer>
           <UploadImage />
           <FormUI />

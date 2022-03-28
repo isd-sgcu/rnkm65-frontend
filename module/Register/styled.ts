@@ -22,6 +22,10 @@ export const RootContainer = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   padding: '2rem 4rem',
+
+  '@sm': {
+    padding: '2rem 2rem',
+  },
 })
 
 export const SubmitContainer = styled('div', {

@@ -8,6 +8,7 @@ import { useCropperHooks } from './hooks/useCropperHooks'
 import {
   CropperContainer,
   InputFileContainer,
+  InputFileZone,
   RootContainer,
   ZoomContainer,
   ZoomInput,
@@ -43,15 +44,17 @@ export const ImageCropper = memo((props: IImageCropperProps) => {
         onChange={handleSelectFile}
       />
       {!img && (
-        <InputFileContainer
-          onClick={handleInputClick}
-          onDrop={handleOnDrop}
-          onDragOver={handleOnDragOver}
-          onDragLeave={handleOnDragLeave}
-        >
+        <InputFileContainer>
           <Typography variant="subhead3">
             {isDrag ? t('dragDropFallback') : t('uploadFallback')}
           </Typography>
+          <InputFileZone
+            role="none"
+            onClick={handleInputClick}
+            onDrop={handleOnDrop}
+            onDragOver={handleOnDragOver}
+            onDragLeave={handleOnDragLeave}
+          />
         </InputFileContainer>
       )}
       {img && (

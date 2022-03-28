@@ -18,7 +18,9 @@ export const UploadModal = memo((props: IUploadModalProps) => {
 
   return (
     <>
-      <Typography variant="h2">{t('modalTitle')}</Typography>
+      <Typography css={{ color: '$blue' }} variant="h2">
+        {t('modalTitle')}
+      </Typography>
       <RootCropperContainer>
         <ImageCropper
           img={tmpImg}
@@ -28,7 +30,9 @@ export const UploadModal = memo((props: IUploadModalProps) => {
         <ul>
           {description.map((val) => (
             <DescriptionList key={val}>
-              <Typography variant="body">{t(val)}</Typography>
+              <Typography css={{ color: '$blue' }} variant="body">
+                {t(val)}
+              </Typography>
             </DescriptionList>
           ))}
         </ul>

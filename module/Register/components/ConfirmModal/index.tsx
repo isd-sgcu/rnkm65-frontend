@@ -12,7 +12,7 @@ export const ConfirmModal = () => {
   const { openModal, handleCloseModal, handleModalSubmit } = useFormContext()
   return (
     <Modal open={openModal} onClose={handleCloseModal}>
-      <TitleConfirm variant="h3">คุณต้องการยืนยันหรือไม่</TitleConfirm>
+      <TitleConfirm variant="subhead3">คุณต้องการยืนยันหรือไม่</TitleConfirm>
       <ButtonContainer>
         <BackButton type="button" onClick={handleCloseModal}>
           กลับ

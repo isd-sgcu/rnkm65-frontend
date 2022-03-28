@@ -45,5 +45,5 @@ export const OptionElement = styled('option', {
 })
 
 export const RequiredSymbol = styled('span', {
-  color: 'red',
+  color: '$error',
 })

@@ -76,4 +76,11 @@ export const CloseIcon = styled(GrClose, {
   position: 'absolute',
   right: '1.5rem',
   top: '1.5rem',
+  width: '1.5rem',
+  height: '1.5rem',
+
+  '@sm': {
+    width: '1rem',
+    height: '1rem',
+  },
 })
