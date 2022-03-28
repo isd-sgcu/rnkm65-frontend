@@ -9,6 +9,15 @@ export const Container = styled('div', {
   display: 'flex',
   gap: '30px',
   width: '100%',
+  '@md': {
+    flexDirection: 'column',
+    gap: '10px',
+    padding: '15px 20px',
+  },
+  '@sm': {
+    padding: '10px 15px',
+    borderRadius: '6px',
+  },
 })
 
 export const Tooltip = styled(Typography, {
@@ -42,14 +51,18 @@ export const LinkContainer = styled('div', {
   flexGrow: 1,
   display: 'flex',
   alignItems: 'center',
-  padding: '0 14px',
   cursor: 'pointer',
   position: 'relative',
+  padding: '5px 4px 5px 7px',
 
   '&:hover': {
     [`& ${Tooltip}`]: {
       display: 'block',
     },
+  },
+
+  '@sm': {
+    borderRadius: '6px',
   },
 })
 
@@ -64,4 +77,12 @@ export const CopyIcon = styled('div', {
   alignItems: 'center',
   fontSize: '1.1rem',
   paddingLeft: '1.5px',
+  flexShrink: 0,
+  marginLeft: '5px',
+
+  '@sm': {
+    height: '25px',
+    width: '25px',
+    padding: '0 4px 0 5px',
+  },
 })

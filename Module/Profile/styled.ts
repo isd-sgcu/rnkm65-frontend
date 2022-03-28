@@ -6,7 +6,7 @@ export const Container = styled('div', {
   maxWidth: '1200px',
   width: '100%',
   margin: '0 20px 20px 20px',
-  alignItems: 'center',
+
   '@md': {
     flexDirection: 'column',
   },
@@ -19,7 +19,7 @@ export const GroupContainer = styled('div', {
   display: 'flex',
   marginTop: '20px',
   gap: '20px',
-  '@md': {
+  '@xl': {
     flexDirection: 'column-reverse',
   },
 })

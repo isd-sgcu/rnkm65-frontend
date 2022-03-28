@@ -20,7 +20,11 @@ const InviteLink = (props: InviteLinkProps) => {
         }}
       >
         <Tooltip>{tooltipText}</Tooltip>
-        <Typography variant="body" color="blue" style={{ flexGrow: 1 }}>
+        <Typography
+          variant="body"
+          color="blue"
+          style={{ flexGrow: 1, wordBreak: 'break-all' }}
+        >
           {inviteLink}
         </Typography>
         <CopyIcon>

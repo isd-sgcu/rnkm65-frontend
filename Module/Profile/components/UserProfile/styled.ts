@@ -1,9 +1,11 @@
 import { styled } from 'config/stitches.config'
 
 export const Container = styled('div', {
+  gap: '20px',
+  display: 'flex',
+  flexDirection: 'column',
   '@md': {
-    display: 'flex',
-    gap: '20px',
+    flexDirection: 'row',
   },
 })
 
@@ -13,7 +15,10 @@ export const ImageContainer = styled('div', {
   position: 'relative',
   borderRadius: '24px',
   overflow: 'hidden',
-  marginBottom: '16px',
+  '@sm': {
+    height: '55vw',
+    width: '40vw',
+  },
 })
 
 export const EditProfileButton = styled('button', {
