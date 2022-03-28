@@ -22,7 +22,7 @@ const SelectedHouse = (props: SelectedHouseProps) => {
         <Typography
           color="blue"
           variant="h3"
-          css={{ marginTop: '20%', flexGrow: 1 }}
+          css={{ margin: '15% 0', flexGrow: 1 }}
         >
           ยังไม่ได้เลือก
         </Typography>
@@ -50,7 +50,7 @@ const SelectedHouse = (props: SelectedHouseProps) => {
         <Typography
           variant="description"
           color="error"
-          css={{ margin: '5px 0 -12px 0' }}
+          css={{ marginTop: '5px' }}
         >
           หัวหน้ากลุ่มเท่านั้นที่สามารถ
           {houses.length === 0 ? 'เลือก' : 'เปลี่ยน'}บ้านได้

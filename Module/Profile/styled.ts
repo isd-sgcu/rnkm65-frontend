@@ -20,6 +20,6 @@ export const GroupContainer = styled('div', {
   marginTop: '20px',
   gap: '20px',
   '@md': {
-    flexDirection: 'column',
+    flexDirection: 'column-reverse',
   },
 })

@@ -9,8 +9,8 @@ export const HouseContainer = styled('div', {
 export const StyledImage = styled('div', {
   position: 'relative',
   borderRadius: '8px',
-  width: '120px',
-  height: '120px',
+  width: 'min(24vw, 120px)',
+  height: 'min(24vw, 120px)',
   overflow: 'hidden',
 })
 
@@ -34,4 +34,8 @@ export const IndexContainer = styled('div', {
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
+  '@sm': {
+    width: '25px',
+    height: '25px',
+  },
 })

@@ -12,6 +12,10 @@ export const Container = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
+  '@md': {
+    padding: '20px 10px 10px 10px',
+    borderRadius: '10px',
+  },
 })
 
 export const HousesContainer = styled('div', {
@@ -19,6 +23,8 @@ export const HousesContainer = styled('div', {
   gap: '16px',
   marginTop: '20px',
   justifyContent: 'center',
+  '@sm': { gap: '7px' },
+  '@xs': { gap: '5px' },
 })
 
 export const ConfirmText = styled(Typography, {

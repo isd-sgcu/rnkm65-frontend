@@ -9,7 +9,8 @@ export const Container = styled('div', {
   flexBasis: 0,
   flexGrow: 1,
   '@md': {
-    padding: '10px',
+    padding: '15px 10px',
+    borderRadius: '10px',
   },
 })
 
