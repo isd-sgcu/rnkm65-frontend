@@ -5,7 +5,11 @@ import { memo, useMemo } from 'react'
 
 import ImageCropper from '../Cropper'
 import { useImageHooks } from './hooks/useImageHooks'
-import { DescriptionList, RootCropperContainer } from './styled'
+import {
+  DescriptionList,
+  RootCropperContainer,
+  UnorderedListContainer,
+} from './styled'
 import { IUploadModalProps } from './types'
 
 const UploadModal = memo((props: IUploadModalProps) => {
@@ -27,7 +31,7 @@ const UploadModal = memo((props: IUploadModalProps) => {
           setImg={setTmpImg}
           setCropMetaData={setCropMetadata}
         />
-        <ul>
+        <UnorderedListContainer>
           {description.map((val) => (
             <DescriptionList key={val}>
               <Typography css={{ color: '$blue' }} variant="body">
@@ -35,7 +39,7 @@ const UploadModal = memo((props: IUploadModalProps) => {
               </Typography>
             </DescriptionList>
           ))}
-        </ul>
+        </UnorderedListContainer>
       </RootCropperContainer>
       {tmpImg && (
         <StyledButton onClick={handleSubmitImage} type="button">

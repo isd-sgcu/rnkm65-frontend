@@ -19,7 +19,19 @@ export const RootCropperContainer = styled('div', {
 })
 
 export const DescriptionList = styled('li', {
-  color: '$black',
-  listStyleType: 'circle',
-  listStyle: 'outside',
+  color: '$blue',
+  display: 'flex',
+  marginBottom: '0.5rem',
+  '&::before': {
+    content: '\\2022',
+    color: '$blue',
+    fontWeight: 'bold',
+    display: 'inline-block',
+    width: '1em',
+    marginLeft: '-1em',
+  },
+})
+
+export const UnorderedListContainer = styled('ul', {
+  listStyle: 'none',
 })
