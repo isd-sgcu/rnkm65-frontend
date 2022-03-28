@@ -11,6 +11,10 @@ import {
 import { ICropMetadata } from '../../../types'
 import { blobToDataURL } from '../../../utils/imageHelper'
 
+const ALLOW_EXT = ['image/png', 'image/jpeg', 'image/webp']
+const FILE_LIMIT = 4 * 1048567
+type IErrorType = 'fileLimit' | 'invalidMime' | ''
+
 export const useCropperHooks = (
   inputRef: MutableRefObject<HTMLInputElement | null>,
   setImg: Dispatch<SetStateAction<string>>,
@@ -19,6 +23,7 @@ export const useCropperHooks = (
   const [crop, setCrop] = useState({ x: 0, y: 0 })
   const [isDrag, setDrag] = useState(false)
   const [zoom, setZoom] = useState(1)
+  const [errorType, setErrorType] = useState<IErrorType>('')
 
   const onCropComplete = useCallback(
     (croppedArea, croppedAreaPixels) => {
@@ -27,17 +32,42 @@ export const useCropperHooks = (
     [setCropMetaData]
   )
 
+  const prepareImage = useCallback(
+    async (file: File) => {
+      const imageUrl = await blobToDataURL(file)
+      const mimeType = imageUrl.substring(
+        imageUrl.indexOf(':') + 1,
+        imageUrl.indexOf(';')
+      )
+
+      // File limit exceeds
+      if (file.size > FILE_LIMIT) {
+        setErrorType('fileLimit')
+        return
+      }
+
+      // Invalid mime type
+      if (!ALLOW_EXT.includes(mimeType)) {
+        setErrorType('invalidMime')
+        return
+      }
+
+      setErrorType('')
+      setImg(imageUrl)
+    },
+    [setImg]
+  )
+
   const handleSelectFile = useCallback(
     async (e: ChangeEvent<HTMLInputElement>) => {
       e.preventDefault()
       if (e.target.files) {
         const imgFile = e.target.files[0]
 
-        const imageUrl = await blobToDataURL(imgFile)
-        setImg(imageUrl)
+        await prepareImage(imgFile)
       }
     },
-    [setImg]
+    [prepareImage]
   )
 
   const handleInputClick = useCallback(() => {
@@ -55,12 +85,11 @@ export const useCropperHooks = (
       if (files) {
         const imgFile = files[0]
 
-        const imageUrl = await blobToDataURL(imgFile)
-        setImg(imageUrl)
+        await prepareImage(imgFile)
       }
       setDrag(false)
     },
-    [setImg]
+    [prepareImage]
   )
 
   const handleOnDragOver = useCallback((e: DragEvent<HTMLDivElement>) => {
@@ -73,6 +102,7 @@ export const useCropperHooks = (
   }, [])
 
   return {
+    errorType,
     crop,
     setCrop,
     zoom,

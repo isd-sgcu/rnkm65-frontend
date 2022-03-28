@@ -3,13 +3,14 @@ import { styled } from 'config/stitches.config'
 export const RootContainer = styled('div', {
   width: '100%',
   marginTop: '1rem',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
 })
 
 export const CropperContainer = styled('div', {
   position: 'relative',
   backgroundColor: '$black',
-  display: 'flex',
-  alignItems: 'center',
   width: '100%',
   height: '300px',
   '@sm': {

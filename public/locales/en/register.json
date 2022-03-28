@@ -21,5 +21,7 @@
     "requiredTextError": "กรุณากรอกข้อมูล",
     "formatTextError": "รูปแบบไม่ถูกต้อง",
     "requiredSelectError": "กรุณาเลือก",
-    "requiredUploadImage": "กรุณาอัพโหลดรูปภาพ"
+    "requiredUploadImage": "กรุณาอัพโหลดรูปภาพ",
+    "fileLimitError": "ไฟล์มีขนาดเกิน 4 MB",
+    "invalidMimeError": "ไฟล์รูปภาพต้องเป็นประเภท PNG หรือ JPEG"
 }

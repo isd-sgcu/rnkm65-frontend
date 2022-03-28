@@ -20,6 +20,7 @@ export const ImageCropper = memo((props: IImageCropperProps) => {
   const inputRef = useRef<HTMLInputElement | null>(null)
   const {
     crop,
+    errorType,
     handleInputClick,
     handleOnDragLeave,
     setCrop,
@@ -35,7 +36,7 @@ export const ImageCropper = memo((props: IImageCropperProps) => {
   return (
     <RootContainer>
       <input
-        accept="image/*"
+        accept="image/png, image/jpeg, image/webp"
         ref={inputRef}
         type="file"
         style={{ display: 'none' }}
@@ -88,6 +89,9 @@ export const ImageCropper = memo((props: IImageCropperProps) => {
           </ZoomContainer>
         </>
       )}
+      <Typography css={{ color: '$error' }}>
+        {errorType && t(`${errorType}Error`)}
+      </Typography>
     </RootContainer>
   )
 })
