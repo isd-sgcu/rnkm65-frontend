@@ -1,4 +1,5 @@
 import Typography from 'common/components/Typography'
+import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import { User } from 'common/types/user'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -9,6 +10,8 @@ import { Container, EditProfileButton, ImageContainer } from './styled'
 
 const UserProfile = (props: User) => {
   const { name, surname, imageUrl } = props
+  const { t } = useSSRTranslation('profile')
+
   return (
     <Container>
       <ImageContainer>
@@ -22,7 +25,7 @@ const UserProfile = (props: User) => {
         </Typography>
         <Link href="/register" passHref>
           <EditProfileButton>
-            <Typography variant="body">แก้ไขข้อมูล</Typography>
+            <Typography variant="body">{t('editProfile')}</Typography>
             <HiPencil />
           </EditProfileButton>
         </Link>

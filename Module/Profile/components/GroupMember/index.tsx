@@ -1,5 +1,6 @@
 import Button from 'common/components/Button'
 import Typography from 'common/components/Typography'
+import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import React from 'react'
 
 import Member from './components/Member'
@@ -9,6 +10,7 @@ import { Container, MembersContainer } from './styled'
 
 const GroupMember = (props: GroupMemberProps) => {
   const { members } = props
+  const { t } = useSSRTranslation('profile')
 
   // TODO change this later
   const isKing = true
@@ -16,7 +18,7 @@ const GroupMember = (props: GroupMemberProps) => {
   return (
     <Container>
       <Typography variant="h3" color="pink">
-        สมาชิกในกลุ่ม ({members.length}/3)
+        {t('member')} ({members.length}/3)
       </Typography>
       <MembersContainer>
         {members.map((member, idx) => (
@@ -34,7 +36,9 @@ const GroupMember = (props: GroupMemberProps) => {
           <Placeholder color="#B660B5" backgroundColor="#FFEDB3" />
         )}
       </MembersContainer>
-      {!isKing && <Button css={{ marginTop: '20px' }}>ออกจากกลุ่ม</Button>}
+      {!isKing && (
+        <Button css={{ marginTop: '20px' }}>{t('leaveGroup')}</Button>
+      )}
     </Container>
   )
 }

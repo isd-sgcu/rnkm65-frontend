@@ -1,5 +1,6 @@
 import Button from 'common/components/Button'
 import Typography from 'common/components/Typography'
+import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import React from 'react'
 import { IoCheckmarkCircleOutline } from 'react-icons/io5'
 
@@ -9,6 +10,7 @@ import { SelectedHouseProps } from './types'
 
 const SelectedHouse = (props: SelectedHouseProps) => {
   const { houses } = props
+  const { t } = useSSRTranslation('profile')
 
   // TODO change this later
   const isKing = false
@@ -16,7 +18,7 @@ const SelectedHouse = (props: SelectedHouseProps) => {
   return (
     <Container>
       <Typography variant="h3" color="pink">
-        บ้านรับน้องที่เลือก
+        {t('choosedHouse')}
       </Typography>
       {houses.length === 0 ? (
         <Typography
@@ -24,7 +26,7 @@ const SelectedHouse = (props: SelectedHouseProps) => {
           variant="h3"
           css={{ margin: '15% 0', flexGrow: 1 }}
         >
-          ยังไม่ได้เลือก
+          {t('notChoose')}
         </Typography>
       ) : (
         <HousesContainer>
@@ -39,12 +41,12 @@ const SelectedHouse = (props: SelectedHouseProps) => {
           <IoCheckmarkCircleOutline
             style={{ marginRight: '1px', fontSize: '1rem' }}
           />
-          ระบบได้ทำการบันทึกเรียบร้อยแล้ว
+          {t('saved')}
         </ConfirmText>
       )}
 
       <Button css={{ marginTop: '15px' }} disabled={!isKing}>
-        {houses.length === 0 ? 'เลือกบ้าน' : 'เปลี่ยนบ้าน'}
+        {houses.length === 0 ? t('chooseHouse') : t('changeHouse')}
       </Button>
       {!isKing && (
         <Typography
@@ -52,8 +54,7 @@ const SelectedHouse = (props: SelectedHouseProps) => {
           color="error"
           css={{ marginTop: '5px' }}
         >
-          หัวหน้ากลุ่มเท่านั้นที่สามารถ
-          {houses.length === 0 ? 'เลือก' : 'เปลี่ยน'}บ้านได้
+          {houses.length === 0 ? t('kingCanChoose') : t('kingCanChange')}
         </Typography>
       )}
     </Container>
