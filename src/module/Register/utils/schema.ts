@@ -22,7 +22,7 @@ export const formSchema = yup
 
 export type ITemplateFormKey = keyof IFormSchema
 export interface ITemplateFormItem {
-  fieldKey: keyof IFormSchema
+  fieldKey: ITemplateFormKey
   type: string
   style?: CSSProperties
   option?: Array<{ value: string; i18nKey: string }>
