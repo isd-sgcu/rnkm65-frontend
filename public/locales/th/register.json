@@ -35,5 +35,10 @@
         "phoneNumber": "0222222222",
         "facebook": "Facebook",
         "lineID": "Line ID"
+    },
+    "confirmModal": {
+        "title": "คุณต้องการยืนยันหรือไม่",
+        "back": "กลับ",
+        "confirm": "ยืนยัน"
     }
 }
