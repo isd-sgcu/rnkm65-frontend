@@ -9,8 +9,31 @@ export const Hidden = styled('div', {
           display: 'block',
         },
       },
+      mdup: {
+        display: 'none',
+        '@sm': {
+          display: 'block',
+        },
+      },
+      smup: {
+        display: 'none',
+        '@xs': {
+          display: 'block',
+        },
+      },
+
       mddown: {
         '@md': {
+          display: 'none',
+        },
+      },
+      smdown: {
+        '@sm': {
+          display: 'none',
+        },
+      },
+      xsdown: {
+        '@xs': {
           display: 'none',
         },
       },
