@@ -1,8 +1,8 @@
 import React from 'react'
 
+import ChoosedBaan from './components/ChoosedBaan'
 import GroupMember from './components/GroupMember'
 import InviteLink from './components/InviteLink'
-import SelectedHouse from './components/SelectedHouse'
 import UserProfile from './components/UserProfile'
 import { Container, GroupContainer } from './styled'
 
@@ -12,7 +12,7 @@ const tmpUser = {
   imageUrl: '/tmp.jpg',
 }
 
-const tmpHouse = {
+const tmpBaan = {
   id: 0,
   name: 'Yashiro Commission',
   imageUrl: '/tmp.jpg',
@@ -30,7 +30,7 @@ const Profile = () => (
       <InviteLink inviteLink="www.youtube.com/watch?v=dQw4w9WgXcQ" />
       <GroupContainer>
         <GroupMember members={[tmpUser, tmpUser]} />
-        <SelectedHouse baans={[tmpHouse, tmpHouse, tmpHouse]} />
+        <ChoosedBaan baans={[tmpBaan, tmpBaan, tmpBaan]} />
       </GroupContainer>
     </div>
   </Container>

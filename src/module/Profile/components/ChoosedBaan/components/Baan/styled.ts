@@ -1,6 +1,6 @@
 import { styled } from 'config/stitches.config'
 
-export const HouseContainer = styled('div', {
+export const BaanContainer = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',

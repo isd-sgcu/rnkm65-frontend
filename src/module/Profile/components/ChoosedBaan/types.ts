@@ -1,5 +1,5 @@
 import { IShortBaan } from 'common/types/baan'
 
-export interface SelectedHouseProps {
+export interface ChoosedBaanProps {
   baans: IShortBaan[]
 }

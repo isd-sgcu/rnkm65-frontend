@@ -3,17 +3,17 @@ import Image from 'next/image'
 import React from 'react'
 
 import {
-  HouseContainer,
+  BaanContainer,
   ImageContainer,
   IndexContainer,
   StyledImage,
 } from './styled'
-import { HouseProps } from './types'
+import { BaanProps } from './types'
 
-const House = (props: HouseProps) => {
+const Baan = (props: BaanProps) => {
   const { name, imageUrl, index } = props
   return (
-    <HouseContainer>
+    <BaanContainer>
       <ImageContainer>
         <IndexContainer>
           <Typography variant="h4" color="yellow">
@@ -27,8 +27,8 @@ const House = (props: HouseProps) => {
       <Typography variant="body" color="blue">
         {name}
       </Typography>
-    </HouseContainer>
+    </BaanContainer>
   )
 }
 
-export default House
+export default Baan

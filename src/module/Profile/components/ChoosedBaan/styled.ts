@@ -21,7 +21,7 @@ export const Container = styled('div', {
   },
 })
 
-export const HousesContainer = styled('div', {
+export const BaansContainer = styled('div', {
   display: 'flex',
   gap: '16px',
   marginTop: '20px',
