@@ -34,7 +34,7 @@ jobs:
         uses: reviewdog/action-eslint@v1
         with:
           reporter: github-pr-review
-          eslint_flags: '--config=.eslintrc src/**/*.{ts,tsx}'
+          eslint_flags: '--config=.eslintrc.json src/**/*.{ts,tsx}'
 
       - name: Build
         run: yarn build
