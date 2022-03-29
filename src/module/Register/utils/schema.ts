@@ -1,15 +1,6 @@
+import { IFormSchema } from 'common/types/form'
 import { CSSProperties } from 'react'
 import * as yup from 'yup'
-
-export interface IFormSchemaType {
-  title: 'Mr.' | 'Mrs.' | 'Ms.'
-  firstname: string
-  lastname: string
-  nickname: string
-  phoneNumber: string
-  facebook: string
-  lineID: string
-}
 
 export const formSchema = yup
   .object()
@@ -29,9 +20,9 @@ export const formSchema = yup
   })
   .required()
 
-export type ITemplateFormKey = keyof IFormSchemaType
+export type ITemplateFormKey = keyof IFormSchema
 export interface ITemplateFormItem {
-  fieldKey: keyof IFormSchemaType
+  fieldKey: keyof IFormSchema
   type: string
   style?: CSSProperties
   option?: Array<{ value: string; i18nKey: string }>
