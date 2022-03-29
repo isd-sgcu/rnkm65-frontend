@@ -1,10 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useSwitch } from 'common/hooks/useSwitch'
-import {
-  formSchema,
-  IFormSchemaType,
-  templateForm,
-} from 'module/Register/utils/schema'
+import { IFormSchema } from 'common/types/form'
+import { formSchema, templateForm } from 'module/Register/utils/schema'
 import React, {
   createContext,
   useCallback,
@@ -29,7 +26,7 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
     handleClose: handleCloseModal,
   } = useSwitch(false)
   const { register, handleSubmit, setError, control, getValues } =
-    useForm<IFormSchemaType>({
+    useForm<IFormSchema>({
       resolver: yupResolver(formSchema),
       shouldFocusError: false,
     })
@@ -53,12 +50,12 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
     console.log(data)
   }, [getValues])
 
-  const handleSuccess: SubmitHandler<IFormSchemaType> = useCallback(() => {
+  const handleSuccess: SubmitHandler<IFormSchema> = useCallback(() => {
     if (!checkImageExisted()) return
     handleOpen()
   }, [checkImageExisted, handleOpen])
 
-  const handleFailed: SubmitErrorHandler<IFormSchemaType> = useCallback(
+  const handleFailed: SubmitErrorHandler<IFormSchema> = useCallback(
     (e) => {
       const imageExisted = checkImageExisted()
 
