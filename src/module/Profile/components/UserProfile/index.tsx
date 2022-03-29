@@ -1,6 +1,6 @@
 import Typography from 'common/components/Typography'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
-import { User } from 'common/types/user'
+import { IUser } from 'common/types/user'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -8,8 +8,8 @@ import { HiPencil } from 'react-icons/hi'
 
 import { Container, EditProfileButton, ImageContainer } from './styled'
 
-const UserProfile = (props: User) => {
-  const { name, surname, imageUrl } = props
+const UserProfile = (props: IUser) => {
+  const { firstname, lastname, imageUrl } = props
   const { t } = useSSRTranslation('profile')
 
   return (
@@ -19,9 +19,9 @@ const UserProfile = (props: User) => {
       </ImageContainer>
       <div>
         <Typography variant="h3" color="blue">
-          {name}
+          {firstname}
           <br />
-          {surname}
+          {lastname}
         </Typography>
         <Link href="/register" passHref>
           <EditProfileButton>

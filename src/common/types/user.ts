@@ -1,5 +1,5 @@
-export interface User {
-  name: string
-  surname: string
+export interface IUser {
+  firstname: string
+  lastname: string
   imageUrl: string
 }

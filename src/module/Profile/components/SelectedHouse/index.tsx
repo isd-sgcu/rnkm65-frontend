@@ -9,8 +9,9 @@ import { ConfirmText, Container, HousesContainer } from './styled'
 import { SelectedHouseProps } from './types'
 
 const SelectedHouse = (props: SelectedHouseProps) => {
-  const { houses } = props
+  const { baans } = props
   const { t } = useSSRTranslation('profile')
+  const choosed = baans.length !== 0
 
   // TODO change this later
   const isKing = false
@@ -20,7 +21,13 @@ const SelectedHouse = (props: SelectedHouseProps) => {
       <Typography variant="h3" color="pink">
         {t('choosedHouse')}
       </Typography>
-      {houses.length === 0 ? (
+      {choosed ? (
+        <HousesContainer>
+          {baans.map((baan, idx) => (
+            <House {...baan} index={idx + 1} key={baan.id} />
+          ))}
+        </HousesContainer>
+      ) : (
         <Typography
           color="blue"
           variant="h3"
@@ -28,15 +35,9 @@ const SelectedHouse = (props: SelectedHouseProps) => {
         >
           {t('notChoose')}
         </Typography>
-      ) : (
-        <HousesContainer>
-          {houses.map((house, idx) => (
-            <House {...house} index={idx + 1} key={house.name} />
-          ))}
-        </HousesContainer>
       )}
 
-      {houses.length !== 0 && (
+      {choosed && (
         <ConfirmText variant="description">
           <IoCheckmarkCircleOutline
             style={{ marginRight: '1px', fontSize: '1rem' }}
@@ -46,7 +47,7 @@ const SelectedHouse = (props: SelectedHouseProps) => {
       )}
 
       <Button css={{ marginTop: '15px' }} disabled={!isKing}>
-        {houses.length === 0 ? t('chooseHouse') : t('changeHouse')}
+        {choosed ? t('changeHouse') : t('chooseHouse')}
       </Button>
       {!isKing && (
         <Typography
@@ -54,7 +55,7 @@ const SelectedHouse = (props: SelectedHouseProps) => {
           color="error"
           css={{ marginTop: '5px' }}
         >
-          {houses.length === 0 ? t('kingCanChoose') : t('kingCanChange')}
+          {choosed ? t('kingCanChange') : t('kingCanChoose')}
         </Typography>
       )}
     </Container>

@@ -1,5 +1,5 @@
-export interface HouseProps {
-  name: string
-  imageUrl: string
+import { IShortBaan } from 'common/types/baan'
+
+export interface HouseProps extends IShortBaan {
   index: number
 }

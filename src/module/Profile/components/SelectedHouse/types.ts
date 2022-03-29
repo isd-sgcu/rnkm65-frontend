@@ -1,8 +1,5 @@
-export interface SelectedHouseProps {
-  houses: House[]
-}
+import { IShortBaan } from 'common/types/baan'
 
-interface House {
-  name: string
-  imageUrl: string
+export interface SelectedHouseProps {
+  baans: IShortBaan[]
 }

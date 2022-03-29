@@ -1,8 +1,4 @@
-enum BaanSize {
-  Small,
-  Medium,
-  Large,
-}
+import { BaanSize } from 'common/types/baan'
 
 export interface BaanDTO {
   id: number

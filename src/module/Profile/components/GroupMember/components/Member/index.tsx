@@ -8,7 +8,7 @@ import { DeleteMemberButton, KingBadge, MemberContainer } from './styled'
 import { MemberProps } from './types'
 
 const Member = (props: MemberProps) => {
-  const { name, surname, imageUrl, isKing, isDeletable } = props
+  const { firstname, lastname, imageUrl, isKing, isDeletable } = props
   return (
     <MemberContainer>
       {isKing && (
@@ -25,9 +25,9 @@ const Member = (props: MemberProps) => {
         <Image src={imageUrl} layout="fill" objectFit="cover" />
       </ImageContainer>
       <Typography variant="body" color="blue">
-        {name}
+        {firstname}
         <br />
-        {surname}
+        {lastname}
       </Typography>
     </MemberContainer>
   )

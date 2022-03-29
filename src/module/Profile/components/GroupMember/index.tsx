@@ -24,7 +24,7 @@ const GroupMember = (props: GroupMemberProps) => {
         {members.map((member, idx) => (
           <Member
             {...member}
-            key={member.name}
+            key={`${member.firstname} ${member.lastname}`}
             isKing={idx === 0 && members.length > 1}
             isDeletable={isKing && idx !== 0}
           />
