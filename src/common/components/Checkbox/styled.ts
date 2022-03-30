@@ -20,17 +20,29 @@ export const Checkmark = styled('span', {
   backgroundColor: '$purple400',
   transition: 'all 0.2s ease-in-out',
 
+  '@sm': {
+    width: '20px',
+    height: '20px',
+  },
+
   '&:after': {
     content: '',
     position: 'absolute',
     opacity: 0,
-    top: '3px',
+    top: '2px',
     left: '8px',
     width: '5px',
-    height: '10px',
+    height: '13px',
     border: 'solid $white',
     borderWidth: '0 3px 3px 0',
     transform: 'rotate(45deg)',
+
+    '@sm': {
+      top: '2.5px',
+      left: '7px',
+      width: '3px',
+      height: '8px',
+    },
   },
 })
 
@@ -43,9 +55,15 @@ export const InputLabel = styled('label', {
   paddingLeft: '2.5rem',
   cursor: 'pointer',
   userSelect: 'none',
+  fontWeight: 'bold',
 
   [`&:hover ~ .${Checkmark.className}`]: {
     backgroundColor: '$gray',
+  },
+  '@sm': {
+    fontSize: '0.65rem',
+    lineHeight: '1rem',
+    paddingLeft: '2rem',
   },
 })
 

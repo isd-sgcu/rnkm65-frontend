@@ -17,6 +17,10 @@ export const Button = styled('button', {
     padding: '3px 10px 2px 10px',
   },
 
+  '&:disabled': {
+    cursor: 'not-allowed',
+  },
+
   variants: {
     variant: {
       primary: {
