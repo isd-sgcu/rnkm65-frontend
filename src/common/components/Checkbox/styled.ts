@@ -56,6 +56,7 @@ export const InputLabel = styled('label', {
   cursor: 'pointer',
   userSelect: 'none',
   fontWeight: 'bold',
+  color: '$blue',
 
   [`&:hover ~ .${Checkmark.className}`]: {
     backgroundColor: '$gray',

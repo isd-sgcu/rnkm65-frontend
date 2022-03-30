@@ -16,9 +16,13 @@ const LoginPage = () => {
 
   return (
     <RootContainer>
-      <Typography variant="h2">{t('title')}</Typography>
+      <Typography color="blue" variant="h2">
+        {t('title')}
+      </Typography>
       <ContentContainer>
-        <Typography css={{ textAlign: 'center' }}>{t('desc')}</Typography>
+        <Typography color="blue" css={{ textAlign: 'center' }}>
+          {t('desc')}
+        </Typography>
         <Checkbox
           checked={isConfirm}
           onChange={handleToggle}
