@@ -6,7 +6,7 @@ export const RootContainer = styled('div', {
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
-  padding: '0px 2rem',
+  padding: '2rem 2rem',
   gap: '1.5rem',
 })
 
