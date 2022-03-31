@@ -12,15 +12,17 @@
   "dependencies": {
     "@hookform/resolvers": "^2.8.8",
     "@stitches/react": "^1.2.7",
+    "axios": "^0.26.1",
     "next": "12.1.0",
     "next-i18next": "^10.5.0",
     "react": "17.0.2",
     "react-copy-to-clipboard": "^5.0.4",
     "react-div-100vh": "^0.7.0",
-    "react-icons": "^4.3.1",
     "react-dom": "17.0.2",
     "react-easy-crop": "^4.1.4",
     "react-hook-form": "^7.28.1",
+    "react-icons": "^4.3.1",
+    "swr": "^1.2.2",
     "yup": "^0.32.11"
   },
   "devDependencies": {
