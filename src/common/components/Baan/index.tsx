@@ -11,9 +11,9 @@ import {
 import { BaanProps } from './types'
 
 const Baan = (props: BaanProps) => {
-  const { name, imageUrl, index } = props
+  const { name, imageUrl, index, textPosition } = props
   return (
-    <BaanContainer>
+    <BaanContainer textPosition={textPosition}>
       <ImageContainer>
         <IndexContainer>
           <Typography variant="h4" color="white">

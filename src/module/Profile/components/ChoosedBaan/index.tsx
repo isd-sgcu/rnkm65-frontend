@@ -1,10 +1,10 @@
+import Baan from 'common/components/Baan'
 import Button from 'common/components/Button'
 import Typography from 'common/components/Typography'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import React from 'react'
 import { IoCheckmarkCircleOutline } from 'react-icons/io5'
 
-import Baan from './components/Baan'
 import { BaansContainer, ConfirmText, Container } from './styled'
 import { ChoosedBaanProps } from './types'
 
