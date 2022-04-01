@@ -52,3 +52,33 @@ export const IndexContainer = styled('div', {
     height: '25px',
   },
 })
+
+export const InformationContainer = styled('div', {
+  position: 'absolute',
+  justifyContent: 'center',
+  alignItems: 'center',
+  top: 7,
+  right: 7,
+  zIndex: 1,
+  backgroundColor: '$purple500',
+  width: '20px',
+  height: '20px',
+  borderRadius: '50%',
+  display: 'none',
+  cursor: 'pointer',
+
+  variants: {
+    show: {
+      true: {
+        '@md': {
+          display: 'flex',
+        },
+      },
+      false: {},
+    },
+  },
+
+  defaultVariants: {
+    show: false,
+  },
+})

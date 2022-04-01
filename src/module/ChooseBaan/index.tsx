@@ -38,7 +38,6 @@ const ChooseBaan = () => (
         <CardBaan
           imageUrl="/tmp.jpg"
           id={0}
-          index={2}
           name="บ้านทรายทอง"
           ig="บ้านทรายทอง"
           description="นี่คือสถาน
@@ -51,12 +50,12 @@ const ChooseBaan = () => (
 ว่ามีน้ำใจ
 แต่สิ่งซ่อนไว้ในดวงจิต คือความริษยา"
           facebook="บ้านทรายทอง"
+          enableModal
         />
 
         <CardBaan
           imageUrl="/tmp.jpg"
           id={0}
-          index={2}
           name="บ้านทรายทอง"
           ig="บ้านทรายทอง"
           description="นี่คือสถาน
@@ -69,6 +68,7 @@ const ChooseBaan = () => (
 ว่ามีน้ำใจ
 แต่สิ่งซ่อนไว้ในดวงจิต คือความริษยา"
           facebook="บ้านทรายทอง"
+          enableModal
         />
       </CardContainer>
     </CatalogContainer>

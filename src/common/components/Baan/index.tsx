@@ -6,20 +6,27 @@ import {
   BaanContainer,
   ImageContainer,
   IndexContainer,
+  InformationContainer,
   StyledImage,
 } from './styled'
 import { BaanProps } from './types'
 
 const Baan = (props: BaanProps) => {
-  const { name, imageUrl, index, textPosition } = props
+  const { name, imageUrl, index, textPosition, enableModal } = props
   return (
     <BaanContainer textPosition={textPosition}>
       <ImageContainer>
-        <IndexContainer>
-          <Typography variant="h4" color="white">
-            {index}
-          </Typography>
-        </IndexContainer>
+        {index && (
+          <IndexContainer>
+            <Typography variant="h4" color="yellow">
+              {index}
+            </Typography>
+          </IndexContainer>
+        )}
+
+        <InformationContainer show={enableModal}>
+          <Typography color="yellow">i</Typography>
+        </InformationContainer>
         <StyledImage>
           <Image src={imageUrl} layout="fill" objectFit="cover" />
         </StyledImage>
