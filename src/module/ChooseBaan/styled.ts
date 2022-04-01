@@ -16,3 +16,12 @@ export const CatalogContainer = styled('div', {
   border: '2px solid $blue',
   borderRadius: '1rem',
 })
+
+export const CardContainer = styled('div', {
+  display: 'flex',
+  position: 'relative',
+
+  flexWrap: 'wrap',
+  paddingTop: '1rem',
+  justifyContent: 'space-around',
+})

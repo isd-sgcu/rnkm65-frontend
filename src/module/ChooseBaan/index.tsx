@@ -1,9 +1,10 @@
 import Typography from 'common/components/Typography'
 import React from 'react'
 
+import CardBaan from './components/CardBaan'
 import ChoosedBaan from './components/ChoosedBaan'
 import Search from './components/Search'
-import { CatalogContainer, RootContainer } from './styled'
+import { CardContainer, CatalogContainer, RootContainer } from './styled'
 
 const tmpBaan = {
   id: 0,
@@ -33,6 +34,12 @@ const ChooseBaan = () => (
     </div>
     <CatalogContainer>
       <Search />
+      <CardContainer>
+        <CardBaan />
+        <CardBaan />
+        <CardBaan />
+        <CardBaan />
+      </CardContainer>
     </CatalogContainer>
   </RootContainer>
 )
