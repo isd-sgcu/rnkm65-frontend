@@ -1,6 +1,7 @@
 import Button from 'common/components/Button'
 import Modal from 'common/components/Modal'
 import Typography from 'common/components/Typography'
+import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import Image from 'next/image'
 import { useCallback } from 'react'
 import { FaInstagram } from 'react-icons/fa'
@@ -16,42 +17,43 @@ import {
 import { IDescriptionModal } from './types'
 
 const DescriptionModal = (props: IDescriptionModal) => {
-  const { key, open, onConfirm, onClose } = props
+  const { baanKey, open, onConfirm, onClose } = props
+  const { t } = useSSRTranslation('baanData')
 
   const handleConfirm = useCallback(() => {
-    onConfirm(key)
+    onConfirm(baanKey)
     onClose()
-  }, [key, onClose, onConfirm])
+  }, [baanKey, onClose, onConfirm])
 
   return (
     <Modal modalClassName={modalClassName()} open={open} onClose={onClose}>
       <RootDescription>
         <Image
-          src="/tmp.jpg"
+          src={t(`${baanKey}.imageUrl`)}
           width={90}
           height={90}
           layout="fixed"
           className={RoundedImage()}
         />
-        <Typography color="yellow">บ้านทรายทอง</Typography>
-        <Typography color="yellow">
-          นี่คือสถาน แห่งบ้านทรายทอง ที่ฉันปองมาสู่ ฉันยังไม่รู้ เขาจะต้อนรับ
-          ขับสู้เพียงไหน อาจมียิ้มอาบ ฉาบบนสีหน้า ว่ามีน้ำใจ
-          แต่สิ่งซ่อนไว้ในดวงจิต คือความริษยา
-        </Typography>
+        <Typography color="yellow">{t(`${baanKey}.title`)}</Typography>
+        <Typography color="yellow">{t(`${baanKey}.desc`)}</Typography>
         <SocialDescription>
           <RiFacebookCircleLine size={24} color="white" />
-          <Typography css={{ color: '$white' }}>บ้านทรายทอง</Typography>
+          <Typography css={{ color: '$white' }}>
+            {t(`${baanKey}.facebook`)}
+          </Typography>
         </SocialDescription>
         <SocialDescription>
           <FaInstagram size={24} color="white" />
-          <Typography css={{ color: '$white' }}>บ้านทรายทอง</Typography>
+          <Typography css={{ color: '$white' }}>
+            {t(`${baanKey}.ig`)}
+          </Typography>
         </SocialDescription>
         <ButtonContainer>
           <Button variant="primary" onClick={handleConfirm}>
-            ยืนยัน
+            เลือกบ้าน
           </Button>
-          <Button variant="error" onClick={onClose}>
+          <Button variant="secondary" onClick={onClose}>
             ยกเลิก
           </Button>
         </ButtonContainer>

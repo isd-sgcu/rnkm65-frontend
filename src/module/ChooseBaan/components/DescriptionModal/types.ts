@@ -1,5 +1,5 @@
 export interface IDescriptionModal {
-  key: string
+  baanKey: string
   open: boolean
   onConfirm(key: string): void
   onClose(): void

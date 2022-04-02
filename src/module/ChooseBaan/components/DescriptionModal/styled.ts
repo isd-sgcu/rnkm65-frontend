@@ -28,7 +28,7 @@ export const SocialDescription = styled('div', {
 })
 
 export const modalClassName = css({
-  backgroundColor: '#b660b5df',
+  backgroundColor: '#b660b5df !important',
   maxWidth: '600px',
 })
 

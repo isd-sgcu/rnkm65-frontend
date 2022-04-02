@@ -56,27 +56,9 @@ const ChooseBaan = () => {
             facebook="บ้านทรายทอง"
             enableModal
           />
-
-          <CardBaan
-            imageUrl="/tmp.jpg"
-            id={0}
-            name="บ้านทรายทอง"
-            ig="บ้านทรายทอง"
-            description="นี่คือสถาน
-แห่งบ้านทรายทอง ที่ฉันปองมาสู่
-ฉันยังไม่รู้
-เขาจะต้อนรับ
-ขับสู้เพียงไหน
-อาจมียิ้มอาบ
-ฉาบบนสีหน้า
-ว่ามีน้ำใจ
-แต่สิ่งซ่อนไว้ในดวงจิต คือความริษยา"
-            facebook="บ้านทรายทอง"
-            enableModal
-          />
         </CardContainer>
         <DescriptionModal
-          key="test"
+          baanKey="1"
           open={state}
           onClose={handleClose}
           onConfirm={() => {}}
