@@ -1,9 +1,10 @@
 name: ESLint and build
 on:
-  pull_request:
+  push:
     branches:
       - dev
       - main
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -19,7 +20,7 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
       - name: ESLint
         uses: reviewdog/action-eslint@v1
