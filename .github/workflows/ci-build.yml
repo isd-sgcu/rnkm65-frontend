@@ -1,11 +1,9 @@
 name: ESLint and build
 on:
-  pull_request:
+  push:
     branches:
       - dev
       - main
-
-
 
 jobs:
   build:
