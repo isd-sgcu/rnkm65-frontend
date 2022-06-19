@@ -11,7 +11,12 @@
   "plugins": ["prettier", "simple-import-sort"],
   "parser": "@typescript-eslint/parser",
   "rules": {
-    "prettier/prettier": "error",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ],
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
     "react/function-component-definition": "off",
