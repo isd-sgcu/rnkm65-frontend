@@ -18,10 +18,24 @@ export const CatalogContainer = styled('div', {
 })
 
 export const CardContainer = styled('div', {
-  display: 'flex',
-  position: 'relative',
-
-  flexWrap: 'wrap',
+  display: 'grid',
   paddingTop: '1rem',
-  justifyContent: 'space-around',
+  gridGap: '1rem',
+  gridTemplateColumns: 'repeat(5, 1fr)',
+  justifContent: 'space-evenly',
+  '@xl': {
+    gridTemplateColumns: 'repeat(4, 1fr)',
+  },
+  '@lg': {
+    gridTemplateColumns: 'repeat(3, 1fr)',
+  },
+  '@md': {
+    gridTemplateColumns: 'repeat(3, 1fr)',
+  },
+  '@sm': {
+    gridTemplateColumns: 'repeat(2, 1fr)',
+  },
+  '@xs': {
+    gridTemplateColumns: 'repeat(1, 1fr)',
+  },
 })
