@@ -15,13 +15,13 @@ export const formSchema = yup
       .string()
       .trim()
       .required('Required phone number')
-      .matches(/^(0[1-9][0-9]{7,8})|-$/, 'Phone number is in wrong format'),
+      .matches(/^(0[1-9][0-9]{7,8})|^(-)$/, 'Phone number is in wrong format'),
     email: yup
       .string()
       .trim()
       .required('Required email')
       .matches(
-        /^\w+([\\.-]?\w+)*@\w+([\\.-]?\w+)*(\.\w{2,3})+$/,
+        /^\w+([\\.-]?\w+)*@\w+([\\.-]?\w+)*(\.\w{2,3})+|^(-)$/,
         'Email is in wrong format'
       ),
     lineID: yup.string().required('Required'),

@@ -1,13 +1,13 @@
 import Typography from 'common/components/Typography'
+import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import { templateForm } from 'module/Register/utils/schema'
-import { useTranslation } from 'next-i18next'
 import { Fragment, memo } from 'react'
 
 import InnerFormController from './components/InnerFormController'
 import { FormContainer, FormRootContainer } from './styled'
 
 const FormUI = memo(() => {
-  const { t } = useTranslation('register')
+  const { t } = useSSRTranslation('register')
 
   return (
     <FormRootContainer>

@@ -1,5 +1,5 @@
 import Typography from 'common/components/Typography'
-import { useTranslation } from 'next-i18next'
+import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import { memo, useRef } from 'react'
 import Cropper from 'react-easy-crop'
 import { FiZoomIn, FiZoomOut } from 'react-icons/fi'
@@ -17,7 +17,7 @@ import { IImageCropperProps } from './types'
 
 const ImageCropper = memo((props: IImageCropperProps) => {
   const { img, setImg, setCropMetaData } = props
-  const { t } = useTranslation('register')
+  const { t } = useSSRTranslation('register')
   const inputRef = useRef<HTMLInputElement | null>(null)
   const {
     crop,

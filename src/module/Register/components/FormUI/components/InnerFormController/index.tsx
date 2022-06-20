@@ -1,7 +1,7 @@
 import InputField from 'common/components/Input'
 import SelectField from 'common/components/Select'
+import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import { useFormContext } from 'module/Register/hooks/useFormContext'
-import { useTranslation } from 'next-i18next'
 import { memo } from 'react'
 import { Controller } from 'react-hook-form'
 
@@ -9,7 +9,7 @@ import { IInnerFormControllerProps } from './types'
 
 const InnerFormController = memo((props: IInnerFormControllerProps) => {
   const { fieldKey, type, option, style, translateNs } = props
-  const { t } = useTranslation(translateNs)
+  const { t } = useSSRTranslation(translateNs)
   const { control } = useFormContext()
 
   return (

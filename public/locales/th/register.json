@@ -11,9 +11,9 @@
     "facebook": "Facebook",
     "lineID": "Line ID",
     "email": "Email",
-    "foodAllergy": "แพ้อาหาร",
+    "foodAllergy": "ข้อมูลการแพ้อาหาร",
     "foodLimitation": "ข้อจำกัดด้านอาหาร",
-    "drugAllergy": "แพ้ยา",
+    "drugAllergy": "ข้อมูลการแพ้ยา",
     "congenitalDisease": "โรคประจำตัว"
   },
   "uploadModal": {
