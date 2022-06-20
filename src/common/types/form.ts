@@ -6,4 +6,9 @@ export interface IFormSchema {
   phoneNumber: string
   facebook: string
   lineID: string
+  email: string
+  foodAllergy: string
+  foodLimitation: string
+  drugAllergy: string
+  congenitalDisease: string
 }

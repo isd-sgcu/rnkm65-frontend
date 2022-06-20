@@ -2,17 +2,24 @@
   "register": "ลงทะเบียน",
   "annoucement": "*กรุณาใส่ข้อมูลให้ครบทุกช่อง (หากไม่มีให้ใส่ -)",
   "submit": "ยืนยันข้อมูล",
-  "title": "คำนำหน้า",
-  "firstname": "ชื่อจริง",
-  "lastname": "นามสกุล",
-  "nickname": "ชื่อเล่น",
-  "phoneNumber": "เบอร์โทรศัพท์",
-  "facebook": "Facebook",
-  "lineID": "Line ID",
+  "title": {
+    "title": "คำนำหน้า",
+    "firstname": "ชื่อจริง",
+    "lastname": "นามสกุล",
+    "nickname": "ชื่อเล่น",
+    "phoneNumber": "เบอร์โทรศัพท์",
+    "facebook": "Facebook",
+    "lineID": "Line ID",
+    "email": "Email",
+    "foodAllergy": "แพ้อาหาร",
+    "foodLimitation": "ข้อจำกัดด้านอาหาร",
+    "drugAllergy": "แพ้ยา",
+    "congenitalDisease": "โรคประจำตัว"
+  },
   "uploadModal": {
     "title": "แก้ไขรูปภาพ",
     "submit": "ยืนยัน",
-    "desc": "ใช้รูปที่เห็นใบหน้าชัดเจน | ไม่ควรใส่ฟิลเตอร์ | ขนาดไฟล์ไม่ควรเกิน 1 MB",
+    "desc": "ใช้รูปที่เห็นใบหน้าชัดเจน | ไม่ควรใส่ฟิลเตอร์ | ขนาดไฟล์ไม่ควรเกิน 4 MB",
     "uploadFallback": "คลิกเพื่ออัพโหลดรูป",
     "dragDropFallback": "ปล่อยเพื่ออัพโหลด"
   },
@@ -29,12 +36,17 @@
     "invalidMime": "ไฟล์รูปภาพต้องเป็นประเภท PNG หรือ JPEG"
   },
   "placeholder": {
-    "firstname": "วัชราวลี",
-    "lastname": "โพธาราม",
-    "nickname": "ตาต้า",
+    "firstname": "Hello",
+    "lastname": "World",
+    "nickname": "Tata",
     "phoneNumber": "0222222222",
     "facebook": "Facebook",
-    "lineID": "Line ID"
+    "lineID": "Line ID",
+    "email": "welcomefair@welcomfair.com",
+    "foodAllergy": "",
+    "foodLimitation": "",
+    "drugAllergy": "",
+    "congenitalDisease": ""
   },
   "confirmModal": {
     "title": "คุณต้องการยืนยันหรือไม่",

@@ -2,17 +2,23 @@
   "register": "Register",
   "annoucement": "*กรุณาใส่ข้อมูลให้ครบทุกช่อง (หากไม่มีให้ใส่ -)",
   "submit": "Submit",
-  "title": "Name Title",
-  "firstname": "Firstname",
-  "lastname": "Lastname",
-  "nickname": "Nickname",
-  "phoneNumber": "Phone number",
-  "facebook": "Facebook",
-  "lineID": "Line ID",
+  "title": {
+    "title": "Name Title",
+    "firstname": "Firstname",
+    "lastname": "Lastname",
+    "nickname": "Nickname",
+    "phoneNumber": "Phone number",
+    "facebook": "Facebook",
+    "lineID": "Line ID",
+    "foodAllergy": "Food Allergy",
+    "foodLimitation": "Food Limitation",
+    "drugAllergy": "Drug Allergy",
+    "congenitalDisease": "Congenital Disease"
+  },
   "uploadModal": {
     "title": "แก้ไขรูปภาพ",
     "submit": "ยืนยัน",
-    "desc": "ใช้รูปที่เห็นใบหน้าชัดเจน | ไม่ควรใส่ฟิลเตอร์ | ขนาดไฟล์ไม่ควรเกิน 1 MB",
+    "desc": "ใช้รูปที่เห็นใบหน้าชัดเจน | ไม่ควรใส่ฟิลเตอร์ | ขนาดไฟล์ไม่ควรเกิน 4 MB",
     "uploadFallback": "คลิกเพื่ออัพโหลดรูป",
     "dragDropFallback": "ปล่อยเพื่ออัพโหลด"
   },
@@ -34,6 +40,10 @@
     "nickname": "ตาต้า",
     "phoneNumber": "0222222222",
     "facebook": "Facebook",
-    "lineID": "Line ID"
+    "lineID": "Line ID",
+    "foodAllergy": "",
+    "foodLimitation": "",
+    "drugAllergy": "",
+    "congenitalDisease": ""
   }
 }
