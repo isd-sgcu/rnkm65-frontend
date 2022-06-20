@@ -27,7 +27,7 @@ const JoinGroupModal = (props: JoinGroupModalProps) => {
           i18nKey="profile:wantToJoinGroupOrNot"
           components={[<InlineTypography color="pink" variant="h4" />]}
           values={{
-            king: `${king.firstname} ${king.lastname}`,
+            king: `<br />${king.firstname} ${king.lastname}`,
           }}
         />
       </Title>

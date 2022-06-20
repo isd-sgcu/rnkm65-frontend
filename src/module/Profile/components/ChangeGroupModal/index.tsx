@@ -31,7 +31,7 @@ const ChangeGroupModal = (props: ChangeGroupModalProps) => {
           ]}
           values={{
             action: t('profile:changeGroup'),
-            king: `${king.firstname} ${king.lastname}`,
+            king: `<br />${king.firstname} ${king.lastname}`,
           }}
         />
       </Title>
