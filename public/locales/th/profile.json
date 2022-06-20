@@ -8,7 +8,18 @@
   "notChoosed": "ยังไม่ได้เลือก",
   "saved": "ระบบได้ทำการบันทึกเรียบร้อยแล้ว",
   "changeBaan": "เปลี่ยนบ้าน",
+  "changeGroup": "เปลี่ยนกลุ่ม",
   "chooseBaan": "เลือกบ้าน",
+  "leave": "ออก",
+  "notLeave": "ไม่ออก",
   "kingCanChange": "หัวหน้ากลุ่มเท่านั้นที่สามารถเปลี่ยนบ้านได้",
-  "kingCanChoose": "หัวหน้ากลุ่มเท่านั้นที่สามารถเลือกบ้านได้"
+  "kingCanChoose": "หัวหน้ากลุ่มเท่านั้นที่สามารถเลือกบ้านได้",
+  "cannotJoinGroup": "คุณไม่สามารถเข้ากลุ่มได้",
+  "cannotChangeGroup": "คุณไม่สามารถเปลี่ยนกลุ่มได้",
+  "becauseGroupFull": "เนื่องจากสมาชิกในกลุ่มเต็มแล้ว",
+  "becauseYouAreKing": "เนื่องจากคุณเป็นหัวหน้ากลุ่มอยู่",
+  "wantToJoinGroupOrNot": "คุณต้องการเข้ากลุ่มของ <0><br />{{king}}</0> หรือไม่?",
+  "wantToChangeGroupOrNot": "คุณต้องการ <0>{{action}}</0> ไปเข้ากลุ่มของ <1><br />{{king}}</1> หรือไม่?",
+  "wantToConfirmAction": "คุณต้องการ <0>{{action}}</0> ใช่หรือไม่?",
+  "areAlsoGroupMember": "<0>{{members}}</0> เป็นสมาชิกในกลุ่มนี้ด้วย"
 }
