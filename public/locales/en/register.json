@@ -10,10 +10,10 @@
     "phoneNumber": "Phone number",
     "facebook": "Facebook",
     "lineID": "Line ID",
-    "foodAllergy": "Food Allergy",
-    "foodLimitation": "Food Limitation",
-    "drugAllergy": "Drug Allergy",
-    "congenitalDisease": "Congenital Disease"
+    "allergyFood": "Food Allergy",
+    "foodRestriction": "Food Limitation",
+    "allergyMedicine": "Drug Allergy",
+    "disease": "Congenital Disease"
   },
   "uploadModal": {
     "title": "แก้ไขรูปภาพ",
@@ -41,9 +41,14 @@
     "phoneNumber": "0222222222",
     "facebook": "Facebook",
     "lineID": "Line ID",
-    "foodAllergy": "",
-    "foodLimitation": "",
-    "drugAllergy": "",
-    "congenitalDisease": ""
+    "allergyFood": "",
+    "foodRestriction": "",
+    "allergyMedicine": "",
+    "disease": ""
+  },
+  "confirmModal": {
+    "title": "คุณต้องการยืนยันหรือไม่",
+    "back": "กลับ",
+    "confirm": "ยืนยัน"
   }
 }

@@ -18,32 +18,26 @@ const FormContext = createContext<IFormContext>({} as IFormContext)
 export const FormProvider = (props: React.PropsWithChildren<{}>) => {
   const { children } = props
 
-  const [uploadImg, setUploadImg] = useState('')
-  const [imgRequired, setImgRequired] = useState(false)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [vaccineUrl, setVaccineUrl] = useState('')
+
   const {
     state: openModal,
     handleOpen,
     handleClose: handleCloseModal,
   } = useSwitch(false)
-  const { register, handleSubmit, setError, control, getValues } =
+  const { register, handleSubmit, setError, control, getValues, setValue } =
     useForm<IFormSchema>({
       resolver: yupResolver(formSchema),
       shouldFocusError: false,
     })
 
-  const checkImageExisted = useCallback(() => {
-    if (uploadImg === '') {
-      const el = document.getElementById('image_section')
-      if (el) {
-        el.scrollIntoView()
-      }
-
-      setImgRequired(true)
-      return false
-    }
-    setImgRequired(false)
-    return true
-  }, [uploadImg])
+  const setUploadImg = useCallback(
+    (url: string) => {
+      setValue('imageUrl', url)
+    },
+    [setValue]
+  )
 
   const handleModalSubmit = useCallback(() => {
     const data = getValues()
@@ -51,14 +45,11 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
   }, [getValues])
 
   const handleSuccess: SubmitHandler<IFormSchema> = useCallback(() => {
-    if (!checkImageExisted()) return
     handleOpen()
-  }, [checkImageExisted, handleOpen])
+  }, [handleOpen])
 
   const handleFailed: SubmitErrorHandler<IFormSchema> = useCallback(
     (e) => {
-      const imageExisted = checkImageExisted()
-
       let foundFirst = true
 
       // Templates are 2D array
@@ -68,14 +59,14 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
             setError(
               val.fieldKey,
               { ...e[val.fieldKey] },
-              { shouldFocus: imageExisted && foundFirst }
+              { shouldFocus: foundFirst }
             )
             foundFirst = false
           }
         })
       })
     },
-    [checkImageExisted, setError]
+    [setError]
   )
 
   const handleClickSubmit = handleSubmit(handleSuccess, handleFailed)
@@ -83,11 +74,8 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
   const providerProps = useMemo(
     () => ({
       register,
-      uploadImg,
-      imgRequired,
       control,
       setUploadImg,
-      setImgRequired,
       handleModalSubmit,
       handleCloseModal,
       openModal,
@@ -95,11 +83,10 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
     [
       control,
       handleCloseModal,
+      setUploadImg,
       handleModalSubmit,
-      imgRequired,
       openModal,
       register,
-      uploadImg,
     ]
   )
 

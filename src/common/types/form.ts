@@ -7,8 +7,10 @@ export interface IFormSchema {
   facebook: string
   lineID: string
   email: string
-  foodAllergy: string
-  foodLimitation: string
-  drugAllergy: string
-  congenitalDisease: string
+  imageUrl: string
+  allergyFood: string
+  foodRestriction: string
+  allergyMedicine: string
+  vaccineCertificateUrl: string
+  disease: string
 }

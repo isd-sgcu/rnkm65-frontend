@@ -3,11 +3,8 @@ import { ITemplateFormKey } from 'module/Register/utils/schema'
 import { Control } from 'react-hook-form'
 
 export interface IFormContext {
-  uploadImg: string
-  imgRequired: boolean
   control: Control<IFormSchema, any>
-  setUploadImg: React.Dispatch<React.SetStateAction<string>>
-  setImgRequired: React.Dispatch<React.SetStateAction<boolean>>
+  setUploadImg: (url: string) => void
   handleModalSubmit: () => void
   handleCloseModal: () => void
   openModal: boolean

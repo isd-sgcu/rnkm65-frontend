@@ -11,10 +11,10 @@
     "facebook": "Facebook",
     "lineID": "Line ID",
     "email": "Email",
-    "foodAllergy": "ข้อมูลการแพ้อาหาร",
-    "foodLimitation": "ข้อจำกัดด้านอาหาร",
-    "drugAllergy": "ข้อมูลการแพ้ยา",
-    "congenitalDisease": "โรคประจำตัว"
+    "allergyFood": "ข้อมูลการแพ้อาหาร",
+    "foodRestriction": "ข้อจำกัดด้านอาหาร",
+    "allergyMedicine": "ข้อมูลการแพ้ยา",
+    "disease": "โรคประจำตัว"
   },
   "uploadModal": {
     "title": "แก้ไขรูปภาพ",
@@ -43,10 +43,10 @@
     "facebook": "Facebook",
     "lineID": "Line ID",
     "email": "welcomefair@welcomfair.com",
-    "foodAllergy": "",
-    "foodLimitation": "",
-    "drugAllergy": "",
-    "congenitalDisease": ""
+    "allergyFood": "",
+    "foodRestriction": "",
+    "allergyMedicine": "",
+    "disease": ""
   },
   "confirmModal": {
     "title": "คุณต้องการยืนยันหรือไม่",

@@ -10,12 +10,13 @@ export const formSchema = yup
     firstname: yup.string().required('Required firstname'),
     lastname: yup.string().required('Required lastname'),
     nickname: yup.string().required('Required nickname'),
-    years: yup.string().required('Required'),
+    imageUrl: yup.string().required('Required'),
+    years: yup.string(),
     phoneNumber: yup
       .string()
       .trim()
       .required('Required phone number')
-      .matches(/^(0[1-9][0-9]{7,8})|^(-)$/, 'Phone number is in wrong format'),
+      .matches(/^(0[1-9][0-9]{7,8})$|^(-)$/, 'Phone number is in wrong format'),
     email: yup
       .string()
       .trim()
@@ -25,10 +26,11 @@ export const formSchema = yup
         'Email is in wrong format'
       ),
     lineID: yup.string().required('Required'),
-    foodAllergy: yup.string().required('Required'),
-    foodLimitation: yup.string().required('Required'),
-    drugAllergy: yup.string().required('Required'),
-    congenitalDisease: yup.string().required('Required'),
+    allergyFood: yup.string().required('Required'),
+    foodRestriction: yup.string().required('Required'),
+    allergyMedicine: yup.string().required('Required'),
+    vaccineCertificateUrl: yup.string(),
+    disease: yup.string().required('Required'),
   })
   .required()
 
@@ -104,14 +106,14 @@ export const templateForm: Array<Array<ITemplateFormItem>> = [
   ],
   [
     {
-      fieldKey: 'foodAllergy',
+      fieldKey: 'allergyFood',
       type: 'text_input',
       style: {
         gridColumn: '1 / 5',
       },
     },
     {
-      fieldKey: 'foodLimitation',
+      fieldKey: 'foodRestriction',
       type: 'text_input',
       style: {
         gridColumn: '5 / 10',
@@ -120,14 +122,14 @@ export const templateForm: Array<Array<ITemplateFormItem>> = [
   ],
   [
     {
-      fieldKey: 'drugAllergy',
+      fieldKey: 'allergyMedicine',
       type: 'text_input',
       style: {
         gridColumn: '1 / 5',
       },
     },
     {
-      fieldKey: 'congenitalDisease',
+      fieldKey: 'disease',
       type: 'text_input',
       style: {
         gridColumn: '5 / 10',
