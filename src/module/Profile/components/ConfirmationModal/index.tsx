@@ -12,7 +12,7 @@ const ConfirmationModal = (props: ConfirmationModalProps) => {
     acceptButtonI18NKey,
     onAccept,
     onDecline,
-    declinButtonI18NKey,
+    declineButtonI18NKey,
   } = props
   const { t } = useTranslation('common')
 
@@ -37,7 +37,7 @@ const ConfirmationModal = (props: ConfirmationModalProps) => {
           {t(acceptButtonI18NKey)}
         </Button>
         <Button type="button" variant="secondary" onClick={onDecline}>
-          {t(declinButtonI18NKey)}
+          {t(declineButtonI18NKey)}
         </Button>
       </ButtonContainer>
     </Modal>

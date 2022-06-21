@@ -75,7 +75,7 @@ const TempPage = () => {
         open={confirmationModalState}
         actionI18NKey="profile:leaveGroup"
         acceptButtonI18NKey="profile:leave"
-        declinButtonI18NKey="profile:notLeave"
+        declineButtonI18NKey="profile:notLeave"
         onAccept={handleConfirmationModalClose}
         onDecline={handleConfirmationModalClose}
       />
