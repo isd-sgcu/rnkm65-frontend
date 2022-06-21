@@ -20,6 +20,7 @@
   "becauseYouAreKing": "เนื่องจากคุณเป็นหัวหน้ากลุ่มอยู่",
   "wantToJoinGroupOrNot": "คุณต้องการเข้ากลุ่มของ <0>{{king}}</0> หรือไม่?",
   "wantToChangeGroupOrNot": "คุณต้องการ <0>{{action}}</0> ไปเข้ากลุ่มของ <1>{{king}}</1> หรือไม่?",
+  "wantToKickMemberOrNot": "คุณต้องการเตะ <0>{{member}}</0> ออกจากกลุ่มหรือไม่?",
   "wantToConfirmAction": "คุณต้องการ <0>{{action}}</0> ใช่หรือไม่?",
   "areAlsoGroupMember": "<0>{{members}}</0> เป็นสมาชิกในกลุ่มนี้ด้วย"
 }
