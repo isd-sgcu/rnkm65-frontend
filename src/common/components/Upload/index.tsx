@@ -19,10 +19,13 @@ const UploadField: FC<IUploadFieldProps> = (props) => {
         const file = ev.target.files[0]
         const imageUrl = await blobToDataURL(file)
         onChange(imageUrl)
-        setPreview(window.URL.createObjectURL(file))
+        if (typeof window !== 'undefined') {
+          window.URL.revokeObjectURL(preview)
+          setPreview(window.URL.createObjectURL(file))
+        }
       }
     },
-    [onChange]
+    [onChange, preview]
   )
 
   const onClickUpload = useCallback(() => {
