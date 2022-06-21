@@ -10,6 +10,7 @@ const Modal = (props: React.PropsWithChildren<IModalProps>) => {
     open,
     children,
     canClickBackdrop,
+    showCloseIcon = true,
     rootClassName,
     modalClassName,
   } = props
@@ -34,7 +35,7 @@ const Modal = (props: React.PropsWithChildren<IModalProps>) => {
         className={modalClassName || ''}
         onClick={handleInnerClick}
       >
-        <CloseIcon onClick={onClose} />
+        {showCloseIcon && <CloseIcon onClick={onClose} />}
         {isShow && children}
       </ModalContainer>
     </BackdropContainer>
