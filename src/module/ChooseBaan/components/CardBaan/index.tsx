@@ -1,7 +1,7 @@
 import Baan from 'common/components/Baan'
 import Typography from 'common/components/Typography'
 import Image from 'next/image'
-import { useRef } from 'react'
+import React, { useRef } from 'react'
 import { FaInstagram } from 'react-icons/fa'
 import { RiFacebookCircleLine } from 'react-icons/ri'
 
@@ -18,7 +18,17 @@ import { ICardBaanProps } from './types'
 
 const CardBaan = (props: ICardBaanProps) => {
   const descriptionRef = useRef<HTMLDivElement | null>(null)
-  const { ig, facebook, description, name, imageUrl, ...remain } = props
+  const {
+    ig,
+    id,
+    facebook,
+    description,
+    name,
+    imageUrl,
+    index,
+    onClick,
+    ...remain
+  } = props
   const { handleRootMouseAway, handleRootMouseOver, pos, rootHover } =
     useDescriptionHooks(descriptionRef.current)
 
@@ -27,8 +37,9 @@ const CardBaan = (props: ICardBaanProps) => {
       ref={descriptionRef}
       onMouseOver={handleRootMouseOver}
       onMouseLeave={handleRootMouseAway}
+      onClick={() => onClick(id)}
     >
-      <Baan {...remain} name={name} imageUrl={imageUrl} />
+      <Baan {...remain} id={id} index={index} name={name} imageUrl={imageUrl} />
       <DescriptionContainer pos={pos} open={rootHover}>
         <ImageDescription>
           <StyledImage>
@@ -61,4 +72,4 @@ const CardBaan = (props: ICardBaanProps) => {
   )
 }
 
-export default CardBaan
+export default React.memo(CardBaan)

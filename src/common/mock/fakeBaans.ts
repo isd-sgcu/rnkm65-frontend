@@ -41,7 +41,7 @@ import { BaanSize, IBaan } from '../types/baan'
 
 const generateBaan = (len: number) =>
   Array.from({ length: len }, (_, i) => ({
-    name: `บ้านทรายทอง ${i}`,
+    name: `บ้านทรายทอง ${i + 1}`,
     description:
       'นี่คือสถานแห่งบ้านทรายทอง ที่ฉันปองมาสู่ฉันยังไม่รู้เขาจะต้อนรับขับสู้เพียงไหนอาจมียิ้มอาบฉาบบนสีหน้าว่ามีน้ำใจแต่สิ่งซ่อนไว้ในดวงจิต คือความริษยา',
     imageUrl: '/tmp.jpg',

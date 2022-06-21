@@ -16,8 +16,8 @@ const ChoosedBaan = (props: ChoosedBannProps) => {
   return (
     <Container>
       {baans.map((baan, idx) => (
-        <BaanContainer>
-          <Baan {...baan} index={idx + 1} key={baan.id} textPosition="right" />
+        <BaanContainer key={baan.id}>
+          <Baan {...baan} index={idx + 1} textPosition="right" />
           <DeleteButton onClick={() => handleDelete(idx)} />
         </BaanContainer>
       ))}
@@ -31,4 +31,4 @@ const ChoosedBaan = (props: ChoosedBannProps) => {
   )
 }
 
-export default ChoosedBaan
+export default React.memo(ChoosedBaan)

@@ -2,6 +2,7 @@ import { css, styled } from 'config/stitches.config'
 
 export const CardContainer = styled('div', {
   position: 'relative',
+  cursor: 'pointer',
 })
 
 export const DescriptionContainer = styled('div', {
