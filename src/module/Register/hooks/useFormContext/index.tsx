@@ -2,13 +2,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useSwitch } from 'common/hooks/useSwitch'
 import { IFormSchema } from 'common/types/form'
 import { formSchema, templateForm } from 'module/Register/utils/schema'
-import React, {
-  createContext,
-  useCallback,
-  useContext,
-  useMemo,
-  useState,
-} from 'react'
+import React, { createContext, useCallback, useContext, useMemo } from 'react'
 import { SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form'
 
 import { IFormContext } from './types'
@@ -17,10 +11,6 @@ const FormContext = createContext<IFormContext>({} as IFormContext)
 
 export const FormProvider = (props: React.PropsWithChildren<{}>) => {
   const { children } = props
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [vaccineUrl, setVaccineUrl] = useState('')
-
   const {
     state: openModal,
     handleOpen,

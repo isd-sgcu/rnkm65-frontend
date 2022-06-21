@@ -15,7 +15,7 @@ const SelectField = React.memo(
     const { error, errorMessage, option, title, required, ...remain } = props
     return (
       <SelectContainer>
-        <Typography css={{ marginBottom: '0.5rem' }}>
+        <Typography css={{ marginBottom: '0.5rem', fontWeight: 'bold' }}>
           {title || ''}
           {required && <RequiredSymbol>*</RequiredSymbol>}
         </Typography>

@@ -1,5 +1,6 @@
 import InputField from 'common/components/Input'
 import SelectField from 'common/components/Select'
+import UploadField from 'common/components/Upload'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import { useFormContext } from 'module/Register/hooks/useFormContext'
 import { memo } from 'react'
@@ -43,6 +44,15 @@ const InnerFormController = memo((props: IInnerFormControllerProps) => {
                   option={options || []}
                   errorMessage={error ? t(`error.${errorType}Select`) : ''}
                   placeholder={t(`placeholder.${fieldKey}`)}
+                  {...field}
+                />
+              )}
+              {type === 'upload_input' && (
+                <UploadField
+                  error={!!error}
+                  title={t(`title.${fieldKey}`)}
+                  errorMessage={error ? t(`error.${errorType}File`) : ''}
+                  url={field.value}
                   {...field}
                 />
               )}

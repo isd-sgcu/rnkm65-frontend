@@ -29,7 +29,7 @@ export const formSchema = yup
     allergyFood: yup.string().required('Required'),
     foodRestriction: yup.string().required('Required'),
     allergyMedicine: yup.string().required('Required'),
-    vaccineCertificateUrl: yup.string(),
+    vaccineCertificateUrl: yup.string().required('Required'),
     disease: yup.string().required('Required'),
   })
   .required()
@@ -37,7 +37,7 @@ export const formSchema = yup
 export type ITemplateFormKey = keyof IFormSchema
 export interface ITemplateFormItem {
   fieldKey: ITemplateFormKey
-  type: 'select_input' | 'text_input'
+  type: 'select_input' | 'text_input' | 'upload_input'
   style?: CSSProperties
   option?: Array<{ value: string; i18nKey: string }>
 }
@@ -133,6 +133,13 @@ export const templateForm: Array<Array<ITemplateFormItem>> = [
       type: 'text_input',
       style: {
         gridColumn: '5 / 10',
+      },
+    },
+    {
+      fieldKey: 'vaccineCertificateUrl',
+      type: 'upload_input',
+      style: {
+        gridColumn: '1 / 10',
       },
     },
   ],

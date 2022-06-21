@@ -14,7 +14,8 @@
     "allergyFood": "ข้อมูลการแพ้อาหาร",
     "foodRestriction": "ข้อจำกัดด้านอาหาร",
     "allergyMedicine": "ข้อมูลการแพ้ยา",
-    "disease": "โรคประจำตัว"
+    "disease": "โรคประจำตัว",
+    "vaccineCertificateUrl": "ใบรับรองการฉีดวัคซีน"
   },
   "uploadModal": {
     "title": "แก้ไขรูปภาพ",
@@ -31,6 +32,7 @@
     "requiredText": "กรุณากรอกข้อมูล",
     "formatText": "รูปแบบไม่ถูกต้อง",
     "requiredSelect": "กรุณาเลือก",
+    "requiredFile": "กรุณาอัพโหลดข้อมูล",
     "requiredUploadImage": "กรุณาอัพโหลดรูปภาพ",
     "fileLimit": "ไฟล์มีขนาดเกิน 4 MB",
     "invalidMime": "ไฟล์รูปภาพต้องเป็นประเภท PNG หรือ JPEG"

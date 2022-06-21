@@ -13,7 +13,8 @@
     "allergyFood": "Food Allergy",
     "foodRestriction": "Food Limitation",
     "allergyMedicine": "Drug Allergy",
-    "disease": "Congenital Disease"
+    "disease": "Congenital Disease",
+    "vaccineCertificateUrl": "Vaccine Certificate"
   },
   "uploadModal": {
     "title": "แก้ไขรูปภาพ",
@@ -31,6 +32,7 @@
     "formatText": "รูปแบบไม่ถูกต้อง",
     "requiredSelect": "กรุณาเลือก",
     "requiredUploadImage": "กรุณาอัพโหลดรูปภาพ",
+    "requiredFile": "กรุณาอัพโหลดไฟล์",
     "fileLimit": "ไฟล์มีขนาดเกิน 4 MB",
     "invalidMime": "ไฟล์รูปภาพต้องเป็นประเภท PNG หรือ JPEG"
   },

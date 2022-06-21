@@ -18,7 +18,10 @@ const InputField = React.memo(
 
     return (
       <InputFieldContainer>
-        <Typography variant="body" css={{ marginBottom: '0.5rem' }}>
+        <Typography
+          variant="body"
+          css={{ marginBottom: '0.5rem', fontWeight: 'bold' }}
+        >
           {title || ''}
           {required && <RequiredSymbol>*</RequiredSymbol>}
         </Typography>
