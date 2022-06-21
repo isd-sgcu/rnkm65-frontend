@@ -1,5 +1,5 @@
-import { ICropMetadata } from 'module/Register/components/UploadImage/types'
-import { getCroppedImage } from 'module/Register/components/UploadImage/utils/imageHelper'
+import { ICropMetadata } from 'common/types/crop'
+import { getCroppedImage } from 'common/utils/imageHelper'
 import { useFormContext } from 'module/Register/hooks/useFormContext'
 import { useCallback, useState } from 'react'
 

@@ -1,13 +1,29 @@
 import Button from 'common/components/Button'
 import Typography from 'common/components/Typography'
-import { FC, useCallback, useRef } from 'react'
+import { blobToDataURL } from 'common/utils/imageHelper'
+import { ChangeEvent, FC, useCallback, useRef, useState } from 'react'
 
 import { InnerContainer, RequiredSymbol } from './styled'
 import { IUploadFieldProps } from './types'
 
 const UploadField: FC<IUploadFieldProps> = (props) => {
+  const { title, required, errorMessage, url, onChange } = props
+
   const inputRef = useRef<HTMLInputElement | null>(null)
-  const { title, required, errorMessage, url, ...remain } = props
+  const [preview, setPreview] = useState('')
+
+  const onUploadData = useCallback(
+    async (ev: ChangeEvent<HTMLInputElement>) => {
+      ev.preventDefault()
+      if (ev.target.files) {
+        const file = ev.target.files[0]
+        const imageUrl = await blobToDataURL(file)
+        onChange(imageUrl)
+        setPreview(window.URL.createObjectURL(file))
+      }
+    },
+    [onChange]
+  )
 
   const onClickUpload = useCallback(() => {
     if (inputRef.current) {
@@ -19,10 +35,10 @@ const UploadField: FC<IUploadFieldProps> = (props) => {
   return (
     <InnerContainer>
       <input
-        {...remain}
         ref={inputRef}
         type="file"
         style={{ display: 'none' }}
+        onChange={onUploadData}
       />
       <Typography
         variant="body"
@@ -32,8 +48,8 @@ const UploadField: FC<IUploadFieldProps> = (props) => {
         {required && <RequiredSymbol>*</RequiredSymbol>}
       </Typography>
 
-      {url ? (
-        <a href={url} target="">
+      {preview || url ? (
+        <a href={preview || url} target="_blank" rel="noreferrer">
           <Typography
             css={{
               marginRight: '1rem',

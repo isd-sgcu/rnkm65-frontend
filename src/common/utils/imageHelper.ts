@@ -1,4 +1,4 @@
-import { ICropMetadata } from '../types'
+import { ICropMetadata } from 'common/types/crop'
 
 const imageWidth = 200
 const imageHeight = 300

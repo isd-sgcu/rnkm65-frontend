@@ -1,5 +1,5 @@
-import { ICropMetadata } from 'module/Register/components/UploadImage/types'
-import { blobToDataURL } from 'module/Register/components/UploadImage/utils/imageHelper'
+import { ICropMetadata } from 'common/types/crop'
+import { blobToDataURL } from 'common/utils/imageHelper'
 import {
   ChangeEvent,
   Dispatch,
