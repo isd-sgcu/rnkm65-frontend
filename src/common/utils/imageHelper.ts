@@ -19,6 +19,12 @@ export const blobToDataURL = (blob: Blob): Promise<string> =>
     image.readAsDataURL(blob)
   })
 
+export const b64ToBlob = async (dataURI: string) => {
+  const res = await fetch(dataURI)
+  const blob = await res.blob()
+  return blob
+}
+
 export const getCroppedImage = async (url: string, position: ICropMetadata) => {
   const currentImage = await createImage(url)
   const newImage = document.createElement('canvas')

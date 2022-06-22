@@ -1,5 +1,7 @@
 import Button from 'common/components/Button'
 import Typography from 'common/components/Typography'
+import { UPLOAD_LIMIT } from 'common/constants/upload'
+import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import { blobToDataURL } from 'common/utils/imageHelper'
 import { ChangeEvent, FC, useCallback, useRef, useState } from 'react'
 
@@ -10,22 +12,32 @@ const UploadField: FC<IUploadFieldProps> = (props) => {
   const { title, required, errorMessage, url, onChange } = props
 
   const inputRef = useRef<HTMLInputElement | null>(null)
+  const { t } = useSSRTranslation('register')
   const [preview, setPreview] = useState('')
+  const [isOverSize, setOverSize] = useState(false)
 
   const onUploadData = useCallback(
     async (ev: ChangeEvent<HTMLInputElement>) => {
       ev.preventDefault()
       if (ev.target.files) {
         const file = ev.target.files[0]
+        setOverSize(false)
+
+        if (file.size > UPLOAD_LIMIT) {
+          setOverSize(true)
+          return
+        }
+
         const imageUrl = await blobToDataURL(file)
         onChange(imageUrl)
+
         if (typeof window !== 'undefined') {
           window.URL.revokeObjectURL(preview)
           setPreview(window.URL.createObjectURL(file))
         }
       }
     },
-    [onChange, preview]
+    [onChange, preview, setOverSize]
   )
 
   const onClickUpload = useCallback(() => {
@@ -82,7 +94,9 @@ const UploadField: FC<IUploadFieldProps> = (props) => {
         อัพโหลดไฟล์
       </Button>
 
-      <Typography color="error">{errorMessage}</Typography>
+      <Typography color="error">
+        {errorMessage || (isOverSize ? t('error.fileLimit') : '')}
+      </Typography>
     </InnerContainer>
   )
 }

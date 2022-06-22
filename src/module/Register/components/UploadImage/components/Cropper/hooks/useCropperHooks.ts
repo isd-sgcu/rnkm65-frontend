@@ -1,3 +1,4 @@
+import { ALLOW_EXT, UPLOAD_LIMIT } from 'common/constants/upload'
 import { ICropMetadata } from 'common/types/crop'
 import { blobToDataURL } from 'common/utils/imageHelper'
 import {
@@ -10,8 +11,6 @@ import {
   useState,
 } from 'react'
 
-const ALLOW_EXT = ['image/png', 'image/jpeg', 'image/webp']
-const FILE_LIMIT = 4 * 1048567
 type IErrorType = 'fileLimit' | 'invalidMime' | ''
 
 export const useCropperHooks = (
@@ -40,7 +39,7 @@ export const useCropperHooks = (
       )
 
       // File limit exceeds
-      if (file.size > FILE_LIMIT) {
+      if (file.size > UPLOAD_LIMIT) {
         setErrorType('fileLimit')
         return
       }
