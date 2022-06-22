@@ -15,18 +15,18 @@ const ConfirmModal = () => {
         <Button
           css={{ width: '100%' }}
           type="button"
-          variant="error"
-          onClick={handleCloseModal}
-        >
-          {t('confirmModal.back')}
-        </Button>
-        <Button
-          css={{ width: '100%' }}
-          type="button"
           variant="primary"
           onClick={handleModalSubmit}
         >
           {t('confirmModal.confirm')}
+        </Button>
+        <Button
+          css={{ width: '100%' }}
+          type="button"
+          variant="error"
+          onClick={handleCloseModal}
+        >
+          {t('confirmModal.back')}
         </Button>
       </ButtonContainer>
     </Modal>
