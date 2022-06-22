@@ -24,7 +24,7 @@ const InnerFormController = memo((props: IInnerFormControllerProps) => {
             : 'format'
           const options = option?.map((_props) => ({
             ..._props,
-            text: t(_props.i18nKey),
+            text: _props.text || t(_props.i18nKey) || '',
           }))
           return (
             <>

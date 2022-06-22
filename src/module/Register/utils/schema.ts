@@ -39,7 +39,7 @@ export interface ITemplateFormItem {
   fieldKey: ITemplateFormKey
   type: 'select_input' | 'text_input' | 'upload_input'
   style?: CSSProperties
-  option?: Array<{ value: string; i18nKey: string }>
+  option?: Array<{ value: string; i18nKey: string; text?: string }>
 }
 
 export const templateForm: Array<Array<ITemplateFormItem>> = [
