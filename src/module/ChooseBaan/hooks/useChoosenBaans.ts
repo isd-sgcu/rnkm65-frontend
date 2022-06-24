@@ -1,42 +1,79 @@
 import { IBaan, IShortBaan } from 'common/types/baan'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 
-interface Baan extends IBaan {
-  isSelected: boolean
-  order: number | null
+import { Baan, Filter } from './types'
+
+const initialFilter: Filter = {
+  search: '',
+  size: null,
 }
 
 export const useChoosenBaans = (
   initBaans: IBaan[],
   initChoosenBaans: IShortBaan[]
 ) => {
-  const [baans, setBaans] = useState<Baan[]>(
-    initBaans.map((v) => {
-      const order = initChoosenBaans.findIndex(({ id }) => id === v.id) + 1
-      return { ...v, isSelected: !!order, order: order || null }
-    })
-  )
   const [choosenBaans, setChoosenBaans] =
     useState<IShortBaan[]>(initChoosenBaans)
 
-  useEffect(() => {
-    setBaans((b) =>
-      b.map((v) => {
+  const baans = useMemo(
+    () =>
+      initBaans.map((v) => {
         const order = choosenBaans.findIndex(({ id }) => id === v.id) + 1
         return { ...v, isSelected: !!order, order: order || null }
-      })
-    )
+      }),
+    [choosenBaans, initBaans]
+  )
+
+  const [displayBaans, setDisplayBaans] = useState<Baan[]>(baans)
+
+  const [filter, setFilter] = useState<Filter>(initialFilter)
+
+  // get choosen baans from local storage on mount
+  useEffect(() => {
+    if (!window || choosenBaans.length !== 0) return
+    const StoredBaansString = window.localStorage.getItem('choosenBaans')
+    if (!StoredBaansString) return
+    const StoredBaans = JSON.parse(StoredBaansString) as IShortBaan[]
+    setChoosenBaans(StoredBaans)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  // save choosen baans to local storage
+  useEffect(() => {
+    window.localStorage.setItem('choosenBaans', JSON.stringify(choosenBaans))
   }, [choosenBaans])
 
-  const onChooseBaan = (id: number) => {
-    if (!choosenBaans.find((v) => v.id === id) && choosenBaans.length < 3) {
-      const val = baans.find((v) => v.id === id)
-      setChoosenBaans([...choosenBaans, val!])
-    }
+  useEffect(() => {
+    setDisplayBaans(baans.filter(({ name }) => name.includes(filter.search)))
+  }, [baans, filter])
+
+  const onChooseBaan = useCallback(
+    (id: number) => {
+      if (!choosenBaans.find((v) => v.id === id) && choosenBaans.length < 3) {
+        const val = baans.find((v) => v.id === id)
+        setChoosenBaans([...choosenBaans, val!])
+      }
+    },
+    [choosenBaans, baans]
+  )
+
+  const onRemoveBaan = useCallback(
+    (index: number) =>
+      setChoosenBaans((prev) => prev.filter((_, i) => i !== index)),
+    []
+  )
+
+  const onSearch = useCallback((val: string) => {
+    setFilter((prev) => ({ ...prev, search: val }))
+  }, [])
+
+  return {
+    baans,
+    choosenBaans,
+    onChooseBaan,
+    onRemoveBaan,
+    onSearch,
+    displayBaans,
+    filter,
   }
-
-  const onRemoveBaan = (index: number) =>
-    setChoosenBaans(choosenBaans.filter((_, i) => i !== index))
-
-  return { baans, choosenBaans, onChooseBaan, onRemoveBaan }
 }

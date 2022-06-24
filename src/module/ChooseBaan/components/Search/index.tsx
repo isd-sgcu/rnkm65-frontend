@@ -1,16 +1,26 @@
 import Button from 'common/components/Button'
 import InputField from 'common/components/Input'
 import Typography from 'common/components/Typography'
+import { FC, memo } from 'react'
 
 import { ButtonFilterContainer, SearchInputContainer } from './styled'
 
-const Search = () => (
+interface Props {
+  onSearch?: (value: string) => void
+  value?: string
+}
+
+const Search: FC<Props> = ({ onSearch, value }) => (
   <div>
     <SearchInputContainer>
       <Typography css={{ width: 'fit-content', whiteSpace: 'nowrap' }}>
         ค้นหาบ้าน
       </Typography>
-      <InputField placeholder="ค้นหาบ้าน" />
+      <InputField
+        onChange={(e) => onSearch?.(e.target.value)}
+        value={value}
+        placeholder="ค้นหาบ้าน"
+      />
     </SearchInputContainer>
     <ButtonFilterContainer>
       <Button>บ้านขนาดเล็ก (S)</Button>
@@ -21,4 +31,9 @@ const Search = () => (
   </div>
 )
 
-export default Search
+Search.defaultProps = {
+  onSearch: undefined,
+  value: undefined,
+}
+
+export default memo(Search)

@@ -1,7 +1,7 @@
 import Baan from 'common/components/Baan'
 import Typography from 'common/components/Typography'
 import Image from 'next/image'
-import React, { useRef } from 'react'
+import React, { memo, useRef } from 'react'
 import { FaInstagram } from 'react-icons/fa'
 import { RiFacebookCircleLine } from 'react-icons/ri'
 
@@ -31,7 +31,6 @@ const CardBaan = (props: ICardBaanProps) => {
   } = props
   const { handleRootMouseAway, handleRootMouseOver, pos, rootHover } =
     useDescriptionHooks(descriptionRef.current)
-
   return (
     <CardContainer
       ref={descriptionRef}
@@ -72,4 +71,4 @@ const CardBaan = (props: ICardBaanProps) => {
   )
 }
 
-export default React.memo(CardBaan)
+export default memo(CardBaan)

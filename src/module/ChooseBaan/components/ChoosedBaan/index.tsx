@@ -1,7 +1,7 @@
 import Baan from 'common/components/Baan'
 import Button from 'common/components/Button'
 import Link from 'next/link'
-import React from 'react'
+import { memo } from 'react'
 
 import {
   BaanContainer,
@@ -31,4 +31,4 @@ const ChoosedBaan = (props: ChoosedBannProps) => {
   )
 }
 
-export default React.memo(ChoosedBaan)
+export default memo(ChoosedBaan)

@@ -12,10 +12,14 @@ import { CardContainer, CatalogContainer, RootContainer } from './styled'
 
 const ChooseBaan: FC<{ data: IBaan[] }> = ({ data: initBaans }) => {
   const { state, handleClose } = useSwitch(false)
-  const { baans, choosenBaans, onChooseBaan, onRemoveBaan } = useChoosenBaans(
-    initBaans,
-    []
-  )
+  const {
+    displayBaans,
+    choosenBaans,
+    onChooseBaan,
+    onRemoveBaan,
+    onSearch,
+    filter,
+  } = useChoosenBaans(initBaans, [])
 
   return (
     <RootContainer>
@@ -34,13 +38,13 @@ const ChooseBaan: FC<{ data: IBaan[] }> = ({ data: initBaans }) => {
           baans={choosenBaans}
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
           handleDelete={onRemoveBaan}
-          handleConfirm={() => {}}
+          // handleConfirm={() => {}}
         />
       </div>
       <CatalogContainer>
-        <Search />
+        <Search onSearch={onSearch} value={filter.search} />
         <CardContainer>
-          {baans.map((baan) => (
+          {displayBaans.map((baan) => (
             <CardBaan
               onClick={onChooseBaan}
               id={baan.id}
