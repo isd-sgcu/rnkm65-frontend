@@ -135,6 +135,8 @@ export const templateForm: Array<Array<ITemplateFormItem>> = [
         gridColumn: '5 / 10',
       },
     },
+  ],
+  [
     {
       fieldKey: 'vaccineCertificateUrl',
       type: 'upload_input',
