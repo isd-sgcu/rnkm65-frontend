@@ -5,6 +5,7 @@ import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import { useSwitch } from 'common/hooks/useSwitch'
 import { useFormContext } from 'module/Register/hooks/useFormContext'
 import { memo } from 'react'
+import { Controller } from 'react-hook-form'
 
 import UploadModal from './components/UploadModal'
 import {
@@ -18,29 +19,35 @@ import {
 const UploadImage = memo(() => {
   const { state, handleOpen, handleClose } = useSwitch(false)
   const { t } = useSSRTranslation('register')
-  const { imgRequired, uploadImg } = useFormContext()
+  const { control } = useFormContext()
 
   return (
     <UploadImageContainer>
-      <div id="image_section">
-        {uploadImg ? (
-          <StyledImage
-            src={uploadImg}
-            layout="fixed"
-            width={200}
-            height={300}
-          />
-        ) : (
-          <FallbackImageContainer>
-            <FallbackImage error={imgRequired} />
-            {imgRequired && (
-              <Typography css={{ color: '$error' }}>
-                {t('error.requiredUploadImage')}
-              </Typography>
+      <Controller
+        control={control}
+        name="imageUrl"
+        render={({ field, fieldState }) => (
+          <div id="image_section">
+            {field.value ? (
+              <StyledImage
+                src={field.value}
+                layout="fixed"
+                width={200}
+                height={300}
+              />
+            ) : (
+              <FallbackImageContainer>
+                <FallbackImage error={!!fieldState.error} />
+                {!!fieldState.error && (
+                  <Typography css={{ color: '$error' }}>
+                    {t('error.requiredUploadImage')}
+                  </Typography>
+                )}
+              </FallbackImageContainer>
             )}
-          </FallbackImageContainer>
+          </div>
         )}
-      </div>
+      />
       <Button
         css={{ width: '100%', marginTop: '1rem' }}
         onClick={handleOpen}

@@ -22,7 +22,7 @@ const UploadModal = memo((props: IUploadModalProps) => {
 
   return (
     <>
-      <Typography color="blue" variant="h2">
+      <Typography color="blue" variant="h3" css={{ marginBottom: '0.5rem' }}>
         {t('uploadModal.title')}
       </Typography>
       <RootCropperContainer>

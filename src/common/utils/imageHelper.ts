@@ -1,4 +1,4 @@
-import { ICropMetadata } from '../types'
+import { ICropMetadata } from 'common/types/crop'
 
 const imageWidth = 200
 const imageHeight = 300
@@ -18,6 +18,12 @@ export const blobToDataURL = (blob: Blob): Promise<string> =>
     image.addEventListener('error', (error) => reject(error))
     image.readAsDataURL(blob)
   })
+
+export const b64ToBlob = async (dataURI: string) => {
+  const res = await fetch(dataURI)
+  const blob = await res.blob()
+  return blob
+}
 
 export const getCroppedImage = async (url: string, position: ICropMetadata) => {
   const currentImage = await createImage(url)

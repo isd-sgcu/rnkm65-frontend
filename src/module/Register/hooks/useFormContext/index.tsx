@@ -1,14 +1,9 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useSwitch } from 'common/hooks/useSwitch'
 import { IFormSchema } from 'common/types/form'
+import { b64ToBlob } from 'common/utils/imageHelper'
 import { formSchema, templateForm } from 'module/Register/utils/schema'
-import React, {
-  createContext,
-  useCallback,
-  useContext,
-  useMemo,
-  useState,
-} from 'react'
+import React, { createContext, useCallback, useContext, useMemo } from 'react'
 import { SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form'
 
 import { IFormContext } from './types'
@@ -17,48 +12,57 @@ const FormContext = createContext<IFormContext>({} as IFormContext)
 
 export const FormProvider = (props: React.PropsWithChildren<{}>) => {
   const { children } = props
-
-  const [uploadImg, setUploadImg] = useState('')
-  const [imgRequired, setImgRequired] = useState(false)
   const {
     state: openModal,
     handleOpen,
     handleClose: handleCloseModal,
   } = useSwitch(false)
-  const { register, handleSubmit, setError, control, getValues } =
+  const { register, handleSubmit, setError, control, getValues, setValue } =
     useForm<IFormSchema>({
       resolver: yupResolver(formSchema),
       shouldFocusError: false,
     })
 
-  const checkImageExisted = useCallback(() => {
-    if (uploadImg === '') {
-      const el = document.getElementById('image_section')
-      if (el) {
-        el.scrollIntoView()
-      }
+  const setUploadImg = useCallback(
+    (url: string) => {
+      setValue('imageUrl', url)
+    },
+    [setValue]
+  )
 
-      setImgRequired(true)
-      return false
-    }
-    setImgRequired(false)
-    return true
-  }, [uploadImg])
+  const generateFile = useCallback(async (uri: string, prefix: string) => {
+    const stIdx = uri.indexOf('/')
+    const edIdx = uri.indexOf(';')
+    const vaccineFileName = `${prefix}_.${uri.substring(stIdx + 1, edIdx)}`
 
-  const handleModalSubmit = useCallback(() => {
+    return new File([await b64ToBlob(uri)], vaccineFileName)
+  }, [])
+
+  const handleModalSubmit = useCallback(async () => {
     const data = getValues()
+
+    const vaccineFile = await generateFile(
+      data.vaccineCertificateUrl,
+      'vaccine'
+    )
+    const profileFile = await generateFile(data.imageUrl, 'image')
+
+    const formData = new FormData()
+    // Some put request
+    formData.append('image', vaccineFile)
+
+    // Some put request
+    formData.set('image', profileFile)
+
     console.log(data)
-  }, [getValues])
+  }, [generateFile, getValues])
 
   const handleSuccess: SubmitHandler<IFormSchema> = useCallback(() => {
-    if (!checkImageExisted()) return
     handleOpen()
-  }, [checkImageExisted, handleOpen])
+  }, [handleOpen])
 
   const handleFailed: SubmitErrorHandler<IFormSchema> = useCallback(
     (e) => {
-      const imageExisted = checkImageExisted()
-
       let foundFirst = true
 
       // Templates are 2D array
@@ -68,14 +72,14 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
             setError(
               val.fieldKey,
               { ...e[val.fieldKey] },
-              { shouldFocus: imageExisted && foundFirst }
+              { shouldFocus: foundFirst }
             )
             foundFirst = false
           }
         })
       })
     },
-    [checkImageExisted, setError]
+    [setError]
   )
 
   const handleClickSubmit = handleSubmit(handleSuccess, handleFailed)
@@ -83,11 +87,8 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
   const providerProps = useMemo(
     () => ({
       register,
-      uploadImg,
-      imgRequired,
       control,
       setUploadImg,
-      setImgRequired,
       handleModalSubmit,
       handleCloseModal,
       openModal,
@@ -95,11 +96,10 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
     [
       control,
       handleCloseModal,
+      setUploadImg,
       handleModalSubmit,
-      imgRequired,
       openModal,
       register,
-      uploadImg,
     ]
   )
 

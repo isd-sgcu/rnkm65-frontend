@@ -2,17 +2,25 @@
   "register": "ลงทะเบียน",
   "annoucement": "*กรุณาใส่ข้อมูลให้ครบทุกช่อง (หากไม่มีให้ใส่ -)",
   "submit": "ยืนยันข้อมูล",
-  "title": "คำนำหน้า",
-  "firstname": "ชื่อจริง",
-  "lastname": "นามสกุล",
-  "nickname": "ชื่อเล่น",
-  "phoneNumber": "เบอร์โทรศัพท์",
-  "facebook": "Facebook",
-  "lineID": "Line ID",
+  "title": {
+    "title": "คำนำหน้า",
+    "firstname": "ชื่อจริง",
+    "lastname": "นามสกุล",
+    "nickname": "ชื่อเล่น",
+    "phoneNumber": "เบอร์โทรศัพท์",
+    "facebook": "Facebook",
+    "lineID": "Line ID",
+    "email": "Email",
+    "allergyFood": "ข้อมูลการแพ้อาหาร",
+    "foodRestriction": "ข้อจำกัดด้านอาหาร",
+    "allergyMedicine": "ข้อมูลการแพ้ยา",
+    "disease": "โรคประจำตัว",
+    "vaccineCertificateUrl": "ใบรับรองการฉีดวัคซีน"
+  },
   "uploadModal": {
     "title": "แก้ไขรูปภาพ",
     "submit": "ยืนยัน",
-    "desc": "ใช้รูปที่เห็นใบหน้าชัดเจน | ไม่ควรใส่ฟิลเตอร์ | ขนาดไฟล์ไม่ควรเกิน 1 MB",
+    "desc": "ใช้รูปที่เห็นใบหน้าชัดเจน | ไม่ควรใส่ฟิลเตอร์ | ขนาดไฟล์สูงสุด 4 MB",
     "uploadFallback": "คลิกเพื่ออัพโหลดรูป",
     "dragDropFallback": "ปล่อยเพื่ออัพโหลด"
   },
@@ -20,21 +28,32 @@
   "Mr": "นาย",
   "Mrs": "นางสาว",
   "Ms": "นาง",
+  "upload": {
+    "noFileLabel": "ยังไม่ได้เลือกไฟล์",
+    "uploadBtnLabel": "อัพโหลดไฟล์",
+    "seeFileLabel": "ดู{{label}}"
+  },
   "error": {
     "requiredText": "กรุณากรอกข้อมูล",
     "formatText": "รูปแบบไม่ถูกต้อง",
     "requiredSelect": "กรุณาเลือก",
+    "requiredFile": "กรุณาอัพโหลดข้อมูล",
     "requiredUploadImage": "กรุณาอัพโหลดรูปภาพ",
     "fileLimit": "ไฟล์มีขนาดเกิน 4 MB",
     "invalidMime": "ไฟล์รูปภาพต้องเป็นประเภท PNG หรือ JPEG"
   },
   "placeholder": {
-    "firstname": "วัชราวลี",
-    "lastname": "โพธาราม",
-    "nickname": "ตาต้า",
+    "firstname": "Hello",
+    "lastname": "World",
+    "nickname": "Tata",
     "phoneNumber": "0222222222",
     "facebook": "Facebook",
-    "lineID": "Line ID"
+    "lineID": "Line ID",
+    "email": "welcomefair@welcomfair.com",
+    "allergyFood": "",
+    "foodRestriction": "",
+    "allergyMedicine": "",
+    "disease": ""
   },
   "confirmModal": {
     "title": "คุณต้องการยืนยันหรือไม่",

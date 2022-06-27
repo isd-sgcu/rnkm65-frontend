@@ -49,11 +49,9 @@ export const FallbackImageContainer = styled('div', {
 export const modalStyle = css({
   width: '100%',
   maxWidth: '700px',
-  paddingLeft: '4rem !important',
-  paddingRight: '4rem !important',
+  padding: '2rem !important',
 
   '@sm': {
-    paddingLeft: '2rem !important',
-    paddingRight: '2rem !important',
+    padding: '1rem @important',
   },
 })

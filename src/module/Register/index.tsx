@@ -1,6 +1,6 @@
 import Typography from 'common/components/Typography'
+import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import { NextPage } from 'next'
-import { useTranslation } from 'next-i18next'
 
 import ConfirmModal from './components/ConfirmModal'
 import FormUI from './components/FormUI'
@@ -14,7 +14,7 @@ import {
 } from './styled'
 
 const RegisterForm: NextPage = () => {
-  const { t } = useTranslation('register')
+  const { t } = useSSRTranslation('register')
 
   return (
     <FormProvider>

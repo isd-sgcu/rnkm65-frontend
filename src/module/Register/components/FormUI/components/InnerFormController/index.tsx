@@ -1,7 +1,8 @@
 import InputField from 'common/components/Input'
 import SelectField from 'common/components/Select'
+import UploadField from 'common/components/Upload'
+import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import { useFormContext } from 'module/Register/hooks/useFormContext'
-import { useTranslation } from 'next-i18next'
 import { memo } from 'react'
 import { Controller } from 'react-hook-form'
 
@@ -9,7 +10,7 @@ import { IInnerFormControllerProps } from './types'
 
 const InnerFormController = memo((props: IInnerFormControllerProps) => {
   const { fieldKey, type, option, style, translateNs } = props
-  const { t } = useTranslation(translateNs)
+  const { t } = useSSRTranslation(translateNs)
   const { control } = useFormContext()
 
   return (
@@ -23,14 +24,14 @@ const InnerFormController = memo((props: IInnerFormControllerProps) => {
             : 'format'
           const options = option?.map((_props) => ({
             ..._props,
-            text: t(_props.i18nKey),
+            text: _props.text || t(_props.i18nKey) || '',
           }))
           return (
             <>
               {type === 'text_input' && (
                 <InputField
                   error={!!error}
-                  title={t(fieldKey)}
+                  title={t(`title.${fieldKey}`)}
                   errorMessage={error ? t(`error.${errorType}Text`) : ''}
                   placeholder={t(`placeholder.${fieldKey}`)}
                   {...field}
@@ -39,10 +40,19 @@ const InnerFormController = memo((props: IInnerFormControllerProps) => {
               {type === 'select_input' && (
                 <SelectField
                   error={!!error}
-                  title={t(fieldKey)}
+                  title={t(`title.${fieldKey}`)}
                   option={options || []}
                   errorMessage={error ? t(`error.${errorType}Select`) : ''}
                   placeholder={t(`placeholder.${fieldKey}`)}
+                  {...field}
+                />
+              )}
+              {type === 'upload_input' && (
+                <UploadField
+                  error={!!error}
+                  title={t(`title.${fieldKey}`)}
+                  errorMessage={error ? t(`error.${errorType}File`) : ''}
+                  url={field.value}
                   {...field}
                 />
               )}

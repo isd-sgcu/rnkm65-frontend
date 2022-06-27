@@ -1,4 +1,4 @@
-import { ICropMetadata } from 'module/Register/components/UploadImage/types'
+import { ICropMetadata } from 'common/types/crop'
 import { Dispatch, SetStateAction } from 'react'
 
 export interface IImageCropperProps {
