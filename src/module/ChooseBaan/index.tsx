@@ -1,5 +1,4 @@
 import Typography from 'common/components/Typography'
-import { useSwitch } from 'common/hooks/useSwitch'
 import { IBaan } from 'common/types/baan'
 import React, { FC } from 'react'
 
@@ -7,11 +6,12 @@ import CardBaan from './components/CardBaan'
 import ChoosedBaan from './components/ChoosedBaan'
 import DescriptionModal from './components/DescriptionModal'
 import Search from './components/Search'
+import { useBaanModal } from './hooks/useBaanModal'
 import { useChoosenBaans } from './hooks/useChoosenBaans'
 import { CardContainer, CatalogContainer, RootContainer } from './styled'
 
 const ChooseBaan: FC<{ data: IBaan[] }> = ({ data: initBaans }) => {
-  const { state, handleClose } = useSwitch(false)
+  const { close, open, baan: cBaan } = useBaanModal()
   const {
     displayBaans,
     choosenBaans,
@@ -52,16 +52,17 @@ const ChooseBaan: FC<{ data: IBaan[] }> = ({ data: initBaans }) => {
               name={baan.name}
               imageUrl={baan.imageUrl}
               description={baan.description}
-              enableModal={baan.isSelected}
+              enableModal
               index={baan.order ?? undefined}
+              onClickModal={open(baan)}
             />
           ))}
         </CardContainer>
         <DescriptionModal
-          baanKey="1"
-          open={state}
-          onClose={handleClose}
-          onConfirm={() => {}}
+          baan={cBaan ?? undefined}
+          open={cBaan !== null}
+          onClose={close}
+          onConfirm={onChooseBaan}
         />
       </CatalogContainer>
     </RootContainer>

@@ -13,4 +13,6 @@ export interface IBaan extends IShortBaan {
   capacity: number
   size: BaanSize
   description: string
+  facebook: string
+  ig: string
 }

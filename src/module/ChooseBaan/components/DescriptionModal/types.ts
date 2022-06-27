@@ -1,6 +1,8 @@
+import { IBaan } from 'common/types/baan'
+
 export interface IDescriptionModal {
-  baanKey: string
+  baan?: IBaan
   open: boolean
-  onConfirm(key: string): void
+  onConfirm(id: number): void
   onClose(): void
 }

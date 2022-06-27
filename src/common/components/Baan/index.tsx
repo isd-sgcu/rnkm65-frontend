@@ -12,7 +12,8 @@ import {
 import { BaanProps } from './types'
 
 const Baan = (props: BaanProps) => {
-  const { name, imageUrl, index, textPosition, enableModal } = props
+  const { name, imageUrl, index, textPosition, enableModal, onClickModal } =
+    props
   return (
     <BaanContainer textPosition={textPosition}>
       <ImageContainer>
@@ -24,7 +25,7 @@ const Baan = (props: BaanProps) => {
           </IndexContainer>
         )}
 
-        <InformationContainer show={enableModal}>
+        <InformationContainer onClick={onClickModal} show={enableModal}>
           <Typography color="yellow">i</Typography>
         </InformationContainer>
         <StyledImage>

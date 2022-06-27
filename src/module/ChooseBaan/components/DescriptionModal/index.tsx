@@ -1,7 +1,6 @@
 import Button from 'common/components/Button'
 import Modal from 'common/components/Modal'
 import Typography from 'common/components/Typography'
-import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import Image from 'next/image'
 import { useCallback } from 'react'
 import { FaInstagram } from 'react-icons/fa'
@@ -17,40 +16,43 @@ import {
 import { IDescriptionModal } from './types'
 
 const DescriptionModal = (props: IDescriptionModal) => {
-  const { baanKey, open, onConfirm, onClose } = props
-  const { t } = useSSRTranslation('baanData')
+  const { baan, open, onConfirm, onClose } = props
 
-  const handleConfirm = useCallback(() => {
-    onConfirm(baanKey)
-    onClose()
-  }, [baanKey, onClose, onConfirm])
+  const handleConfirm = useCallback(
+    (id: number) => {
+      onConfirm(id)
+      onClose()
+    },
+    [onClose, onConfirm]
+  )
 
-  return (
+  return open ? (
     <Modal modalClassName={modalClassName()} open={open} onClose={onClose}>
       <RootDescription>
         <Image
-          src={t(`${baanKey}.imageUrl`)}
+          src={baan?.imageUrl ?? ''}
           width={90}
           height={90}
           layout="fixed"
           className={RoundedImage()}
         />
-        <Typography color="yellow">{t(`${baanKey}.title`)}</Typography>
-        <Typography color="yellow">{t(`${baanKey}.desc`)}</Typography>
+        <Typography color="yellow">{baan?.name ?? ''}</Typography>
+        <Typography color="yellow">{baan?.description ?? ''}</Typography>
         <SocialDescription>
           <RiFacebookCircleLine size={24} color="white" />
           <Typography css={{ color: '$white' }}>
-            {t(`${baanKey}.facebook`)}
+            {baan?.facebook ?? ''}
           </Typography>
         </SocialDescription>
         <SocialDescription>
           <FaInstagram size={24} color="white" />
-          <Typography css={{ color: '$white' }}>
-            {t(`${baanKey}.ig`)}
-          </Typography>
+          <Typography css={{ color: '$white' }}>{baan?.ig ?? ''}</Typography>
         </SocialDescription>
         <ButtonContainer>
-          <Button variant="primary" onClick={handleConfirm}>
+          <Button
+            variant="primary"
+            onClick={() => handleConfirm(baan?.id ?? 0)}
+          >
             เลือกบ้าน
           </Button>
           <Button variant="secondary" onClick={onClose}>
@@ -59,7 +61,7 @@ const DescriptionModal = (props: IDescriptionModal) => {
         </ButtonContainer>
       </RootDescription>
     </Modal>
-  )
+  ) : null
 }
 
 export default DescriptionModal
