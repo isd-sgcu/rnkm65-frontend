@@ -27,6 +27,11 @@
   "Mr": "Mr.",
   "Mrs": "Mrs.",
   "Ms": "Ms.",
+  "upload": {
+    "noFileLabel": "No file uploaded",
+    "uploadBtnLabel": "Upload file",
+    "seeFileLabel": "View {{label}}"
+  },
   "error": {
     "requiredText": "กรุณากรอกข้อมูล",
     "formatText": "รูปแบบไม่ถูกต้อง",

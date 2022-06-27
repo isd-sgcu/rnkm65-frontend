@@ -3,6 +3,7 @@ import Typography from 'common/components/Typography'
 import { UPLOAD_LIMIT } from 'common/constants/upload'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import { blobToDataURL } from 'common/utils/imageHelper'
+import { Trans } from 'next-i18next'
 import { ChangeEvent, FC, useCallback, useRef, useState } from 'react'
 
 import { InnerContainer, RequiredSymbol } from './styled'
@@ -74,7 +75,12 @@ const UploadField: FC<IUploadFieldProps> = (props) => {
             variant="body"
             color="confirm"
           >
-            ดูใบรับรอง
+            <Trans
+              i18nKey="register:upload:seeFileLabel"
+              values={{
+                label: title,
+              }}
+            />
           </Typography>
         </a>
       ) : (
@@ -82,16 +88,15 @@ const UploadField: FC<IUploadFieldProps> = (props) => {
           css={{
             marginRight: '1rem',
             display: 'inline',
-            // textDecoration: 'underline',
           }}
           variant="body"
         >
-          ยังไม่ได้เลือกไฟล์
+          {t('upload.noFileLabel')}
         </Typography>
       )}
 
       <Button onClick={onClickUpload} css={{ fontSize: '1rem' }} type="button">
-        อัพโหลดไฟล์
+        {t('upload.uploadBtnLabel')}
       </Button>
 
       <Typography color="error">

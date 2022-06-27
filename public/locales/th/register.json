@@ -28,6 +28,11 @@
   "Mr": "นาย",
   "Mrs": "นางสาว",
   "Ms": "นาง",
+  "upload": {
+    "noFileLabel": "ยังไม่ได้เลือกไฟล์",
+    "uploadBtnLabel": "อัพโหลดไฟล์",
+    "seeFileLabel": "ดู{{label}}"
+  },
   "error": {
     "requiredText": "กรุณากรอกข้อมูล",
     "formatText": "รูปแบบไม่ถูกต้อง",
