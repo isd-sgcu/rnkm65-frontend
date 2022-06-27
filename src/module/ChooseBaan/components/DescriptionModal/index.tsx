@@ -26,7 +26,7 @@ const DescriptionModal = (props: IDescriptionModal) => {
     [onClose, onConfirm]
   )
 
-  return open ? (
+  return (
     <Modal modalClassName={modalClassName()} open={open} onClose={onClose}>
       <RootDescription>
         <Image
@@ -61,7 +61,7 @@ const DescriptionModal = (props: IDescriptionModal) => {
         </ButtonContainer>
       </RootDescription>
     </Modal>
-  ) : null
+  )
 }
 
 export default DescriptionModal

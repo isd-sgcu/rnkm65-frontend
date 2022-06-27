@@ -11,7 +11,7 @@ import { useChoosenBaans } from './hooks/useChoosenBaans'
 import { CardContainer, CatalogContainer, RootContainer } from './styled'
 
 const ChooseBaan: FC<{ data: IBaan[] }> = ({ data: initBaans }) => {
-  const { close, open, baan: cBaan } = useBaanModal()
+  const { close, open, baan: cBaan, openModal } = useBaanModal()
   const {
     displayBaans,
     choosenBaans,
@@ -60,7 +60,7 @@ const ChooseBaan: FC<{ data: IBaan[] }> = ({ data: initBaans }) => {
         </CardContainer>
         <DescriptionModal
           baan={cBaan ?? undefined}
-          open={cBaan !== null}
+          open={openModal}
           onClose={close}
           onConfirm={onChooseBaan}
         />
