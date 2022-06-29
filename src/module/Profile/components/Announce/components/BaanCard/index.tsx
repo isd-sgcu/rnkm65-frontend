@@ -3,10 +3,11 @@ import Image from 'next/image'
 import { GrFacebook, GrInstagram } from 'react-icons/gr'
 
 import {
-  CardBodyContainer,
-  CardContactContainer,
+  CardBody,
+  CardBodyHeader,
+  CardContact,
   CardContainer,
-  CardImageContainer,
+  CardImage,
   CardTitle,
 } from './styled'
 import { IBaanCardProps } from './types'
@@ -20,12 +21,16 @@ const BaanCard: React.FC<IBaanCardProps> = (props) => {
           {baanName}
         </Typography>
       </CardTitle>
-      <CardBodyContainer>
-        <CardImageContainer>
-          <Image width="140" height="170" src="/tmp.jpg" alt="handle" />
-        </CardImageContainer>
-        <Typography>{description}</Typography>
-        <CardContactContainer>
+      <CardBody>
+        <CardBodyHeader>
+          <CardImage>
+            <Image width="140" height="170" src="/tmp.jpg" alt="handle" />
+          </CardImage>
+          <Typography css={{ wordBreak: 'break-word' }}>
+            {description}
+          </Typography>
+        </CardBodyHeader>
+        <CardContact>
           {facebook && (
             <Typography>
               <GrFacebook style={{ marginRight: '0.5rem' }} />
@@ -38,8 +43,8 @@ const BaanCard: React.FC<IBaanCardProps> = (props) => {
               {ig}
             </Typography>
           )}
-        </CardContactContainer>
-      </CardBodyContainer>
+        </CardContact>
+      </CardBody>
     </CardContainer>
   )
 }

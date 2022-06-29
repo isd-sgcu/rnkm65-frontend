@@ -14,24 +14,45 @@ export const CardTitle = styled('div', {
   padding: '0.5rem',
 })
 
-export const CardBodyContainer = styled('div', {
-  padding: '1rem',
+export const CardBody = styled('div', {
   display: 'flex',
+  padding: '1rem',
   flexDirection: 'column',
-  alignItems: 'center',
   rowGap: '1rem',
+  alignItems: 'center',
+
+  '@lg': {
+    alignItems: 'start',
+  },
 })
 
-export const CardImageContainer = styled('div', {
+export const CardImage = styled('div', {
   width: '140px',
   height: '170px',
   overflow: 'hidden',
   borderRadius: '1rem',
+
+  '@sm': {
+    width: '25vw',
+    height: '30vw',
+  },
 })
 
-export const CardContactContainer = styled('div', {
+export const CardContact = styled('div', {
   width: '100%',
   display: 'flex',
   flexDirection: 'column',
   gap: '0.5rem',
+})
+
+export const CardBodyHeader = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  gap: '1rem',
+  '@lg': {
+    flexDirection: 'row',
+    alignItems: 'start',
+    gap: '1rem',
+  },
 })

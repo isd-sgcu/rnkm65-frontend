@@ -31,7 +31,7 @@ const Profile = () => (
       <Announce
         baanName="บ้านทรายทองsssssssssss"
         imageUrl="/tmp.jpg"
-        description="asdasdasdas"
+        description="sadasdasdasaasdfsadfsadfasdsdasdasdas"
         facebook="asdasd"
         ig="asdasdsa"
       />
