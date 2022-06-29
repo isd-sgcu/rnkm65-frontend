@@ -11,23 +11,23 @@ const AnnounceText: React.FC<IAnnounceTextProps> = (props) => {
 
   return (
     <AnnounceTextContainer>
-      <Typography variant="h1">{t('announce.congrats')}</Typography>
+      <Typography variant="h2">{t('announce.congrats')}</Typography>
       <JoinBaanContainer>
-        <Typography css={{ '@md': { textAlign: 'center' } }} variant="h2">
+        <Typography css={{ '@md': { textAlign: 'center' } }} variant="h3">
           <Trans
             i18nKey="profile:announce.join"
             components={[
               <Typography
                 css={{ display: 'inline' }}
                 color="pink"
-                variant="h2"
+                variant="h3"
               />,
             ]}
             values={{ baan: baanName }}
           />
         </Typography>
       </JoinBaanContainer>
-      <Typography variant="subhead2">{t('announce.comingSoon')}</Typography>
+      <Typography variant="subhead3">{t('announce.comingSoon')}</Typography>
     </AnnounceTextContainer>
   )
 }

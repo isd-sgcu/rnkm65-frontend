@@ -32,14 +32,14 @@ const BaanCard: React.FC<IBaanCardProps> = (props) => {
         </CardBodyHeader>
         <CardContact>
           {facebook && (
-            <Typography>
-              <GrFacebook style={{ marginRight: '0.5rem' }} />
+            <Typography css={{ display: 'flex', alignItems: 'center' }}>
+              <GrFacebook size={20} style={{ marginRight: '0.5rem' }} />
               {facebook}
             </Typography>
           )}
           {ig && (
-            <Typography>
-              <GrInstagram style={{ marginRight: '0.5rem' }} />
+            <Typography css={{ display: 'flex', alignItems: 'center' }}>
+              <GrInstagram size={20} style={{ marginRight: '0.5rem' }} />
               {ig}
             </Typography>
           )}
