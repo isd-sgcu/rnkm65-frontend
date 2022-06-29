@@ -1,6 +1,5 @@
 import React from 'react'
 
-import Announce from './components/Announce'
 import ChoosedBaan from './components/ChoosedBaan'
 import GroupMember from './components/GroupMember'
 import InviteLink from './components/InviteLink'
@@ -28,13 +27,6 @@ const Profile = () => (
         width: '100%',
       }}
     >
-      <Announce
-        baanName="บ้านทรายทองsssssssssss"
-        imageUrl="/tmp.jpg"
-        description="sadasdasdasaasdfsadfsadfasdsdasdasdas"
-        facebook="asdasd"
-        ig="asdasdsa"
-      />
       <InviteLink inviteLink="www.youtube.com/watch?v=dQw4w9WgXcQ" />
       <GroupContainer>
         <GroupMember members={[tmpUser, tmpUser]} />
