@@ -9,8 +9,8 @@ export const CardContainer = styled('div', {
 
 export const CardTitle = styled('div', {
   backgroundColor: '$blue',
-  borderTopLeftRadius: '1rem',
-  borderTopRightRadius: '1rem',
+  borderTopLeftRadius: '0.75rem',
+  borderTopRightRadius: '0.75rem',
   padding: '0.5rem',
 })
 

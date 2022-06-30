@@ -3,6 +3,7 @@ import { styled } from 'config/stitches.config'
 export const AnnounceTextContainer = styled('div', {
   display: 'flex',
   flexDirection: 'column',
+  flex: 1,
   gap: '0.5rem',
 
   '@md': {

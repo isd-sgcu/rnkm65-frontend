@@ -24,7 +24,13 @@ const BaanCard: React.FC<IBaanCardProps> = (props) => {
       <CardBody>
         <CardBodyHeader>
           <CardImage>
-            <Image width="140" height="170" src="/tmp.jpg" alt="handle" />
+            <Image
+              objectFit="cover"
+              width="140"
+              height="170"
+              src="/tmp.jpg"
+              alt="handle"
+            />
           </CardImage>
           <Typography css={{ wordBreak: 'break-word' }}>
             {description}
