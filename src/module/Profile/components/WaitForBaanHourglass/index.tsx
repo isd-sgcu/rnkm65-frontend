@@ -1,10 +1,9 @@
-import Button from 'common/components/Button'
 import Typography from 'common/components/Typography'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
-import React from 'react'
-import { IoCheckmarkCircleOutline } from 'react-icons/io5'
 import Image from 'next/image'
-import { HourglassContainer, Container, TextContainer } from './styled'
+import React from 'react'
+
+import { Container, HourglassContainer, TextContainer } from './styled'
 
 const ChoosedBaan = () => {
   const { t } = useSSRTranslation('profile')
