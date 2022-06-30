@@ -6,7 +6,7 @@ import React from 'react'
 import { Container, Description, ImageContainer } from './styled'
 
 const Waiting = () => {
-  const { t } = useTranslation('waiting')
+  const { t } = useTranslation('profile')
 
   return (
     <Container>
@@ -15,11 +15,11 @@ const Waiting = () => {
       </ImageContainer>
       <div>
         <Typography variant="h1" color="blue" style={{ textAlign: 'center' }}>
-          {t('title')}
+          {t('waiting.title')}
         </Typography>
         <Description color="blue">
           <Trans
-            i18nKey="waiting:description"
+            i18nKey="profile:waiting:description"
             components={[
               <span style={{ fontWeight: 700 }} />,
               // eslint-disable-next-line jsx-a11y/anchor-has-content
