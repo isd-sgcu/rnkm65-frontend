@@ -26,8 +26,8 @@ const BaanCard: React.FC<IBaanCardProps> = (props) => {
           <CardImage>
             <Image
               objectFit="cover"
-              width="140"
-              height="170"
+              width="180"
+              height="180"
               src="/tmp.jpg"
               alt="handle"
             />

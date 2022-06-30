@@ -27,13 +27,13 @@ export const CardBody = styled('div', {
 })
 
 export const CardImage = styled('div', {
-  width: '140px',
-  height: '170px',
+  width: '180px',
+  height: '180px',
   overflow: 'hidden',
   borderRadius: '1rem',
 
   '@sm': {
-    width: '25vw',
+    width: '30vw',
     height: '30vw',
   },
 })
