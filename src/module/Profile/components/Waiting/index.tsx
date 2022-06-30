@@ -14,7 +14,7 @@ const Waiting = () => {
         <Image src="/hourglass.svg" alt="hourglass" layout="fill" />
       </ImageContainer>
       <div>
-        <Typography variant="h1" color="blue" style={{ textAlign: 'center' }}>
+        <Typography variant="h1" color="blue" css={{ textAlign: 'center' }}>
           {t('waiting.title')}
         </Typography>
         <Description color="blue">
