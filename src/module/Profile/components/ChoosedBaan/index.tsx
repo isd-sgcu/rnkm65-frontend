@@ -9,7 +9,7 @@ import { BaansContainer, ConfirmText, Container } from './styled'
 import { ChoosedBaanProps } from './types'
 
 const ChoosedBaan = (props: ChoosedBaanProps) => {
-  const { baans } = props
+  const { baans, notChangeable } = props
   const { t } = useSSRTranslation('profile')
   const choosed = baans.length !== 0
 
@@ -37,7 +37,7 @@ const ChoosedBaan = (props: ChoosedBaanProps) => {
         </Typography>
       )}
 
-      {choosed && (
+      {!notChangeable && choosed && (
         <ConfirmText variant="description">
           <IoCheckmarkCircleOutline
             style={{ marginRight: '1px', fontSize: '1rem' }}
@@ -46,10 +46,12 @@ const ChoosedBaan = (props: ChoosedBaanProps) => {
         </ConfirmText>
       )}
 
-      <Button css={{ marginTop: '15px' }} disabled={!isKing}>
-        {choosed ? t('changeBaan') : t('chooseBaan')}
-      </Button>
-      {!isKing && (
+      {!notChangeable && (
+        <Button css={{ marginTop: '15px' }} disabled={!isKing}>
+          {choosed ? t('changeBaan') : t('chooseBaan')}
+        </Button>
+      )}
+      {!notChangeable && !isKing && (
         <Typography
           variant="description"
           color="error"
