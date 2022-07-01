@@ -12,6 +12,8 @@ const SSOCallback = () => {
       // TODO: exchange ticket for token and user profile from backend
       localStorage.setItem('token', '42')
       router.replace('/')
+    } else {
+      router.replace('/login')
     }
   }, [router])
 
