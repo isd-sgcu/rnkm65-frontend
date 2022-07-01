@@ -1,4 +1,8 @@
-export const REMEMBER_LOCALE =
-  process.env.NEXT_PUBLIC_DISABLE_REMEMBER_LOCALE !== 'true'
+import getConfigs from 'next/config'
 
-export const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || ''
+const { publicRuntimeConfig } = getConfigs()
+
+export const REMEMBER_LOCALE =
+  publicRuntimeConfig.env.DISABLE_REMEMBER_LOCALE !== 'true'
+
+export const API_BASE_URL = publicRuntimeConfig.env.API_BASE_URL || ''
