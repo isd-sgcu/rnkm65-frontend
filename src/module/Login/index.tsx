@@ -1,5 +1,6 @@
 import Button from 'common/components/Button'
 import Checkbox from 'common/components/Checkbox'
+import Loading from 'common/components/Loading'
 import Typography from 'common/components/Typography'
 import { useAuth } from 'common/contexts/AuthContext'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
@@ -10,6 +11,7 @@ import { ContentContainer, RootContainer } from './styled'
 
 const LoginPage = () => {
   const router = useRouter()
+  const [loading, setLoading] = useState(true)
   const [isConfirm, setConfirm] = useState(false)
   const { t } = useSSRTranslation('login')
   const { login } = useAuth()
@@ -19,14 +21,26 @@ const LoginPage = () => {
   }
 
   useEffect(() => {
+    const { ticket } = router.query
+    if (ticket) {
+      // TODO: exchange ticket for token and user profile from backend
+      localStorage.setItem('token', '42')
+      router.replace('/')
+      return
+    }
+
     const token = localStorage.getItem('token')
     if (token) {
       router.replace('/')
+      return
     }
+
+    setLoading(false)
   }, [router])
 
   return (
     <RootContainer>
+      {loading && <Loading />}
       <Typography color="blue" variant="h2">
         {t('title')}
       </Typography>

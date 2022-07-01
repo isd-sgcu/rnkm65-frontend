@@ -42,7 +42,7 @@ const AuthProvider: React.FC = ({ children }) => {
   }, [])
 
   const login = useCallback(() => {
-    window.location.href = `${CHULA_SSO_SERVER_ADDRESS}/login?service=${APP_URL}/auth`
+    window.location.href = `${CHULA_SSO_SERVER_ADDRESS}/login?service=${APP_URL}/login`
   }, [])
 
   const logout = useCallback(() => {
