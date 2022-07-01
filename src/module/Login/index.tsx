@@ -16,11 +16,11 @@ const LoginPage = () => {
 
   return (
     <RootContainer>
-      <Typography color="blue" variant="h2">
+      <Typography color="new-primary" variant="h2">
         {t('title')}
       </Typography>
       <ContentContainer>
-        <Typography color="blue" css={{ textAlign: 'center' }}>
+        <Typography color="new-primary" css={{ textAlign: 'center' }}>
           {t('desc')}
         </Typography>
         <Checkbox

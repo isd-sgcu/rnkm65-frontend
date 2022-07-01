@@ -25,7 +25,7 @@ const JoinGroupModal = (props: JoinGroupModalProps) => {
       <Title variant="h4">
         <Trans
           i18nKey="profile:wantToJoinGroupOrNot"
-          components={[<InlineTypography color="pink" variant="h4" />]}
+          components={[<InlineTypography color="new-primary" variant="h4" />]}
           values={{
             king: `<br />${king.firstname} ${king.lastname}`,
           }}
@@ -35,7 +35,9 @@ const JoinGroupModal = (props: JoinGroupModalProps) => {
         <Message variant="body">
           <Trans
             i18nKey="profile:areAlsoGroupMember"
-            components={[<InlineTypography color="pink" variant="body" />]}
+            components={[
+              <InlineTypography color="new-primary" variant="body" />,
+            ]}
             values={{
               members: members
                 .map((member) => `${member.firstname} ${member.lastname}`)

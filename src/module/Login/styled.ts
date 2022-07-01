@@ -16,9 +16,8 @@ export const ContentContainer = styled('div', {
   flexDirection: 'column',
   alignItems: 'center',
 
-  backgroundColor: '$purple400',
+  backgroundColor: '$new-gray',
   padding: '2rem',
   gap: '1.5rem',
-  boxShadow: '4px 4px 4px rgba(36, 6, 104, 0.5)',
   borderRadius: '10px',
 })

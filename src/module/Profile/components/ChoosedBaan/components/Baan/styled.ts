@@ -18,13 +18,13 @@ export const ImageContainer = styled('div', {
   position: 'relative',
   borderRadius: '10px',
   padding: '3px',
-  backgroundColor: '$pink500',
+  backgroundColor: '$new-secondary',
   marginBottom: '10px',
 })
 
 export const IndexContainer = styled('div', {
   borderRadius: '8px 0 8px 0',
-  backgroundColor: '$pink500',
+  backgroundColor: '$new-secondary',
   position: 'absolute',
   top: 0,
   left: 0,

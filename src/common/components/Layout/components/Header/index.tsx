@@ -10,9 +10,7 @@ import { HeaderContainer, Logo, LogoContainer, Menu } from './styled'
 const Header = () => (
   <HeaderContainer>
     <LogoContainer>
-      <Logo>
-        <Image src="/logo.svg" layout="fill" />
-      </Logo>
+      <Logo>{/* <Image src="/logo.svg" layout="fill" /> */}</Logo>
     </LogoContainer>
     <Hidden variant="mddown">
       <ReportIssueButton />
