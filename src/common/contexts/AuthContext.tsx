@@ -1,4 +1,4 @@
-import { APP_URL, CHULA_SSO_SERVER_ADDRESS } from 'common/constants/auth'
+import { APP_BASE_URL, SSO_BASE_URL } from 'config/env'
 import { UserDTO } from 'dto/userDTO'
 import { useRouter } from 'next/router'
 import {
@@ -42,7 +42,7 @@ const AuthProvider: React.FC = ({ children }) => {
   }, [])
 
   const login = useCallback(() => {
-    window.location.href = `${CHULA_SSO_SERVER_ADDRESS}/login?service=${APP_URL}/login`
+    window.location.href = `${SSO_BASE_URL}/login?service=${APP_BASE_URL}/login`
   }, [])
 
   const logout = useCallback(() => {
