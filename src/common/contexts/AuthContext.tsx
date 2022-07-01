@@ -24,12 +24,12 @@ export const useAuth = () => useContext(AuthContext)
 
 const AuthProvider: React.FC = ({ children }) => {
   const router = useRouter()
-  const [isReady, setIsReady] = useState<boolean>(false)
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false)
+  const [isReady, setIsReady] = useState(false)
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [user, setUser] = useState<UserDTO>()
 
   useEffect(() => {
-    const fetchLocalStorage = async () => {
+    const fetchStoredToken = async () => {
       const token = localStorage.getItem('token')
       if (token) {
         // TODO: exchange token for user profile from backend
@@ -38,7 +38,7 @@ const AuthProvider: React.FC = ({ children }) => {
       }
       setIsReady(true)
     }
-    fetchLocalStorage()
+    fetchStoredToken()
   }, [])
 
   const login = useCallback(() => {
