@@ -47,6 +47,7 @@ const AuthProvider: React.FC = ({ children }) => {
 
   const logout = useCallback(() => {
     localStorage.clear()
+    setIsAuthenticated(false)
     router.replace('/login')
   }, [router])
 
