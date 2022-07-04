@@ -11,7 +11,7 @@ export const SelectElement = styled('select', {
   width: '100%',
   padding: '5px 10px',
   borderRadius: '4px',
-  backgroundColor: '$purple400',
+  backgroundColor: '$new-gray',
   fontSize: '1rem',
   appearance: 'none',
   '-webkit-appearance': 'none',

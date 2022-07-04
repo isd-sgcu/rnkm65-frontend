@@ -26,8 +26,8 @@ export const StyledButton = styled('button', {
   variants: {
     selected: {
       true: {
-        color: '$yellow',
-        backgroundColor: '$pink500',
+        color: '$white',
+        backgroundColor: '$new-secondary',
       },
       false: {
         color: '$blue',

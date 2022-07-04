@@ -19,7 +19,7 @@ const RegisterForm: NextPage = () => {
   return (
     <FormProvider>
       <RootContainer>
-        <Typography color="blue" variant="h1">
+        <Typography color="new-primary" variant="h1">
           {t('register')}
         </Typography>
         <RegisterContainer>

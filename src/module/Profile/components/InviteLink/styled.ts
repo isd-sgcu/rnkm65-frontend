@@ -2,7 +2,7 @@ import Typography from 'common/components/Typography'
 import { styled } from 'config/stitches.config'
 
 export const Container = styled('div', {
-  backgroundColor: '$purple600',
+  backgroundColor: '$new-primary',
   border: 'solid 2px $blue',
   borderRadius: '11px',
   padding: '30px 25px',
@@ -45,15 +45,15 @@ export const Tooltip = styled(Typography, {
 })
 
 export const LinkContainer = styled('div', {
-  backgroundColor: '$yellow',
-  border: 'solid 2px $blue',
-  borderRadius: '11px',
+  backgroundColor: '$white',
+  border: 'solid 2px $new-primary',
+  borderRadius: '36px',
   flexGrow: 1,
   display: 'flex',
   alignItems: 'center',
   cursor: 'pointer',
   position: 'relative',
-  padding: '5px 4px 5px 7px',
+  padding: '5px 25px',
 
   '&:hover': {
     [`& ${Tooltip}`]: {
@@ -67,8 +67,8 @@ export const LinkContainer = styled('div', {
 })
 
 export const CopyIcon = styled('div', {
-  color: '$blue',
-  backgroundColor: '$pink500',
+  color: '$white',
+  backgroundColor: '$new-secondary',
   height: '36px',
   width: '36px',
   borderRadius: '100px',

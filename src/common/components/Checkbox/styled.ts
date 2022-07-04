@@ -17,7 +17,7 @@ export const Checkmark = styled('span', {
   height: '25px',
   border: '1px solid $black',
   borderRadius: '4px',
-  backgroundColor: '$purple400',
+  backgroundColor: '$white',
   transition: 'all 0.2s ease-in-out',
 
   '@sm': {

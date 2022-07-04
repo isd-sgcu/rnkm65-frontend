@@ -2,7 +2,7 @@ import { css, styled } from 'config/stitches.config'
 import Image from 'next/image'
 
 export const FallbackImage = styled('div', {
-  backgroundColor: '$purple500',
+  backgroundColor: '$new-gray',
   width: '200px',
   height: '300px',
   borderRadius: '1rem',
