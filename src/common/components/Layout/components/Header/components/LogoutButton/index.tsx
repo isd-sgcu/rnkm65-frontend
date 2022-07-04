@@ -7,7 +7,11 @@ import { StyledButton } from './styled'
 
 const LogoutButton = () => {
   const { t } = useSSRTranslation()
-  const { logout } = useAuth()
+  const { logout, isAuthenticated } = useAuth()
+
+  if (!isAuthenticated) {
+    return null
+  }
 
   return (
     <StyledButton onClick={logout}>

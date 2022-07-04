@@ -13,7 +13,15 @@ function withGuard<T>(Component: React.FC<T>): React.FC<T> {
     }
 
     if (!isAuthenticated) {
+      localStorage.setItem('redirectPath', router.asPath)
       router.replace('/login')
+      return <Loading />
+    }
+
+    const redirectPath = localStorage.getItem('redirectPath')
+    if (redirectPath) {
+      localStorage.removeItem('redirectPath')
+      router.replace(redirectPath)
       return <Loading />
     }
 
