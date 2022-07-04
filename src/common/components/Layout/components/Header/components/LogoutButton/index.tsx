@@ -1,4 +1,5 @@
 import Typography from 'common/components/Typography'
+import { useAuth } from 'common/contexts/AuthContext'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import React from 'react'
 
@@ -6,9 +7,11 @@ import { StyledButton } from './styled'
 
 const LogoutButton = () => {
   const { t } = useSSRTranslation()
+  const { logout } = useAuth()
+
   return (
-    <StyledButton>
-      <Typography variant="subhead3"> {t('logout')}</Typography>
+    <StyledButton onClick={logout}>
+      <Typography variant="subhead3">{t('logout')}</Typography>
     </StyledButton>
   )
 }
