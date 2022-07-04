@@ -1,3 +1,4 @@
+import withGuard from 'common/guards/withGuard'
 import Profile from 'module/Profile'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
@@ -10,4 +11,4 @@ export async function getServerSideProps({ locale }: { locale: string }) {
   }
 }
 
-export default Profile
+export default withGuard(Profile)
