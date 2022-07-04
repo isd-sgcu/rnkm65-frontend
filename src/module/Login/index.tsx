@@ -58,6 +58,7 @@ const LoginPage = () => {
           checked={isConfirm}
           onChange={handleToggle}
           label={t('checkbox')}
+          autoComplete="off"
         />
         <Button disabled={!isConfirm} onClick={login}>
           {t('loginBtn')}
