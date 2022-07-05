@@ -1,4 +1,5 @@
 import InputField from 'common/components/Input'
+import { RadioField } from 'common/components/Radio'
 import SelectField from 'common/components/Select'
 import UploadField from 'common/components/Upload'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
@@ -53,6 +54,15 @@ const InnerFormController = memo((props: IInnerFormControllerProps) => {
                   title={t(`title.${fieldKey}`)}
                   errorMessage={error ? t(`error.${errorType}File`) : ''}
                   url={field.value}
+                  {...field}
+                />
+              )}
+              {type === 'radio_input' && (
+                <RadioField
+                  error={!!error}
+                  title={t(`title.${fieldKey}`)}
+                  errorMessage={error ? t(`error.${errorType}Select`) : ''}
+                  option={options || []}
                   {...field}
                 />
               )}

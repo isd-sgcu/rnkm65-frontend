@@ -15,7 +15,8 @@
     "foodRestriction": "ข้อจำกัดด้านอาหาร",
     "allergyMedicine": "ข้อมูลการแพ้ยา",
     "disease": "โรคประจำตัว",
-    "vaccineCertificateUrl": "ใบรับรองการฉีดวัคซีน"
+    "vaccineCertificateUrl": "ใบรับรองการฉีดวัคซีน",
+    "joinActivity": "กิจกรรมการจัดบ้านรับเพื่อน"
   },
   "uploadModal": {
     "title": "แก้ไขรูปภาพ",
@@ -28,6 +29,8 @@
   "Mr": "นาย",
   "Mrs": "นางสาว",
   "Ms": "นาง",
+  "wantToJoin": "ต้องการเข้าร่วม",
+  "dontWantToJoin": "ไม่ต้องการเข้าร่วม",
   "upload": {
     "noFileLabel": "ยังไม่ได้เลือกไฟล์",
     "uploadBtnLabel": "อัพโหลดไฟล์",

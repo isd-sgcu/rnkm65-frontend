@@ -14,7 +14,8 @@
     "foodRestriction": "Food Limitation",
     "allergyMedicine": "Drug Allergy",
     "disease": "Congenital Disease",
-    "vaccineCertificateUrl": "Vaccine Certificate"
+    "vaccineCertificateUrl": "Vaccine Certificate",
+    "joinActivity": "กิจกรรมการจัดบ้านรับเพื่อน"
   },
   "uploadModal": {
     "title": "แก้ไขรูปภาพ",
@@ -27,6 +28,8 @@
   "Mr": "Mr.",
   "Mrs": "Mrs.",
   "Ms": "Ms.",
+  "wantToJoin": "ต้องการเข้าร่วม",
+  "dontWantToJoin": "ไม่ต้องการเข้าร่วม",
   "upload": {
     "noFileLabel": "No file uploaded",
     "uploadBtnLabel": "Upload file",

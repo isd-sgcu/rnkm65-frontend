@@ -31,13 +31,14 @@ export const formSchema = yup
     allergyMedicine: yup.string().required('Required'),
     vaccineCertificateUrl: yup.string().required('Required'),
     disease: yup.string().required('Required'),
+    joinActivity: yup.string(),
   })
   .required()
 
 export type ITemplateFormKey = keyof IFormSchema
 export interface ITemplateFormItem {
   fieldKey: ITemplateFormKey
-  type: 'select_input' | 'text_input' | 'upload_input'
+  type: 'select_input' | 'text_input' | 'upload_input' | 'radio_input'
   style?: CSSProperties
   option?: Array<{ value: string; i18nKey: string; text?: string }>
 }
@@ -143,6 +144,25 @@ export const templateForm: Array<Array<ITemplateFormItem>> = [
       style: {
         gridColumn: '1 / 10',
       },
+    },
+  ],
+  [
+    {
+      fieldKey: 'joinActivity',
+      type: 'radio_input',
+      style: {
+        gridColumn: '1 / 10',
+      },
+      option: [
+        {
+          i18nKey: 'wantToJoin',
+          value: '1',
+        },
+        {
+          i18nKey: 'dontWantToJoin',
+          value: '0',
+        },
+      ],
     },
   ],
 ]
