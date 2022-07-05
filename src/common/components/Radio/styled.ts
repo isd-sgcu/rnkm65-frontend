@@ -55,6 +55,11 @@ export const RadioLabel = styled('label', {
   position: 'relative',
   paddingLeft: '1.75rem',
   cursor: 'pointer',
+  fontFamily: '$FCSubjectRounded',
+  fontSize: '1rem',
+  '@sm': {
+    fontSize: '0.75rem',
+  },
 
   [`&:hover .${RadioInput.className} ~ .${Checkmark.className}`]: {
     borderWidth: '2px',
