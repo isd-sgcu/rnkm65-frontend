@@ -22,12 +22,12 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 
 **Note:** This project uses Next.js [Runtime Configuration](https://nextjs.org/docs/api-reference/next.config.js/runtime-configuration).
 
-| Name                    | Description                                             | Default value                  |
-| ----------------------- | ------------------------------------------------------- | ------------------------------ |
-| DISABLE_REMEMBER_LOCALE | Disable remeber locale of i18n                          | false                          |
-| API_BASE_URL            | Backend API Base URL (must not contain trailling slash) | https://pdev.freshersfairs.com |
-| APP_BASE_URL            | Application Base URL (must not contain trailling slash) | http://localhost:3000          |
-| SSO_BASE_URL            | Chula SSO Base URL (must not contain trailling slash)   | http://sso.cucheck.in          |
+| Name                    | Description                                             | Default value                                                                |
+| ----------------------- | ------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| DISABLE_REMEMBER_LOCALE | Disable remeber locale of i18n                          | false                                                                        |
+| API_BASE_URL            | Backend API Base URL (must not contain trailling slash) | https://pbeta.freshersfairs.com                                              |
+| APP_BASE_URL            | Application Base URL (must not contain trailling slash) | https://cerulean-sable-b1ec76.netlify.app (Our deploy preview of dev branch) |
+| SSO_BASE_URL            | Chula SSO Base URL (must not contain trailling slash)   | http://sso.cucheck.in                                                        |
 
 ## Learn More
 

@@ -11,7 +11,7 @@ export const Spinner = styled('div', {
   width: '3rem',
   height: '3rem',
   border: '2px solid white',
-  borderTopColor: '$pink500',
+  borderTopColor: '$new-primary',
   borderRadius: '50%',
   animation: `${spinner} 0.6s linear infinite`,
 })

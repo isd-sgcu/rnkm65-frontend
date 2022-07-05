@@ -4,6 +4,7 @@ import Loading from 'common/components/Loading'
 import Typography from 'common/components/Typography'
 import { useAuth } from 'common/contexts/AuthContext'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
+import { exchangeTicketForToken } from 'common/utils/auth'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
@@ -14,29 +15,35 @@ const LoginPage = () => {
   const [loading, setLoading] = useState(true)
   const [isConfirm, setConfirm] = useState(false)
   const { t } = useSSRTranslation('login')
-  const { login } = useAuth()
+  const { login, refreshContext } = useAuth()
 
   const handleToggle = () => {
     setConfirm(!isConfirm)
   }
 
   useEffect(() => {
-    const { ticket } = router.query
-    if (ticket) {
-      // TODO: exchange ticket for token and user profile from backend
-      localStorage.setItem('token', '42')
-      router.replace('/')
-      return
-    }
+    const attemptAuthentication = async () => {
+      const { ticket } = router.query
+      if (ticket) {
+        const token = await exchangeTicketForToken(ticket.toString())
+        if (!token) {
+          // TODO: Handle error
+        }
 
-    const token = localStorage.getItem('token')
-    if (token) {
-      router.replace('/')
-      return
-    }
+        localStorage.setItem('token', JSON.stringify(token))
+        refreshContext()
+      }
 
-    setLoading(false)
-  }, [router])
+      const token = localStorage.getItem('token')
+      if (token) {
+        router.replace('/')
+        return
+      }
+
+      setLoading(false)
+    }
+    attemptAuthentication()
+  }, [router, refreshContext])
 
   return (
     <RootContainer>
@@ -51,6 +58,7 @@ const LoginPage = () => {
           checked={isConfirm}
           onChange={handleToggle}
           label={t('checkbox')}
+          autoComplete="off"
         />
         <Button disabled={!isConfirm} onClick={login}>
           {t('loginBtn')}
