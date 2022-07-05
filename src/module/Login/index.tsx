@@ -47,6 +47,7 @@ const LoginPage = () => {
 
   return (
     <RootContainer>
+      {loading && <Loading />}
       <Typography color="new-primary" variant="h2">
         {t('title')}
       </Typography>
