@@ -2,7 +2,7 @@ import React from 'react'
 import {} from 'react-hook-form'
 
 import Typography from '../Typography'
-import { RadioOption, RadioRootContainer } from './styled'
+import { Checkmark, RadioInput, RadioLabel, RadioRootContainer } from './styled'
 import { IRadioFieldProps } from './types'
 
 export const RadioField = React.forwardRef<HTMLInputElement, IRadioFieldProps>(
@@ -16,10 +16,16 @@ export const RadioField = React.forwardRef<HTMLInputElement, IRadioFieldProps>(
         </Typography>
         <RadioRootContainer orientation={orientation}>
           {option.map((val) => (
-            <RadioOption key={`${title}-radio-choice-${val.text}`}>
-              <input {...remain} type="radio" ref={ref} value={val.value} />
-              <Typography>{val.text}</Typography>
-            </RadioOption>
+            <RadioLabel key={`${title}-radio-choice-${val.text}`}>
+              {val.text}
+              <RadioInput
+                {...remain}
+                type="radio"
+                ref={ref}
+                value={val.value}
+              />
+              <Checkmark />
+            </RadioLabel>
           ))}
         </RadioRootContainer>
       </div>

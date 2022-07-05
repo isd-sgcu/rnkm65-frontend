@@ -20,9 +20,43 @@ export const RadioRootContainer = styled('div', {
   },
 })
 
-export const RadioOption = styled('div', {
-  display: 'flex',
-  gap: '0.5rem',
+export const Checkmark = styled('div', {
+  position: 'absolute',
+  top: '50%',
+  left: 0,
+  height: '20px',
+  width: '20px',
+  border: '1px solid $new-secondary',
+  borderRadius: '50%',
+  transform: 'translateY(-50%)',
 })
 
-export const RadioInput = styled('input', {})
+export const RadioInput = styled('input', {
+  cursor: 'pointer',
+  appearance: 'none',
+  opacity: 0,
+  position: 'relative',
+
+  [`&:checked ~ .${Checkmark.className}:after`]: {
+    content: ' ',
+    position: 'absolute',
+    width: '10px',
+    height: '10px',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    borderRadius: '50%',
+    backgroundColor: '$new-secondary',
+  },
+})
+
+export const RadioLabel = styled('label', {
+  display: 'flex',
+  position: 'relative',
+  paddingLeft: '1.75rem',
+  cursor: 'pointer',
+
+  [`&:hover .${RadioInput.className} ~ .${Checkmark.className}`]: {
+    borderWidth: '2px',
+  },
+})
