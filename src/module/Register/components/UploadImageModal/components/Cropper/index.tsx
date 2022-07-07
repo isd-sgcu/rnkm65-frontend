@@ -16,7 +16,7 @@ import {
 import { IImageCropperProps } from './types'
 
 const ImageCropper = memo((props: IImageCropperProps) => {
-  const { img, setImg, setCropMetaData } = props
+  const { img, setImg, setCropMetaData, i18nPrefix = '' } = props
   const { t } = useSSRTranslation('register')
   const inputRef = useRef<HTMLInputElement | null>(null)
   const {
@@ -47,8 +47,8 @@ const ImageCropper = memo((props: IImageCropperProps) => {
         <InputFileContainer>
           <Typography variant="subhead3">
             {isDrag
-              ? t('uploadModal.dragDropFallback')
-              : t('uploadModal.uploadFallback')}
+              ? t(`${i18nPrefix}.dragDropFallback`)
+              : t(`${i18nPrefix}.uploadFallback`)}
           </Typography>
           <InputFileZone
             role="none"

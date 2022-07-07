@@ -4,7 +4,7 @@ import { NextPage } from 'next'
 
 import ConfirmModal from './components/ConfirmModal'
 import FormUI from './components/FormUI'
-import UploadImage from './components/UploadImage'
+import UploadImage from './components/Image'
 import { FormProvider } from './hooks/useFormContext'
 import {
   RegisterContainer,
