@@ -3,7 +3,7 @@ import Typography from 'common/components/Typography'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import { memo, useMemo } from 'react'
 
-import ImageCropper from '../Cropper'
+import ImageCropper from './components/Cropper'
 import { useImageHooks } from './hooks/useImageHooks'
 import {
   DescriptionList,

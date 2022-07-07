@@ -7,7 +7,7 @@ import { useFormContext } from 'module/Register/hooks/useFormContext'
 import { memo } from 'react'
 import { Controller } from 'react-hook-form'
 
-import UploadModal from './components/UploadModal'
+import UploadModal from '../UploadModal'
 import {
   FallbackImage,
   FallbackImageContainer,
