@@ -1,10 +1,10 @@
-import { ICropMetadata } from 'common/types/crop'
+import { ICropMetadata, IImageSize } from 'common/types/crop'
 import { getCroppedImage } from 'common/utils/imageHelper'
 import { useCallback, useState } from 'react'
 
 export const useImageHooks = (
   handleClose: () => void,
-  onSubmit?: (x: string) => void
+  onSubmit?: (x: string, options?: IImageSize) => void | Promise<void>
 ) => {
   const [cropMetadata, setCropMetadata] = useState<ICropMetadata>({
     x: 0,
@@ -17,7 +17,9 @@ export const useImageHooks = (
 
   const handleSubmitImage = useCallback(async () => {
     const croppedImage = await getCroppedImage(tmpImg, cropMetadata)
-    onSubmit?.(croppedImage)
+    const { width, height } = cropMetadata
+
+    await onSubmit?.(croppedImage, { width, height })
 
     handleClose()
   }, [cropMetadata, handleClose, onSubmit, tmpImg])
