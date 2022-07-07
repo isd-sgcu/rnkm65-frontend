@@ -1,10 +1,10 @@
 import Hidden from 'common/components/Hidden'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
-import Image from 'next/image'
 import React, { useCallback } from 'react'
 
 import LogoutButton from './components/LogoutButton'
 import LogoutIcon from './components/LogoutIcon'
+import MobileIcon from './components/MobileIcon'
 import TextButton from './components/TextButton'
 import ToggleLanguageButton from './components/ToggleLanguageButton'
 import { HeaderContainer, IconContainer, Logo, LogoContainer } from './styled'
@@ -46,18 +46,11 @@ const Header = () => {
       {/* Mobile */}
       <Hidden variant="xlup">
         <IconContainer>
-          <Image
+          <MobileIcon
             src="/how-to-register.svg"
-            height={24}
-            width={24}
             onClick={handleHowToRegister}
           />
-          <Image
-            src="/report-issue.svg"
-            height={24}
-            width={24}
-            onClick={handleReportIssue}
-          />
+          <MobileIcon src="/report-issue.svg" onClick={handleReportIssue} />
           <LogoutIcon />
         </IconContainer>
       </Hidden>

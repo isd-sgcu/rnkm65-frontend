@@ -1,6 +1,7 @@
 import { useAuth } from 'common/contexts/AuthContext'
-import Image from 'next/image'
 import React from 'react'
+
+import MobileIcon from '../MobileIcon'
 
 const LogoutIcon = () => {
   const { logout, isAuthenticated } = useAuth()
@@ -9,7 +10,7 @@ const LogoutIcon = () => {
     return null
   }
 
-  return <Image src="/logout.svg" height={24} width={24} onClick={logout} />
+  return <MobileIcon src="/logout.svg" onClick={logout} />
 }
 
 export default LogoutIcon
