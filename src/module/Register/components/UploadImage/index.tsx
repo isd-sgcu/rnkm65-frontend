@@ -31,7 +31,8 @@ const UploadImage = memo(() => {
             {field.value ? (
               <StyledImage
                 src={field.value}
-                layout="fixed"
+                // TODO
+                // layout="fixed"
                 width={200}
                 height={300}
               />
