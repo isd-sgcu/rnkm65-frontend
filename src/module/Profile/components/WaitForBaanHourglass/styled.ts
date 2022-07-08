@@ -1,7 +1,7 @@
 import { styled } from 'config/stitches.config'
 
 export const Container = styled('div', {
-  background: '$purple400',
+  background: '$new-gray',
   border: '2px solid $blue',
   borderRadius: '20px',
   textAlign: 'left',
@@ -23,6 +23,9 @@ export const HourglassContainer = styled('div', {
   marginTop: '-20px',
   marginBottom: '-20px',
   position: 'relative',
+  '@lg': {
+    width: '250px',
+  },
 })
 
 export const TextContainer = styled('div', {

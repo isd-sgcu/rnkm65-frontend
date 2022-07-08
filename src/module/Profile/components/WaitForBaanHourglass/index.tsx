@@ -14,7 +14,7 @@ const ChoosedBaan = () => {
         <Image src="/processingHourglass.svg" alt="hourglass" layout="fill" />
       </HourglassContainer>
       <TextContainer>
-        <Typography variant="h3" color="pink">
+        <Typography variant="h3" color="new-primary">
           {t('processingBaan')}
         </Typography>
         <Typography variant="subhead2" color="blue">

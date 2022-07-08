@@ -19,20 +19,20 @@
       />
       <path
         d="M131.619 236.127L189.514 268.514L73.723 268.514L131.619 236.127Z"
-        fill="#DC28A3"
+        fill="rgb(174, 28, 93)"
       />
       <path
         fill-rule="evenodd"
         clip-rule="evenodd"
         d="M73.7112 94.0039H189.055V111.088H189.514L136.326 140.842V176.176H127.852V141.368L73.9094 111.193H73.7112V94.0039Z"
-        fill="#DC28A3"
+        fill="rgb(174, 28, 93)"
       />
       <rect
         x="127.382"
         y="179.528"
         width="8.47423"
         height="3.7732"
-        fill="#DC28A3"
+        fill="rgb(174, 28, 93)"
       >
         <animate
           attributeName="fill-opacity"
@@ -48,7 +48,7 @@
         y="186.655"
         width="8.47423"
         height="3.7732"
-        fill="#DC28A3"
+        fill="rgb(174, 28, 93)"
       >
         <animate
           attributeName="fill-opacity"
@@ -64,7 +64,7 @@
         y="193.782"
         width="8.47423"
         height="3.7732"
-        fill="#DC28A3"
+        fill="rgb(174, 28, 93)"
       >
         <animate
           attributeName="fill-opacity"
