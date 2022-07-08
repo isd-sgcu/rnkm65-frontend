@@ -17,8 +17,14 @@ const UploadModal = memo((props: IUploadModalProps) => {
   const { t } = useSSRTranslation('register')
   const { handleClose, onSubmit, i18nPrefix = '', aspectRatio } = props
   const uploadAgainBtnRef = useRef<() => void | null>(null)
-  const { tmpImg, setTmpImg, setCropMetadata, handleSubmitImage, innerError } =
-    useImageHooks(handleClose, onSubmit)
+  const {
+    tmpImg,
+    setTmpImg,
+    setCropMetadata,
+    handleSubmitImage,
+    innerError,
+    resetError,
+  } = useImageHooks(handleClose, onSubmit)
 
   const description = useMemo(
     () => t(`${i18nPrefix}.desc`).split(' | '),
@@ -54,9 +60,10 @@ const UploadModal = memo((props: IUploadModalProps) => {
           <Button
             css={{ fontSize: '1.25rem' }}
             variant="primary"
-            onClick={() =>
-              uploadAgainBtnRef.current && uploadAgainBtnRef.current()
-            }
+            onClick={() => {
+              if (uploadAgainBtnRef.current) uploadAgainBtnRef.current()
+              resetError()
+            }}
             type="button"
           >
             อัพโหลดใหม่

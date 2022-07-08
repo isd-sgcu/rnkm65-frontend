@@ -16,6 +16,10 @@ export const useImageHooks = (
   const [tmpImg, setTmpImg] = useState<string>('')
   const [innerError, setInnerError] = useState<string>('')
 
+  const resetError = useCallback(() => {
+    setInnerError('')
+  }, [])
+
   const handleSubmitImage = useCallback(async () => {
     setInnerError('')
     try {
@@ -30,5 +34,12 @@ export const useImageHooks = (
     }
   }, [cropMetadata, handleClose, onSubmit, tmpImg])
 
-  return { tmpImg, setTmpImg, handleSubmitImage, setCropMetadata, innerError }
+  return {
+    tmpImg,
+    setTmpImg,
+    handleSubmitImage,
+    setCropMetadata,
+    innerError,
+    resetError,
+  }
 }
