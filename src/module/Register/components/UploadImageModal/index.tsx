@@ -14,7 +14,7 @@ import { IUploadModalProps } from './types'
 
 const UploadModal = memo((props: IUploadModalProps) => {
   const { t } = useSSRTranslation('register')
-  const { handleClose, onSubmit, i18nPrefix = '' } = props
+  const { handleClose, onSubmit, i18nPrefix = '', aspectRatio } = props
   const { tmpImg, setTmpImg, setCropMetadata, handleSubmitImage } =
     useImageHooks(handleClose, onSubmit)
 
@@ -31,6 +31,7 @@ const UploadModal = memo((props: IUploadModalProps) => {
       <RootCropperContainer>
         <ImageCropper
           img={tmpImg}
+          aspectRatio={aspectRatio}
           i18nPrefix={i18nPrefix}
           setImg={setTmpImg}
           setCropMetaData={setCropMetadata}

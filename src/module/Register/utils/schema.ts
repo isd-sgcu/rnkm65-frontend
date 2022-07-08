@@ -2,6 +2,8 @@ import { IFormSchema } from 'common/types/form'
 import { CSSProperties } from 'react'
 import * as yup from 'yup'
 
+import VaccineInput from '../components/VaccineInput'
+
 // TODO: Form validation for new field
 export const formSchema = yup
   .object()
@@ -38,9 +40,15 @@ export const formSchema = yup
 export type ITemplateFormKey = keyof IFormSchema
 export interface ITemplateFormItem {
   fieldKey: ITemplateFormKey
-  type: 'select_input' | 'text_input' | 'upload_input' | 'radio_input'
+  type:
+    | 'select_input'
+    | 'text_input'
+    | 'upload_input'
+    | 'radio_input'
+    | 'custom'
   style?: CSSProperties
   option?: Array<{ value: string; i18nKey: string; text?: string }>
+  Component?: React.ComponentType<any>
 }
 
 export const templateForm: Array<Array<ITemplateFormItem>> = [
@@ -140,7 +148,8 @@ export const templateForm: Array<Array<ITemplateFormItem>> = [
   [
     {
       fieldKey: 'vaccineCertificateUrl',
-      type: 'upload_input',
+      type: 'custom',
+      Component: VaccineInput,
       style: {
         gridColumn: '1 / 10',
       },

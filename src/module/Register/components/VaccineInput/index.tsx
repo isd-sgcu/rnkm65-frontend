@@ -1,5 +1,70 @@
+import Button from 'common/components/Button'
+import Modal from 'common/components/Modal'
+import Typography from 'common/components/Typography'
+import useSSRTranslation from 'common/hooks/useSSRTranslation'
+import { useSwitch } from 'common/hooks/useSwitch'
+import { IImageSize } from 'common/types/crop'
+import { createImage } from 'common/utils/imageHelper'
+import jsQR from 'jsqr'
 import React from 'react'
 
-const VaccineInput = () => <>sd</>
+import UploadModal from '../UploadImageModal'
+import { modalStyle, RequiredSymbol } from './styled'
+
+const VaccineInput = (props: any) => {
+  const { title, required } = props
+  const { t } = useSSRTranslation('register')
+  const { state, handleOpen, handleClose } = useSwitch(false)
+
+  const onSubmit = async (image: string, metadata?: IImageSize) => {
+    if (!metadata) return
+    const img = await createImage(image)
+    const canvas = document.createElement('canvas')
+    const context = canvas.getContext('2d')!
+    canvas.width = img.width
+    canvas.height = img.height
+    context.drawImage(img, 0, 0)
+    const myData = context.getImageData(
+      0,
+      0,
+      metadata.width,
+      metadata.height
+    ).data
+
+    const result = jsQR(myData, metadata.width, metadata.height)
+    if (!result) return
+
+    console.log(result.data)
+  }
+
+  return (
+    <>
+      <div style={{ display: 'flex', alignItems: 'center', columnGap: '1rem' }}>
+        <Typography variant="body" css={{ fontWeight: 'bold' }}>
+          {title || ''}
+          {required && <RequiredSymbol>*</RequiredSymbol>}
+        </Typography>
+
+        <Button
+          onClick={handleOpen}
+          css={{ fontSize: '1rem' }}
+          variant="secondary"
+          type="button"
+        >
+          {t('upload.uploadBtnLabel')}
+        </Button>
+      </div>
+
+      <Modal modalClassName={modalStyle()} open={state} onClose={handleClose}>
+        <UploadModal
+          aspectRatio={1}
+          i18nPrefix="vaccineModal"
+          handleClose={handleClose}
+          onSubmit={onSubmit}
+        />
+      </Modal>
+    </>
+  )
+}
 
 export default VaccineInput

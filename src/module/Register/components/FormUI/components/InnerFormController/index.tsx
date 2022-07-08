@@ -10,7 +10,7 @@ import { Controller } from 'react-hook-form'
 import { IInnerFormControllerProps } from './types'
 
 const InnerFormController = memo((props: IInnerFormControllerProps) => {
-  const { fieldKey, type, option, style, translateNs } = props
+  const { fieldKey, type, option, style, translateNs, Component } = props
   const { t } = useSSRTranslation(translateNs)
   const { control } = useFormContext()
 
@@ -65,6 +65,9 @@ const InnerFormController = memo((props: IInnerFormControllerProps) => {
                   option={options || []}
                   {...field}
                 />
+              )}
+              {type === 'custom' && Component && (
+                <Component title={t(`title.${fieldKey}`)} />
               )}
             </>
           )

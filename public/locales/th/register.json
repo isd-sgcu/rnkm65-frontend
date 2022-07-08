@@ -15,7 +15,7 @@
     "foodRestriction": "ข้อจำกัดด้านอาหาร",
     "allergyMedicine": "ข้อมูลการแพ้ยา",
     "disease": "โรคประจำตัว",
-    "vaccineCertificateUrl": "ใบรับรองการฉีดวัคซีน",
+    "vaccineCertificateUrl": "ส่งใบรับรองการฉีดวัคซีน: ",
     "joinActivity": "กิจกรรมการจัดบ้านรับเพื่อน"
   },
   "uploadModal": {
@@ -23,6 +23,13 @@
     "submit": "ยืนยัน",
     "desc": "ใช้รูปที่เห็นใบหน้าชัดเจน | ไม่ควรใส่ฟิลเตอร์ | ขนาดไฟล์สูงสุด 4 MB",
     "uploadFallback": "คลิกเพื่ออัพโหลดรูป",
+    "dragDropFallback": "ปล่อยเพื่ออัพโหลด"
+  },
+  "vaccineModal": {
+    "title": "อัพโหลด QR code",
+    "submit": "ยืนยัน",
+    "desc": "ใช้ QR code จาก Digital Health Pass | เปิดการแสดงข้อมูลส่วนบุคคล | ขนาดไฟล์สูงสุด 4 MB",
+    "uploadFallback": "คลิกเพื่ออัพโหลด",
     "dragDropFallback": "ปล่อยเพื่ออัพโหลด"
   },
   "uploadBtn": "อัพโหลดรูป",

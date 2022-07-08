@@ -14,7 +14,7 @@
     "foodRestriction": "Food Limitation",
     "allergyMedicine": "Drug Allergy",
     "disease": "Congenital Disease",
-    "vaccineCertificateUrl": "Vaccine Certificate",
+    "vaccineCertificateUrl": "Send Vaccine Certificate: ",
     "joinActivity": "กิจกรรมการจัดบ้านรับเพื่อน"
   },
   "uploadModal": {
@@ -23,6 +23,13 @@
     "desc": "ใช้รูปที่เห็นใบหน้าชัดเจน | ไม่ควรใส่ฟิลเตอร์ | ขนาดไฟล์สูงสุด 4 MB",
     "uploadFallback": "คลิกเพื่ออัพโหลดรูป",
     "dragDropFallback": "ปล่อยเพื่ออัพโหลด"
+  },
+  "vaccineModal": {
+    "title": "Upload QR code",
+    "submit": "Submit",
+    "desc": "ใช้ QR code จาก Digital Health Pass | เปิดการแสดงข้อมูลส่วนบุคคล | ขนาดไฟล์สูงสุด 4 MB",
+    "uploadFallback": "Click to upload",
+    "dragDropFallback": "Drop to upload"
   },
   "uploadBtn": "อัพโหลดรูป",
   "Mr": "Mr.",

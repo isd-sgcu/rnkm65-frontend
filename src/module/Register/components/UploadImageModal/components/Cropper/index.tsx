@@ -16,7 +16,7 @@ import {
 import { IImageCropperProps } from './types'
 
 const ImageCropper = memo((props: IImageCropperProps) => {
-  const { img, setImg, setCropMetaData, i18nPrefix = '' } = props
+  const { img, setImg, setCropMetaData, i18nPrefix = '', aspectRatio } = props
   const { t } = useSSRTranslation('register')
   const inputRef = useRef<HTMLInputElement | null>(null)
   const {
@@ -71,7 +71,7 @@ const ImageCropper = memo((props: IImageCropperProps) => {
               crop={crop}
               zoom={zoom}
               cropShape="rect"
-              aspect={2 / 3}
+              aspect={aspectRatio || 2 / 3}
               minZoom={1}
               maxZoom={9}
               zoomSpeed={0.5}
