@@ -76,10 +76,16 @@ export const Typography = styled('div', {
         color: '$yellow',
       },
       error: {
-        color: '$error',
+        color: '$new-error',
       },
       confirm: {
-        color: '$confirm',
+        color: '$new-success',
+      },
+      white: {
+        color: '$white',
+      },
+      'new-primary': {
+        color: '$new-primary',
       },
     },
   },

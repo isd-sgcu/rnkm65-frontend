@@ -1,7 +1,7 @@
 import { styled } from 'config/stitches.config'
 
 export const InputBase = styled('input', {
-  backgroundColor: '$purple400',
+  backgroundColor: '$new-gray',
   fontFamily: '$FCSubjectRounded',
   borderRadius: '4px',
   padding: '5px 8px',
@@ -35,5 +35,5 @@ export const InputFieldContainer = styled('div', {
 })
 
 export const RequiredSymbol = styled('span', {
-  color: '$error',
+  color: '$new-secondary',
 })

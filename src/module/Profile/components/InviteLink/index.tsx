@@ -12,7 +12,7 @@ const InviteLink = (props: InviteLinkProps) => {
   const { handleCopyToClipboard, tooltipText } = useCopyToClipboard()
   return (
     <Container>
-      <Typography variant="h3" color="yellow">
+      <Typography variant="h3" color="white">
         Invite Link
       </Typography>
       <CopyToClipboard onCopy={handleCopyToClipboard} text={inviteLink}>
@@ -20,7 +20,7 @@ const InviteLink = (props: InviteLinkProps) => {
           <Tooltip>{tooltipText}</Tooltip>
           <Typography
             variant="body"
-            color="blue"
+            color="new-primary"
             style={{ flexGrow: 1, wordBreak: 'break-all' }}
           >
             {inviteLink}

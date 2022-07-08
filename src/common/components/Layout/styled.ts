@@ -1,7 +1,7 @@
 import { styled } from 'config/stitches.config'
 
 export const LayoutContainer = styled('div', {
-  backgroundColor: '$yellow',
+  backgroundColor: '$white',
   display: 'flex',
   flexDirection: 'column',
   minHeight: '100vh',

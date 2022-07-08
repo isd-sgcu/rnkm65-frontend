@@ -16,7 +16,7 @@ export const DeleteMemberButton = styled('div', {
   top: '-13px',
   right: '-13px',
   zIndex: 1,
-  backgroundColor: '$error',
+  backgroundColor: '$new-error',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',

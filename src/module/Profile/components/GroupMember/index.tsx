@@ -17,7 +17,7 @@ const GroupMember = (props: GroupMemberProps) => {
 
   return (
     <Container>
-      <Typography variant="h3" color="pink">
+      <Typography variant="h3" color="new-primary">
         {t('member')} ({members.length}/3)
       </Typography>
       <MembersContainer>
@@ -33,7 +33,7 @@ const GroupMember = (props: GroupMemberProps) => {
           <Placeholder color="#DC28A3" backgroundColor="#240668" />
         )}
         {members.length <= 2 && (
-          <Placeholder color="#B660B5" backgroundColor="#FFEDB3" />
+          <Placeholder color="#AE1C5D" backgroundColor="#fff" />
         )}
       </MembersContainer>
       {!isKing && (

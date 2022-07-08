@@ -95,7 +95,12 @@ const UploadField: FC<IUploadFieldProps> = (props) => {
         </Typography>
       )}
 
-      <Button onClick={onClickUpload} css={{ fontSize: '1rem' }} type="button">
+      <Button
+        onClick={onClickUpload}
+        css={{ fontSize: '1rem' }}
+        variant="secondary"
+        type="button"
+      >
         {t('upload.uploadBtnLabel')}
       </Button>
 

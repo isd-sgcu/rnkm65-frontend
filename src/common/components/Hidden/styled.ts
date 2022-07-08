@@ -3,6 +3,12 @@ import { styled } from 'config/stitches.config'
 export const Hidden = styled('div', {
   variants: {
     variant: {
+      xlup: {
+        display: 'none',
+        '@lg': {
+          display: 'block',
+        },
+      },
       lgup: {
         display: 'none',
         '@md': {
@@ -21,7 +27,11 @@ export const Hidden = styled('div', {
           display: 'block',
         },
       },
-
+      lgdown: {
+        '@lg': {
+          display: 'none',
+        },
+      },
       mddown: {
         '@md': {
           display: 'none',

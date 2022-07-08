@@ -52,6 +52,7 @@ const UploadImage = memo(() => {
         css={{ width: '100%', marginTop: '1rem' }}
         onClick={handleOpen}
         type="button"
+        variant="secondary"
       >
         {t('uploadBtn')}
       </Button>

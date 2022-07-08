@@ -1,4 +1,16 @@
-export const REMEMBER_LOCALE =
-  process.env.NEXT_PUBLIC_DISABLE_REMEMBER_LOCALE !== 'true'
+import getConfigs from 'next/config'
 
-export const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || ''
+const { publicRuntimeConfig } = getConfigs()
+
+export const REMEMBER_LOCALE =
+  publicRuntimeConfig.env.DISABLE_REMEMBER_LOCALE !== 'true'
+
+export const API_BASE_URL =
+  publicRuntimeConfig.env.API_BASE_URL || 'https://pbeta.freshersfairs.com'
+
+export const APP_BASE_URL =
+  publicRuntimeConfig.env.APP_BASE_URL ||
+  'https://cerulean-sable-b1ec76.netlify.app'
+
+export const SSO_BASE_URL =
+  publicRuntimeConfig.env.SSO_BASE_URL || 'http://sso.cucheck.in'

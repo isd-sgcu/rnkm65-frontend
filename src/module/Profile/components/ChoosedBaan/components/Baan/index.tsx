@@ -16,7 +16,7 @@ const Baan = (props: BaanProps) => {
     <BaanContainer>
       <ImageContainer>
         <IndexContainer>
-          <Typography variant="h4" color="yellow">
+          <Typography variant="h4" color="white">
             {index}
           </Typography>
         </IndexContainer>

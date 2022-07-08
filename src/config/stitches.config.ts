@@ -17,6 +17,16 @@ export const { styled, getCssText, keyframes, globalCss, css } = createStitches(
         gray: '#A6A6A6',
         black: '#000000',
         white: '#FFFFFF',
+        // NEW CI
+        'new-primary': '#26294C',
+        'new-primary-active': '#161833',
+        'new-primary-disabled': '#898CB0',
+        'new-gray': '#ECEDF2',
+        'new-secondary': '#AE1C5D',
+        'new-success': '#27AE60',
+        'new-error': '#BB0B0B',
+        'new-error-active': '#A30B0B',
+        'new-footer': '#101223',
       },
       fonts: {
         FCSubjectRounded: "'FCSubjectRounded', sans-serif",

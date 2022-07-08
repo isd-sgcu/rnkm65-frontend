@@ -59,7 +59,7 @@ export const BackdropContainer = styled('div', {
 })
 
 export const ModalContainer = styled('div', {
-  backgroundColor: '$purple400',
+  backgroundColor: '$white',
   height: 'fit-content',
   padding: '2rem',
   display: 'flex',
