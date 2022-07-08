@@ -1,11 +1,12 @@
 import Button from 'common/components/Button'
 import Typography from 'common/components/Typography'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
-import { memo, useMemo } from 'react'
+import { memo, useMemo, useRef } from 'react'
 
 import ImageCropper from './components/Cropper'
 import { useImageHooks } from './hooks/useImageHooks'
 import {
+  ActionButtonContainer,
   DescriptionList,
   RootCropperContainer,
   UnorderedListContainer,
@@ -15,7 +16,8 @@ import { IUploadModalProps } from './types'
 const UploadModal = memo((props: IUploadModalProps) => {
   const { t } = useSSRTranslation('register')
   const { handleClose, onSubmit, i18nPrefix = '', aspectRatio } = props
-  const { tmpImg, setTmpImg, setCropMetadata, handleSubmitImage } =
+  const uploadAgainBtnRef = useRef<() => void | null>(null)
+  const { tmpImg, setTmpImg, setCropMetadata, handleSubmitImage, innerError } =
     useImageHooks(handleClose, onSubmit)
 
   const description = useMemo(
@@ -31,6 +33,7 @@ const UploadModal = memo((props: IUploadModalProps) => {
       <RootCropperContainer>
         <ImageCropper
           img={tmpImg}
+          ref={uploadAgainBtnRef}
           aspectRatio={aspectRatio}
           i18nPrefix={i18nPrefix}
           setImg={setTmpImg}
@@ -47,9 +50,34 @@ const UploadModal = memo((props: IUploadModalProps) => {
         </UnorderedListContainer>
       </RootCropperContainer>
       {tmpImg && (
-        <Button onClick={handleSubmitImage} type="button">
-          {t(`${i18nPrefix}.submit`)}
-        </Button>
+        <ActionButtonContainer>
+          <Button
+            css={{ fontSize: '1.25rem' }}
+            variant="primary"
+            onClick={() =>
+              uploadAgainBtnRef.current && uploadAgainBtnRef.current()
+            }
+            type="button"
+          >
+            อัพโหลดใหม่
+          </Button>
+          <Button
+            variant="secondary"
+            css={{ fontSize: '1.25rem' }}
+            onClick={handleSubmitImage}
+            type="button"
+          >
+            {t(`${i18nPrefix}.submit`)}
+          </Button>
+        </ActionButtonContainer>
+      )}
+      {innerError && (
+        <Typography
+          css={{ fontWeight: 'bold', marginTop: '0.75rem' }}
+          color="error"
+        >
+          {innerError}
+        </Typography>
       )}
     </>
   )

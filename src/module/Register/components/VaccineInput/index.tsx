@@ -4,38 +4,32 @@ import Typography from 'common/components/Typography'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import { useSwitch } from 'common/hooks/useSwitch'
 import { IImageSize } from 'common/types/crop'
-import { createImage } from 'common/utils/imageHelper'
+import { getImageData } from 'common/utils/imageHelper'
 import jsQR from 'jsqr'
-import React from 'react'
+import React, { useCallback } from 'react'
 
 import UploadModal from '../UploadImageModal'
 import { modalStyle, RequiredSymbol } from './styled'
+import { IVaccineInputProps } from './types'
 
-const VaccineInput = (props: any) => {
+const VaccineInput = (props: IVaccineInputProps) => {
   const { title, required } = props
   const { t } = useSSRTranslation('register')
   const { state, handleOpen, handleClose } = useSwitch(false)
 
-  const onSubmit = async (image: string, metadata?: IImageSize) => {
-    if (!metadata) return
-    const img = await createImage(image)
-    const canvas = document.createElement('canvas')
-    const context = canvas.getContext('2d')!
-    canvas.width = img.width
-    canvas.height = img.height
-    context.drawImage(img, 0, 0)
-    const myData = context.getImageData(
-      0,
-      0,
-      metadata.width,
-      metadata.height
-    ).data
+  const onSubmit = useCallback(
+    async (image: string, metadata?: IImageSize) => {
+      if (!metadata) return
 
-    const result = jsQR(myData, metadata.width, metadata.height)
-    if (!result) return
+      const imageData = await getImageData(image, metadata)
 
-    console.log(result.data)
-  }
+      const result = jsQR(imageData, metadata.width, metadata.height)
+      if (!result) throw new Error(t('error.noQrCode'))
+
+      console.log(result.data)
+    },
+    [t]
+  )
 
   return (
     <>

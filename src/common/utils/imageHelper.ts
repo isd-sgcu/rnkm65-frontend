@@ -1,4 +1,4 @@
-import { ICropMetadata } from 'common/types/crop'
+import { ICropMetadata, IImageSize } from 'common/types/crop'
 
 const imageWidth = 200
 const imageHeight = 300
@@ -10,6 +10,22 @@ export const createImage = (url: string): Promise<HTMLImageElement> =>
     image.addEventListener('error', (error) => reject(error))
     image.src = url
   })
+
+export const getImageData = async (url: string, metadata: IImageSize) => {
+  const img = await createImage(url)
+  const canvas = document.createElement('canvas')
+  const context = canvas.getContext('2d')!
+  canvas.width = img.width
+  canvas.height = img.height
+  context.drawImage(img, 0, 0)
+  const myData = context.getImageData(
+    0,
+    0,
+    metadata.width,
+    metadata.height
+  ).data
+  return myData
+}
 
 export const blobToDataURL = (blob: Blob): Promise<string> =>
   new Promise((resolve, reject) => {

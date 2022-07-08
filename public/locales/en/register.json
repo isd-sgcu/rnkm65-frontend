@@ -27,7 +27,7 @@
   "vaccineModal": {
     "title": "Upload QR code",
     "submit": "Submit",
-    "desc": "ใช้ QR code จาก Digital Health Pass | เปิดการแสดงข้อมูลส่วนบุคคล | ขนาดไฟล์สูงสุด 4 MB",
+    "desc": "ใช้ QR code จากหมวด Digital Health Pass ในแอพหมอชนะ | เลือก EU Digital COVID Certificate | เลือกประเภทเป็น Vaccination Status | ขนาดไฟล์สูงสุด 4 MB",
     "uploadFallback": "Click to upload",
     "dragDropFallback": "Drop to upload"
   },
@@ -49,7 +49,9 @@
     "requiredUploadImage": "กรุณาอัพโหลดรูปภาพ",
     "requiredFile": "กรุณาอัพโหลดไฟล์",
     "fileLimit": "ไฟล์มีขนาดเกิน 4 MB",
-    "invalidMime": "ไฟล์รูปภาพต้องเป็นประเภท PNG หรือ JPEG"
+    "invalidMime": "ไฟล์รูปภาพต้องเป็นประเภท PNG หรือ JPEG",
+    "noQrCode": "ไม่พบ QR Code ในรูปภาพ",
+    "invalidQrCode": "QR Code ไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง"
   },
   "placeholder": {
     "firstname": "กรุงเทพ",

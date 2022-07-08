@@ -14,15 +14,21 @@ export const useImageHooks = (
   })
 
   const [tmpImg, setTmpImg] = useState<string>('')
+  const [innerError, setInnerError] = useState<string>('')
 
   const handleSubmitImage = useCallback(async () => {
-    const croppedImage = await getCroppedImage(tmpImg, cropMetadata)
-    const { width, height } = cropMetadata
+    setInnerError('')
+    try {
+      const croppedImage = await getCroppedImage(tmpImg, cropMetadata)
+      const { width, height } = cropMetadata
 
-    await onSubmit?.(croppedImage, { width, height })
+      await onSubmit?.(croppedImage, { width, height })
 
-    handleClose()
+      handleClose()
+    } catch (err: unknown) {
+      setInnerError((err as Error).message)
+    }
   }, [cropMetadata, handleClose, onSubmit, tmpImg])
 
-  return { tmpImg, setTmpImg, handleSubmitImage, setCropMetadata }
+  return { tmpImg, setTmpImg, handleSubmitImage, setCropMetadata, innerError }
 }
