@@ -31,9 +31,12 @@ export const formSchema = yup
     allergyFood: yup.string().required('Required'),
     foodRestriction: yup.string().required('Required'),
     allergyMedicine: yup.string().required('Required'),
-    vaccineCertificateUrl: yup.string().required('Required'),
+    vaccineCertificateUrl: yup
+      .string()
+      .oneOf(['true'], 'Required')
+      .required('Required'),
     disease: yup.string().required('Required'),
-    joinActivity: yup.string(),
+    joinActivity: yup.string().required('Required'),
   })
   .required()
 
@@ -47,6 +50,7 @@ export interface ITemplateFormItem {
     | 'radio_input'
     | 'custom'
   style?: CSSProperties
+  errorKey?: string
   option?: Array<{ value: string; i18nKey: string; text?: string }>
   Component?: React.ComponentType<any>
 }
@@ -149,6 +153,7 @@ export const templateForm: Array<Array<ITemplateFormItem>> = [
     {
       fieldKey: 'vaccineCertificateUrl',
       type: 'custom',
+      errorKey: 'File',
       Component: VaccineInput,
       style: {
         gridColumn: '1 / 10',
@@ -165,11 +170,11 @@ export const templateForm: Array<Array<ITemplateFormItem>> = [
       option: [
         {
           i18nKey: 'wantToJoin',
-          value: '1',
+          value: 'true',
         },
         {
           i18nKey: 'dontWantToJoin',
-          value: '0',
+          value: 'false',
         },
       ],
     },

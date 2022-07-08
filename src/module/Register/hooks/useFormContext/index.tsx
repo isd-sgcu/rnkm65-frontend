@@ -17,11 +17,23 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
     handleOpen,
     handleClose: handleCloseModal,
   } = useSwitch(false)
-  const { register, handleSubmit, setError, control, getValues, setValue } =
-    useForm<IFormSchema>({
-      resolver: yupResolver(formSchema),
-      shouldFocusError: false,
-    })
+  const {
+    register,
+    handleSubmit,
+    setError,
+    control,
+    getValues,
+    setValue,
+    clearErrors,
+  } = useForm<IFormSchema>({
+    resolver: yupResolver(formSchema),
+    shouldFocusError: false,
+  })
+
+  const approveVaccine = useCallback(() => {
+    setValue('vaccineCertificateUrl', 'true')
+    clearErrors('vaccineCertificateUrl')
+  }, [clearErrors, setValue])
 
   const setUploadImg = useCallback(
     (url: string) => {
@@ -88,6 +100,7 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
     () => ({
       register,
       control,
+      approveVaccine,
       setUploadImg,
       handleModalSubmit,
       handleCloseModal,
@@ -96,6 +109,7 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
     [
       control,
       handleCloseModal,
+      approveVaccine,
       setUploadImg,
       handleModalSubmit,
       openModal,

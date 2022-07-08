@@ -28,6 +28,11 @@ export const RadioField = React.forwardRef<HTMLInputElement, IRadioFieldProps>(
             </RadioLabel>
           ))}
         </RadioRootContainer>
+        {error && (
+          <Typography css={{ marginTop: '0.5rem' }} color="error">
+            {errorMessage}
+          </Typography>
+        )}
       </div>
     )
   }

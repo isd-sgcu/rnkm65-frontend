@@ -7,6 +7,7 @@ export interface IFormContext {
   setUploadImg: (url: string) => void
   handleModalSubmit: () => void
   handleCloseModal: () => void
+  approveVaccine: () => void
   openModal: boolean
 }
 

@@ -6,16 +6,20 @@ import { useSwitch } from 'common/hooks/useSwitch'
 import { IImageSize } from 'common/types/crop'
 import { getImageData } from 'common/utils/imageHelper'
 import jsQR from 'jsqr'
+import { useFormContext } from 'module/Register/hooks/useFormContext'
 import React, { useCallback } from 'react'
+import { AiOutlineCheck, AiOutlineClose } from 'react-icons/ai'
 
 import UploadModal from '../UploadImageModal'
-import { modalStyle, RequiredSymbol } from './styled'
+import { modalStyle, RequiredSymbol, VaccineContainer } from './styled'
 import { IVaccineInputProps } from './types'
 
 const VaccineInput = (props: IVaccineInputProps) => {
-  const { title, required } = props
+  const { title, required, errorMessage, error, value } = props
+
   const { t } = useSSRTranslation('register')
   const { state, handleOpen, handleClose } = useSwitch(false)
+  const { approveVaccine } = useFormContext()
 
   const onSubmit = useCallback(
     async (image: string, metadata?: IImageSize) => {
@@ -27,17 +31,25 @@ const VaccineInput = (props: IVaccineInputProps) => {
       if (!result) throw new Error(t('error.noQrCode'))
 
       console.log(result.data)
+
+      approveVaccine()
     },
-    [t]
+    [t, approveVaccine]
   )
 
   return (
     <>
-      <div style={{ display: 'flex', alignItems: 'center', columnGap: '1rem' }}>
+      <VaccineContainer>
         <Typography variant="body" css={{ fontWeight: 'bold' }}>
           {title || ''}
           {required && <RequiredSymbol>*</RequiredSymbol>}
         </Typography>
+
+        {value === 'true' ? (
+          <AiOutlineCheck size="24" color="green" />
+        ) : (
+          <AiOutlineClose size="24" color="red" />
+        )}
 
         <Button
           onClick={handleOpen}
@@ -47,7 +59,9 @@ const VaccineInput = (props: IVaccineInputProps) => {
         >
           {t('upload.uploadBtnLabel')}
         </Button>
-      </div>
+      </VaccineContainer>
+
+      {error && <Typography color="error">{errorMessage}</Typography>}
 
       <Modal modalClassName={modalStyle()} open={state} onClose={handleClose}>
         <UploadModal

@@ -10,7 +10,8 @@ import { Controller } from 'react-hook-form'
 import { IInnerFormControllerProps } from './types'
 
 const InnerFormController = memo((props: IInnerFormControllerProps) => {
-  const { fieldKey, type, option, style, translateNs, Component } = props
+  const { fieldKey, type, option, style, translateNs, Component, errorKey } =
+    props
   const { t } = useSSRTranslation(translateNs)
   const { control } = useFormContext()
 
@@ -23,6 +24,7 @@ const InnerFormController = memo((props: IInnerFormControllerProps) => {
           const errorType = error?.message?.includes('Required')
             ? 'required'
             : 'format'
+
           const options = option?.map((_props) => ({
             ..._props,
             text: _props.text || t(_props.i18nKey) || '',
@@ -67,7 +69,12 @@ const InnerFormController = memo((props: IInnerFormControllerProps) => {
                 />
               )}
               {type === 'custom' && Component && (
-                <Component title={t(`title.${fieldKey}`)} />
+                <Component
+                  error={!!error}
+                  title={t(`title.${fieldKey}`)}
+                  errorMessage={error ? t(`error.${errorType}${errorKey}`) : ''}
+                  {...field}
+                />
               )}
             </>
           )

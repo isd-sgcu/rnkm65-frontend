@@ -1,5 +1,11 @@
 import { css, styled } from '@stitches/react'
 
+export const VaccineContainer = styled('div', {
+  display: 'flex',
+  alignItems: 'center',
+  columnGap: '0.5rem',
+})
+
 export const RequiredSymbol = styled('span', {
   color: '$error',
 })
