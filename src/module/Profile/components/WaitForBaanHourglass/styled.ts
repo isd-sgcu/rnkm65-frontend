@@ -15,7 +15,6 @@ export const Container = styled('div', {
     flexDirection: 'column',
     alignItems: 'center',
   },
-  '@xl': {},
 })
 
 export const HourglassContainer = styled('div', {
