@@ -9,6 +9,7 @@ const transformUserDTOtoIUser = (user: UserDTO) => ({
   studentID: user.studentID,
   faculty: user.faculty,
   year: user.year,
+  title: user.title || 'Mr.',
   firstname: user.firstname ?? '',
   lastname: user.lastname ?? '',
   nickname: user.nickname ?? '',

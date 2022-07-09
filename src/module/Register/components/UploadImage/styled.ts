@@ -25,7 +25,8 @@ export const StyledImage = styled('img', {
   width: '200px',
   height: '300px',
   borderRadius: '1rem',
-  paddingBottom: '1rem',
+  marginBottom: '1rem',
+  objectFit: 'cover',
 })
 
 export const UploadImageContainer = styled('div', {
