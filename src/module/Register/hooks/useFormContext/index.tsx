@@ -1,9 +1,16 @@
 import { yupResolver } from '@hookform/resolvers/yup'
+import { useAuth } from 'common/contexts/AuthContext'
 import { useSwitch } from 'common/hooks/useSwitch'
 import { IFormSchema } from 'common/types/form'
 import { b64ToBlob } from 'common/utils/imageHelper'
 import { formSchema, templateForm } from 'module/Register/utils/schema'
-import React, { createContext, useCallback, useContext, useMemo } from 'react'
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+} from 'react'
 import { SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form'
 
 import { IFormContext } from './types'
@@ -12,6 +19,7 @@ const FormContext = createContext<IFormContext>({} as IFormContext)
 
 export const FormProvider = (props: React.PropsWithChildren<{}>) => {
   const { children } = props
+  const { user } = useAuth()
   const {
     state: openModal,
     handleOpen,
@@ -25,7 +33,9 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
     getValues,
     setValue,
     clearErrors,
+    reset,
   } = useForm<IFormSchema>({
+    defaultValues: user,
     resolver: yupResolver(formSchema),
     shouldFocusError: false,
   })
@@ -116,6 +126,15 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
       register,
     ]
   )
+
+  // set initial value
+  useEffect(() => {
+    if (!user) return
+
+    const { id, phone, ...rest } = user
+
+    reset({ phoneNumber: phone.replaceAll('-', ''), ...rest })
+  }, [reset, user])
 
   return (
     <FormContext.Provider value={providerProps}>

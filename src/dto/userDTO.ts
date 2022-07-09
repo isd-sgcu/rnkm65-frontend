@@ -3,6 +3,7 @@ export interface UserDTO {
   studentID: string
   faculty: string
   year: string
+  title?: 'Mr.' | 'Mrs.' | 'Ms.'
   firstname?: string
   lastname?: string
   nickname?: string

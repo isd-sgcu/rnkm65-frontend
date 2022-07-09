@@ -1,28 +1,61 @@
 import Hidden from 'common/components/Hidden'
-import Image from 'next/image'
-import React from 'react'
+import useSSRTranslation from 'common/hooks/useSSRTranslation'
+import React, { useCallback } from 'react'
 
 import LogoutButton from './components/LogoutButton'
-import ReportIssueButton from './components/ReportIssueButton'
+import LogoutIcon from './components/LogoutIcon'
+import MobileIcon from './components/MobileIcon'
+import TextButton from './components/TextButton'
 import ToggleLanguageButton from './components/ToggleLanguageButton'
-import { HeaderContainer, Logo, LogoContainer, Menu } from './styled'
+import { HeaderContainer, IconContainer, Logo, LogoContainer } from './styled'
 
-const Header = () => (
-  <HeaderContainer>
-    <LogoContainer>
-      <Logo>{/* <Image src="/logo.svg" layout="fill" /> */}</Logo>
-    </LogoContainer>
-    <Hidden variant="mddown">
-      <ReportIssueButton />
-    </Hidden>
-    <ToggleLanguageButton />
-    <Hidden variant="mddown">
-      <LogoutButton />
-    </Hidden>
-    <Hidden variant="lgup">
-      <Menu />
-    </Hidden>
-  </HeaderContainer>
-)
+const Header = () => {
+  const { t } = useSSRTranslation()
+
+  const handleReportIssue = useCallback(() => {
+    // TODO change url
+    window.location.href = 'https://www.google.com/'
+  }, [])
+
+  const handleHowToRegister = useCallback(() => {
+    // TODO change url
+    window.location.href = 'https://www.google.com/'
+  }, [])
+
+  return (
+    <HeaderContainer>
+      <LogoContainer>
+        <Logo>{/* <Image src="/logo.svg" layout="fill" /> */}</Logo>
+      </LogoContainer>
+
+      <Hidden variant="lgdown">
+        <TextButton onClick={handleHowToRegister}>
+          {t('howToRegister')}
+        </TextButton>
+      </Hidden>
+      <Hidden variant="lgdown">
+        <TextButton onClick={handleReportIssue}>{t('reportIssue')}</TextButton>
+      </Hidden>
+
+      <ToggleLanguageButton />
+
+      <Hidden variant="lgdown">
+        <LogoutButton />
+      </Hidden>
+
+      {/* Mobile */}
+      <Hidden variant="xlup">
+        <IconContainer>
+          <MobileIcon
+            src="/how-to-register.svg"
+            onClick={handleHowToRegister}
+          />
+          <MobileIcon src="/report-issue.svg" onClick={handleReportIssue} />
+          <LogoutIcon />
+        </IconContainer>
+      </Hidden>
+    </HeaderContainer>
+  )
+}
 
 export default Header
