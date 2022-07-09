@@ -1,6 +1,8 @@
+import axios from 'axios'
 import Button from 'common/components/Button'
 import Modal from 'common/components/Modal'
 import Typography from 'common/components/Typography'
+import { useAuth } from 'common/contexts/AuthContext'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import { useSwitch } from 'common/hooks/useSwitch'
 import { IImageSize } from 'common/types/crop'
@@ -12,7 +14,7 @@ import { AiOutlineCheck, AiOutlineClose } from 'react-icons/ai'
 
 import UploadModal from '../UploadImageModal'
 import { modalStyle, RequiredSymbol, VaccineContainer } from './styled'
-import { IVaccineInputProps } from './types'
+import { IVaccineInputProps, IVaccineUploadResponse } from './types'
 
 const VaccineInput = (props: IVaccineInputProps) => {
   const { title, required, errorMessage, error, value } = props
@@ -20,6 +22,7 @@ const VaccineInput = (props: IVaccineInputProps) => {
   const { t } = useSSRTranslation('register')
   const { state, handleOpen, handleClose } = useSwitch(false)
   const { approveVaccine } = useFormContext()
+  const { user } = useAuth()
 
   const onSubmit = useCallback(
     async (image: string, metadata?: IImageSize) => {
@@ -29,12 +32,32 @@ const VaccineInput = (props: IVaccineInputProps) => {
 
       const result = jsQR(imageData, metadata.width, metadata.height)
       if (!result) throw new Error(t('error.noQrCode'))
+      const studentId = user?.studentID
 
-      console.log(result.data)
+      if (!studentId) return
+
+      let res: IVaccineUploadResponse
+
+      try {
+        const body = await axios.post<IVaccineUploadResponse>(
+          'http://localhost:3001/api/vaccine',
+          {
+            hcert: result.data,
+            uid: studentId,
+          }
+        )
+        res = body.data
+      } catch (err) {
+        throw new Error(t('error.invalidQrCode'))
+      }
+
+      if (!res.isPassed) {
+        throw new Error('Vaccine is not passed')
+      }
 
       approveVaccine()
     },
-    [t, approveVaccine]
+    [t, user?.studentID, approveVaccine]
   )
 
   return (
