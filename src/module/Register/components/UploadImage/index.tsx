@@ -31,9 +31,10 @@ const UploadImage = memo(() => {
             {field.value ? (
               <StyledImage
                 src={field.value}
-                layout="fixed"
-                width={200}
-                height={300}
+                // TODO: uncomment this when change back to Image
+                // layout="fixed"
+                // width={200}
+                // height={300}
               />
             ) : (
               <FallbackImageContainer>

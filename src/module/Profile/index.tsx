@@ -1,3 +1,4 @@
+import { IUser } from 'common/types/user'
 import React from 'react'
 
 import ChoosedBaan from './components/ChoosedBaan'
@@ -7,6 +8,7 @@ import UserProfile from './components/UserProfile'
 import { Container, GroupContainer } from './styled'
 
 const tmpUser = {
+  title: 'Mr.',
   id: 'uuid',
   studentID: '6530000021',
   faculty: 'Faculty of Engineering',
@@ -23,7 +25,7 @@ const tmpUser = {
   foodRestriction: '',
   imageUrl: '/tmp.jpg',
   vaccineCertificateUrl: '',
-}
+} as IUser
 
 const tmpBaan = {
   id: 0,

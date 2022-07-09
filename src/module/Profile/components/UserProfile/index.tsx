@@ -23,7 +23,7 @@ const UserProfile = (props: IUser) => {
           <br />
           {lastname}
         </Typography>
-        <Link href="/register" passHref>
+        <Link href="/register?type=edit" passHref>
           <EditProfileButton>
             <Typography variant="body">{t('editProfile')}</Typography>
             <HiPencil />
