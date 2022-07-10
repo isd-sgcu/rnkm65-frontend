@@ -2,8 +2,10 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useAuth } from 'common/contexts/AuthContext'
 import { useSwitch } from 'common/hooks/useSwitch'
 import { IFormSchema } from 'common/types/form'
+import { httpPut } from 'common/utils/axios'
 import { b64ToBlob } from 'common/utils/imageHelper'
 import { formSchema, templateForm } from 'module/Register/utils/schema'
+import { useRouter } from 'next/router'
 import React, {
   createContext,
   useCallback,
@@ -40,6 +42,8 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
     shouldFocusError: false,
   })
 
+  const router = useRouter()
+
   const approveVaccine = useCallback(() => {
     setValue('vaccineCertificateUrl', 'true')
     clearErrors('vaccineCertificateUrl')
@@ -75,7 +79,26 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
       // Some put request
       formData.set('image', file)
     }
-  }, [generateFile, getValues])
+
+    const {
+      vaccineCertificateUrl,
+      phoneNumber,
+      lineID,
+      imageUrl,
+      canSelectBaan,
+      ...remain
+    } = data
+
+    await httpPut('/user', {
+      ...remain,
+      phone: phoneNumber,
+      line_id: lineID,
+      image_url: imageUrl,
+      can_select_baan: canSelectBaan === 'true',
+    })
+
+    router.push('/')
+  }, [generateFile, getValues, router])
 
   const handleSuccess: SubmitHandler<IFormSchema> = useCallback(() => {
     handleOpen()
@@ -131,7 +154,11 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
 
     const { id, phone, ...rest } = user
 
-    reset({ phoneNumber: phone.replaceAll('-', ''), ...rest })
+    reset({
+      phoneNumber: phone.replaceAll('-', ''),
+      vaccineCertificateUrl: phone ? 'true' : 'false',
+      ...rest,
+    })
   }, [reset, user])
 
   return (
