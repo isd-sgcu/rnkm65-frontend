@@ -55,28 +55,26 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
   const generateFile = useCallback(async (uri: string, prefix: string) => {
     const stIdx = uri.indexOf('/')
     const edIdx = uri.indexOf(';')
-    const vaccineFileName = `${prefix}_.${uri.substring(stIdx + 1, edIdx)}`
+    const fileName = `${prefix}_.${uri.substring(stIdx + 1, edIdx)}`
 
-    return new File([await b64ToBlob(uri)], vaccineFileName)
+    return [new File([await b64ToBlob(uri)], fileName), fileName]
   }, [])
 
   const handleModalSubmit = useCallback(async () => {
     const data = getValues()
 
-    const vaccineFile = await generateFile(
-      data.vaccineCertificateUrl,
-      'vaccine'
-    )
-    const profileFile = await generateFile(data.imageUrl, 'image')
+    const profileUrl = data.imageUrl
+    if (
+      !profileUrl.startsWith('http://') &&
+      !profileUrl.startsWith('https://')
+    ) {
+      const [file] = await generateFile(data.imageUrl, 'image')
 
-    const formData = new FormData()
-    // Some put request
-    formData.append('image', vaccineFile)
+      const formData = new FormData()
 
-    // Some put request
-    formData.set('image', profileFile)
-
-    console.log(data)
+      // Some put request
+      formData.set('image', file)
+    }
   }, [generateFile, getValues])
 
   const handleSuccess: SubmitHandler<IFormSchema> = useCallback(() => {

@@ -3,6 +3,7 @@ import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import { IImageSize } from 'common/types/crop'
 import { httpPost } from 'common/utils/axios'
 import { getImageData } from 'common/utils/imageHelper'
+import { VACCINE_BASE_URL } from 'config/env'
 import jsQR from 'jsqr'
 import { useFormContext } from 'module/Register/hooks/useFormContext'
 import { useCallback } from 'react'
@@ -30,7 +31,7 @@ export const useVaccineHooks = () => {
 
       try {
         const body = await httpPost<IVaccineUploadBody, IVaccineUploadResponse>(
-          'http://localhost:3001/api/vaccine',
+          `${VACCINE_BASE_URL}/api/vaccine`,
           {
             hcert: result.data,
             uid: studentId,

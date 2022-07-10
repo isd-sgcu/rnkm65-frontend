@@ -11,7 +11,8 @@ import { modalStyle, RequiredSymbol, VaccineContainer } from './styled'
 import { IVaccineInputProps } from './types'
 
 const VaccineInput = forwardRef<HTMLInputElement, IVaccineInputProps>(
-  (props: IVaccineInputProps) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  (props, ref) => {
     const { title, required, errorMessage, error, value } = props
 
     const { state, handleOpen, handleClose } = useSwitch(false)
