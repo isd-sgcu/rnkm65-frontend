@@ -17,7 +17,7 @@ export interface IAuthContext {
   user?: IUser
   login: () => void
   logout: () => void
-  refreshContext: () => void
+  refreshContext: () => Promise<void>
 }
 
 export const AuthContext = createContext({} as IAuthContext)
