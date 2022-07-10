@@ -1,42 +1,39 @@
 import { IFormSchema } from 'common/types/form'
+import dynamic from 'next/dynamic'
 import { CSSProperties } from 'react'
-import * as yup from 'yup'
+import { mixed, object, string } from 'yup'
 
-import VaccineInput from '../components/VaccineInput'
+const VaccineInput = dynamic(() => import('../components/VaccineInput'))
 
 // TODO: Form validation for new field
-export const formSchema = yup
-  .object()
+export const formSchema = object()
   .shape({
-    title: yup.mixed().oneOf(['Mr.', 'Mrs.', 'Ms.']).defined('Required title'),
-    firstname: yup.string().required('Required firstname'),
-    lastname: yup.string().required('Required lastname'),
-    nickname: yup.string().required('Required nickname'),
-    imageUrl: yup.string().required('Required'),
-    years: yup.string(),
-    phoneNumber: yup
-      .string()
+    title: mixed().oneOf(['Mr.', 'Mrs.', 'Ms.']).defined('Required title'),
+    firstname: string().required('Required firstname'),
+    lastname: string().required('Required lastname'),
+    nickname: string().required('Required nickname'),
+    imageUrl: string().required('Required'),
+    years: string(),
+    phoneNumber: string()
       .trim()
       .required('Required phone number')
       .matches(/^(0[1-9][0-9]{7,8})$|^(-)$/, 'Phone number is in wrong format'),
-    email: yup
-      .string()
+    email: string()
       .trim()
       .required('Required email')
       .matches(
         /^\w+([\\.-]?\w+)*@\w+([\\.-]?\w+)*(\.\w{2,3})+|^(-)$/,
         'Email is in wrong format'
       ),
-    lineID: yup.string().required('Required'),
-    allergyFood: yup.string().required('Required'),
-    foodRestriction: yup.string().required('Required'),
-    allergyMedicine: yup.string().required('Required'),
-    vaccineCertificateUrl: yup
-      .string()
+    lineID: string().required('Required'),
+    allergyFood: string().required('Required'),
+    foodRestriction: string().required('Required'),
+    allergyMedicine: string().required('Required'),
+    vaccineCertificateUrl: string()
       .oneOf(['true'], 'Required')
       .required('Required'),
-    disease: yup.string().required('Required'),
-    canSelectBaan: yup.string().required('Required'),
+    disease: string().required('Required'),
+    canSelectBaan: string().required('Required'),
   })
   .required()
 

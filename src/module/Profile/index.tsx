@@ -25,6 +25,7 @@ const tmpUser = {
   foodRestriction: '',
   imageUrl: '/tmp.jpg',
   vaccineCertificateUrl: '',
+  canSelectBaan: true,
 } as IUser
 
 const tmpBaan = {

@@ -21,7 +21,7 @@ const FormContext = createContext<IFormContext>({} as IFormContext)
 
 export const FormProvider = (props: React.PropsWithChildren<{}>) => {
   const { children } = props
-  const { user } = useAuth()
+  const { user, refreshContext } = useAuth()
   const {
     state: openModal,
     handleOpen,
@@ -37,7 +37,6 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
     clearErrors,
     reset,
   } = useForm<IFormSchema>({
-    defaultValues: user,
     resolver: yupResolver(formSchema),
     shouldFocusError: false,
   })
@@ -97,8 +96,10 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
       can_select_baan: canSelectBaan === 'true',
     })
 
+    await refreshContext()
+
     router.push('/')
-  }, [generateFile, getValues, router])
+  }, [generateFile, getValues, refreshContext, router])
 
   const handleSuccess: SubmitHandler<IFormSchema> = useCallback(() => {
     handleOpen()
@@ -152,11 +153,12 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
   useEffect(() => {
     if (!user) return
 
-    const { id, phone, ...rest } = user
+    const { id, phone, canSelectBaan, ...rest } = user
 
     reset({
       phoneNumber: phone.replaceAll('-', ''),
       vaccineCertificateUrl: phone ? 'true' : 'false',
+      canSelectBaan: canSelectBaan ? 'true' : 'false',
       ...rest,
     })
   }, [reset, user])
