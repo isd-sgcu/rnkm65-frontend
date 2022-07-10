@@ -36,7 +36,7 @@ export const formSchema = yup
       .oneOf(['true'], 'Required')
       .required('Required'),
     disease: yup.string().required('Required'),
-    joinActivity: yup.string().required('Required'),
+    canSelectBaan: yup.string().required('Required'),
   })
   .required()
 
@@ -162,7 +162,7 @@ export const templateForm: Array<Array<ITemplateFormItem>> = [
   ],
   [
     {
-      fieldKey: 'joinActivity',
+      fieldKey: 'canSelectBaan',
       type: 'radio_input',
       style: {
         gridColumn: '1 / 10',

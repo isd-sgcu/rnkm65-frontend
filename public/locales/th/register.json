@@ -17,7 +17,7 @@
     "allergyMedicine": "ข้อมูลการแพ้ยา",
     "disease": "โรคประจำตัว",
     "vaccineCertificateUrl": "ส่งใบรับรองการฉีดวัคซีน: ",
-    "joinActivity": "กิจกรรมการจัดบ้านรับเพื่อน"
+    "canSelectBaan": "กิจกรรมการจัดบ้านรับเพื่อน"
   },
   "uploadModal": {
     "title": "แก้ไขรูปภาพ",

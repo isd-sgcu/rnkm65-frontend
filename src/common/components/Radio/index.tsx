@@ -23,6 +23,7 @@ export const RadioField = React.forwardRef<HTMLInputElement, IRadioFieldProps>(
                 type="radio"
                 ref={ref}
                 value={val.value}
+                checked={val.value === remain.value}
               />
               <Checkmark />
             </RadioLabel>

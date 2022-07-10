@@ -5,15 +5,3 @@ export interface IVaccineInputProps {
   required: boolean
   value: string
 }
-
-export interface IVaccineUploadResponse {
-  firstName: string
-  lastName: string
-  isPassed: boolean
-  uid: string
-}
-
-export interface IVaccineUploadBody {
-  hcert: string
-  uid: string
-}

@@ -21,7 +21,7 @@ const transformUserDTOtoIUser = (user: UserDTO) => ({
   allergyMedicine: user.allergyMedicine ?? '',
   foodRestriction: user.foodRestriction ?? '',
   imageUrl: user.imageUrl ?? '',
-  vaccineCertificateUrl: user.vaccineCertificateUrl ?? '',
+  canSelectBaan: user.canSelectBaan ? 'true' : 'false',
 })
 
 const getUserProfile = async (): Promise<IUser | null> => {

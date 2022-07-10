@@ -15,5 +15,5 @@ export interface IUser {
   allergyMedicine: string
   foodRestriction: string
   imageUrl: string
-  vaccineCertificateUrl: string
+  canSelectBaan: string
 }

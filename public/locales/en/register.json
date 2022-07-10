@@ -16,7 +16,7 @@
     "allergyMedicine": "Drug Allergy",
     "disease": "Congenital Disease",
     "vaccineCertificateUrl": "Send Vaccine Certificate: ",
-    "joinActivity": "กิจกรรมการจัดบ้านรับเพื่อน"
+    "canSelectBaan": "กิจกรรมการจัดบ้านรับเพื่อน"
   },
   "uploadModal": {
     "title": "แก้ไขรูปภาพ",

@@ -13,5 +13,5 @@ export interface IFormSchema {
   allergyMedicine: string
   vaccineCertificateUrl: string
   disease: string
-  joinActivity: string
+  canSelectBaan: string
 }
