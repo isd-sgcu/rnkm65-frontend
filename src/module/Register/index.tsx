@@ -1,4 +1,5 @@
 import Typography from 'common/components/Typography'
+import withGuard from 'common/guards/withGuard'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import { NextPage } from 'next'
 import { useRouter } from 'next/router'
@@ -39,4 +40,4 @@ const RegisterForm: NextPage = () => {
   )
 }
 
-export default RegisterForm
+export default withGuard(RegisterForm)

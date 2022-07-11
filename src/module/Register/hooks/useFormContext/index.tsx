@@ -2,7 +2,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useAuth } from 'common/contexts/AuthContext'
 import { useSwitch } from 'common/hooks/useSwitch'
 import { IFormSchema } from 'common/types/form'
-import { httpPut } from 'common/utils/axios'
+import { httpPost, httpPut } from 'common/utils/axios'
 import { b64ToBlob } from 'common/utils/imageHelper'
 import { formSchema, templateForm } from 'module/Register/utils/schema'
 import { useRouter } from 'next/router'
@@ -60,7 +60,10 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
     const edIdx = uri.indexOf(';')
     const fileName = `${prefix}_.${uri.substring(stIdx + 1, edIdx)}`
 
-    return [new File([await b64ToBlob(uri)], fileName), fileName]
+    const file = new File([await b64ToBlob(uri)], fileName, {
+      type: `${prefix}/${uri.substring(stIdx + 1, edIdx)}`,
+    })
+    return file
   }, [])
 
   const handleModalSubmit = useCallback(async () => {
@@ -71,12 +74,24 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
       !profileUrl.startsWith('http://') &&
       !profileUrl.startsWith('https://')
     ) {
-      const [file] = await generateFile(data.imageUrl, 'image')
+      const file = await generateFile(data.imageUrl, 'image')
 
       const formData = new FormData()
 
       // Some put request
-      formData.set('image', file)
+      formData.set('file', file)
+      formData.set('type', 'image')
+      formData.set('tag', 'profile')
+
+      try {
+        await httpPost('/file/upload', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        })
+      } catch (err) {
+        return
+      }
     }
 
     const {
@@ -92,7 +107,6 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
       ...remain,
       phone: phoneNumber,
       line_id: lineID,
-      image_url: imageUrl,
       can_select_baan: canSelectBaan === 'true',
     })
 
