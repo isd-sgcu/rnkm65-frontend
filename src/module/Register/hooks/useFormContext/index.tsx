@@ -1,4 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup'
+import { AxiosError } from 'axios'
 import Loading from 'common/components/Loading'
 import { useAuth } from 'common/contexts/AuthContext'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
@@ -105,6 +106,9 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
         profileUrl = res.data.url
       } catch (err) {
         setLoading(false)
+        if ((err as unknown as AxiosError).response?.status === 500) {
+          throw new Error(t('error.unknownError'))
+        }
         throw new Error(t('error.uploadImageFailed'))
       }
     }
@@ -134,6 +138,9 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
       })
     } catch (err) {
       setLoading(false)
+      if ((err as unknown as AxiosError).response?.status === 500) {
+        throw new Error(t('error.unknownError'))
+      }
       throw new Error(t('error.updateProfileFailed'))
     }
 
