@@ -1,4 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup'
+import Loading from 'common/components/Loading'
 import { useAuth } from 'common/contexts/AuthContext'
 import { useSwitch } from 'common/hooks/useSwitch'
 import { IFormSchema } from 'common/types/form'
@@ -12,6 +13,7 @@ import React, {
   useContext,
   useEffect,
   useMemo,
+  useState,
 } from 'react'
 import { SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form'
 
@@ -27,6 +29,7 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
     handleOpen,
     handleClose: handleCloseModal,
   } = useSwitch(false)
+  const [isLoading, setLoading] = useState(false)
   const {
     register,
     handleSubmit,
@@ -67,9 +70,10 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
   }, [])
 
   const handleModalSubmit = useCallback(async () => {
+    setLoading(true)
     const data = getValues()
 
-    const profileUrl = data.imageUrl
+    let profileUrl = data.imageUrl
     if (
       !profileUrl.startsWith('http://') &&
       !profileUrl.startsWith('https://')
@@ -84,13 +88,19 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
       formData.set('tag', 'profile')
 
       try {
-        await httpPost('/file/upload', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        })
+        const res = await httpPost<FormData, { url: string }>(
+          '/file/upload',
+          formData,
+          {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          }
+        )
+        profileUrl = res.data.url
       } catch (err) {
-        return
+        setLoading(false)
+        throw new Error("Can't upload image")
       }
     }
 
@@ -103,12 +113,18 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
       ...remain
     } = data
 
-    await httpPut('/user', {
-      ...remain,
-      phone: phoneNumber,
-      line_id: lineID,
-      can_select_baan: canSelectBaan === 'true',
-    })
+    try {
+      await httpPut('/user', {
+        ...remain,
+        phone: phoneNumber,
+        line_id: lineID,
+        // image_url: profileUrl,
+        can_select_baan: canSelectBaan === 'true',
+      })
+    } catch (err) {
+      setLoading(false)
+      throw new Error("Can't update user")
+    }
 
     await refreshContext()
 
@@ -179,6 +195,7 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
 
   return (
     <FormContext.Provider value={providerProps}>
+      {isLoading && <Loading />}
       <form onSubmit={handleClickSubmit}>{children}</form>
     </FormContext.Provider>
   )

@@ -5,7 +5,7 @@ import { Control } from 'react-hook-form'
 export interface IFormContext {
   control: Control<IFormSchema, any>
   setUploadImg: (url: string) => void
-  handleModalSubmit: () => void
+  handleModalSubmit: () => void | Promise<void>
   handleCloseModal: () => void
   approveVaccine: () => void
   openModal: boolean
