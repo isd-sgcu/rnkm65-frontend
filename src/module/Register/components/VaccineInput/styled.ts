@@ -16,6 +16,6 @@ export const modalStyle = css({
   padding: '2rem !important',
 
   '@sm': {
-    padding: '1rem @important',
+    padding: '1rem !important',
   },
 })

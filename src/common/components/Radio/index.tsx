@@ -1,5 +1,4 @@
 import React from 'react'
-import {} from 'react-hook-form'
 
 import Typography from '../Typography'
 import { Checkmark, RadioInput, RadioLabel, RadioRootContainer } from './styled'
