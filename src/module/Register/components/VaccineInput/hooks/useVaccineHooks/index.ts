@@ -1,3 +1,4 @@
+import { AxiosError } from 'axios'
 import { useAuth } from 'common/contexts/AuthContext'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import { IImageSize } from 'common/types/crop'
@@ -39,6 +40,10 @@ export const useVaccineHooks = () => {
         )
         res = body.data
       } catch (err) {
+        const error = err as AxiosError
+        if (error.response?.data.error.includes('already')) {
+          throw new Error(t('error.vaccineAlreadyApproved'))
+        }
         throw new Error(t('error.invalidQrCode'))
       }
 

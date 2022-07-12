@@ -1,4 +1,5 @@
 import Button from 'common/components/Button'
+import Loading from 'common/components/Loading'
 import Typography from 'common/components/Typography'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import { memo, useMemo, useRef } from 'react'
@@ -24,6 +25,7 @@ const UploadModal = memo((props: IUploadModalProps) => {
     handleSubmitImage,
     innerError,
     resetError,
+    isLoading,
   } = useImageHooks(handleClose, onSubmit)
 
   const description = useMemo(
@@ -33,6 +35,7 @@ const UploadModal = memo((props: IUploadModalProps) => {
 
   return (
     <>
+      {isLoading && <Loading />}
       <Typography color="blue" variant="h3" css={{ marginBottom: '0.5rem' }}>
         {t(`${i18nPrefix}.title`)}
       </Typography>

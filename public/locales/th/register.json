@@ -53,7 +53,8 @@
     "fileLimit": "ไฟล์มีขนาดเกิน 4 MB",
     "invalidMime": "ไฟล์รูปภาพต้องเป็นประเภท PNG หรือ JPEG",
     "noQrCode": "ไม่พบ QR Code ในรูปภาพ",
-    "invalidQrCode": "QR Code ไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง"
+    "invalidQrCode": "QR Code ไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง",
+    "vaccineAlreadyApproved": "QR Code นี้ได้ถูกใช้ไปแล้ว"
   },
   "placeholder": {
     "firstname": "Hello",
