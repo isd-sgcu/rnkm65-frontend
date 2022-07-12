@@ -11,4 +11,4 @@ export async function getServerSideProps({ locale }: { locale: string }) {
   }
 }
 
-export default withGuard(Profile)
+export default withGuard(Profile, true)
