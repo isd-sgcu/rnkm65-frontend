@@ -13,6 +13,8 @@
     "@hookform/resolvers": "^2.8.8",
     "@stitches/react": "^1.2.8",
     "axios": "^0.26.1",
+    "husky": "^7.0.4",
+    "jsqr": "^1.4.0",
     "next": "12.1.0",
     "next-i18next": "^10.5.0",
     "react": "17.0.2",
@@ -23,9 +25,7 @@
     "react-hook-form": "^7.28.1",
     "react-icons": "^4.3.1",
     "swr": "^1.2.2",
-    "yup": "^0.32.11",
-    "husky": "^7.0.4"
-
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@types/node": "17.0.22",

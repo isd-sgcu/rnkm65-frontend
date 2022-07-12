@@ -16,7 +16,8 @@
     "foodRestriction": "ข้อจำกัดด้านอาหาร",
     "allergyMedicine": "ข้อมูลการแพ้ยา",
     "disease": "โรคประจำตัว",
-    "vaccineCertificateUrl": "ใบรับรองการฉีดวัคซีน"
+    "vaccineCertificateUrl": "ส่งใบรับรองการฉีดวัคซีน: ",
+    "canSelectBaan": "กิจกรรมการจัดบ้านรับเพื่อน"
   },
   "uploadModal": {
     "title": "แก้ไขรูปภาพ",
@@ -25,10 +26,19 @@
     "uploadFallback": "คลิกเพื่ออัพโหลดรูป",
     "dragDropFallback": "ปล่อยเพื่ออัพโหลด"
   },
+  "vaccineModal": {
+    "title": "อัพโหลด QR code",
+    "submit": "ยืนยัน",
+    "desc": "ใช้ QR code จากหมวด Digital Health Pass ในแอพหมอพร้อม | เลือก EU Digital COVID Certificate | เลือกประเภทเป็น Vaccination Status | ขนาดไฟล์สูงสุด 4 MB",
+    "uploadFallback": "คลิกเพื่ออัพโหลด",
+    "dragDropFallback": "ปล่อยเพื่ออัพโหลด"
+  },
   "uploadBtn": "อัพโหลดรูป",
   "Mr": "นาย",
   "Mrs": "นางสาว",
   "Ms": "นาง",
+  "wantToJoin": "ต้องการเข้าร่วม",
+  "dontWantToJoin": "ไม่ต้องการเข้าร่วม",
   "upload": {
     "noFileLabel": "ยังไม่ได้เลือกไฟล์",
     "uploadBtnLabel": "อัพโหลดไฟล์",
@@ -41,7 +51,9 @@
     "requiredFile": "กรุณาอัพโหลดข้อมูล",
     "requiredUploadImage": "กรุณาอัพโหลดรูปภาพ",
     "fileLimit": "ไฟล์มีขนาดเกิน 4 MB",
-    "invalidMime": "ไฟล์รูปภาพต้องเป็นประเภท PNG หรือ JPEG"
+    "invalidMime": "ไฟล์รูปภาพต้องเป็นประเภท PNG หรือ JPEG",
+    "noQrCode": "ไม่พบ QR Code ในรูปภาพ",
+    "invalidQrCode": "QR Code ไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง"
   },
   "placeholder": {
     "firstname": "Hello",

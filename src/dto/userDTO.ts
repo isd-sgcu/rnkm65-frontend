@@ -15,5 +15,5 @@ export interface UserDTO {
   allergyMedicine?: string
   foodRestriction?: string
   imageUrl?: string
-  vaccineCertificateUrl?: string
+  canSelectBaan?: boolean
 }

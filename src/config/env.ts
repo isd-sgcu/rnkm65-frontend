@@ -14,3 +14,6 @@ export const APP_BASE_URL =
 
 export const SSO_BASE_URL =
   publicRuntimeConfig.env.SSO_BASE_URL || 'http://sso.cucheck.in'
+
+export const VACCINE_BASE_URL =
+  publicRuntimeConfig.env.VACCINE_BASE_URL || 'http://localhost:3001'

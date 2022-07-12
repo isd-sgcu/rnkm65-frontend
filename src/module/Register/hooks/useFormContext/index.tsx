@@ -2,8 +2,10 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useAuth } from 'common/contexts/AuthContext'
 import { useSwitch } from 'common/hooks/useSwitch'
 import { IFormSchema } from 'common/types/form'
+import { httpPost, httpPut } from 'common/utils/axios'
 import { b64ToBlob } from 'common/utils/imageHelper'
 import { formSchema, templateForm } from 'module/Register/utils/schema'
+import { useRouter } from 'next/router'
 import React, {
   createContext,
   useCallback,
@@ -19,13 +21,12 @@ const FormContext = createContext<IFormContext>({} as IFormContext)
 
 export const FormProvider = (props: React.PropsWithChildren<{}>) => {
   const { children } = props
-  const { user } = useAuth()
+  const { user, refreshContext } = useAuth()
   const {
     state: openModal,
     handleOpen,
     handleClose: handleCloseModal,
   } = useSwitch(false)
-
   const {
     register,
     handleSubmit,
@@ -33,21 +34,19 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
     control,
     getValues,
     setValue,
+    clearErrors,
     reset,
   } = useForm<IFormSchema>({
-    defaultValues: user,
     resolver: yupResolver(formSchema),
     shouldFocusError: false,
   })
 
-  // set initial value
-  useEffect(() => {
-    if (!user) return
+  const router = useRouter()
 
-    const { id, phone, ...rest } = user
-
-    reset({ phoneNumber: phone.replaceAll('-', ''), ...rest })
-  }, [reset, user])
+  const approveVaccine = useCallback(() => {
+    setValue('vaccineCertificateUrl', 'true')
+    clearErrors('vaccineCertificateUrl')
+  }, [clearErrors, setValue])
 
   const setUploadImg = useCallback(
     (url: string) => {
@@ -59,29 +58,62 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
   const generateFile = useCallback(async (uri: string, prefix: string) => {
     const stIdx = uri.indexOf('/')
     const edIdx = uri.indexOf(';')
-    const vaccineFileName = `${prefix}_.${uri.substring(stIdx + 1, edIdx)}`
+    const fileName = `${prefix}_.${uri.substring(stIdx + 1, edIdx)}`
 
-    return new File([await b64ToBlob(uri)], vaccineFileName)
+    const file = new File([await b64ToBlob(uri)], fileName, {
+      type: `${prefix}/${uri.substring(stIdx + 1, edIdx)}`,
+    })
+    return file
   }, [])
 
   const handleModalSubmit = useCallback(async () => {
     const data = getValues()
 
-    const vaccineFile = await generateFile(
-      data.vaccineCertificateUrl,
-      'vaccine'
-    )
-    const profileFile = await generateFile(data.imageUrl, 'image')
+    const profileUrl = data.imageUrl
+    if (
+      !profileUrl.startsWith('http://') &&
+      !profileUrl.startsWith('https://')
+    ) {
+      const file = await generateFile(data.imageUrl, 'image')
 
-    const formData = new FormData()
-    // Some put request
-    formData.append('image', vaccineFile)
+      const formData = new FormData()
 
-    // Some put request
-    formData.set('image', profileFile)
+      // Some put request
+      formData.set('file', file)
+      formData.set('type', 'image')
+      formData.set('tag', 'profile')
 
-    console.log(data)
-  }, [generateFile, getValues])
+      try {
+        await httpPost('/file/upload', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        })
+      } catch (err) {
+        return
+      }
+    }
+
+    const {
+      vaccineCertificateUrl,
+      phoneNumber,
+      lineID,
+      imageUrl,
+      canSelectBaan,
+      ...remain
+    } = data
+
+    await httpPut('/user', {
+      ...remain,
+      phone: phoneNumber,
+      line_id: lineID,
+      can_select_baan: canSelectBaan === 'true',
+    })
+
+    await refreshContext()
+
+    router.push('/')
+  }, [generateFile, getValues, refreshContext, router])
 
   const handleSuccess: SubmitHandler<IFormSchema> = useCallback(() => {
     handleOpen()
@@ -114,6 +146,7 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
     () => ({
       register,
       control,
+      approveVaccine,
       setUploadImg,
       handleModalSubmit,
       handleCloseModal,
@@ -122,12 +155,27 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
     [
       control,
       handleCloseModal,
+      approveVaccine,
       setUploadImg,
       handleModalSubmit,
       openModal,
       register,
     ]
   )
+
+  // set initial value
+  useEffect(() => {
+    if (!user) return
+
+    const { id, phone, canSelectBaan, ...rest } = user
+
+    reset({
+      phoneNumber: phone.replaceAll('-', ''),
+      vaccineCertificateUrl: phone ? 'true' : 'false',
+      canSelectBaan: canSelectBaan ? 'true' : 'false',
+      ...rest,
+    })
+  }, [reset, user])
 
   return (
     <FormContext.Provider value={providerProps}>

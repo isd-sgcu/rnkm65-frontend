@@ -7,7 +7,7 @@ import { useFormContext } from 'module/Register/hooks/useFormContext'
 import { memo } from 'react'
 import { Controller } from 'react-hook-form'
 
-import UploadModal from './components/UploadModal'
+import UploadImageModal from '../UploadImageModal'
 import {
   FallbackImage,
   FallbackImageContainer,
@@ -19,7 +19,7 @@ import {
 const UploadImage = memo(() => {
   const { state, handleOpen, handleClose } = useSwitch(false)
   const { t } = useSSRTranslation('register')
-  const { control } = useFormContext()
+  const { control, setUploadImg } = useFormContext()
 
   return (
     <UploadImageContainer>
@@ -58,7 +58,11 @@ const UploadImage = memo(() => {
         {t('uploadBtn')}
       </Button>
       <Modal modalClassName={modalStyle()} open={state} onClose={handleClose}>
-        <UploadModal handleClose={handleClose} />
+        <UploadImageModal
+          i18nPrefix="uploadModal"
+          handleClose={handleClose}
+          onSubmit={setUploadImg}
+        />
       </Modal>
     </UploadImageContainer>
   )

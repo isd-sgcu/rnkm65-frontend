@@ -1,11 +1,12 @@
 import Typography from 'common/components/Typography'
+import withGuard from 'common/guards/withGuard'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import { NextPage } from 'next'
 import { useRouter } from 'next/router'
 
 import ConfirmModal from './components/ConfirmModal'
 import FormUI from './components/FormUI'
-import UploadImage from './components/UploadImage'
+import UploadImage from './components/Image'
 import { FormProvider } from './hooks/useFormContext'
 import {
   RegisterContainer,
@@ -39,4 +40,4 @@ const RegisterForm: NextPage = () => {
   )
 }
 
-export default RegisterForm
+export default withGuard(RegisterForm)
