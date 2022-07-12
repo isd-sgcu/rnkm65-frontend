@@ -57,7 +57,9 @@
     "invalidMime": "ไฟล์รูปภาพต้องเป็นประเภท PNG หรือ JPEG",
     "noQrCode": "ไม่พบ QR Code ในรูปภาพ",
     "invalidQrCode": "QR Code ไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง",
-    "vaccineAlreadyApproved": "QR Code นี้ได้ถูกใช้ไปแล้ว"
+    "vaccineAlreadyApproved": "QR Code นี้ได้ถูกใช้ไปแล้ว",
+    "uploadImageFailed": "เกิดข้อผิดพลาดในการอัพโหลดรูปภาพ กรุณาลองใหม่อีกครั้ง",
+    "updateProfileFailed": "เกิดข้อผิดพลาดในการอัพเดทข้อมูล กรุณาลองใหม่อีกครั้ง"
   },
   "placeholder": {
     "firstname": "Hello",

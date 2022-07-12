@@ -56,7 +56,9 @@
     "invalidMime": "ไฟล์รูปภาพต้องเป็นประเภท PNG หรือ JPEG",
     "noQrCode": "ไม่พบ QR Code ในรูปภาพ",
     "invalidQrCode": "QR Code ไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง",
-    "vaccineAlreadyApproved": "This QR is already used"
+    "vaccineAlreadyApproved": "This QR is already used",
+    "uploadImageFailed": "Failed to upload image, please try again",
+    "updateProfileFailed": "Failed to update profile information, please try again"
   },
   "placeholder": {
     "firstname": "กรุงเทพ",

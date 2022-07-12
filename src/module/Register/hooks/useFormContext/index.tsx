@@ -1,6 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import Loading from 'common/components/Loading'
 import { useAuth } from 'common/contexts/AuthContext'
+import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import { useSwitch } from 'common/hooks/useSwitch'
 import { IFormSchema } from 'common/types/form'
 import { httpPost, httpPut } from 'common/utils/axios'
@@ -45,6 +46,7 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
     resolver: yupResolver(formSchema),
     shouldFocusError: false,
   })
+  const { t } = useSSRTranslation('register')
 
   const router = useRouter()
   const type = (router.query.type as RegisterType) || RegisterType.Register
@@ -103,7 +105,7 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
         profileUrl = res.data.url
       } catch (err) {
         setLoading(false)
-        throw new Error("Can't upload image")
+        throw new Error(t('error.uploadImageFailed'))
       }
     }
 
@@ -132,7 +134,7 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
       })
     } catch (err) {
       setLoading(false)
-      throw new Error("Can't update user")
+      throw new Error(t('error.updateProfileFailed'))
     }
 
     await refreshContext()
@@ -145,7 +147,7 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
     }
 
     router.push('/')
-  }, [generateFile, getValues, refreshContext, router])
+  }, [generateFile, getValues, refreshContext, router, t])
 
   const handleSuccess: SubmitHandler<IFormSchema> = useCallback(() => {
     handleOpen()
