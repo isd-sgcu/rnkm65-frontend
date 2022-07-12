@@ -1,13 +1,22 @@
-import { Box, Container, Title } from './styled'
+import useSSRTranslation from 'common/hooks/useSSRTranslation'
 
-const LatePage = () => (
-  <Container>
-    <Box>
-      <Title>ขออภัย !</Title>
-      หมดช่วงของการลงทะเบียนแล้ว ขอบคุณที่ให้ความสนใจโครงการรับเพื่อนก้าวใหม่
-      สามารถสอบถามข้อมูลเพิ่มเติมได้ที่ CU for Freshmen
-    </Box>
-  </Container>
-)
+import { Box, Container, Link, Title } from './styled'
+
+const LatePage = () => {
+  const { t } = useSSRTranslation('late')
+  return (
+    <Container>
+      <Box>
+        <Title>{t('sorry')}</Title>
+        <span>
+          {t('desc')}{' '}
+          <Link href="https://www.facebook.com/chulafreshmen/">
+            CU for Freshmen
+          </Link>
+        </span>
+      </Box>
+    </Container>
+  )
+}
 
 export default LatePage

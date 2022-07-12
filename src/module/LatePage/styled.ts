@@ -8,6 +8,11 @@ export const Container = styled('div', {
   justifyContent: 'center',
 })
 
+export const Link = styled('a', {
+  display: 'inline',
+  textDecoration: 'underline',
+})
+
 export const Box = styled('div', {
   textAlign: 'center',
   maxWidth: '495px',
