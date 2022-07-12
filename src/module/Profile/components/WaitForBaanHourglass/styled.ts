@@ -11,7 +11,7 @@ export const Container = styled('div', {
   display: 'flex',
   flexDirection: 'row',
 
-  '@md': {
+  '@lg': {
     flexDirection: 'column',
     alignItems: 'center',
   },
@@ -29,6 +29,7 @@ export const HourglassContainer = styled('div', {
 })
 
 export const TextContainer = styled('div', {
+  flexGrow: 1,
   '@md': {
     display: 'flex',
     flexDirection: 'column',

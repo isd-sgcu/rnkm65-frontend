@@ -5,7 +5,7 @@ import React from 'react'
 
 import { Container, HourglassContainer, TextContainer } from './styled'
 
-const ChoosedBaan = () => {
+const WaitForBaanHourglass = () => {
   const { t } = useSSRTranslation('profile')
 
   return (
@@ -14,10 +14,22 @@ const ChoosedBaan = () => {
         <Image src="/processingHourglass.svg" alt="hourglass" layout="fill" />
       </HourglassContainer>
       <TextContainer>
-        <Typography variant="h3" color="new-primary">
+        <Typography
+          variant="h3"
+          color="new-primary"
+          css={{
+            '@lg': { textAlign: 'center', marginTop: '16px' },
+          }}
+        >
           {t('processingBaan')}
         </Typography>
-        <Typography variant="subhead2" color="blue">
+        <Typography
+          variant="subhead2"
+          color="blue"
+          css={{
+            '@lg': { textAlign: 'center', whiteSpace: 'pre-line' },
+          }}
+        >
           {t('goFollowCUForFreshmen')}
         </Typography>
       </TextContainer>
@@ -25,4 +37,4 @@ const ChoosedBaan = () => {
   )
 }
 
-export default ChoosedBaan
+export default WaitForBaanHourglass
