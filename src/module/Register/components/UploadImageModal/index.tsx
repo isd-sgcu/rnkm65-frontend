@@ -61,6 +61,14 @@ const UploadModal = memo((props: IUploadModalProps) => {
       {tmpImg && (
         <ActionButtonContainer>
           <Button
+            variant="secondary"
+            css={{ fontSize: '1.25rem' }}
+            onClick={handleSubmitImage}
+            type="button"
+          >
+            {t(`${i18nPrefix}.submit`)}
+          </Button>
+          <Button
             css={{ fontSize: '1.25rem' }}
             variant="primary"
             onClick={() => {
@@ -69,15 +77,7 @@ const UploadModal = memo((props: IUploadModalProps) => {
             }}
             type="button"
           >
-            อัพโหลดใหม่
-          </Button>
-          <Button
-            variant="secondary"
-            css={{ fontSize: '1.25rem' }}
-            onClick={handleSubmitImage}
-            type="button"
-          >
-            {t(`${i18nPrefix}.submit`)}
+            {t(`${i18nPrefix}.uploadAgain`)}
           </Button>
         </ActionButtonContainer>
       )}

@@ -30,12 +30,16 @@ const RegisterForm = () => {
           <FormUI />
         </RegisterContainer>
         <SubmitContainer>
+          <SubmitButton type="submit">{t('submit')}</SubmitButton>
           {type === RegisterType.Edit && (
-            <SubmitButton variant="secondary" onClick={() => router.push('/')}>
+            <SubmitButton
+              type="button"
+              variant="secondary"
+              onClick={() => router.push('/')}
+            >
               {t('back')}
             </SubmitButton>
           )}
-          <SubmitButton type="submit">{t('submit')}</SubmitButton>
         </SubmitContainer>
       </RootContainer>
       <ConfirmModal />

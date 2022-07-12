@@ -25,14 +25,16 @@
     "submit": "ยืนยัน",
     "desc": "ใช้รูปที่เห็นใบหน้าชัดเจน | ไม่ควรใส่ฟิลเตอร์ | ขนาดไฟล์สูงสุด 4 MB",
     "uploadFallback": "คลิกเพื่ออัพโหลดรูป",
-    "dragDropFallback": "ปล่อยเพื่ออัพโหลด"
+    "dragDropFallback": "ปล่อยเพื่ออัพโหลด",
+    "uploadAgain": "อัพโหลดอีกครั้ง"
   },
   "vaccineModal": {
     "title": "อัพโหลด QR code",
     "submit": "ยืนยัน",
     "desc": "ใช้ QR code จากหมวด Digital Health Pass ในแอพหมอพร้อม | เลือก EU Digital COVID Certificate | เลือกประเภทเป็น Vaccination Status | ขนาดไฟล์สูงสุด 4 MB",
     "uploadFallback": "คลิกเพื่ออัพโหลด",
-    "dragDropFallback": "ปล่อยเพื่ออัพโหลด"
+    "dragDropFallback": "ปล่อยเพื่ออัพโหลด",
+    "uploadAgain": "อัพโหลดอีกครั้ง"
   },
   "uploadBtn": "อัพโหลดรูป",
   "Mr": "นาย",
