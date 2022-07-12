@@ -121,7 +121,7 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
         ...remain,
         phone: phoneNumber,
         line_id: lineID,
-        // image_url: profileUrl,
+        image_url: profileUrl,
         can_select_baan: canSelectBaan === 'true',
       })
     } catch (err) {
@@ -130,6 +130,13 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
     }
 
     await refreshContext()
+
+    const redirectUrl = localStorage.getItem('redirectUrl')
+    if (redirectUrl) {
+      localStorage.removeItem('redirectUrl')
+      router.push(redirectUrl)
+      return
+    }
 
     router.push('/')
   }, [generateFile, getValues, refreshContext, router])
