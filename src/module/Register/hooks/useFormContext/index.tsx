@@ -5,6 +5,7 @@ import { useSwitch } from 'common/hooks/useSwitch'
 import { IFormSchema } from 'common/types/form'
 import { httpPost, httpPut } from 'common/utils/axios'
 import { b64ToBlob } from 'common/utils/imageHelper'
+import { RegisterType } from 'module/Register/types'
 import { formSchema, templateForm } from 'module/Register/utils/schema'
 import { useRouter } from 'next/router'
 import React, {
@@ -30,6 +31,7 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
     handleClose: handleCloseModal,
   } = useSwitch(false)
   const [isLoading, setLoading] = useState(false)
+  const [firstLoad, setFirstLoad] = useState(true)
   const {
     register,
     handleSubmit,
@@ -45,6 +47,7 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
   })
 
   const router = useRouter()
+  const type = (router.query.type as RegisterType) || RegisterType.Register
 
   const approveVaccine = useCallback(() => {
     setValue('vaccineCertificateUrl', 'true')
@@ -185,18 +188,25 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
 
     const { id, phone, canSelectBaan, ...rest } = user
 
+    if (type === RegisterType.Register && phone) {
+      router.push('/')
+      return
+    }
+
     reset({
       phoneNumber: phone.replaceAll('-', ''),
       vaccineCertificateUrl: phone ? 'true' : 'false',
       canSelectBaan: canSelectBaan ? 'true' : 'false',
       ...rest,
     })
-  }, [reset, user])
+
+    setFirstLoad(false)
+  }, [reset, router, type, user])
 
   return (
     <FormContext.Provider value={providerProps}>
-      {isLoading && <Loading />}
-      <form onSubmit={handleClickSubmit}>{children}</form>
+      {(isLoading || firstLoad) && <Loading />}
+      <form onSubmit={handleClickSubmit}>{!firstLoad && children}</form>
     </FormContext.Provider>
   )
 }
