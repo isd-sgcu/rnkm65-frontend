@@ -4,11 +4,16 @@ import { useEffect, useState } from 'react'
 
 import { useAuth } from '../contexts/AuthContext'
 
+interface IOptions {
+  requiredData?: boolean
+  disabledRedirect?: boolean
+}
+
 function withGuard<T>(
   Component: React.FC<T>,
-  requiredData?: boolean,
-  disabledRedirect?: boolean
+  options: IOptions = {}
 ): React.FC<T> {
+  const { disabledRedirect, requiredData } = options
   return function ComponentWithGuard(props: T) {
     const router = useRouter()
     const { isReady, isAuthenticated, user } = useAuth()
