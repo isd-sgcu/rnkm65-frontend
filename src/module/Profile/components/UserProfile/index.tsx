@@ -24,7 +24,7 @@ const UserProfile = (props: IUserProfileProps) => {
           {lastname}
         </Typography>
         {!withoutEditButton && (
-          <Link href="/register" passHref>
+          <Link href="/register?type=edit" passHref>
             <EditProfileButton>
               <Typography variant="body">{t('editProfile')}</Typography>
               <HiPencil />
