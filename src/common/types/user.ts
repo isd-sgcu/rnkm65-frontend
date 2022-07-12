@@ -17,3 +17,7 @@ export interface IUser {
   imageUrl: string
   canSelectBaan: boolean
 }
+
+export interface IUserProfileProps extends IUser {
+  withoutEditButton?: boolean
+}
