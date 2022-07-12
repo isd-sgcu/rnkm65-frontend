@@ -17,3 +17,7 @@ export interface IUser {
   imageUrl: string
   vaccineCertificateUrl: string
 }
+
+export interface IUserProfileProps extends IUser {
+  withoutEditButton?: boolean
+}

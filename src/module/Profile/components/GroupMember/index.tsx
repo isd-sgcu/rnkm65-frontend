@@ -9,7 +9,7 @@ import { GroupMemberProps } from './props'
 import { Container, MembersContainer } from './styled'
 
 const GroupMember = (props: GroupMemberProps) => {
-  const { members } = props
+  const { members, disabled } = props
   const { t } = useSSRTranslation('profile')
 
   // TODO change this later
@@ -26,7 +26,7 @@ const GroupMember = (props: GroupMemberProps) => {
             {...member}
             key={`${member.firstname} ${member.lastname}`}
             isKing={idx === 0 && members.length > 1}
-            isDeletable={isKing && idx !== 0}
+            isDeletable={disabled ? false : isKing && idx !== 0}
           />
         ))}
         {members.length <= 1 && (
