@@ -41,7 +41,8 @@ export const useVaccineHooks = () => {
         res = body.data
       } catch (err) {
         const error = err as AxiosError
-        if (error.response?.status === 500) {
+
+        if (!error.response?.status || error.response.status === 500) {
           throw new Error(t('error.unknownError'))
         }
         if (error.response?.data.error.includes('already')) {

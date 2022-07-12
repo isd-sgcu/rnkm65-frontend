@@ -106,7 +106,10 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
         profileUrl = res.data.url
       } catch (err) {
         setLoading(false)
-        if ((err as unknown as AxiosError).response?.status === 500) {
+
+        const error = err as unknown as AxiosError
+
+        if (!error.response?.status || error.response.status === 500) {
           throw new Error(t('error.unknownError'))
         }
         throw new Error(t('error.uploadImageFailed'))
