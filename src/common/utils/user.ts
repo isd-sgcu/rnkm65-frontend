@@ -1,0 +1,39 @@
+import { AxiosResponse } from 'axios'
+import { IUser } from 'common/types/user'
+import { UserDTO } from 'dto/userDTO'
+
+import { apiClient } from './axios'
+
+const transformUserDTOtoIUser = (user: UserDTO) => ({
+  id: user.id,
+  studentID: user.studentID,
+  faculty: user.faculty,
+  year: user.year,
+  title: user.title || 'Mr.',
+  firstname: user.firstname ?? '',
+  lastname: user.lastname ?? '',
+  nickname: user.nickname ?? '',
+  email: user.email ?? '',
+  phone: user.phone ?? '',
+  lineID: user.lineID ?? '',
+  disease: user.disease ?? '',
+  allergyFood: user.allergyFood ?? '',
+  allergyMedicine: user.allergyMedicine ?? '',
+  foodRestriction: user.foodRestriction ?? '',
+  imageUrl: user.imageUrl ?? '',
+  vaccineCertificateUrl: user.vaccineCertificateUrl ?? '',
+})
+
+const getUserProfile = async (): Promise<IUser | null> => {
+  let res: AxiosResponse
+  try {
+    res = await apiClient.get<UserDTO>('/auth/me')
+  } catch (err) {
+    return null
+  }
+
+  const user = transformUserDTOtoIUser(res.data)
+  return user
+}
+
+export { getUserProfile }

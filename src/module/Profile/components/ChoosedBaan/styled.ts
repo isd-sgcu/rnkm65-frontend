@@ -2,7 +2,7 @@ import Typography from 'common/components/Typography'
 import { styled } from 'config/stitches.config'
 
 export const Container = styled('div', {
-  background: '$purple400',
+  background: '$new-gray',
   border: '2px solid $blue',
   borderRadius: '20px',
   textAlign: 'center',
@@ -35,5 +35,5 @@ export const ConfirmText = styled(Typography, {
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  color: '$confirm',
+  color: '$new-success',
 })

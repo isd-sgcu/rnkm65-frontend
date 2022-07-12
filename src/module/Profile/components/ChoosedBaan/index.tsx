@@ -18,7 +18,7 @@ const ChoosedBaan = (props: ChoosedBaanProps) => {
 
   return (
     <Container>
-      <Typography variant="h3" color="pink">
+      <Typography variant="h3" color="new-primary">
         {t('choosedBaan')}
       </Typography>
       {choosed ? (

@@ -24,14 +24,17 @@ export const Button = styled('button', {
   variants: {
     variant: {
       primary: {
-        color: '$yellow',
-        backgroundColor: '$pink500',
-        '&:hover': { backgroundColor: '$pink600' },
-        '&:disabled': { backgroundColor: '$pink400' },
+        color: '$white',
+        backgroundColor: '$new-primary',
+        '&:hover': { backgroundColor: '$new-primary-active' },
+        '&:disabled': {
+          backgroundColor: '$new-primary-disabled',
+          color: '$new-gray',
+        },
       },
       secondary: {
-        color: '$pink500',
-        backgroundColor: '$yellow',
+        color: '$white',
+        backgroundColor: '$new-secondary',
       },
       error: {
         color: '$white',

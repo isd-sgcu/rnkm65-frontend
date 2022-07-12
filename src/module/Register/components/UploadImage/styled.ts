@@ -1,8 +1,7 @@
 import { css, styled } from 'config/stitches.config'
-import Image from 'next/image'
 
 export const FallbackImage = styled('div', {
-  backgroundColor: '$purple500',
+  backgroundColor: '$new-gray',
   width: '200px',
   height: '300px',
   borderRadius: '1rem',
@@ -21,11 +20,13 @@ export const FallbackImage = styled('div', {
   },
 })
 
-export const StyledImage = styled(Image, {
+// TODO: Change back to Image
+export const StyledImage = styled('img', {
   width: '200px',
   height: '300px',
   borderRadius: '1rem',
-  paddingBottom: '1rem',
+  marginBottom: '1rem',
+  objectFit: 'cover',
 })
 
 export const UploadImageContainer = styled('div', {
