@@ -113,6 +113,9 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
       lineID,
       imageUrl,
       canSelectBaan,
+      allergyFood,
+      allergyMedicine,
+      foodRestriction,
       ...remain
     } = data
 
@@ -122,6 +125,9 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
         phone: phoneNumber,
         line_id: lineID,
         image_url: profileUrl,
+        allergy_food: allergyFood,
+        allergy_medicine: allergyMedicine,
+        food_restriction: foodRestriction,
         can_select_baan: canSelectBaan === 'true',
       })
     } catch (err) {
