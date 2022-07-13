@@ -21,8 +21,13 @@ const ConfirmModal = () => {
     }
   }, [handleModalSubmit])
 
+  const handleClose = useCallback(() => {
+    setError('')
+    handleCloseModal()
+  }, [handleCloseModal])
+
   return (
-    <Modal open={openModal} onClose={handleCloseModal}>
+    <Modal open={openModal} onClose={handleClose}>
       <TitleConfirm variant="subhead3">{t('confirmModal.title')}</TitleConfirm>
       <ButtonContainer>
         <Button
@@ -37,7 +42,7 @@ const ConfirmModal = () => {
           css={{ width: '100%' }}
           type="button"
           variant="secondary"
-          onClick={handleCloseModal}
+          onClick={handleClose}
         >
           {t('confirmModal.back')}
         </Button>
