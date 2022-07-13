@@ -1,7 +1,5 @@
 import Typography from 'common/components/Typography'
-import withGuard from 'common/guards/withGuard'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
-import { NextPage } from 'next'
 import { useRouter } from 'next/router'
 
 import ConfirmModal from './components/ConfirmModal'
@@ -16,7 +14,7 @@ import {
 } from './styled'
 import { RegisterType } from './types'
 
-const RegisterForm: NextPage = () => {
+const RegisterForm = () => {
   const { t } = useSSRTranslation('register')
   const router = useRouter()
   const type = (router.query.type as RegisterType) || RegisterType.Register
@@ -33,6 +31,15 @@ const RegisterForm: NextPage = () => {
         </RegisterContainer>
         <SubmitContainer>
           <SubmitButton type="submit">{t('submit')}</SubmitButton>
+          {type === RegisterType.Edit && (
+            <SubmitButton
+              type="button"
+              variant="secondary"
+              onClick={() => router.push('/')}
+            >
+              {t('back')}
+            </SubmitButton>
+          )}
         </SubmitContainer>
       </RootContainer>
       <ConfirmModal />
@@ -40,4 +47,4 @@ const RegisterForm: NextPage = () => {
   )
 }
 
-export default withGuard(RegisterForm)
+export default RegisterForm

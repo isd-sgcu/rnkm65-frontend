@@ -30,5 +30,6 @@ export const RootContainer = styled('div', {
 
 export const SubmitContainer = styled('div', {
   display: 'flex',
+  columnGap: '3rem',
   justifyContent: 'center',
 })

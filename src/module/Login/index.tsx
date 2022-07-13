@@ -16,9 +16,9 @@ const LoginPage = () => {
   const [loading, setLoading] = useState(true)
   const [isConfirm, setConfirm] = useState(false)
   const { t } = useSSRTranslation('login')
-  const { login, refreshContext } = useAuth()
+  const { login, refreshContext, user } = useAuth()
   useBottomBackground()
-
+  
   const handleToggle = () => {
     setConfirm(!isConfirm)
   }
@@ -33,19 +33,25 @@ const LoginPage = () => {
         }
 
         localStorage.setItem('token', JSON.stringify(token))
-        refreshContext()
+        await refreshContext()
       }
 
       const token = localStorage.getItem('token')
+
       if (token) {
-        router.replace('/')
+        if (user?.disease) {
+          router.replace('/')
+          return
+        }
+
+        router.replace('/register')
         return
       }
 
       setLoading(false)
     }
     attemptAuthentication()
-  }, [router, refreshContext])
+  }, [router, refreshContext, user?.disease])
 
   return (
     <RootContainer>

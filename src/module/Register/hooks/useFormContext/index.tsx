@@ -1,9 +1,13 @@
 import { yupResolver } from '@hookform/resolvers/yup'
+import { AxiosError } from 'axios'
+import Loading from 'common/components/Loading'
 import { useAuth } from 'common/contexts/AuthContext'
+import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import { useSwitch } from 'common/hooks/useSwitch'
 import { IFormSchema } from 'common/types/form'
 import { httpPost, httpPut } from 'common/utils/axios'
 import { b64ToBlob } from 'common/utils/imageHelper'
+import { RegisterType } from 'module/Register/types'
 import { formSchema, templateForm } from 'module/Register/utils/schema'
 import { useRouter } from 'next/router'
 import React, {
@@ -12,6 +16,7 @@ import React, {
   useContext,
   useEffect,
   useMemo,
+  useState,
 } from 'react'
 import { SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form'
 
@@ -27,6 +32,8 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
     handleOpen,
     handleClose: handleCloseModal,
   } = useSwitch(false)
+  const [isLoading, setLoading] = useState(false)
+  const [firstLoad, setFirstLoad] = useState(true)
   const {
     register,
     handleSubmit,
@@ -40,8 +47,10 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
     resolver: yupResolver(formSchema),
     shouldFocusError: false,
   })
+  const { t } = useSSRTranslation('register')
 
   const router = useRouter()
+  const type = (router.query.type as RegisterType) || RegisterType.Register
 
   const approveVaccine = useCallback(() => {
     setValue('vaccineCertificateUrl', 'true')
@@ -67,9 +76,10 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
   }, [])
 
   const handleModalSubmit = useCallback(async () => {
+    setLoading(true)
     const data = getValues()
 
-    const profileUrl = data.imageUrl
+    let profileUrl = data.imageUrl
     if (
       !profileUrl.startsWith('http://') &&
       !profileUrl.startsWith('https://')
@@ -84,13 +94,25 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
       formData.set('tag', 'profile')
 
       try {
-        await httpPost('/file/upload', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        })
+        const res = await httpPost<FormData, { url: string }>(
+          '/file/upload',
+          formData,
+          {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          }
+        )
+        profileUrl = res.data.url
       } catch (err) {
-        return
+        setLoading(false)
+
+        const error = err as unknown as AxiosError
+
+        if (!error.response?.status || error.response.status === 500) {
+          throw new Error(t('error.unknownError'))
+        }
+        throw new Error(t('error.uploadImageFailed'))
       }
     }
 
@@ -100,20 +122,42 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
       lineID,
       imageUrl,
       canSelectBaan,
+      allergyFood,
+      allergyMedicine,
+      foodRestriction,
       ...remain
     } = data
 
-    await httpPut('/user', {
-      ...remain,
-      phone: phoneNumber,
-      line_id: lineID,
-      can_select_baan: canSelectBaan === 'true',
-    })
+    try {
+      await httpPut('/user', {
+        ...remain,
+        phone: phoneNumber,
+        line_id: lineID,
+        image_url: profileUrl,
+        allergy_food: allergyFood,
+        allergy_medicine: allergyMedicine,
+        food_restriction: foodRestriction,
+        can_select_baan: canSelectBaan === 'true',
+      })
+    } catch (err) {
+      setLoading(false)
+      if ((err as unknown as AxiosError).response?.status === 500) {
+        throw new Error(t('error.unknownError'))
+      }
+      throw new Error(t('error.updateProfileFailed'))
+    }
 
     await refreshContext()
 
+    const redirectUrl = localStorage.getItem('redirectUrl')
+    if (redirectUrl) {
+      localStorage.removeItem('redirectUrl')
+      router.push(redirectUrl)
+      return
+    }
+
     router.push('/')
-  }, [generateFile, getValues, refreshContext, router])
+  }, [generateFile, getValues, refreshContext, router, t])
 
   const handleSuccess: SubmitHandler<IFormSchema> = useCallback(() => {
     handleOpen()
@@ -169,17 +213,25 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
 
     const { id, phone, canSelectBaan, ...rest } = user
 
+    if (type === RegisterType.Register && phone) {
+      router.push('/')
+      return
+    }
+
     reset({
       phoneNumber: phone.replaceAll('-', ''),
       vaccineCertificateUrl: phone ? 'true' : 'false',
       canSelectBaan: canSelectBaan ? 'true' : 'false',
       ...rest,
     })
-  }, [reset, user])
+
+    setFirstLoad(false)
+  }, [reset, router, type, user])
 
   return (
     <FormContext.Provider value={providerProps}>
-      <form onSubmit={handleClickSubmit}>{children}</form>
+      {(isLoading || firstLoad) && <Loading />}
+      <form onSubmit={handleClickSubmit}>{!firstLoad && children}</form>
     </FormContext.Provider>
   )
 }

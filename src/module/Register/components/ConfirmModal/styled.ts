@@ -16,7 +16,7 @@ export const ButtonContainer = styled('div', {
   display: 'flex',
   width: '100%',
   columnGap: '1rem',
-  marginTop: '1rem',
+  marginTop: '0.5rem',
 
   '@sm': {
     marginTop: '0.25rem',

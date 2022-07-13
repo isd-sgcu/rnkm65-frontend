@@ -14,6 +14,7 @@ export const useImageHooks = (
   })
 
   const [tmpImg, setTmpImg] = useState<string>('')
+  const [isLoading, setLoading] = useState(false)
   const [innerError, setInnerError] = useState<string>('')
 
   const resetError = useCallback(() => {
@@ -22,6 +23,7 @@ export const useImageHooks = (
 
   const handleSubmitImage = useCallback(async () => {
     setInnerError('')
+    setLoading(true)
     try {
       const croppedImage = await getCroppedImage(tmpImg, cropMetadata)
       const { width, height } = cropMetadata
@@ -32,10 +34,13 @@ export const useImageHooks = (
     } catch (err: unknown) {
       setInnerError((err as Error).message)
     }
+
+    setLoading(false)
   }, [cropMetadata, handleClose, onSubmit, tmpImg])
 
   return {
     tmpImg,
+    isLoading,
     setTmpImg,
     handleSubmitImage,
     setCropMetadata,

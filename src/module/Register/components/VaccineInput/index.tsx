@@ -3,7 +3,7 @@ import Modal from 'common/components/Modal'
 import Typography from 'common/components/Typography'
 import { useSwitch } from 'common/hooks/useSwitch'
 import React from 'react'
-import { AiOutlineCheck, AiOutlineClose } from 'react-icons/ai'
+import { AiOutlineCheck } from 'react-icons/ai'
 
 import UploadModal from '../UploadImageModal'
 import { useVaccineHooks } from './hooks/useVaccineHooks'
@@ -24,11 +24,7 @@ const VaccineInput = (props: IVaccineInputProps) => {
           {required && <RequiredSymbol>*</RequiredSymbol>}
         </Typography>
 
-        {value === 'true' ? (
-          <AiOutlineCheck size="24" color="green" />
-        ) : (
-          <AiOutlineClose size="24" color="red" />
-        )}
+        {value === 'true' && <AiOutlineCheck size="24" color="green" />}
 
         <Button
           onClick={handleOpen}
