@@ -59,6 +59,7 @@
     "noQrCode": "ไม่พบ QR Code ในรูปภาพ",
     "invalidQrCode": "QR Code ไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง",
     "vaccineAlreadyApproved": "QR Code นี้ได้ถูกใช้ไปแล้ว",
+    "vaccineNotMetCriteria": "ไม่ผ่านเงื่อนไขการฉีดวัคซีนที่กำหนดไว้",
     "uploadImageFailed": "เกิดข้อผิดพลาดในการอัพโหลดรูปภาพ กรุณาลองใหม่อีกครั้ง",
     "updateProfileFailed": "เกิดข้อผิดพลาดในการอัพเดทข้อมูล กรุณาลองใหม่อีกครั้ง"
   },

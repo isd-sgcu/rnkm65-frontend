@@ -52,7 +52,7 @@ export const useVaccineHooks = () => {
       }
 
       if (!res.isPassed) {
-        throw new Error('Vaccine is not passed')
+        throw new Error(t('error.vaccineNotMetCriteria'))
       }
 
       approveVaccine()
