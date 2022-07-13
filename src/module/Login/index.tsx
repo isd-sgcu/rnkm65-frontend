@@ -1,5 +1,6 @@
 import Button from 'common/components/Button'
 import Checkbox from 'common/components/Checkbox'
+import useBottomBackground from 'common/components/Layout/components/Background/hooks/useBottomBackground'
 import Loading from 'common/components/Loading'
 import Typography from 'common/components/Typography'
 import { useAuth } from 'common/contexts/AuthContext'
@@ -16,7 +17,8 @@ const LoginPage = () => {
   const [isConfirm, setConfirm] = useState(false)
   const { t } = useSSRTranslation('login')
   const { login, refreshContext, user } = useAuth()
-
+  useBottomBackground()
+  
   const handleToggle = () => {
     setConfirm(!isConfirm)
   }

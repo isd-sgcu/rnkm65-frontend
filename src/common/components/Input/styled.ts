@@ -3,7 +3,7 @@ import { styled } from 'config/stitches.config'
 export const InputBase = styled('input', {
   backgroundColor: '$new-gray',
   fontFamily: '$FCSubjectRounded',
-  borderRadius: '4px',
+  borderRadius: '20px',
   padding: '5px 8px',
   fontSize: '1rem',
   width: '100%',
@@ -16,7 +16,7 @@ export const InputBase = styled('input', {
         border: '$error 2px solid',
       },
       false: {
-        border: '$blue 1px solid',
+        border: 'none',
       },
     },
   },

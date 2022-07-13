@@ -64,13 +64,13 @@
     "updateProfileFailed": "เกิดข้อผิดพลาดในการอัพเดทข้อมูล กรุณาลองใหม่อีกครั้ง"
   },
   "placeholder": {
-    "firstname": "Hello",
-    "lastname": "World",
-    "nickname": "Tata",
-    "phoneNumber": "0222222222",
+    "firstname": "จอนห์",
+    "lastname": "โด",
+    "nickname": "ตาต้า",
+    "phoneNumber": "022222222",
     "facebook": "Facebook",
     "lineID": "Line ID",
-    "email": "welcomefair@welcomfair.com",
+    "email": "john@example.com",
     "allergyFood": "",
     "foodRestriction": "",
     "allergyMedicine": "",

@@ -1,3 +1,4 @@
+import useBottomBackground from 'common/components/Layout/components/Background/hooks/useBottomBackground'
 import Typography from 'common/components/Typography'
 import Image from 'next/image'
 import { Trans, useTranslation } from 'next-i18next'
@@ -7,6 +8,7 @@ import { Container, Description, ImageContainer } from './styled'
 
 const Waiting = () => {
   const { t } = useTranslation('profile')
+  useBottomBackground()
 
   return (
     <Container>
