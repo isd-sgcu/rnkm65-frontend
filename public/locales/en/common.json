@@ -1,9 +1,9 @@
 {
-  "test": "hello world",
+  "test": "Hello, World!",
   "logout": "Logout",
   "reportIssue": "Report Issue",
-  "howToRegister": "ขั้นตอนการลงทะเบียน",
-  "acknowledge": "รับทราบ",
-  "want": "ต้องการ",
-  "notWant": "ไม่ต้องการ"
+  "howToRegister": "Registration Process",
+  "acknowledge": "Acknowledge",
+  "want": "Yes",
+  "notWant": "No"
 }
