@@ -11,13 +11,20 @@
   "plugins": ["prettier", "simple-import-sort"],
   "parser": "@typescript-eslint/parser",
   "rules": {
-    "prettier/prettier": "error",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ],
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
     "react/function-component-definition": "off",
     "react/react-in-jsx-scope": "off",
     "react/jsx-props-no-spreading": "off",
-    "import/prefer-default-export": "warn"
+    // False positive error
+    "react/prop-types": "off",
+    "import/prefer-default-export": "off"
   },
   "parserOptions": {
     "project": "./tsconfig.json"

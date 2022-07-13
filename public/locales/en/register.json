@@ -1,0 +1,74 @@
+{
+  "register": "Register",
+  "edit": "แก้ไขข้อมูล",
+  "annoucement": "*กรุณาใส่ข้อมูลให้ครบทุกช่อง (หากไม่มีให้ใส่ -)",
+  "submit": "Submit",
+  "title": {
+    "title": "Name Title",
+    "firstname": "Firstname",
+    "lastname": "Lastname",
+    "nickname": "Nickname",
+    "phoneNumber": "Phone number",
+    "facebook": "Facebook",
+    "lineID": "Line ID",
+    "allergyFood": "Food Allergy",
+    "foodRestriction": "Food Limitation",
+    "allergyMedicine": "Drug Allergy",
+    "disease": "Congenital Disease",
+    "vaccineCertificateUrl": "Send Vaccine Certificate: ",
+    "canSelectBaan": "กิจกรรมการจัดบ้านรับเพื่อน"
+  },
+  "uploadModal": {
+    "title": "แก้ไขรูปภาพ",
+    "submit": "ยืนยัน",
+    "desc": "ใช้รูปที่เห็นใบหน้าชัดเจน | ไม่ควรใส่ฟิลเตอร์ | ขนาดไฟล์สูงสุด 4 MB",
+    "uploadFallback": "คลิกเพื่ออัพโหลดรูป",
+    "dragDropFallback": "ปล่อยเพื่ออัพโหลด"
+  },
+  "vaccineModal": {
+    "title": "Upload QR code",
+    "submit": "Submit",
+    "desc": "ใช้ QR code จากหมวด Digital Health Pass ในแอพหมอพร้อม | เลือก EU Digital COVID Certificate | เลือกประเภทเป็น Vaccination Status | ขนาดไฟล์สูงสุด 4 MB",
+    "uploadFallback": "Click to upload",
+    "dragDropFallback": "Drop to upload"
+  },
+  "uploadBtn": "อัพโหลดรูป",
+  "Mr": "Mr.",
+  "Mrs": "Mrs.",
+  "Ms": "Ms.",
+  "wantToJoin": "ต้องการเข้าร่วม",
+  "dontWantToJoin": "ไม่ต้องการเข้าร่วม",
+  "upload": {
+    "noFileLabel": "No file uploaded",
+    "uploadBtnLabel": "Upload file",
+    "seeFileLabel": "View {{label}}"
+  },
+  "error": {
+    "requiredText": "กรุณากรอกข้อมูล",
+    "formatText": "รูปแบบไม่ถูกต้อง",
+    "requiredSelect": "กรุณาเลือก",
+    "requiredUploadImage": "กรุณาอัพโหลดรูปภาพ",
+    "requiredFile": "กรุณาอัพโหลดไฟล์",
+    "fileLimit": "ไฟล์มีขนาดเกิน 4 MB",
+    "invalidMime": "ไฟล์รูปภาพต้องเป็นประเภท PNG หรือ JPEG",
+    "noQrCode": "ไม่พบ QR Code ในรูปภาพ",
+    "invalidQrCode": "QR Code ไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง"
+  },
+  "placeholder": {
+    "firstname": "กรุงเทพ",
+    "lastname": "มหานคร",
+    "nickname": "ตาต้า",
+    "phoneNumber": "0222222222",
+    "facebook": "Facebook",
+    "lineID": "Line ID",
+    "allergyFood": "",
+    "foodRestriction": "",
+    "allergyMedicine": "",
+    "disease": ""
+  },
+  "confirmModal": {
+    "title": "คุณต้องการยืนยันหรือไม่",
+    "back": "กลับ",
+    "confirm": "ยืนยัน"
+  }
+}
