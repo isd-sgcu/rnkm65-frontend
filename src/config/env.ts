@@ -13,7 +13,7 @@ export const APP_BASE_URL =
   'https://cerulean-sable-b1ec76.netlify.app'
 
 export const SSO_BASE_URL =
-  publicRuntimeConfig.env.SSO_BASE_URL || 'http://sso.cucheck.in'
+  publicRuntimeConfig.env.SSO_BASE_URL || 'https://sso.cucheck.in'
 
 export const VACCINE_BASE_URL =
-  publicRuntimeConfig.env.VACCINE_BASE_URL || 'http://localhost:3001'
+  publicRuntimeConfig.env.VACCINE_BASE_URL || 'https://vaccine.cucheck.in'
