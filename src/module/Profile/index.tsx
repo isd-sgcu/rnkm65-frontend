@@ -37,8 +37,8 @@ const tmpBaan = {
 }
 
 const Profile = (props: IProfileProps) => {
-  const { disable } = props
-  return !disable ? (
+  const { canAccessProfile } = props
+  return canAccessProfile ? (
     <Container>
       <UserProfile {...tmpUser} />
       <div
