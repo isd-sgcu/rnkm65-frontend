@@ -1,9 +1,12 @@
+import useBottomBackground from 'common/components/Layout/components/Background/hooks/useBottomBackground'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
 
 import { Box, Container, Link, Title } from './styled'
 
 const LatePage = () => {
   const { t } = useSSRTranslation('late')
+  useBottomBackground()
+
   return (
     <Container>
       <Box>

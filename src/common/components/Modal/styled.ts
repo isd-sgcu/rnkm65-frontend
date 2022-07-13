@@ -47,7 +47,7 @@ export const BackdropContainer = styled('div', {
         zIndex: 99,
       },
       false: {
-        zIndex: -1,
+        zIndex: -2,
       },
     },
   },

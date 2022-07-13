@@ -87,6 +87,9 @@ export const Typography = styled('div', {
       'new-primary': {
         color: '$new-primary',
       },
+      'new-secondary': {
+        color: '$new-secondary',
+      },
     },
   },
   defaultVariants: {

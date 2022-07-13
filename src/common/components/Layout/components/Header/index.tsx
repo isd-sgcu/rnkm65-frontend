@@ -14,13 +14,14 @@ const Header = () => {
 
   const handleReportIssue = useCallback(() => {
     // TODO change url
-    window.location.href = 'https://www.google.com/'
+    window.location.href = 'https://airtable.com/shrWFil4igZa2UZoV'
   }, [])
 
-  const handleHowToRegister = useCallback(() => {
-    // TODO change url
-    window.location.href = 'https://www.google.com/'
-  }, [])
+  // We don't have time to do this
+  // const handleHowToRegister = useCallback(() => {
+  //   // TODO change url
+  //   window.location.href = 'https://www.google.com/'
+  // }, [])
 
   return (
     <HeaderContainer>
@@ -28,11 +29,11 @@ const Header = () => {
         <Logo>{/* <Image src="/logo.svg" layout="fill" /> */}</Logo>
       </LogoContainer>
 
-      <Hidden variant="lgdown">
+      {/* <Hidden variant="lgdown">
         <TextButton onClick={handleHowToRegister}>
           {t('howToRegister')}
         </TextButton>
-      </Hidden>
+      </Hidden> */}
       <Hidden variant="lgdown">
         <TextButton onClick={handleReportIssue}>{t('reportIssue')}</TextButton>
       </Hidden>
@@ -46,10 +47,10 @@ const Header = () => {
       {/* Mobile */}
       <Hidden variant="xlup">
         <IconContainer>
-          <MobileIcon
+          {/* <MobileIcon
             src="/how-to-register.svg"
             onClick={handleHowToRegister}
-          />
+          /> */}
           <MobileIcon src="/report-issue.svg" onClick={handleReportIssue} />
           <LogoutIcon />
         </IconContainer>
