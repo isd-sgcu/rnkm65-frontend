@@ -1,3 +1,4 @@
+import { useBackground } from 'common/contexts/BackgroundContext'
 import Image from 'next/image'
 
 import {
@@ -11,7 +12,7 @@ import {
 } from './styled'
 
 const Background = () => {
-  const type = 'default'
+  const { type } = useBackground()
 
   const background =
     type === 'default' ? (
