@@ -7,6 +7,11 @@ export default class Document extends NextDocument {
     return (
       <Html lang="en">
         <Head>
+          <meta charSet="utf-8" />
+          <meta
+            name="description"
+            content="ระบบลงทะเบียนงานรับเพื่อนก้าวใหม่ ปีการศึกษา 2565 จุฬาลงกรณ์มหาวิทยาลัย"
+          />
           <style
             id="stitches"
             // eslint-disable-next-line react/no-danger
