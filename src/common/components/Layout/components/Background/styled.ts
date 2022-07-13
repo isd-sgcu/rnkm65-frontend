@@ -5,6 +5,8 @@ export const Container = styled('div', {
   height: '100%',
   width: '100%',
   zIndex: -1,
+  backgroundColor: '$white',
+  overflow: 'hidden',
 })
 
 export const TopRightBGContainer = styled('div', {
