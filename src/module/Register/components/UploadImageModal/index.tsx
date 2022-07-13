@@ -1,4 +1,5 @@
 import Button from 'common/components/Button'
+import Loading from 'common/components/Loading'
 import Typography from 'common/components/Typography'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import { memo, useMemo, useRef } from 'react'
@@ -24,6 +25,7 @@ const UploadModal = memo((props: IUploadModalProps) => {
     handleSubmitImage,
     innerError,
     resetError,
+    isLoading,
   } = useImageHooks(handleClose, onSubmit)
 
   const description = useMemo(
@@ -33,6 +35,7 @@ const UploadModal = memo((props: IUploadModalProps) => {
 
   return (
     <>
+      {isLoading && <Loading />}
       <Typography color="blue" variant="h3" css={{ marginBottom: '0.5rem' }}>
         {t(`${i18nPrefix}.title`)}
       </Typography>
@@ -58,6 +61,14 @@ const UploadModal = memo((props: IUploadModalProps) => {
       {tmpImg && (
         <ActionButtonContainer>
           <Button
+            variant="secondary"
+            css={{ fontSize: '1.25rem' }}
+            onClick={handleSubmitImage}
+            type="button"
+          >
+            {t(`${i18nPrefix}.submit`)}
+          </Button>
+          <Button
             css={{ fontSize: '1.25rem' }}
             variant="primary"
             onClick={() => {
@@ -66,15 +77,7 @@ const UploadModal = memo((props: IUploadModalProps) => {
             }}
             type="button"
           >
-            อัพโหลดใหม่
-          </Button>
-          <Button
-            variant="secondary"
-            css={{ fontSize: '1.25rem' }}
-            onClick={handleSubmitImage}
-            type="button"
-          >
-            {t(`${i18nPrefix}.submit`)}
+            {t(`${i18nPrefix}.uploadAgain`)}
           </Button>
         </ActionButtonContainer>
       )}
