@@ -5,5 +5,7 @@
   "howToRegister": "Registration Process",
   "acknowledge": "Acknowledge",
   "want": "Yes",
-  "notWant": "No"
+  "notWant": "No",
+  "back": "Back",
+  "notFoundPage": "Page not found"
 }

@@ -16,14 +16,14 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   useEffect(() => {
     if (typeof window !== 'undefined' && REMEMBER_LOCALE) {
-      const lang = window.localStorage.getItem('locale')
+      const lang = window.localStorage.getItem('locale') || 'th'
 
-      if (lang) {
+      if (router.locale && lang !== router.locale) {
         router.replace(router.asPath, undefined, { locale: lang })
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [router])
 
   return (
     <SWRConfig value={SWR_CONFIG}>
