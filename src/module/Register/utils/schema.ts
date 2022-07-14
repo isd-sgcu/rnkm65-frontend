@@ -1,14 +1,16 @@
 import { IFormSchema } from 'common/types/form'
 import dynamic from 'next/dynamic'
 import { CSSProperties } from 'react'
-import { mixed, object, string } from 'yup'
+import { object, string } from 'yup'
 
 const VaccineInput = dynamic(() => import('../components/VaccineInput'))
 
 // TODO: Form validation for new field
 export const formSchema = object()
   .shape({
-    title: mixed().oneOf(['Mr.', 'Mrs.', 'Ms.']).defined('Required title'),
+    title: string()
+      .required('Required title')
+      .oneOf(['นาย', 'นางสาว', 'นาง'], 'Required'),
     firstname: string().required('Required firstname'),
     lastname: string().required('Required lastname'),
     nickname: string().required('Required nickname'),
@@ -59,12 +61,12 @@ export const templateForm: Array<Array<ITemplateFormItem>> = [
       type: 'select_input',
       style: {
         gridColumn: '1 / 2',
-        minWidth: '95px',
+        minWidth: '100px',
       },
       option: [
-        { value: 'Mr.', i18nKey: 'Mr' },
-        { value: 'Mrs.', i18nKey: 'Mrs' },
-        { value: 'Ms.', i18nKey: 'Ms' },
+        { value: 'นาย', i18nKey: 'Mr' },
+        { value: 'นางสาว', i18nKey: 'Miss' },
+        { value: 'นาง', i18nKey: 'Mrs' },
       ],
     },
     {

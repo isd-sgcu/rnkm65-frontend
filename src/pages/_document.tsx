@@ -7,10 +7,32 @@ export default class Document extends NextDocument {
     return (
       <Html lang="en">
         <Head>
+          <meta charSet="utf-8" />
+          <meta
+            name="description"
+            content="ระบบลงทะเบียนงานรับเพื่อนก้าวใหม่ ปีการศึกษา 2565 จุฬาลงกรณ์มหาวิทยาลัย"
+          />
           <style
             id="stitches"
             // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{ __html: getCssText() }}
+          />
+          <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/apple-touch-icon.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/favicon-32x32.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/favicon-16x16.png"
           />
         </Head>
         <body>

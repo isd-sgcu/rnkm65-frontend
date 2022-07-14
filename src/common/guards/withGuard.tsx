@@ -30,7 +30,7 @@ function withGuard<T>(
         return
       }
 
-      if (requiredData && !user?.phone) {
+      if (requiredData && (!user?.phone || !user?.isVerify)) {
         localStorage.setItem('redirectPath', router.asPath)
         router.replace('/register')
         return
@@ -44,7 +44,7 @@ function withGuard<T>(
       }
 
       setLoading(false)
-    }, [isAuthenticated, isReady, router, user?.phone])
+    }, [isAuthenticated, isReady, router, user?.phone, user?.isVerify])
 
     return isLoading ? <Loading /> : <Component {...props} />
   }

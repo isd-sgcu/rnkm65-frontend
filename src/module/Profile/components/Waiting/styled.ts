@@ -25,6 +25,13 @@ export const ImageContainer = styled('div', {
   },
 })
 
+export const TextContainer = styled('div', {
+  maxWidth: '500px',
+  '@md': {
+    maxWidth: 'none',
+  },
+})
+
 export const Description = styled(Typography, {
   backgroundColor: '$purple400',
   padding: '40px',

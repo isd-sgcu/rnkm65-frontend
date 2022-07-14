@@ -12,7 +12,7 @@ export default function useSSRTranslation(ns?: string) {
 
     if (typeof window !== 'undefined' && REMEMBER_LOCALE) {
       window.localStorage.setItem('locale', lang)
-      router.reload()
+      router.replace(router.asPath, undefined, { locale: lang })
       return
     }
 
