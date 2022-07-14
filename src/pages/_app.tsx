@@ -4,14 +4,12 @@ import Layout from 'common/components/Layout'
 import AuthProvider from 'common/contexts/AuthContext'
 import { BackgroundProvider } from 'common/contexts/BackgroundContext'
 import { REMEMBER_LOCALE } from 'config/env'
-import { SWR_CONFIG } from 'config/swr'
 import ErrorFallback from 'module/ErrorBoundary'
 import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
 import { appWithTranslation } from 'next-i18next'
 import { useEffect } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
-import { SWRConfig } from 'swr'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter()
@@ -28,17 +26,15 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, [router])
 
   return (
-    <SWRConfig value={SWR_CONFIG}>
-      <AuthProvider>
-        <BackgroundProvider>
-          <Layout>
-            <ErrorBoundary FallbackComponent={ErrorFallback}>
-              <Component {...pageProps} />
-            </ErrorBoundary>
-          </Layout>
-        </BackgroundProvider>
-      </AuthProvider>
-    </SWRConfig>
+    <AuthProvider>
+      <BackgroundProvider>
+        <Layout>
+          <ErrorBoundary FallbackComponent={ErrorFallback}>
+            <Component {...pageProps} />
+          </ErrorBoundary>
+        </Layout>
+      </BackgroundProvider>
+    </AuthProvider>
   )
 }
 

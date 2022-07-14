@@ -37,7 +37,7 @@ const UploadImage = memo(() => {
                 // height={300}
               />
             ) : (
-              <FallbackImageContainer>
+              <FallbackImageContainer ref={field.ref}>
                 <FallbackImage error={!!fieldState.error} />
                 {!!fieldState.error && (
                   <Typography css={{ color: '$error' }}>
