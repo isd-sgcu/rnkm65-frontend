@@ -18,7 +18,7 @@ const LoginPage = () => {
   const { t } = useSSRTranslation('login')
   const { login, refreshContext, user } = useAuth()
   useBottomBackground()
-  
+
   const handleToggle = () => {
     setConfirm(!isConfirm)
   }
