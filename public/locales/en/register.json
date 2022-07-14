@@ -1,7 +1,7 @@
 {
   "register": "Register",
   "edit": "Edit Profile",
-  "annoucement": "*Please fill out all fields. (If inapplicable, put -)",
+  "annoucement": "*Please fill out all fields. (If a field is blank, please fill in '-' instead)",
   "submit": "Submit",
   "back": "Back",
   "title": {
@@ -11,19 +11,19 @@
     "nickname": "Nickname",
     "phoneNumber": "Phone number",
     "facebook": "Facebook",
-    "lineID": "Line ID",
+    "lineID": "LINE ID",
     "email": "Email",
     "allergyFood": "Food Allergies",
     "foodRestriction": "Food Limitations",
     "allergyMedicine": "Drug Allergies",
     "disease": "Congenital Diseases",
     "vaccineCertificateUrl": "Submit Vaccine Certificate: ",
-    "canSelectBaan": "Do you want to participate in Freshers' Fair grouping activity?"
+    "canSelectBaan": "Would you like to participate in Freshers' Fair grouping activity?"
   },
   "uploadModal": {
     "title": "Edit Image",
     "submit": "Confirm",
-    "desc": "Use a photo that clearly sees your face. | Do not apply image filter. | Maximum file size is 4 MB.",
+    "desc": "Use a photo that clearly sees your face. | Do not apply image filters. | Maximum file size is 4 MB.",
     "uploadFallback": "Click to Upload Photo",
     "dragDropFallback": "Drop to Upload",
     "uploadAgain": "Upload again"
@@ -31,7 +31,7 @@
   "vaccineModal": {
     "title": "Upload QR Code",
     "submit": "Submit",
-    "desc": "Use QR Code from Digital Health Pass category in Mor Prompt (หมอพร้อม) app. | Enable Personal information in Digital Health Pass Tab | Select EU Digital COVID Certificate. | Select type as Vaccination Status. | Maximum file size is 4 MB.",
+    "desc": "Use the QR Code from Digital Health Pass category in Mor Prompt (หมอพร้อม) app. | Enable Personal information in Digital Health Pass Tab | Select EU Digital COVID Certificate. | Select type as Vaccination Status. | Maximum file size is 4 MB.",
     "uploadFallback": "Click to Upload Image",
     "dragDropFallback": "Drop to Upload",
     "uploadAgain": "Upload Again"
@@ -70,12 +70,12 @@
     "nickname": "Tata",
     "phoneNumber": "0222222222",
     "facebook": "Facebook",
-    "lineID": "Line ID",
+    "lineID": "LINE ID",
     "email": "john@example.com",
-    "allergyFood": "",
-    "foodRestriction": "",
-    "allergyMedicine": "",
-    "disease": ""
+    "allergyFood": "(If none, please fill in '-' instead)",
+    "foodRestriction": "(If none, please fill in '-' instead)",
+    "allergyMedicine": "(If none, please fill in '-' instead)",
+    "disease": "(If none, please fill in '-' instead)"
   },
   "confirmModal": {
     "title": "Are you sure you want to confirm?",
