@@ -4,10 +4,12 @@ import Layout from 'common/components/Layout'
 import AuthProvider from 'common/contexts/AuthContext'
 import { BackgroundProvider } from 'common/contexts/BackgroundContext'
 import { REMEMBER_LOCALE } from 'config/env'
+import ErrorFallback from 'module/ErrorBoundary'
 import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
 import { appWithTranslation } from 'next-i18next'
 import { useEffect } from 'react'
+import { ErrorBoundary } from 'react-error-boundary'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter()
@@ -27,7 +29,9 @@ function MyApp({ Component, pageProps }: AppProps) {
     <AuthProvider>
       <BackgroundProvider>
         <Layout>
-          <Component {...pageProps} />
+          <ErrorBoundary FallbackComponent={ErrorFallback}>
+            <Component {...pageProps} />
+          </ErrorBoundary>
         </Layout>
       </BackgroundProvider>
     </AuthProvider>
