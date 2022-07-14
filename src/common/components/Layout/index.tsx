@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import React, { PropsWithChildren } from 'react'
 
+import Background from './components/Background'
 import Footer from './components/Footer'
 import Header from './components/Header'
 import { ContentContainer, LayoutContainer } from './styled'
@@ -17,6 +18,7 @@ const Layout = ({ children }: PropsWithChildren<{}>) => {
             : 'Freshers fairs 2565'}
         </title>
       </Head>
+      <Background />
       <Header />
       <ContentContainer>{children}</ContentContainer>
       <Footer />

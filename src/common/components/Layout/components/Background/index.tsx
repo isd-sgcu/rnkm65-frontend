@@ -1,26 +1,47 @@
-import { FC } from 'react'
+import { useBackground } from 'common/contexts/BackgroundContext'
 import Image from 'next/image'
 
 import {
+  BottomBGContainerDesktop,
+  BottomBGContainerMobile,
   BottomLeftBGContainer,
   BottomRightBGContainer,
+  Container,
+  LeftBGContainer,
   TopRightBGContainer,
 } from './styled'
 
-export const BackgroundImage: FC = ({}) => {
-  return (
-    <>
-      <TopRightBGContainer>
-        <Image src="/top-right.svg" layout="fill" />
-      </TopRightBGContainer>
+const Background = () => {
+  const { type } = useBackground()
 
-      <BottomLeftBGContainer>
-        <Image src="/bottom-left.svg" layout="fill" />
-      </BottomLeftBGContainer>
+  const background =
+    type === 'default' ? (
+      <>
+        <TopRightBGContainer>
+          <Image src="/background/top-right.svg" layout="fill" />
+        </TopRightBGContainer>
+        <BottomLeftBGContainer>
+          <Image src="/background/bottom-left.svg" layout="fill" />
+        </BottomLeftBGContainer>
+        <LeftBGContainer>
+          <Image src="/background/left.svg" layout="fill" />
+        </LeftBGContainer>
+        <BottomRightBGContainer>
+          <Image src="/background/bottom-right.svg" layout="fill" />
+        </BottomRightBGContainer>
+      </>
+    ) : (
+      <>
+        <BottomBGContainerDesktop>
+          <Image src="/background/bottom-desktop.svg" layout="fill" />
+        </BottomBGContainerDesktop>
+        <BottomBGContainerMobile>
+          <Image src="/background/bottom-mobile.svg" layout="fill" />
+        </BottomBGContainerMobile>
+      </>
+    )
 
-      <BottomRightBGContainer>
-        <Image src="/bottom-right.svg" layout="fill" />
-      </BottomRightBGContainer>
-    </>
-  )
+  return <Container>{background}</Container>
 }
+
+export default Background

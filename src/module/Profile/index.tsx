@@ -28,6 +28,7 @@ const tmpUser = {
   imageUrl: '/tmp.jpg',
   vaccineCertificateUrl: '',
   canSelectBaan: true,
+  isVerify: true,
 } as IUser
 
 const tmpBaan = {

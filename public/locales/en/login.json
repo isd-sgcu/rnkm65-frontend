@@ -1,6 +1,6 @@
 {
-  "title": "เข้าสู่ระบบ",
-  "desc": "การเข้าชมเว็บไซต์นี้จำเป็นต้องใช้การยืนยันตัวตน ผ่านระบบ CUNET กรุณายอมรับเงื่อนไขการใช้งาน ดังกล่าวเพื่อเข้าใช้ระบบลงทะเบียนงาน CU WELCOME FAIR",
-  "checkbox": "ข้าพเจ้ายินยอมเปิดเผยข้อมูลส่วนตัวในระบบ CUNET เพื่อใช้ในการลงทะเบียนงาน CU WELCOME FAIR",
-  "loginBtn": "เข้าสู่ระบบด้วย CUNET"
+  "title": "Login",
+  "desc": "This site requires authentication via CUNET. Please accept the terms of use to access Freshers' Fair registration system.",
+  "checkbox": "I consent to disclose my personal information in the CUNET system for the registration of Freshers' Fair.",
+  "loginBtn": "Login with CUNET"
 }
