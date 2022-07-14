@@ -7,7 +7,7 @@ export const RootContainer = styled('div', {
   justifyContent: 'center',
   alignItems: 'center',
   padding: '2rem 2rem',
-  gap: '1.5rem',
+  gap: '1.25rem',
 })
 
 export const ContentContainer = styled('div', {
@@ -20,4 +20,9 @@ export const ContentContainer = styled('div', {
   padding: '2rem',
   gap: '1.5rem',
   borderRadius: '10px',
+})
+
+export const StyledLink = styled('a', {
+  color: '$new-secondary',
+  textDecoration: 'underline',
 })

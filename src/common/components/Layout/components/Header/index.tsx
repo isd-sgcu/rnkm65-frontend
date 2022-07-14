@@ -17,7 +17,8 @@ const Header = () => {
 
   const handleReportIssue = useCallback(() => {
     // TODO change url
-    window.location.href = 'https://airtable.com/shrWFil4igZa2UZoV'
+    window.location.href =
+      'https://airtable.com/shrWFil4igZa2UZoV?hide_errorMessage=true'
   }, [])
 
   const handleLogoClick = useCallback(() => {

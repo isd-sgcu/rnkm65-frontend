@@ -1,6 +1,12 @@
 {
   "title": "Login",
   "desc": "This site requires authentication via CUNET. Please accept the terms of use to access Freshers' Fair registration system.",
-  "checkbox": "I consent to disclose my personal information in the CUNET system for the registration of Freshers' Fair.",
-  "loginBtn": "Login with CUNET"
+  "failedToLogin": "Failed to login, please try again",
+  "unknownError": "Unknown error, please try again",
+  "seniorLoginError": "Only current student can login",
+  "tooManyRequestsError": "Please try again in 5 minutes",
+  "checkbox": "I consent to disclose my personal information in the CUNET system for the registration of Freshers' Fair according to ",
+  "loginBtn": "Login with CUNET",
+  "privacyNotice": "the privacy policy.",
+  "privacyNoticeLink": "https://drive.google.com/file/d/1vMgLjY4Pwt0RNZur-Mvw_JcWUi7gpK1v/view?usp=sharing"
 }

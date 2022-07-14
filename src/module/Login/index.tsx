@@ -9,12 +9,13 @@ import { exchangeTicketForToken } from 'common/utils/auth'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
-import { ContentContainer, RootContainer } from './styled'
+import { ContentContainer, RootContainer, StyledLink } from './styled'
 
 const LoginPage = () => {
   const router = useRouter()
   const [loading, setLoading] = useState(true)
   const [isConfirm, setConfirm] = useState(false)
+  const [errorMsg, setErrorMsg] = useState('')
   const { t } = useSSRTranslation('login')
   const { login, refreshContext, user } = useAuth()
   useBottomBackground()
@@ -29,7 +30,22 @@ const LoginPage = () => {
       if (ticket) {
         const token = await exchangeTicketForToken(ticket.toString())
         if (!token) {
-          // TODO: Handle error
+          setErrorMsg(t('unknownError'))
+          router.replace('/login')
+          return
+        }
+
+        if (typeof token === 'number') {
+          if (token === 403) {
+            setErrorMsg(t('seniorLoginError'))
+          } else if (token === 429) {
+            setErrorMsg(t('tooManyRequestsError'))
+          } else {
+            setErrorMsg(t('unknownError'))
+          }
+
+          router.replace('/login')
+          return
         }
 
         localStorage.setItem('token', JSON.stringify(token))
@@ -51,7 +67,7 @@ const LoginPage = () => {
       setLoading(false)
     }
     attemptAuthentication()
-  }, [router, refreshContext, user?.disease])
+  }, [router, refreshContext, user?.disease, t])
 
   return (
     <RootContainer>
@@ -63,15 +79,32 @@ const LoginPage = () => {
         <Typography color="new-primary" css={{ textAlign: 'center' }}>
           {t('desc')}
         </Typography>
+
         <Checkbox
           checked={isConfirm}
           onChange={handleToggle}
-          label={t('checkbox')}
+          label={
+            <>
+              {t('checkbox')}
+              <StyledLink
+                href={t('privacyNoticeLink')}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {t('privacyNotice')}
+              </StyledLink>
+            </>
+          }
           autoComplete="off"
         />
         <Button disabled={!isConfirm} onClick={login}>
           {t('loginBtn')}
         </Button>
+        {errorMsg && (
+          <Typography css={{ fontWeight: '700' }} color="error">
+            {errorMsg}
+          </Typography>
+        )}
       </ContentContainer>
     </RootContainer>
   )
