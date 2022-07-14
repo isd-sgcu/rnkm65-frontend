@@ -26,15 +26,15 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, [router])
 
   return (
-    <AuthProvider>
-      <BackgroundProvider>
-        <Layout>
-          <ErrorBoundary FallbackComponent={ErrorFallback}>
+    <ErrorBoundary FallbackComponent={ErrorFallback}>
+      <AuthProvider>
+        <BackgroundProvider>
+          <Layout>
             <Component {...pageProps} />
-          </ErrorBoundary>
-        </Layout>
-      </BackgroundProvider>
-    </AuthProvider>
+          </Layout>
+        </BackgroundProvider>
+      </AuthProvider>
+    </ErrorBoundary>
   )
 }
 
