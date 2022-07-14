@@ -9,7 +9,7 @@ import { exchangeTicketForToken } from 'common/utils/auth'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
-import { ContentContainer, RootContainer } from './styled'
+import { ContentContainer, RootContainer, StyledLink } from './styled'
 
 const LoginPage = () => {
   const router = useRouter()
@@ -79,10 +79,22 @@ const LoginPage = () => {
         <Typography color="new-primary" css={{ textAlign: 'center' }}>
           {t('desc')}
         </Typography>
+
         <Checkbox
           checked={isConfirm}
           onChange={handleToggle}
-          label={t('checkbox')}
+          label={
+            <>
+              {t('checkbox')}
+              <StyledLink
+                href={t('privacyNoticeLink')}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {t('privacyNotice')}
+              </StyledLink>
+            </>
+          }
           autoComplete="off"
         />
         <Button disabled={!isConfirm} onClick={login}>
