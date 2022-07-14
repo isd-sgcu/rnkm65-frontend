@@ -21,3 +21,8 @@ export const ContentContainer = styled('div', {
   gap: '1.5rem',
   borderRadius: '10px',
 })
+
+export const StyledLink = styled('a', {
+  color: '$new-secondary',
+  textDecoration: 'underline',
+})
