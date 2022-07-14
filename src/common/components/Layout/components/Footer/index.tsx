@@ -10,8 +10,8 @@ const Footer = () => (
       <Image src="/ISDlogo.svg" layout="fill" />
     </LogoContainer>
     <Typography variant="description">
-      CU Welcome Fair, Student Government of Chulalongkorn University
-      <br /> Copyright © 2021
+      Freshers&apos; Fair, Student Government of Chulalongkorn University
+      <br /> Copyright © 2022
     </Typography>
   </FooterContainer>
 )

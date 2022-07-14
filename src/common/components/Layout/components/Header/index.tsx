@@ -34,7 +34,7 @@ const Header = () => {
     <HeaderContainer>
       <LogoContainer>
         <Logo onClick={handleLogoClick}>
-          <Image src="/logo.svg" layout="fill" />
+          <Image src="/logo.png" layout="fill" />
         </Logo>
       </LogoContainer>
 
