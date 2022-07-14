@@ -62,9 +62,8 @@ export const templateForm: Array<Array<ITemplateFormItem>> = [
         minWidth: '95px',
       },
       option: [
-        { value: 'Mr.', i18nKey: 'Mr' },
-        { value: 'Mrs.', i18nKey: 'Mrs' },
-        { value: 'Ms.', i18nKey: 'Ms' },
+        { value: 'นาย', i18nKey: 'Mr' },
+        { value: 'นางสาว', i18nKey: 'Mrs' },
       ],
     },
     {
