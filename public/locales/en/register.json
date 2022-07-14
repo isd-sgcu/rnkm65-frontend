@@ -31,7 +31,7 @@
   "vaccineModal": {
     "title": "Upload QR Code",
     "submit": "Submit",
-    "desc": "Use QR Code from Digital Health Pass category in Mor Prompt (หมอพร้อม) app. | Select EU Digital COVID Certificate. | Select type as Vaccination Status. | Maximum file size is 4 MB.",
+    "desc": "Use QR Code from Digital Health Pass category in Mor Prompt (หมอพร้อม) app. | Enable Personal information in Digital Health Pass Tab | Select EU Digital COVID Certificate. | Select type as Vaccination Status. | Maximum file size is 4 MB.",
     "uploadFallback": "Click to Upload Image",
     "dragDropFallback": "Drop to Upload",
     "uploadAgain": "Upload Again"
