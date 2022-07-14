@@ -42,7 +42,7 @@ const AuthProvider: React.FC = ({ children }) => {
       if (!userProfile) {
         // TODO: Handle error
         localStorage.clear()
-        return
+        throw new Error('Failed to validate token')
       }
 
       setUser(userProfile)
