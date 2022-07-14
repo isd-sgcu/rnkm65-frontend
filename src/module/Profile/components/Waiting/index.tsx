@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { Trans, useTranslation } from 'next-i18next'
 import React from 'react'
 
-import { Container, Description, ImageContainer } from './styled'
+import { Container, Description, ImageContainer, TextContainer } from './styled'
 
 const Waiting = () => {
   const { t } = useTranslation('profile')
@@ -15,7 +15,7 @@ const Waiting = () => {
       <ImageContainer>
         <Image src="/hourglass.svg" alt="hourglass" layout="fill" />
       </ImageContainer>
-      <div>
+      <TextContainer>
         <Typography variant="h1" color="blue" css={{ textAlign: 'center' }}>
           {t('waiting.title')}
         </Typography>
@@ -33,7 +33,7 @@ const Waiting = () => {
             ]}
           />
         </Description>
-      </div>
+      </TextContainer>
     </Container>
   )
 }

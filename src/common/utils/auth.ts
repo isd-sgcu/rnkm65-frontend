@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from 'axios'
+import axios, { AxiosError, AxiosResponse } from 'axios'
 import { ICredential } from 'common/types/auth'
 import { API_BASE_URL } from 'config/env'
 
@@ -9,12 +9,13 @@ const authClient = axios.create({
 
 const exchangeTicketForToken = async (
   ticket: string
-): Promise<ICredential | null> => {
+): Promise<ICredential | number | null> => {
   let res: AxiosResponse
   try {
     res = await authClient.post<ICredential>('/auth/verify', { ticket })
   } catch (err) {
-    return null
+    const error = err as AxiosError
+    return error.response?.status ?? null
   }
 
   const expiresOn = new Date()
