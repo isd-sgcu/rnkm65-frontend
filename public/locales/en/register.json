@@ -37,9 +37,9 @@
     "uploadAgain": "Upload Again"
   },
   "uploadBtn": "Upload Image",
-  "Mr": "Mr.",
-  "Mrs": "Mrs.",
-  "Ms": "Ms.",
+  "Mr": "Mr",
+  "Mrs": "Mrs",
+  "Miss": "Miss",
   "wantToJoin": "I would like to participate.",
   "dontWantToJoin": "I wouldn't like to participate.",
   "upload": {

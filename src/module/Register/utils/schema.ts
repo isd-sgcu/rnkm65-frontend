@@ -63,7 +63,8 @@ export const templateForm: Array<Array<ITemplateFormItem>> = [
       },
       option: [
         { value: 'นาย', i18nKey: 'Mr' },
-        { value: 'นางสาว', i18nKey: 'Mrs' },
+        { value: 'นางสาว', i18nKey: 'Miss' },
+        { value: 'นาง', i18nKey: 'Mrs' },
       ],
     },
     {
