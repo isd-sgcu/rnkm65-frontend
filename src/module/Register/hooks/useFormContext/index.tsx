@@ -213,7 +213,7 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
 
     const { id, phone, canSelectBaan, isVerify, ...rest } = user
 
-    if (type === RegisterType.Register && phone) {
+    if (type === RegisterType.Register && phone && isVerify) {
       router.push('/')
       return
     }
