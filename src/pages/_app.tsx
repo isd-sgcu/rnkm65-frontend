@@ -5,10 +5,12 @@ import AuthProvider from 'common/contexts/AuthContext'
 import { BackgroundProvider } from 'common/contexts/BackgroundContext'
 import { REMEMBER_LOCALE } from 'config/env'
 import { SWR_CONFIG } from 'config/swr'
+import ErrorFallback from 'module/ErrorBoundary'
 import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
 import { appWithTranslation } from 'next-i18next'
 import { useEffect } from 'react'
+import { ErrorBoundary } from 'react-error-boundary'
 import { SWRConfig } from 'swr'
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -30,7 +32,9 @@ function MyApp({ Component, pageProps }: AppProps) {
       <AuthProvider>
         <BackgroundProvider>
           <Layout>
-            <Component {...pageProps} />
+            <ErrorBoundary FallbackComponent={ErrorFallback}>
+              <Component {...pageProps} />
+            </ErrorBoundary>
           </Layout>
         </BackgroundProvider>
       </AuthProvider>

@@ -7,5 +7,6 @@
   "want": "Yes",
   "notWant": "No",
   "back": "Back",
-  "notFoundPage": "Page not found"
+  "notFoundPage": "Page not found",
+  "someErrorHappen": "Unknown error has occurred"
 }
