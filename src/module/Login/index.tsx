@@ -97,14 +97,23 @@ const LoginPage = () => {
           }
           autoComplete="off"
         />
-        <Button disabled={!isConfirm} onClick={login}>
-          {t('loginBtn')}
-        </Button>
-        {errorMsg && (
-          <Typography css={{ fontWeight: '700' }} color="error">
-            {errorMsg}
-          </Typography>
-        )}
+        <div>
+          <Button disabled={!isConfirm} onClick={login}>
+            {t('loginBtn')}
+          </Button>
+          {errorMsg && (
+            <Typography
+              css={{
+                fontWeight: '700',
+                fontSize: '1.25rem',
+                marginTop: '0.5rem',
+              }}
+              color="error"
+            >
+              {errorMsg}
+            </Typography>
+          )}
+        </div>
       </ContentContainer>
     </RootContainer>
   )
