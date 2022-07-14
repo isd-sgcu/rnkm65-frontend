@@ -22,15 +22,16 @@ export const LogoContainer = styled('div', {
 
 export const Logo = styled('div', {
   height: '86px',
-  width: '135px',
+  width: '86px',
   position: 'relative',
+  cursor: 'pointer',
   '@md': {
     height: '72px',
-    width: '112px',
+    width: '72px',
   },
   '@sm': {
     height: '48px',
-    width: '75px',
+    width: '48px',
   },
 })
 

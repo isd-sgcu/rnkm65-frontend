@@ -10,7 +10,7 @@ const Footer = () => (
       <Image src="/ISDlogo.svg" layout="fill" />
     </LogoContainer>
     <Typography variant="description">
-      Freshers Fair, Student Government of Chulalongkorn University
+      Freshers&apos; Fair, Student Government of Chulalongkorn University
       <br /> Copyright © 2022
     </Typography>
   </FooterContainer>

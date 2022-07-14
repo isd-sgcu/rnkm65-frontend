@@ -1,5 +1,7 @@
 import Hidden from 'common/components/Hidden'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
+import Image from 'next/image'
+import { useRouter } from 'next/router'
 import React, { useCallback } from 'react'
 
 import LogoutButton from './components/LogoutButton'
@@ -11,12 +13,17 @@ import { HeaderContainer, IconContainer, Logo, LogoContainer } from './styled'
 
 const Header = () => {
   const { t } = useSSRTranslation()
+  const router = useRouter()
 
   const handleReportIssue = useCallback(() => {
     // TODO change url
     window.location.href =
       'https://airtable.com/shrWFil4igZa2UZoV?hide_errorMessage=true'
   }, [])
+
+  const handleLogoClick = useCallback(() => {
+    router.push('/')
+  }, [router])
 
   // We don't have time to do this
   // const handleHowToRegister = useCallback(() => {
@@ -27,7 +34,9 @@ const Header = () => {
   return (
     <HeaderContainer>
       <LogoContainer>
-        <Logo>{/* <Image src="/logo.svg" layout="fill" /> */}</Logo>
+        <Logo onClick={handleLogoClick}>
+          <Image src="/logo.png" layout="fill" />
+        </Logo>
       </LogoContainer>
 
       {/* <Hidden variant="lgdown">
