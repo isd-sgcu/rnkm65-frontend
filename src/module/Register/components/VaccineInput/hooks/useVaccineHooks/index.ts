@@ -4,12 +4,11 @@ import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import { IImageSize } from 'common/types/crop'
 import { httpPost } from 'common/utils/axios'
 import { getImageData } from 'common/utils/imageHelper'
-import { VACCINE_BASE_URL } from 'config/env'
 import jsQR from 'jsqr'
 import { useFormContext } from 'module/Register/hooks/useFormContext'
 import { useCallback } from 'react'
 
-import { IVaccineUploadBody, IVaccineUploadResponse } from './types'
+import { IVaccineUploadBody, IVaccineUploadError } from './types'
 
 export const useVaccineHooks = () => {
   const { t } = useSSRTranslation('register')
@@ -28,31 +27,20 @@ export const useVaccineHooks = () => {
 
       if (!studentId) return
 
-      let res: IVaccineUploadResponse
-
       try {
-        const body = await httpPost<IVaccineUploadBody, IVaccineUploadResponse>(
-          `${VACCINE_BASE_URL}/api/vaccine`,
-          {
-            hcert: result.data,
-            uid: studentId,
-          }
-        )
-        res = body.data
+        await httpPost<IVaccineUploadBody>('/vaccine/verify', {
+          hcert: result.data,
+        })
       } catch (err) {
-        const error = err as AxiosError
+        const error = err as AxiosError<IVaccineUploadError>
 
         if (!error.response?.status || error.response.status === 500) {
           throw new Error(t('error.unknownError'))
         }
-        if (error.response?.data.error.includes('already')) {
-          throw new Error(t('error.vaccineAlreadyApproved'))
+        if (error.response.status === 400) {
+          throw new Error(t('error.invalidQrCode'))
         }
-        throw new Error(t('error.invalidQrCode'))
-      }
-
-      if (!res.isPassed) {
-        throw new Error(t('error.vaccineNotMetCriteria'))
+        throw new Error(t('error.notAllowUpload'))
       }
 
       approveVaccine()

@@ -22,6 +22,7 @@ const transformUserDTOtoIUser = (user: UserDTO) => ({
   foodRestriction: user.foodRestriction ?? '',
   imageUrl: user.imageUrl ?? '',
   canSelectBaan: user.canSelectBaan ?? false,
+  isVerify: user.isVerify ?? false,
 })
 
 const getUserProfile = async (): Promise<IUser | null> => {

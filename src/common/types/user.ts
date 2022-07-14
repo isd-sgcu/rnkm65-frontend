@@ -16,6 +16,7 @@ export interface IUser {
   foodRestriction: string
   imageUrl: string
   canSelectBaan: boolean
+  isVerify: boolean
 }
 
 export interface IUserProfileProps extends IUser {
