@@ -28,7 +28,7 @@ export const formSchema = object()
         'Email is in wrong format'
       ),
     lineID: string().required('Required'),
-    allergyFood: string().required('Required'),
+    allergyFood: string(),
     foodRestriction: string().required('Required'),
     allergyMedicine: string().required('Required'),
     vaccineCertificateUrl: string()
@@ -118,17 +118,10 @@ export const templateForm: Array<Array<ITemplateFormItem>> = [
   ],
   [
     {
-      fieldKey: 'allergyFood',
-      type: 'text_input',
-      style: {
-        gridColumn: '1 / 5',
-      },
-    },
-    {
       fieldKey: 'foodRestriction',
       type: 'text_input',
       style: {
-        gridColumn: '5 / 10',
+        gridColumn: '1 / 10',
       },
     },
   ],
