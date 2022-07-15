@@ -35,7 +35,7 @@ export const formSchema = object()
       .oneOf(['true'], 'Required')
       .required('Required'),
     disease: string().required('Required'),
-    canSelectBaan: string().required('Required'),
+    canSelectBaan: string().oneOf(['true', 'false']).required('Required'),
   })
   .required()
 
