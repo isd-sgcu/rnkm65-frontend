@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+import Script from 'next/script'
 import React, { PropsWithChildren } from 'react'
 
 import Background from './components/Background'
@@ -22,6 +23,16 @@ const Layout = ({ children }: PropsWithChildren<{}>) => {
       <Header />
       <ContentContainer>{children}</ContentContainer>
       <Footer />
+      <Script src="https://www.googletagmanager.com/gtag/js?id=G-WT8THZVG3B" />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-WT8THZVG3B');
+        `}
+      </Script>
     </LayoutContainer>
   )
 }
