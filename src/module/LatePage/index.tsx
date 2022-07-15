@@ -13,8 +13,8 @@ const LatePage = () => {
         <Title>{t('sorry')}</Title>
         <span>
           {t('desc')}{' '}
-          <Link href="https://www.facebook.com/chulafreshmen/">
-            CU for Freshmen
+          <Link href="https://www.instagram.com/rubpuenkaomai2022/">
+            rubpuenkaomai2022
           </Link>
         </span>
       </Box>
