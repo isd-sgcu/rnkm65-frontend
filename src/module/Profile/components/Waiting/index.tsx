@@ -27,8 +27,8 @@ const Waiting = () => {
               // eslint-disable-next-line jsx-a11y/anchor-has-content
               <a
                 style={{ textDecoration: 'underline' }}
-                href="https://www.instagram.com/rubpuenkaomai2022/"
-                aria-label="rubpuenkaomai2022"
+                href="https://www.facebook.com/chulafreshmen"
+                aria-label="cu-for-freshmen"
               />,
             ]}
           />
