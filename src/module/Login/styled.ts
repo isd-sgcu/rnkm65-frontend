@@ -25,4 +25,5 @@ export const ContentContainer = styled('div', {
 export const StyledLink = styled('a', {
   color: '$new-secondary',
   textDecoration: 'underline',
+  wordBreak: 'keep-all',
 })
