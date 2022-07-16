@@ -24,7 +24,7 @@ export const formSchema = object()
       .trim()
       .required('Required email')
       .matches(
-        /^\w+([\\.-]?\w+)*@\w+([\\.-]?\w+)*(\.\w{2,3})+|^(-)$/,
+        /^\w+([\\.-]?\w+)*@\w+([\\.-]?\w+)*(\.\w{2,3})+$/,
         'Email is in wrong format'
       ),
     lineID: string().required('Required'),
