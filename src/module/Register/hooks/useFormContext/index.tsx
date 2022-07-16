@@ -210,7 +210,7 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
   useEffect(() => {
     if (!user) return
 
-    const { id, phone, canSelectBaan, isVerify, ...rest } = user
+    const { id, phone = '', canSelectBaan, isVerify, ...rest } = user
 
     if (type === RegisterType.Register && phone && isVerify) {
       router.push('/')
@@ -218,7 +218,7 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
     }
 
     reset({
-      phoneNumber: phone ? phone.replaceAll('-', '') : '',
+      phoneNumber: phone === '-' ? '-' : phone.replaceAll('-', ''),
       vaccineCertificateUrl: isVerify ? 'true' : 'false',
       canSelectBaan: canSelectBaan ? 'true' : 'false',
       ...rest,
