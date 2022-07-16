@@ -18,7 +18,10 @@ const ErrorFallback = ({ error, resetErrorBoundary }: FallbackProps) => {
   const router = useRouter()
 
   const handleReportIssue = () => {
-    window.location.href = `https://airtable.com/shrWFil4igZa2UZoV?prefill_errorMessage=${error}&hide_errorMessage=true`
+    window.location.href = `https://airtable.com/shrWFil4igZa2UZoV?prefill_errorMessage=${`${error} ${error.stack?.slice(
+      0,
+      300
+    )}`}&hide_errorMessage=true`
   }
 
   return (
