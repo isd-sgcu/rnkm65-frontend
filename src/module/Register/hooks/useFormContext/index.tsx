@@ -133,7 +133,6 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
         ...remain,
         phone: phoneNumber,
         line_id: lineID,
-        image_url: profileUrl,
         allergy_medicine: allergyMedicine,
         food_restriction: foodRestriction,
         can_select_baan: canSelectBaan === 'true',
