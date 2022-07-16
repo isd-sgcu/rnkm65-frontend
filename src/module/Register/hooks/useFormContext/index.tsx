@@ -139,10 +139,19 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
       })
     } catch (err) {
       setLoading(false)
-      if ((err as unknown as AxiosError).response?.status === 500) {
-        throw new Error(t('error.unknownError'))
+      const error = err as unknown as AxiosError
+
+      if (!error.response || error.response?.status === 500) {
+        throw new Error(t('error.serverError'))
       }
-      throw new Error(t('error.updateProfileFailed'))
+
+      if (error.response.status === 400) {
+        throw new Error(t('error.updateProfileFailed'))
+      }
+
+      throw new Error(
+        `${t('error.unknownError')} (${error.response.data.message})`
+      )
     }
 
     await refreshContext()

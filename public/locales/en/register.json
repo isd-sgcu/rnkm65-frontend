@@ -62,7 +62,8 @@
     "vaccineAlreadyApproved": "This QR has already been used.",
     "vaccineNotMetCriteria": "Vaccination requirements does not met.",
     "uploadImageFailed": "Failed to upload image. Please try again",
-    "updateProfileFailed": "Failed to update profile. Please try again"
+    "updateProfileFailed": "Failed to update profile. Please try again",
+    "serverError": "Internal server error. Please try again"
   },
   "placeholder": {
     "firstname": "John",
