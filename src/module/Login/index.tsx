@@ -9,7 +9,12 @@ import { exchangeTicketForToken } from 'common/utils/auth'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
-import { ContentContainer, RootContainer, StyledLink } from './styled'
+import {
+  ContentContainer,
+  LoginBtnContainer,
+  RootContainer,
+  StyledLink,
+} from './styled'
 
 const LoginPage = () => {
   const router = useRouter()
@@ -97,7 +102,7 @@ const LoginPage = () => {
           }
           autoComplete="off"
         />
-        <div>
+        <LoginBtnContainer>
           <Button disabled={!isConfirm} onClick={login}>
             {t('loginBtn')}
           </Button>
@@ -113,7 +118,7 @@ const LoginPage = () => {
               {errorMsg}
             </Typography>
           )}
-        </div>
+        </LoginBtnContainer>
       </ContentContainer>
     </RootContainer>
   )

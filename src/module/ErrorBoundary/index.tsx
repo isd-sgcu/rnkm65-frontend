@@ -6,19 +6,20 @@ import {
   LayoutContainer,
 } from 'common/components/Layout/styled'
 import Typography from 'common/components/Typography'
-import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import React from 'react'
 import { FallbackProps } from 'react-error-boundary'
 
 import { Container } from './styled'
 
-const ErrorFallback = ({ error, resetErrorBoundary }: FallbackProps) => {
+const ErrorFallback = ({ error }: FallbackProps) => {
   const { t } = useTranslation('common')
-  const router = useRouter()
 
   const handleReportIssue = () => {
-    window.location.href = `https://airtable.com/shrWFil4igZa2UZoV?prefill_errorMessage=${error}&hide_errorMessage=true`
+    window.location.href = `https://airtable.com/shrWFil4igZa2UZoV?prefill_errorMessage=${`${error} ${error.stack?.slice(
+      0,
+      300
+    )}`}&hide_errorMessage=true`
   }
 
   return (
@@ -36,8 +37,8 @@ const ErrorFallback = ({ error, resetErrorBoundary }: FallbackProps) => {
             <Button
               type="button"
               onClick={() => {
-                router.push('/')
-                resetErrorBoundary()
+                localStorage.clear()
+                window.location.href = '/login'
               }}
             >
               {t('back', { lng: 'en' })}

@@ -218,7 +218,7 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
     }
 
     reset({
-      phoneNumber: phone.replaceAll('-', ''),
+      phoneNumber: phone ? phone.replaceAll('-', '') : '',
       vaccineCertificateUrl: isVerify ? 'true' : 'false',
       canSelectBaan: canSelectBaan ? 'true' : 'false',
       ...rest,
