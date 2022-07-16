@@ -14,6 +14,9 @@ const nextConfig = {
       ACCESS_PROFILE: process.env.ACCESS_PROFILE,
     },
   },
+  images: {
+    domains: ['storage.googleapis.com'],
+  },
 }
 
 module.exports = nextConfig

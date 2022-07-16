@@ -1,3 +1,5 @@
+import Loading from 'common/components/Loading'
+import { useAuth } from 'common/contexts/AuthContext'
 import { IUser } from 'common/types/user'
 import React from 'react'
 
@@ -39,9 +41,13 @@ const tmpBaan = {
 
 const Profile = (props: IProfileProps) => {
   const { canAccessProfile } = props
+
+  const { user } = useAuth()
+  if (!user) return <Loading />
+
   return canAccessProfile ? (
     <Container>
-      <UserProfile {...tmpUser} />
+      <UserProfile {...user} />
       <div
         style={{
           flexGrow: 1,
