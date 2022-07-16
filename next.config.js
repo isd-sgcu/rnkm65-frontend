@@ -11,6 +11,7 @@ const nextConfig = {
       API_BASE_URL: process.env.API_BASE_URL,
       APP_BASE_URL: process.env.APP_BASE_URL,
       SSO_BASE_URL: process.env.SSO_BASE_URL,
+      ACCESS_PROFILE: process.env.ACCESS_PROFILE,
     },
   },
 }
