@@ -65,7 +65,7 @@ const UploadField: FC<IUploadFieldProps> = (props) => {
       </Typography>
 
       {preview || url ? (
-        <a href={preview || url} target="_blank" rel="noreferrer">
+        <a href={preview || url} target="_blank" rel="noopener noreferrer">
           <Typography
             css={{
               marginRight: '1rem',
