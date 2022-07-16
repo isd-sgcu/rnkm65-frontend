@@ -27,3 +27,11 @@ export const StyledLink = styled('a', {
   textDecoration: 'underline',
   wordBreak: 'keep-all',
 })
+
+export const LoginBtnContainer = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  textAlign: 'center',
+})
