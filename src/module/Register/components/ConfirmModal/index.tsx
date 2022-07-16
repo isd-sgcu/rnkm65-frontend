@@ -48,7 +48,10 @@ const ConfirmModal = () => {
         </Button>
       </ButtonContainer>
       {error && (
-        <Typography css={{ marginTop: '1rem' }} color="error">
+        <Typography
+          css={{ marginTop: '1rem', textAlign: 'center' }}
+          color="error"
+        >
           {error}
         </Typography>
       )}
