@@ -56,7 +56,7 @@ const Profile = (props: IProfileProps) => {
       >
         <InviteLink inviteLink="www.youtube.com/watch?v=dQw4w9WgXcQ" />
         <GroupContainer>
-          <GroupMember members={[tmpUser, tmpUser]} />
+          <GroupMember members={[tmpUser]} />
           <ChoosedBaan baans={[tmpBaan, tmpBaan, tmpBaan]} />
         </GroupContainer>
       </div>

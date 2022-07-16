@@ -2,6 +2,7 @@ import Baan from 'common/components/Baan'
 import Button from 'common/components/Button'
 import Typography from 'common/components/Typography'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
+import Link from 'next/link'
 import React from 'react'
 import { IoCheckmarkCircleOutline } from 'react-icons/io5'
 
@@ -14,7 +15,7 @@ const ChoosedBaan = (props: ChoosedBaanProps) => {
   const choosed = baans.length !== 0
 
   // TODO change this later
-  const isKing = false
+  const isKing = true
 
   return (
     <Container>
@@ -47,9 +48,11 @@ const ChoosedBaan = (props: ChoosedBaanProps) => {
       )}
 
       {!notChangeable && (
-        <Button css={{ marginTop: '15px' }} disabled={!isKing}>
-          {choosed ? t('changeBaan') : t('chooseBaan')}
-        </Button>
+        <Link href="/chooseBaan" passHref>
+          <Button css={{ marginTop: '15px' }} disabled={!isKing}>
+            {choosed ? t('changeBaan') : t('chooseBaan')}
+          </Button>
+        </Link>
       )}
       {!notChangeable && !isKing && (
         <Typography

@@ -50,21 +50,17 @@ const CardBaan = (props: ICardBaanProps) => {
             />
           </StyledImage>
           <div>
-            <Typography css={{ marginBottom: '0.5rem' }} color="yellow">
-              {name}
-            </Typography>
-            <Typography color="yellow" variant="description">
-              {description}
-            </Typography>
+            <Typography css={{ marginBottom: '0.5rem' }}>{name}</Typography>
+            <Typography variant="description">{description}</Typography>
           </div>
         </ImageDescription>
         <SocialDescription>
-          <RiFacebookCircleLine size={24} color="#FFEDB3" />
-          <Typography color="yellow">{facebook}</Typography>
+          <RiFacebookCircleLine size={24} />
+          <Typography>{facebook}</Typography>
         </SocialDescription>
         <SocialDescription>
-          <FaInstagram size={24} color="#FFEDB3" />
-          <Typography color="yellow">{ig}</Typography>
+          <FaInstagram size={24} />
+          <Typography color="new-primary">{ig}</Typography>
         </SocialDescription>
       </DescriptionContainer>
     </CardContainer>
