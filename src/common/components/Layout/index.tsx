@@ -19,7 +19,7 @@ const Layout = ({ children }: PropsWithChildren<{}>) => {
         <title>
           {router.locale === 'th'
             ? 'รับเพื่อนก้าวใหม่ 2565'
-            : "Freshers' fairs 2022"}
+            : "Freshers' Fair 2022"}
         </title>
       </Head>
       {process.env.NODE_ENV === 'production' &&
