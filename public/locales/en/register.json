@@ -77,7 +77,7 @@
     "allergyMedicine": "(If none, please fill in '-' instead)",
     "disease": "(If none, please fill in '-' instead)"
   },
-  "notRegisterMorProm": "If you do not have vaccination certificate from Mor Prom Application, please register through <0>Google form</0> instead",
+  "notRegisterMorProm": "If you do not have vaccination certificate from Mor Prom Application, please register through <0>Google Form</0> instead",
   "confirmModal": {
     "title": "Are you sure you want to confirm?",
     "back": "Back",
