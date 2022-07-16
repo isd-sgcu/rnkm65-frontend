@@ -125,12 +125,14 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
       allergyFood,
       allergyMedicine,
       foodRestriction,
+      email,
       ...remain
     } = data
 
     try {
       await httpPut('/user', {
         ...remain,
+        email: email.trim(),
         phone: phoneNumber,
         line_id: lineID,
         image_url: profileUrl,
