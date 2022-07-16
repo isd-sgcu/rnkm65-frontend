@@ -25,6 +25,16 @@ function MyApp({ Component, pageProps }: AppProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router])
 
+  // For fix edge case that animationEnd is not triggered when user click on submit button
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      const rootDOM = document.getElementsByTagName('body')[0]
+      if (rootDOM) {
+        rootDOM.style.overflow = 'auto'
+      }
+    }
+  }, [router])
+
   return (
     <BackgroundProvider>
       <ErrorBoundary FallbackComponent={ErrorFallback}>
