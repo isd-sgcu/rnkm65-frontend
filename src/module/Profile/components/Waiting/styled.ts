@@ -7,6 +7,7 @@ export const RootContainer = styled('div', {
   justifyContent: 'center',
   alignItems: 'center',
   gap: '20px',
+  padding: '20px 0',
 })
 
 export const Container = styled('div', {
