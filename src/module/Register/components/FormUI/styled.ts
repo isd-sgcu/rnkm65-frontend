@@ -19,3 +19,7 @@ export const FormRootContainer = styled('div', {
   flexDirection: 'column',
   gap: '1rem',
 })
+
+export const FormLink = styled('a', {
+  textDecoration: 'underline',
+})

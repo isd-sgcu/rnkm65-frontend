@@ -1,10 +1,18 @@
 import Typography from 'common/components/Typography'
 import { styled } from 'config/stitches.config'
 
+export const RootContainer = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  gap: '20px',
+})
+
 export const Container = styled('div', {
   display: 'flex',
   gap: '40px',
-  padding: '20px',
+  padding: '0 20px',
   alignItems: 'center',
   marginTop: '-5vh',
 
