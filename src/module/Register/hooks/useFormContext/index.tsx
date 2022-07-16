@@ -125,25 +125,35 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
       allergyFood,
       allergyMedicine,
       foodRestriction,
+      email,
       ...remain
     } = data
 
     try {
       await httpPut('/user', {
         ...remain,
+        email: email.trim(),
         phone: phoneNumber,
         line_id: lineID,
-        image_url: profileUrl,
         allergy_medicine: allergyMedicine,
         food_restriction: foodRestriction,
         can_select_baan: canSelectBaan === 'true',
       })
     } catch (err) {
       setLoading(false)
-      if ((err as unknown as AxiosError).response?.status === 500) {
-        throw new Error(t('error.unknownError'))
+      const error = err as unknown as AxiosError
+
+      if (!error.response || error.response?.status === 500) {
+        throw new Error(t('error.serverError'))
       }
-      throw new Error(t('error.updateProfileFailed'))
+
+      if (error.response.status === 400) {
+        throw new Error(t('error.updateProfileFailed'))
+      }
+
+      throw new Error(
+        `${t('error.unknownError')} (${error.response.data.message})`
+      )
     }
 
     await refreshContext()
@@ -210,7 +220,7 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
   useEffect(() => {
     if (!user) return
 
-    const { id, phone, canSelectBaan, isVerify, ...rest } = user
+    const { id, phone = '', canSelectBaan, isVerify, ...rest } = user
 
     if (type === RegisterType.Register && phone && isVerify) {
       router.push('/')
@@ -218,7 +228,7 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
     }
 
     reset({
-      phoneNumber: phone ? phone.replaceAll('-', '') : '',
+      phoneNumber: phone === '-' ? '-' : phone.replaceAll('-', ''),
       vaccineCertificateUrl: isVerify ? 'true' : 'false',
       canSelectBaan: canSelectBaan ? 'true' : 'false',
       ...rest,

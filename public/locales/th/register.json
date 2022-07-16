@@ -31,7 +31,7 @@
   "vaccineModal": {
     "title": "อัปโหลด QR code",
     "submit": "ยืนยัน",
-    "desc": "ใช้ QR code จากหมวด Digital Health Pass ในแอพหมอพร้อม | เปิดการแสดงข้อมูลส่วนบุคคลในแท็บ Digital Health Pass | เลือก EU Digital COVID Certificate | เลือกประเภทเป็น Vaccination Status | ขนาดไฟล์สูงสุด 4 MB",
+    "desc": "Capture QR code จากหมวด Digital Health Pass ในแอพหมอพร้อม | เปิดการแสดงข้อมูลส่วนบุคคลในแท็บ Digital Health Pass | เลือก EU Digital COVID Certificate | เลือกประเภทเป็น Vaccination Status | ขนาดไฟล์สูงสุด 4 MB",
     "uploadFallback": "คลิกเพื่ออัปโหลด",
     "dragDropFallback": "ปล่อยเพื่ออัปโหลด",
     "uploadAgain": "อัปโหลดอีกครั้ง"
@@ -62,7 +62,8 @@
     "vaccineNotMetCriteria": "ไม่ผ่านเงื่อนไขการฉีดวัคซีนที่กำหนดไว้",
     "notAllowUpload": "ไม่สามารถอัปโหลดในช่วงเวลานี้ได้",
     "uploadImageFailed": "เกิดข้อผิดพลาดในการอัปโหลดรูปภาพ กรุณาลองใหม่อีกครั้ง",
-    "updateProfileFailed": "เกิดข้อผิดพลาดในการอัปเดตข้อมูล กรุณาลองใหม่อีกครั้ง"
+    "updateProfileFailed": "เกิดข้อผิดพลาดในการอัปเดตข้อมูล กรุณาลองใหม่อีกครั้ง",
+    "serverError": "เกิดข้อผิดพลาดในระบบ กรุณาลองใหม่อีกครั้ง"
   },
   "notRegisterMorProm": "สำหรับผู้ที่ไม่มีใบรับรองการฉีดวัคซีนจากระบบหมอพร้อม กรุณาลงทะเบียนผ่าน <0>Google Form</0>",
   "placeholder": {
