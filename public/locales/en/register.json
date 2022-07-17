@@ -3,7 +3,7 @@
   "edit": "Edit Profile",
   "annoucement": "*Please fill out all fields. (If a field is blank, please fill in '-' instead)",
   "submit": "Submit",
-  "back": "Back",
+  "back": "Cancel",
   "title": {
     "title": "Title",
     "firstname": "First Name",
@@ -81,7 +81,7 @@
   "notRegisterMorProm": "If you do not have vaccination certificate from Mor Prom Application, please register through <0>Google Form</0> instead.",
   "confirmModal": {
     "title": "Are you sure you want to confirm?",
-    "back": "Back",
+    "back": "Cancel",
     "confirm": "Confirm"
   }
 }
