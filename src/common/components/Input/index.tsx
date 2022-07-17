@@ -18,13 +18,15 @@ const InputField = React.memo(
 
     return (
       <InputFieldContainer>
-        <Typography
-          variant="body"
-          css={{ marginBottom: '0.5rem', fontWeight: 'bold' }}
-        >
-          {title || ''}
-          {required && <RequiredSymbol>*</RequiredSymbol>}
-        </Typography>
+        {title && (
+          <Typography
+            variant="body"
+            css={{ marginBottom: '0.5rem', fontWeight: 'bold' }}
+          >
+            {title}
+            {required && <RequiredSymbol>*</RequiredSymbol>}
+          </Typography>
+        )}
         <InputBase error={!!error} {...remain} ref={ref} />
         <Typography color="error">{errorMessage}</Typography>
         {children}

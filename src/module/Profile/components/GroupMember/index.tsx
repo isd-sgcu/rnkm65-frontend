@@ -30,7 +30,7 @@ const GroupMember = (props: GroupMemberProps) => {
           />
         ))}
         {members.length <= 1 && (
-          <Placeholder color="#DC28A3" backgroundColor="#240668" />
+          <Placeholder color="#AE1C5D" backgroundColor="#fff" />
         )}
         {members.length <= 2 && (
           <Placeholder color="#AE1C5D" backgroundColor="#fff" />

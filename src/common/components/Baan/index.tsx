@@ -26,14 +26,14 @@ const Baan = (props: BaanProps) => {
       <ImageContainer>
         {index && (
           <IndexContainer>
-            <Typography variant="h4" color="yellow">
+            <Typography variant="h4" color="white">
               {index}
             </Typography>
           </IndexContainer>
         )}
 
         <InformationContainer onClick={handleClickInfo} show={enableModal}>
-          <Typography color="yellow">i</Typography>
+          <Typography color="white">i</Typography>
         </InformationContainer>
         <StyledImage>
           <Image src={imageUrl} layout="fill" objectFit="cover" />

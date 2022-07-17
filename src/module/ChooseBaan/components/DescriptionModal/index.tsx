@@ -36,17 +36,15 @@ const DescriptionModal = (props: IDescriptionModal) => {
           layout="fixed"
           className={RoundedImage()}
         />
-        <Typography color="yellow">{baan?.name ?? ''}</Typography>
-        <Typography color="yellow">{baan?.description ?? ''}</Typography>
+        <Typography>{baan?.name ?? ''}</Typography>
+        <Typography>{baan?.description ?? ''}</Typography>
         <SocialDescription>
-          <RiFacebookCircleLine size={24} color="white" />
-          <Typography css={{ color: '$white' }}>
-            {baan?.facebook ?? ''}
-          </Typography>
+          <RiFacebookCircleLine size={24} />
+          <Typography>{baan?.facebook ?? ''}</Typography>
         </SocialDescription>
         <SocialDescription>
-          <FaInstagram size={24} color="white" />
-          <Typography css={{ color: '$white' }}>{baan?.ig ?? ''}</Typography>
+          <FaInstagram size={24} />
+          <Typography>{baan?.ig ?? ''}</Typography>
         </SocialDescription>
         <ButtonContainer>
           <Button
