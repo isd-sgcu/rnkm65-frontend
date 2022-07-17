@@ -11,9 +11,8 @@ export const RootContainer = styled('div', {
 })
 
 export const CatalogContainer = styled('div', {
-  backgroundColor: '$purple400',
+  backgroundColor: '$new-gray',
   padding: '1.5rem',
-  border: '2px solid $blue',
   borderRadius: '1rem',
 })
 

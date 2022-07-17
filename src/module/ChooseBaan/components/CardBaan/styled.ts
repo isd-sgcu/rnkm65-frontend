@@ -9,7 +9,7 @@ export const DescriptionContainer = styled('div', {
   position: 'absolute',
   top: 0,
   zIndex: 90,
-  backgroundColor: '#b660b5df',
+  backgroundColor: 'white',
   padding: '1rem',
   borderRadius: '8px',
   border: '2px solid $blue',
@@ -64,7 +64,7 @@ export const StyledImage = styled('div', {
   maxWidth: '90px',
   height: '90px',
   padding: '2px',
-  border: '$pink500 2px solid',
+  border: '$pink500 1px solid',
   backgroundColor: '$pink500',
   borderRadius: '4px',
 })

@@ -2,9 +2,8 @@ import { styled } from 'config/stitches.config'
 import { IoMdTrash } from 'react-icons/io'
 
 export const Container = styled('div', {
-  backgroundColor: '$purple400',
+  backgroundColor: '$new-gray',
   borderRadius: '20px',
-  border: '2px solid $blue',
   padding: '15px 18px',
   marginTop: '10px',
 })

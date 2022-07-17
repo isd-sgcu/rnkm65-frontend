@@ -60,7 +60,7 @@ export const InformationContainer = styled('div', {
   top: 7,
   right: 7,
   zIndex: 1,
-  backgroundColor: '$purple500',
+  backgroundColor: '$new-primary',
   width: '20px',
   height: '20px',
   borderRadius: '50%',
