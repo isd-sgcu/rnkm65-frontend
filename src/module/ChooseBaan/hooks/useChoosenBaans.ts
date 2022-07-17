@@ -49,9 +49,13 @@ export const useChoosenBaans = (
 
   const onChooseBaan = useCallback(
     (id: number) => {
-      if (!choosenBaans.find((v) => v.id === id) && choosenBaans.length < 3) {
+      const foundBaan = choosenBaans.find((v) => v.id === id)
+      if (!foundBaan && choosenBaans.length < 3) {
         const val = baans.find((v) => v.id === id)
         setChoosenBaans([...choosenBaans, val!])
+      } else if (foundBaan) {
+        const val = choosenBaans.filter((v) => v.id !== id)
+        setChoosenBaans(val)
       }
     },
     [choosenBaans, baans]

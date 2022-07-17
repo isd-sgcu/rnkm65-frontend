@@ -16,7 +16,7 @@ import {
 import { IDescriptionModal } from './types'
 
 const DescriptionModal = (props: IDescriptionModal) => {
-  const { baan, open, onConfirm, onClose } = props
+  const { baan, open, onConfirm, onClose, canSelect } = props
 
   const handleConfirm = useCallback(
     (id: number) => {
@@ -47,15 +47,14 @@ const DescriptionModal = (props: IDescriptionModal) => {
           <Typography>{baan?.ig ?? ''}</Typography>
         </SocialDescription>
         <ButtonContainer>
-          <Button
-            variant="primary"
-            onClick={() => handleConfirm(baan?.id ?? 0)}
-          >
-            เลือกบ้าน
-          </Button>
-          <Button variant="secondary" onClick={onClose}>
-            ยกเลิก
-          </Button>
+          {canSelect && (
+            <Button
+              variant="primary"
+              onClick={() => handleConfirm(baan?.id ?? 0)}
+            >
+              เลือกบ้าน
+            </Button>
+          )}
         </ButtonContainer>
       </RootDescription>
     </Modal>

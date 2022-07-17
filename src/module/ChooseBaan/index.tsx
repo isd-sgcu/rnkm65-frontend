@@ -1,6 +1,6 @@
 import Typography from 'common/components/Typography'
 import { IBaan } from 'common/types/baan'
-import React, { FC } from 'react'
+import React, { FC, useMemo } from 'react'
 
 import CardBaan from './components/CardBaan'
 import ChoosedBaan from './components/ChoosedBaan'
@@ -20,6 +20,13 @@ const ChooseBaan: FC<{ data: IBaan[] }> = ({ data: initBaans }) => {
     onSearch,
     filter,
   } = useChoosenBaans(initBaans, [])
+
+  const modalSelect = useMemo(
+    () =>
+      choosenBaans.length < 3 &&
+      !choosenBaans.find((val) => val.id === cBaan?.id),
+    [cBaan?.id, choosenBaans]
+  )
 
   return (
     <div>
@@ -69,6 +76,7 @@ const ChooseBaan: FC<{ data: IBaan[] }> = ({ data: initBaans }) => {
             ))}
           </CardContainer>
           <DescriptionModal
+            canSelect={modalSelect}
             baan={cBaan ?? undefined}
             open={openModal}
             onClose={close}
