@@ -14,7 +14,6 @@ export const ButtonFilterContainer = styled('div', {
 })
 
 export const BaanFilter = styled('button', {
-  backgroundColor: '#C6608D',
   color: '$white',
   padding: '10px',
   fontFamily: '$FCSubjectRounded',
@@ -25,6 +24,12 @@ export const BaanFilter = styled('button', {
   variants: {
     selected: {
       true: { backgroundColor: '$new-secondary' },
+      false: {
+        backgroundColor: '#C6608D',
+      },
     },
+  },
+  defaultVariants: {
+    selected: 'false',
   },
 })
