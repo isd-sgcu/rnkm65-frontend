@@ -70,9 +70,7 @@ export const InformationContainer = styled('div', {
   variants: {
     show: {
       true: {
-        '@md': {
-          display: 'flex',
-        },
+        display: 'flex',
       },
       false: {},
     },
