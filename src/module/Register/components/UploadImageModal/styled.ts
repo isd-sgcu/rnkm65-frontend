@@ -26,7 +26,7 @@ export const UnorderedListContainer = styled('ul', {
 
 export const ActionButtonContainer = styled('div', {
   display: 'flex',
-  justifyContent: 'space-around',
+  justifyContent: 'center',
   width: '100%',
   marginTop: '0.5rem',
 })
