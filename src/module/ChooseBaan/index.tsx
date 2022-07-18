@@ -18,6 +18,7 @@ const ChooseBaan: FC<{ data: IBaan[] }> = ({ data: initBaans }) => {
     onChooseBaan,
     onRemoveBaan,
     onSearch,
+    onClickFilterSize,
     filter,
   } = useChoosenBaans(initBaans, [])
 
@@ -57,7 +58,12 @@ const ChooseBaan: FC<{ data: IBaan[] }> = ({ data: initBaans }) => {
           </div>
         </div>
         <CatalogContainer>
-          <Search onSearch={onSearch} value={filter.search} />
+          <Search
+            onSearch={onSearch}
+            value={filter.search}
+            baanSize={filter.size}
+            onChooseBaanSize={onClickFilterSize}
+          />
           <CardContainer>
             {displayBaans.map((baan) => (
               <CardBaan

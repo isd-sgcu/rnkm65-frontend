@@ -1,5 +1,6 @@
 import InputField from 'common/components/Input'
 import Typography from 'common/components/Typography'
+import { BaanSize } from 'common/types/baan'
 import { FC, memo } from 'react'
 
 import {
@@ -11,9 +12,30 @@ import {
 interface Props {
   onSearch?: (value: string) => void
   value?: string
+  baanSize?: Array<BaanSize>
+  onChooseBaanSize?: (baan: BaanSize) => void
 }
 
-const Search: FC<Props> = ({ onSearch, value }) => (
+const BAAN_SIZE = [
+  {
+    label: 'บ้านขนาดเล็ก (S)',
+    size: BaanSize.Small,
+  },
+  {
+    label: 'บ้านขนาดกลาง (M)',
+    size: BaanSize.Medium,
+  },
+  {
+    label: 'บ้านขนาดใหญ่ (L)',
+    size: BaanSize.Large,
+  },
+  {
+    label: 'บ้านขนาดใหญ่พิเศษ (XL)',
+    size: BaanSize.ExtraLarge,
+  },
+]
+
+const Search: FC<Props> = ({ onSearch, value, baanSize, onChooseBaanSize }) => (
   <div>
     <SearchInputContainer>
       <Typography css={{ width: 'fit-content', whiteSpace: 'nowrap' }}>
@@ -27,10 +49,15 @@ const Search: FC<Props> = ({ onSearch, value }) => (
       />
     </SearchInputContainer>
     <ButtonFilterContainer>
-      <BaanFilter selected>บ้านขนาดเล็ก (S)</BaanFilter>
-      <BaanFilter selected>บ้านขนาดกลาง (M)</BaanFilter>
-      <BaanFilter>บ้านขนาดใหญ่ (L)</BaanFilter>
-      <BaanFilter>บ้านขนาดใหญ่พิเศษ (XL)</BaanFilter>
+      {BAAN_SIZE.map(({ label, size }) => (
+        <BaanFilter
+          key={size}
+          onClick={() => onChooseBaanSize?.(size)}
+          selected={baanSize?.includes(size)}
+        >
+          {label}
+        </BaanFilter>
+      ))}
     </ButtonFilterContainer>
   </div>
 )
@@ -38,6 +65,8 @@ const Search: FC<Props> = ({ onSearch, value }) => (
 Search.defaultProps = {
   onSearch: undefined,
   value: undefined,
+  baanSize: undefined,
+  onChooseBaanSize: undefined,
 }
 
 export default memo(Search)

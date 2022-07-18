@@ -1,11 +1,11 @@
-import { IBaan, IShortBaan } from 'common/types/baan'
+import { BaanSize, IBaan, IShortBaan } from 'common/types/baan'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 
 import { Baan, Filter } from './types'
 
 const initialFilter: Filter = {
   search: '',
-  size: null,
+  size: [BaanSize.Small, BaanSize.Medium, BaanSize.Large, BaanSize.ExtraLarge],
 }
 
 export const useChoosenBaans = (
@@ -44,7 +44,12 @@ export const useChoosenBaans = (
   }, [choosenBaans])
 
   useEffect(() => {
-    setDisplayBaans(baans.filter(({ name }) => name.includes(filter.search)))
+    setDisplayBaans(
+      baans.filter(
+        ({ name, size }) =>
+          name.includes(filter.search) && filter.size.includes(size)
+      )
+    )
   }, [baans, filter])
 
   const onChooseBaan = useCallback(
@@ -71,11 +76,21 @@ export const useChoosenBaans = (
     setFilter((prev) => ({ ...prev, search: val }))
   }, [])
 
+  const onClickFilterSize = useCallback((val: BaanSize) => {
+    setFilter((prev) => {
+      if (prev.size?.includes(val)) {
+        return { ...prev, size: prev.size?.filter((v) => v !== val) }
+      }
+      return { ...prev, size: [...prev.size, val] }
+    })
+  }, [])
+
   return {
     baans,
     choosenBaans,
     onChooseBaan,
     onRemoveBaan,
+    onClickFilterSize,
     onSearch,
     displayBaans,
     filter,

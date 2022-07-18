@@ -2,6 +2,7 @@ export enum BaanSize {
   Small,
   Medium,
   Large,
+  ExtraLarge,
 }
 export interface IShortBaan {
   id: number
