@@ -25,7 +25,7 @@ specifiers:
   jsqr: ^1.4.0
   lint-staged: ^12.5.0
   next: 12.1.0
-  next-i18next: ^10.5.0
+  next-i18next: ^11.2.2
   prettier: ^2.7.1
   react: 17.0.2
   react-beautiful-dnd: ^13.1.0
@@ -48,7 +48,7 @@ dependencies:
   husky: 7.0.4
   jsqr: 1.4.0
   next: 12.1.0_sfoxds7t5ydpegc3knd667wn6m
-  next-i18next: 10.5.0_zktdhiadde2q3pnefglgcp7cnq
+  next-i18next: 11.2.2_zktdhiadde2q3pnefglgcp7cnq
   react: 17.0.2
   react-beautiful-dnd: 13.1.0_sfoxds7t5ydpegc3knd667wn6m
   react-copy-to-clipboard: 5.1.0_react@17.0.2
@@ -97,6 +97,13 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.13.9
+
+  /@babel/runtime/7.18.9:
+    resolution: {integrity: sha512-lkqXDcvlFT5rvEjiu6+QYO+1GXrEHRo2LOtS7E4GtX5ESIZOgepqsZBVIj6Pv+a6zqsya9VCgiK1KAK4BvJDAw==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      regenerator-runtime: 0.13.9
+    dev: false
 
   /@eslint/eslintrc/1.3.0:
     resolution: {integrity: sha512-UWW0TMTmk2d7hLcWD1/e2g5HDM/HQ3csaLSqXCfqwh4uNDuNqlaKWXmEsL4Cs41Z0KnILNvwbHAah3C2yt06kw==}
@@ -751,6 +758,7 @@ packages:
 
   /core-js/3.23.2:
     resolution: {integrity: sha512-ELJOWxNrJfOH/WK4VJ3Qd+fOqZuOuDNDJz0xG6Bt4mGg2eO/UT9CljCrbqDGovjLKUrGajEEBcoTOc0w+yBYeQ==}
+    deprecated: core-js@<3.23.3 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Some versions have web compatibility issues. Please, upgrade your dependencies to the actual version of core-js.
     requiresBuild: true
     dev: false
 
@@ -1601,10 +1609,6 @@ packages:
       react-is: 16.13.1
     dev: false
 
-  /html-escaper/2.0.2:
-    resolution: {integrity: sha512-H2iMtd0I4Mt5eYiapRdIDjp+XzelXQ0tFE4JS7YFwFevXXMmOp9myNrUvCg0D6ws8iqkRPBfKHgbwig1SmlLfg==}
-    dev: false
-
   /html-parse-stringify/3.0.1:
     resolution: {integrity: sha512-KknJ50kTInJ7qIScF3jeaFRpMpE8/lfiTdzf/twXyPBLAGrLRTmkz3AdTnKeh40X8k9L2fdYwEp/42WGXIRGcg==}
     dependencies:
@@ -1626,10 +1630,10 @@ packages:
     resolution: {integrity: sha512-/MfAGMP0jHonV966uFf9PkWWuDjPYLIcsipnSO3NxpNtAgRUKLTwvm85fEmsF6hGeu0zbZiCQ3W74jwO6K9uXA==}
     dev: false
 
-  /i18next/21.8.10:
-    resolution: {integrity: sha512-7xRb6y4QlSqZRZ3uA5BIEsLuZpmxpzHLizQyKjDDThOcvdfgICOX7aFoBnh4BSWcLtJamTqSweaOuK22A2xqkA==}
+  /i18next/21.8.14:
+    resolution: {integrity: sha512-4Yi+DtexvMm/Yw3Q9fllzY12SgLk+Mcmar+rCAccsOPul/2UmnBzoHbTGn/L48IPkFcmrNaH7xTLboBWIbH6pw==}
     dependencies:
-      '@babel/runtime': 7.18.3
+      '@babel/runtime': 7.18.9
     dev: false
 
   /ignore/4.0.6:
@@ -2008,22 +2012,22 @@ packages:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
     dev: true
 
-  /next-i18next/10.5.0_zktdhiadde2q3pnefglgcp7cnq:
-    resolution: {integrity: sha512-+Xj/v5gqpEUBKKAaFCZ76+Ps6OGAaIgGowJTF67wTcmIQbHrcHMPjHwPTbnpXy7uHrH8os7i4eAfRENAv/6xwg==}
+  /next-i18next/11.2.2_zktdhiadde2q3pnefglgcp7cnq:
+    resolution: {integrity: sha512-ylZBtZnNxI6WBt/BMG1caCwzM/ZS6lp2ZepzoMZxB45eTsnuRV+NyNz4ALqybWbuktwlQ85sT0uoT36hLTv4oQ==}
     engines: {node: '>=12'}
     peerDependencies:
       next: '>= 10.0.0'
       react: '>= 16.8.0'
     dependencies:
-      '@babel/runtime': 7.18.3
+      '@babel/runtime': 7.18.9
       '@types/hoist-non-react-statics': 3.3.1
       core-js: 3.23.2
       hoist-non-react-statics: 3.3.2
-      i18next: 21.8.10
+      i18next: 21.8.14
       i18next-fs-backend: 1.1.4
       next: 12.1.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
-      react-i18next: 11.17.2_iljyvmjbdtx5tszdsxv3kqztx4
+      react-i18next: 11.18.1_gt4l4ismouzmpbvns5lg2nrrau
     transitivePeerDependencies:
       - react-dom
       - react-native
@@ -2372,8 +2376,8 @@ packages:
       react: 17.0.2
     dev: false
 
-  /react-i18next/11.17.2_iljyvmjbdtx5tszdsxv3kqztx4:
-    resolution: {integrity: sha512-/HG4XSResWDY450cFmoUqLgCYDu8VYMFISGcMnZlxRSV05naj3+F7DoebwnPu6z/akA3Wd0Xe7KGTYdywL9z9g==}
+  /react-i18next/11.18.1_gt4l4ismouzmpbvns5lg2nrrau:
+    resolution: {integrity: sha512-S8cl4mvIOSA7OQCE5jNy2yhv705Vwi+7PinpqKIYcBmX/trJtHKqrf6CL67WJSA8crr2JU+oxE9jn9DQIrQezg==}
     peerDependencies:
       i18next: '>= 19.0.0'
       react: '>= 16.8.0'
@@ -2385,10 +2389,9 @@ packages:
       react-native:
         optional: true
     dependencies:
-      '@babel/runtime': 7.18.3
-      html-escaper: 2.0.2
+      '@babel/runtime': 7.18.9
       html-parse-stringify: 3.0.1
-      i18next: 21.8.10
+      i18next: 21.8.14
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
     dev: false
