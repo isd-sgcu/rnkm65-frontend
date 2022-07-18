@@ -12,5 +12,6 @@ export async function getStaticProps({ locale }: { locale: string }) {
       // Will be passed to the page component as props
       data: baans,
     },
+    revalidate: 5 * 60,
   }
 }
