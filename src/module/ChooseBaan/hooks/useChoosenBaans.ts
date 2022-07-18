@@ -15,14 +15,12 @@ export const useChoosenBaans = (
   const [choosenBaans, setChoosenBaans] =
     useState<IShortBaan[]>(initChoosenBaans)
 
-  const baans = useMemo(
-    () =>
-      initBaans.map((v) => {
-        const order = choosenBaans.findIndex(({ id }) => id === v.id) + 1
-        return { ...v, isSelected: !!order, order: order || null }
-      }),
-    [choosenBaans, initBaans]
-  )
+  const baans = useMemo(() => {
+    return initBaans.map((v) => {
+      const order = choosenBaans.findIndex(({ id }) => id === v.id) + 1
+      return { ...v, isSelected: !!order, order: order || null }
+    })
+  }, [choosenBaans, initBaans])
 
   const [displayBaans, setDisplayBaans] = useState<Baan[]>(baans)
 
@@ -67,6 +65,10 @@ export const useChoosenBaans = (
     setFilter((prev) => ({ ...prev, search: val }))
   }, [])
 
+  const updateBaans = useCallback((newBaans: IShortBaan[]) => {
+    setChoosenBaans(newBaans)
+  }, [])
+
   return {
     baans,
     choosenBaans,
@@ -75,5 +77,6 @@ export const useChoosenBaans = (
     onSearch,
     displayBaans,
     filter,
+    updateBaans,
   }
 }
