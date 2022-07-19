@@ -19,6 +19,7 @@ const ChooseBaan: FC<{ data: IBaan[] }> = ({ data: initBaans }) => {
     onRemoveBaan,
     onSearch,
     onClickFilterSize,
+    updateBaans,
     filter,
   } = useChoosenBaans(initBaans, [])
 
@@ -51,6 +52,7 @@ const ChooseBaan: FC<{ data: IBaan[] }> = ({ data: initBaans }) => {
             </Typography>
             <ChoosedBaan
               baans={choosenBaans}
+              updateBaans={updateBaans}
               // eslint-disable-next-line @typescript-eslint/no-unused-vars
               handleDelete={onRemoveBaan}
               // handleConfirm={() => {}}

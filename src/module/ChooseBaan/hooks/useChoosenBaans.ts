@@ -85,6 +85,10 @@ export const useChoosenBaans = (
     })
   }, [])
 
+  const updateBaans = useCallback((newBaans: IShortBaan[]) => {
+    setChoosenBaans(newBaans)
+  }, [])
+
   return {
     baans,
     choosenBaans,
@@ -94,5 +98,6 @@ export const useChoosenBaans = (
     onSearch,
     displayBaans,
     filter,
+    updateBaans,
   }
 }
