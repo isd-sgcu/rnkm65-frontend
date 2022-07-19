@@ -7,7 +7,11 @@ import { useAuth } from 'common/contexts/AuthContext'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import { exchangeTicketForToken } from 'common/utils/auth'
 import { useRouter } from 'next/router'
+<<<<<<< Updated upstream
 import { useEffect, useRef, useState } from 'react'
+=======
+import { useCallback, useEffect, useState } from 'react'
+>>>>>>> Stashed changes
 
 import {
   ContentContainer,
@@ -26,9 +30,9 @@ const LoginPage = () => {
   const attemptAuthenticated = useRef(false)
   useBottomBackground()
 
-  const handleToggle = () => {
-    setConfirm(!isConfirm)
-  }
+  const handleToggle = useCallback(() => {
+    setConfirm((prev) => !prev)
+  }, [])
 
   useEffect(() => {
     const attemptAuthentication = async () => {
@@ -62,23 +66,20 @@ const LoginPage = () => {
         localStorage.setItem('token', JSON.stringify(token))
         await refreshContext()
       }
-
-      const token = localStorage.getItem('token')
-
-      if (token) {
-        if (user?.disease) {
-          router.replace('/')
-          return
-        }
-
-        router.replace('/register')
-        return
-      }
-
       setLoading(false)
     }
     attemptAuthentication()
-  }, [router, refreshContext, user?.disease, t])
+  }, [router, refreshContext, t])
+
+  useEffect(() => {
+    if (user) {
+      if (user?.disease) {
+        router.replace('/')
+      } else {
+        router.replace('/register')
+      }
+    }
+  }, [user, router])
 
   return (
     <RootContainer>
