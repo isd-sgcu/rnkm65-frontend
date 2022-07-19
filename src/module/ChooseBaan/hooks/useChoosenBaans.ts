@@ -15,12 +15,14 @@ export const useChoosenBaans = (
   const [choosenBaans, setChoosenBaans] =
     useState<IShortBaan[]>(initChoosenBaans)
 
-  const baans = useMemo(() => {
-    return initBaans.map((v) => {
-      const order = choosenBaans.findIndex(({ id }) => id === v.id) + 1
-      return { ...v, isSelected: !!order, order: order || null }
-    })
-  }, [choosenBaans, initBaans])
+  const baans = useMemo(
+    () =>
+      initBaans.map((v) => {
+        const order = choosenBaans.findIndex(({ id }) => id === v.id) + 1
+        return { ...v, isSelected: !!order, order: order || null }
+      }),
+    [choosenBaans, initBaans]
+  )
 
   const [displayBaans, setDisplayBaans] = useState<Baan[]>(baans)
 

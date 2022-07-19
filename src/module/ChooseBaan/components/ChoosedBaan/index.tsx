@@ -33,11 +33,11 @@ const ChoosedBaan = (props: ChoosedBannProps) => {
             <div {...provided.droppableProps} ref={provided.innerRef}>
               {baans.map((baan, idx) => (
                 <Draggable key={baan.id} draggableId={`${baan.id}`} index={idx}>
-                  {(provided) => (
+                  {(innerProvided) => (
                     <div
-                      ref={provided.innerRef}
-                      {...provided.draggableProps}
-                      {...provided.dragHandleProps}
+                      ref={innerProvided.innerRef}
+                      {...innerProvided.draggableProps}
+                      {...innerProvided.dragHandleProps}
                     >
                       <BaanContainer>
                         <Baan {...baan} index={idx + 1} textPosition="right" />
