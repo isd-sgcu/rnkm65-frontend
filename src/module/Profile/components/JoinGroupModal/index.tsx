@@ -2,17 +2,11 @@ import Button from 'common/components/Button'
 import Modal from 'common/components/Modal'
 import { Trans, useTranslation } from 'next-i18next'
 
-import {
-  ButtonContainer,
-  InlineTypography,
-  Message,
-  modalStyle,
-  Title,
-} from './styled'
+import { ButtonContainer, InlineTypography, modalStyle, Title } from './styled'
 import { JoinGroupModalProps } from './types'
 
 const JoinGroupModal = (props: JoinGroupModalProps) => {
-  const { open, onAccept, onDecline, king, members } = props
+  const { open, onAccept, onDecline, leader } = props
   const { t } = useTranslation('common')
 
   return (
@@ -27,25 +21,10 @@ const JoinGroupModal = (props: JoinGroupModalProps) => {
           i18nKey="profile:wantToJoinGroupOrNot"
           components={[<InlineTypography color="new-primary" variant="h4" />]}
           values={{
-            king: `<br />${king.firstname} ${king.lastname}`,
+            leader: `<br />${leader.firstname} ${leader.lastname}`,
           }}
         />
       </Title>
-      {members.length > 0 && (
-        <Message variant="body">
-          <Trans
-            i18nKey="profile:areAlsoGroupMember"
-            components={[
-              <InlineTypography color="new-primary" variant="body" />,
-            ]}
-            values={{
-              members: members
-                .map((member) => `${member.firstname} ${member.lastname}`)
-                .join(', '),
-            }}
-          />
-        </Message>
-      )}
       <ButtonContainer>
         <Button type="button" variant="primary" onClick={onAccept}>
           {t('want')}
