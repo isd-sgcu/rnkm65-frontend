@@ -4,6 +4,7 @@ export const RootContainer = styled('div', {
   padding: '2rem',
   gap: '1rem',
   display: 'flex',
+  maxWidth: '1200px',
 
   '@md': {
     flexDirection: 'column',

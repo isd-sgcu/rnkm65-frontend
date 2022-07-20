@@ -37,18 +37,38 @@ const DescriptionModal = (props: IDescriptionModal) => {
           loading="lazy"
           className={RoundedImage()}
         />
-        <Typography>{baan?.name ?? ''}</Typography>
+        <Typography variant="h4">{baan?.name ?? ''}</Typography>
         <Typography>{baan?.description ?? ''}</Typography>
         {baan?.facebook && (
           <SocialDescription>
             <RiFacebookCircleLine size={24} />
-            <Typography>{baan?.facebook ?? ''}</Typography>
+            <a
+              target="_blank"
+              href={baan?.facebookUrl || ''}
+              rel="noopener noreferrer"
+            >
+              <Typography
+                css={{ cursor: 'pointer', textDecoration: 'underline' }}
+              >
+                {baan?.facebook ?? ''}
+              </Typography>
+            </a>
           </SocialDescription>
         )}
         {baan?.ig && (
           <SocialDescription>
             <FaInstagram size={24} />
-            <Typography>{baan?.ig ?? ''}</Typography>
+            <a
+              target="_blank"
+              href={baan?.igUrl || ''}
+              rel="noopener noreferrer"
+            >
+              <Typography
+                css={{ cursor: 'pointer', textDecoration: 'underline' }}
+              >
+                {baan?.ig ?? ''}
+              </Typography>
+            </a>
           </SocialDescription>
         )}
         <ButtonContainer>

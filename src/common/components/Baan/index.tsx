@@ -6,20 +6,19 @@ import {
   BaanContainer,
   ImageContainer,
   IndexContainer,
-  InformationContainer,
   StyledImage,
 } from './styled'
 import { BaanProps } from './types'
 
 const Baan = (props: BaanProps) => {
-  const { name, imageUrl, index, textPosition, enableModal, onClickModal } =
-    props
+  const { name, imageUrl, index, textPosition } = props
 
-  const handleClickInfo = (e: React.MouseEvent<HTMLDivElement>) => {
-    e.stopPropagation()
+  // Comment for rollback purpose
+  // const handleClickInfo = (e: React.MouseEvent<HTMLDivElement>) => {
+  //   e.stopPropagation()
 
-    if (onClickModal) onClickModal()
-  }
+  //   if (onClickModal) onClickModal()
+  // }
 
   return (
     <BaanContainer textPosition={textPosition}>
@@ -32,9 +31,9 @@ const Baan = (props: BaanProps) => {
           </IndexContainer>
         )}
 
-        <InformationContainer onClick={handleClickInfo} show={enableModal}>
+        {/* <InformationContainer onClick={handleClickInfo} show={enableModal}>
           <Typography color="white">i</Typography>
-        </InformationContainer>
+        </InformationContainer> */}
         <StyledImage>
           <Image src={imageUrl} layout="fill" objectFit="cover" />
         </StyledImage>

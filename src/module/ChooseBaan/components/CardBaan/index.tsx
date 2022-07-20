@@ -13,11 +13,11 @@ const CardBaan = (props: ICardBaanProps) => {
     name,
     imageUrl,
     index,
-    onClick,
+    onClickModal,
     ...remain
   } = props
   return (
-    <CardContainer onClick={() => onClick(id)}>
+    <CardContainer onClick={() => onClickModal?.()}>
       <Baan
         {...remain}
         textPosition="bottom"
