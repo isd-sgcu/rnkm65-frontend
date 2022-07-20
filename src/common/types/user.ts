@@ -17,6 +17,7 @@ export interface IUser {
   imageUrl: string
   canSelectBaan: boolean
   isVerify: boolean
+  groupId: string
 }
 
 export interface IUserProfileProps extends IUser {

@@ -31,6 +31,7 @@ const tmpUser = {
   vaccineCertificateUrl: '',
   canSelectBaan: true,
   isVerify: true,
+  groupId: '',
 } as IUser
 
 const tmpBaan = {
@@ -42,7 +43,7 @@ const tmpBaan = {
 const Profile = (props: IProfileProps) => {
   const { canAccessProfile } = props
 
-  const { user } = useAuth()
+  const { user, group } = useAuth()
   if (!user) return <Loading />
 
   return canAccessProfile ? (
@@ -56,8 +57,8 @@ const Profile = (props: IProfileProps) => {
       >
         <InviteLink inviteLink="www.youtube.com/watch?v=dQw4w9WgXcQ" />
         <GroupContainer>
-          <GroupMember members={[tmpUser]} />
-          <ChoosedBaan baans={[tmpBaan, tmpBaan, tmpBaan]} />
+          <GroupMember members={group?.members ?? []} />
+          <ChoosedBaan baans={group?.baans ?? []} />
         </GroupContainer>
       </div>
     </Container>

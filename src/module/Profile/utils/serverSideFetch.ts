@@ -7,6 +7,7 @@ export async function getStaticProps({ locale }: { locale: string }) {
       ...getDateStatus(),
       ...(await serverSideTranslations(locale, ['common', 'profile'])),
       // Will be passed to the page component as props
+      canAccessProfile: true, // !for development
     },
   }
 }
