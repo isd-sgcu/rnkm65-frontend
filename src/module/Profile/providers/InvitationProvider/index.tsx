@@ -14,6 +14,10 @@ const InvitationProvider = (props: React.PropsWithChildren<{}>) => {
   const [dialog, setDialog] = useState<IDialogState | null>(null)
   useInvitationLinkMonitor({ setLoading, setDialog })
 
+  if (loading) {
+    return <Loading />
+  }
+
   if (dialog?.type === 'info') {
     return <InfoModal {...dialog.props} />
   }
@@ -22,10 +26,6 @@ const InvitationProvider = (props: React.PropsWithChildren<{}>) => {
   }
   if (dialog?.type === 'change') {
     return <ChangeGroupModal {...dialog.props} />
-  }
-
-  if (loading) {
-    return <Loading />
   }
 
   return children as JSX.Element

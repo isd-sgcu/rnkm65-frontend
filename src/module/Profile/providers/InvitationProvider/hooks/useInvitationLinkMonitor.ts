@@ -33,13 +33,13 @@ const useInvitationLinkMonitor = ({
               open: true,
               onClose: () => {
                 setDialog(null)
-                setLoading(false)
                 router.replace('/')
               },
               titleI18NKey: 'profile:cannotJoinGroup',
               messageI18NKey: 'profile:becauseGroupFull',
             },
           })
+          setLoading(false)
           return
         }
 
@@ -50,7 +50,6 @@ const useInvitationLinkMonitor = ({
             open: true,
             onClose: () => {
               setDialog(null)
-              setLoading(false)
               router.replace('/')
             },
             titleI18NKey: 'profile:invitation.unknownError',
@@ -58,6 +57,7 @@ const useInvitationLinkMonitor = ({
             overridedI18NMessage: message,
           },
         })
+        setLoading(false)
         return
       }
 
@@ -71,39 +71,21 @@ const useInvitationLinkMonitor = ({
 
   const askToJoinGroup = useCallback(
     (type: 'join' | 'change', invitedGroup: IGroupPublic) => {
-      if (type === 'change') {
-        setDialog({
-          type: 'change',
-          props: {
-            open: true,
-            leader: invitedGroup.leader,
-            onAccept: () => {
-              joinGroup(invitedGroup)
-            },
-            onDecline: () => {
-              setDialog(null)
-              router.replace('/')
-            },
+      setDialog({
+        type,
+        props: {
+          open: true,
+          leader: invitedGroup.leader,
+          onAccept: () => {
+            joinGroup(invitedGroup)
           },
-        })
-        setLoading(false)
-      } else {
-        setDialog({
-          type: 'join',
-          props: {
-            open: true,
-            leader: invitedGroup.leader,
-            onAccept: () => {
-              joinGroup(invitedGroup)
-            },
-            onDecline: () => {
-              setDialog(null)
-              router.replace('/')
-            },
+          onDecline: () => {
+            setDialog(null)
+            router.replace('/')
           },
-        })
-        setLoading(false)
-      }
+        },
+      })
+      setLoading(false)
     },
     [router, joinGroup, setDialog, setLoading]
   )
