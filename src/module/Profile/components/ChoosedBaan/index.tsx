@@ -34,7 +34,7 @@ const ChoosedBaan = (props: ChoosedBaanProps) => {
           variant="h3"
           css={{ margin: '15% 0', flexGrow: 1 }}
         >
-          {t('notChoose')}
+          {t('notChoosed')}
         </Typography>
       )}
 

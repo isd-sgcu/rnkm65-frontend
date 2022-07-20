@@ -19,18 +19,18 @@ const JoinGroupModal = (props: JoinGroupModalProps) => {
       <Title variant="h4">
         <Trans
           i18nKey="profile:wantToJoinGroupOrNot"
-          components={[<InlineTypography color="new-primary" variant="h4" />]}
+          components={[<InlineTypography color="pink" variant="h4" />]}
           values={{
             leader: `<br />${leader.firstname} ${leader.lastname}`,
           }}
         />
       </Title>
       <ButtonContainer>
-        <Button type="button" variant="primary" onClick={onAccept}>
-          {t('want')}
-        </Button>
         <Button type="button" variant="secondary" onClick={onDecline}>
           {t('notWant')}
+        </Button>
+        <Button type="button" variant="primary" onClick={onAccept}>
+          {t('want')}
         </Button>
       </ButtonContainer>
     </Modal>

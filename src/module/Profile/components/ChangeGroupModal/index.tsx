@@ -29,11 +29,11 @@ const ChangeGroupModal = (props: ChangeGroupModalProps) => {
         />
       </Title>
       <ButtonContainer>
-        <Button type="button" variant="primary" onClick={onAccept}>
-          {t('want')}
-        </Button>
         <Button type="button" variant="secondary" onClick={onDecline}>
           {t('notWant')}
+        </Button>
+        <Button type="button" variant="primary" onClick={onAccept}>
+          {t('want')}
         </Button>
       </ButtonContainer>
     </Modal>
