@@ -11,35 +11,6 @@ import Waiting from './components/Waiting'
 import { Container, GroupContainer } from './styled'
 import { IProfileProps } from './types'
 
-const tmpUser = {
-  title: 'Mr.',
-  id: 'uuid',
-  studentID: '6530000021',
-  faculty: 'Faculty of Engineering',
-  year: '1',
-  firstname: 'Kamisato',
-  lastname: 'Ayaka',
-  nickname: '',
-  email: '',
-  phone: '',
-  lineID: '',
-  disease: '',
-  allergyFood: '',
-  allergyMedicine: '',
-  foodRestriction: '',
-  imageUrl: '/tmp.jpg',
-  vaccineCertificateUrl: '',
-  canSelectBaan: true,
-  isVerify: true,
-  groupId: '',
-} as IUser
-
-const tmpBaan = {
-  id: 0,
-  name: 'Yashiro Commission',
-  imageUrl: '/tmp.jpg',
-}
-
 const Profile = (props: IProfileProps) => {
   const { canAccessProfile } = props
 
