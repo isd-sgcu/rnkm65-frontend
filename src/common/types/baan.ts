@@ -3,7 +3,9 @@ export enum BaanSize {
   Medium,
   Large,
   ExtraLarge,
+  ExtraExtraLarge,
 }
+
 export interface IShortBaan {
   id: number
   name: string
@@ -11,9 +13,10 @@ export interface IShortBaan {
 }
 
 export interface IBaan extends IShortBaan {
-  capacity: number
   size: BaanSize
   description: string
   facebook: string
+  facebookUrl: string
+  igUrl: string
   ig: string
 }

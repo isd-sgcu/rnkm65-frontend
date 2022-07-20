@@ -33,6 +33,10 @@ const BAAN_SIZE = [
     label: 'บ้านขนาดใหญ่พิเศษ (XL)',
     size: BaanSize.ExtraLarge,
   },
+  {
+    label: 'บ้านขนาดใหญ่พิเศษใส่ไข่ (XXL)',
+    size: BaanSize.ExtraExtraLarge,
+  },
 ]
 
 const Search: FC<Props> = ({ onSearch, value, baanSize, onChooseBaanSize }) => (

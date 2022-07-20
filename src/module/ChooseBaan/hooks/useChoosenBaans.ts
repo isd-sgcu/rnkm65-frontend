@@ -1,19 +1,29 @@
 import { BaanSize, IBaan, IShortBaan } from 'common/types/baan'
+import { getBaanInfo } from 'common/utils/baan'
+import { useRouter } from 'next/router'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 
 import { Baan, Filter } from './types'
 
 const initialFilter: Filter = {
   search: '',
-  size: [BaanSize.Small, BaanSize.Medium, BaanSize.Large, BaanSize.ExtraLarge],
+  size: [
+    BaanSize.Small,
+    BaanSize.Medium,
+    BaanSize.Large,
+    BaanSize.ExtraLarge,
+    BaanSize.ExtraExtraLarge,
+  ],
 }
 
 export const useChoosenBaans = (
-  initBaans: IBaan[],
+  _initBaans: IBaan[],
   initChoosenBaans: IShortBaan[]
 ) => {
   const [choosenBaans, setChoosenBaans] =
     useState<IShortBaan[]>(initChoosenBaans)
+  const [initBaans, setInitBaans] = useState<IBaan[]>([])
+  const router = useRouter()
 
   const baans = useMemo(
     () =>
@@ -88,6 +98,15 @@ export const useChoosenBaans = (
   const updateBaans = useCallback((newBaans: IShortBaan[]) => {
     setChoosenBaans(newBaans)
   }, [])
+
+  // For dummy only (Will be removed)
+  useEffect(() => {
+    const fetchBaans = async () => {
+      const res = await getBaanInfo(router.locale)
+      setInitBaans(res)
+    }
+    fetchBaans()
+  }, [router.locale])
 
   return {
     baans,
