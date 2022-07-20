@@ -11,38 +11,10 @@ import Waiting from './components/Waiting'
 import { Container, GroupContainer } from './styled'
 import { IProfileProps } from './types'
 
-const tmpUser = {
-  title: 'Mr.',
-  id: 'uuid',
-  studentID: '6530000021',
-  faculty: 'Faculty of Engineering',
-  year: '1',
-  firstname: 'Kamisato',
-  lastname: 'Ayaka',
-  nickname: '',
-  email: '',
-  phone: '',
-  lineID: '',
-  disease: '',
-  allergyFood: '',
-  allergyMedicine: '',
-  foodRestriction: '',
-  imageUrl: '/tmp.jpg',
-  vaccineCertificateUrl: '',
-  canSelectBaan: true,
-  isVerify: true,
-} as IUser
-
-const tmpBaan = {
-  id: 0,
-  name: 'Yashiro Commission',
-  imageUrl: '/tmp.jpg',
-}
-
 const Profile = (props: IProfileProps) => {
   const { canAccessProfile } = props
 
-  const { user } = useAuth()
+  const { user, group } = useAuth()
   if (!user) return <Loading />
 
   return canAccessProfile ? (
@@ -56,8 +28,8 @@ const Profile = (props: IProfileProps) => {
       >
         <InviteLink inviteLink="www.youtube.com/watch?v=dQw4w9WgXcQ" />
         <GroupContainer>
-          <GroupMember members={[tmpUser]} />
-          <ChoosedBaan baans={[tmpBaan, tmpBaan, tmpBaan]} />
+          <GroupMember members={group?.members ?? []} />
+          <ChoosedBaan baans={group?.baans ?? []} />
         </GroupContainer>
       </div>
     </Container>

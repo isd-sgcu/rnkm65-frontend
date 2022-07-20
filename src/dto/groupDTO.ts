@@ -1,3 +1,6 @@
+import { IBaan } from 'common/types/baan'
+import { IShortUser } from 'common/types/user'
+
 export interface Member {
   title: string
   firstname: string
@@ -7,6 +10,10 @@ export interface Member {
 }
 
 export interface GroupDTO {
-  baan_id: number[]
-  members: Member[]
+  // todo: change group dto
+  id: string
+  leader_id: string
+  members: IShortUser[]
+  baans: IBaan[] // !not in DTO yet
+  token: string
 }
