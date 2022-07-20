@@ -36,6 +36,13 @@ export const Button = styled('button', {
         color: '$white',
         backgroundColor: '$new-secondary',
       },
+      eStamp: {
+        color: '$white',
+        backgroundColor: '$new-primary',
+        width: '100%',
+        borderRadius: '6px',
+        padding: '10px 16px',
+      },
       error: {
         color: '$white',
         backgroundColor: '$error',
