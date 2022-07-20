@@ -1,4 +1,5 @@
 export enum BaanSize {
+  _,
   Small,
   Medium,
   Large,

@@ -1,7 +1,7 @@
 import Button from 'common/components/Button'
+import Image from 'common/components/Image'
 import Modal from 'common/components/Modal'
 import Typography from 'common/components/Typography'
-import Image from 'next/image'
 import { useCallback } from 'react'
 import { FaInstagram } from 'react-icons/fa'
 import { RiFacebookCircleLine } from 'react-icons/ri'
@@ -34,18 +34,23 @@ const DescriptionModal = (props: IDescriptionModal) => {
           width={90}
           height={90}
           layout="fixed"
+          loading="lazy"
           className={RoundedImage()}
         />
         <Typography>{baan?.name ?? ''}</Typography>
         <Typography>{baan?.description ?? ''}</Typography>
-        <SocialDescription>
-          <RiFacebookCircleLine size={24} />
-          <Typography>{baan?.facebook ?? ''}</Typography>
-        </SocialDescription>
-        <SocialDescription>
-          <FaInstagram size={24} />
-          <Typography>{baan?.ig ?? ''}</Typography>
-        </SocialDescription>
+        {baan?.facebook && (
+          <SocialDescription>
+            <RiFacebookCircleLine size={24} />
+            <Typography>{baan?.facebook ?? ''}</Typography>
+          </SocialDescription>
+        )}
+        {baan?.ig && (
+          <SocialDescription>
+            <FaInstagram size={24} />
+            <Typography>{baan?.ig ?? ''}</Typography>
+          </SocialDescription>
+        )}
         <ButtonContainer>
           {canSelect && (
             <Button

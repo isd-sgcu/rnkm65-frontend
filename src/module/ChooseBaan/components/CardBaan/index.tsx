@@ -20,6 +20,7 @@ const CardBaan = (props: ICardBaanProps) => {
     <CardContainer onClick={() => onClick(id)}>
       <Baan
         {...remain}
+        textPosition="bottom"
         id={id}
         index={index}
         name={name}

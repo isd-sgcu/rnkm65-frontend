@@ -1,5 +1,5 @@
+import Image from 'common/components/Image'
 import Typography from 'common/components/Typography'
-import Image from 'next/image'
 import React from 'react'
 
 import {
@@ -39,7 +39,11 @@ const Baan = (props: BaanProps) => {
           <Image src={imageUrl} layout="fill" objectFit="cover" />
         </StyledImage>
       </ImageContainer>
-      <Typography variant="body" color="blue">
+      <Typography
+        css={{ textAlign: textPosition === 'bottom' ? 'center' : 'unset' }}
+        variant="body"
+        color="blue"
+      >
         {name}
       </Typography>
     </BaanContainer>
