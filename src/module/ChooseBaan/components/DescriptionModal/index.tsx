@@ -38,7 +38,15 @@ const DescriptionModal = (props: IDescriptionModal) => {
           className={RoundedImage()}
         />
         <Typography variant="h4">{baan?.name ?? ''}</Typography>
-        <Typography>{baan?.description ?? ''}</Typography>
+        <Typography
+          css={{
+            whiteSpace: 'pre-line',
+            textAlign: 'center',
+            maxWidth: '500px',
+          }}
+        >
+          {baan?.description ?? ''}
+        </Typography>
         {baan?.facebook && (
           <SocialDescription>
             <RiFacebookCircleLine size={24} />

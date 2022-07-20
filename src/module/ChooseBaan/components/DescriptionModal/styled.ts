@@ -30,6 +30,8 @@ export const SocialDescription = styled('div', {
 export const modalClassName = css({
   backgroundColor: '$new-gray !important',
   maxWidth: '600px',
+  maxHeight: '90vh',
+  overflowY: 'auto',
 })
 
 export const ButtonContainer = styled('div', {

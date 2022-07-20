@@ -1,4 +1,4 @@
-import { baans } from 'common/mock/fakeBaans'
+import { getBaanInfo } from 'common/utils/baan'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 export async function getStaticProps({ locale }: { locale: string }) {
@@ -10,7 +10,7 @@ export async function getStaticProps({ locale }: { locale: string }) {
         'baanData',
       ])),
       // Will be passed to the page component as props
-      data: baans,
+      data: await getBaanInfo(locale),
     },
     revalidate: 5 * 60,
   }
