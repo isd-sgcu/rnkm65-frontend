@@ -1,3 +1,10 @@
+export interface IShortUser {
+  id: string
+  firstname: string
+  lastname: string
+  imageUrl: string
+}
+
 export interface IUser {
   id: string
   studentID: string
