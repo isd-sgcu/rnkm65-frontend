@@ -6,7 +6,14 @@ import { ButtonContainer, Message, modalStyle, Title } from './styled'
 import { InfoModalProps } from './types'
 
 const InfoModal = (props: InfoModalProps) => {
-  const { open, onClose, titleI18NKey, messageI18NKey } = props
+  const {
+    open,
+    onClose,
+    titleI18NKey,
+    messageI18NKey,
+    buttonI18NKey = 'acknowledge',
+    overridedI18NMessage,
+  } = props
   const { t } = useTranslation('common')
 
   return (
@@ -17,10 +24,12 @@ const InfoModal = (props: InfoModalProps) => {
       showCloseIcon={false}
     >
       <Title variant="h4">{t(titleI18NKey)}</Title>
-      <Message variant="body">{t(messageI18NKey)}</Message>
+      <Message variant="body">
+        {overridedI18NMessage || t(messageI18NKey)}
+      </Message>
       <ButtonContainer>
         <Button type="button" variant="primary" onClick={onClose}>
-          {t('acknowledge')}
+          {t(buttonI18NKey)}
         </Button>
       </ButtonContainer>
     </Modal>
