@@ -24,3 +24,26 @@ export const GroupContainer = styled('div', {
     flexDirection: 'column-reverse ',
   },
 })
+
+export const MessageContainer = styled('div', {
+  display: 'flex',
+  marginTop: '40px',
+  justifyContent: 'center',
+  alignItems: 'center',
+})
+
+export const Box = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  textAlign: 'center',
+  background: '#ECEDF2',
+  borderRadius: '20px',
+  gap: '20px',
+  padding: '20px 60px',
+  '@md': {
+    fontSize: '12px',
+    padding: '20px 30px',
+  },
+})

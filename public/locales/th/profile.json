@@ -22,6 +22,8 @@
   "wantToChangeGroupOrNot": "คุณต้องการ <0>เปลี่ยนกลุ่ม</0> ไปเข้ากลุ่มของ <1>{{leader}}</1> หรือไม่?",
   "wantToKickMemberOrNot": "คุณต้องการเตะ <0>{{member}}</0> ออกจากกลุ่มหรือไม่?",
   "wantToConfirmAction": "คุณต้องการ <0>{{action}}</0> ใช่หรือไม่?",
+  "registrationComplete": "การลงทะเบียนสำเร็จ!",
+  "followMoreActivity": "แล้วพบกันในงานรับเพื่อนก้าวใหม่วันที่ 4 - 6 สิงหาคม",
   "invitation": {
     "groupProfileNotFound": "เกิดข้อผิดพลาด",
     "groupProfileNotFoundMessage": "ไม่พบ Profile ของคุณในระบบ",

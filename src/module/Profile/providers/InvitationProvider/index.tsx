@@ -1,4 +1,5 @@
 import Loading from 'common/components/Loading'
+import { useAuth } from 'common/contexts/AuthContext'
 import ChangeGroupModal from 'module/Profile/components/ChangeGroupModal'
 import InfoModal from 'module/Profile/components/InfoModal'
 import JoinGroupModal from 'module/Profile/components/JoinGroupModal'
@@ -7,8 +8,13 @@ import React, { useState } from 'react'
 import useInvitationLinkMonitor from './hooks/useInvitationLinkMonitor'
 import { IDialogState } from './types'
 
-const InvitationProvider = (props: React.PropsWithChildren<{}>) => {
+interface InvitationProviderProps {
+  children: (canSelectBaan: boolean) => JSX.Element
+}
+
+const InvitationProvider = (props: InvitationProviderProps) => {
   const { children } = props
+  const { user } = useAuth()
 
   const [loading, setLoading] = useState(true)
   const [dialog, setDialog] = useState<IDialogState | null>(null)
@@ -28,7 +34,8 @@ const InvitationProvider = (props: React.PropsWithChildren<{}>) => {
     return <ChangeGroupModal {...dialog.props} />
   }
 
-  return children as JSX.Element
+  const canSelectBaan = user?.studentID.substring(0, 2) === '65'
+  return children(canSelectBaan)
 }
 
 export default InvitationProvider
