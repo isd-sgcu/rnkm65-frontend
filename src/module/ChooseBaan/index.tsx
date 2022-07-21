@@ -28,7 +28,7 @@ const ChooseBaan: FC<{ data: IBaan[] }> = ({ data: initBaans }) => {
     handleClose: handleCloseSubmit,
   } = useSwitch(false)
   const { t } = useSSRTranslation('chooseBaan')
-  const { group } = useAuth()
+  const { group, user } = useAuth()
   const {
     displayBaans,
     choosenBaans,
@@ -40,7 +40,7 @@ const ChooseBaan: FC<{ data: IBaan[] }> = ({ data: initBaans }) => {
     onClickFilterSize,
     submitBaan,
     updateBaans,
-  } = useChoosenBaans(initBaans, group?.baans || [])
+  } = useChoosenBaans(initBaans, group?.baans || [], user?.studentID)
 
   const modalSelect = useMemo(
     () =>

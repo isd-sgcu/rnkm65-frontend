@@ -20,7 +20,8 @@ const initialFilter: Filter = {
 
 export const useChoosenBaans = (
   initBaans: IBaan[],
-  initChoosenBaans: IShortBaan[]
+  initChoosenBaans: IShortBaan[],
+  userId?: string
 ) => {
   const [choosenBaans, setChoosenBaans] =
     useState<IShortBaan[]>(initChoosenBaans)
@@ -67,6 +68,15 @@ export const useChoosenBaans = (
       )
     )
   }, [baans, filter])
+
+  useEffect(() => {
+    setLoading(true)
+    if (userId && !userId.startsWith('65')) {
+      router.replace('/')
+      return
+    }
+    setLoading(false)
+  }, [router, userId])
 
   const onChooseBaan = useCallback(
     (id: number) => {
