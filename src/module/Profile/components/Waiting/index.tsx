@@ -1,6 +1,8 @@
 import Button from 'common/components/Button'
 import useBottomBackground from 'common/components/Layout/components/Background/hooks/useBottomBackground'
 import Typography from 'common/components/Typography'
+import { Phase } from 'common/constants/phase'
+import { usePhase } from 'common/contexts/PhaseContext'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { Trans, useTranslation } from 'next-i18next'
@@ -18,6 +20,9 @@ const Waiting = () => {
   const { t } = useTranslation('profile')
   const router = useRouter()
   useBottomBackground()
+
+  const { phase } = usePhase()
+  const canEditProfile = phase === Phase.REGISTER
 
   return (
     <RootContainer>
@@ -45,12 +50,14 @@ const Waiting = () => {
           </Description>
         </TextContainer>
       </Container>
-      <Button
-        css={{ width: '100%', maxWidth: '250px' }}
-        onClick={() => router.push('/register?type=edit')}
-      >
-        {t('editProfile')}
-      </Button>
+      {canEditProfile && (
+        <Button
+          css={{ width: '100%', maxWidth: '250px' }}
+          onClick={() => router.push('/register?type=edit')}
+        >
+          {t('editProfile')}
+        </Button>
+      )}
     </RootContainer>
   )
 }

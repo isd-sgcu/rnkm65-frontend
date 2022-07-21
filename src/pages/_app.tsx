@@ -3,6 +3,7 @@ import 'styles/globals.css'
 import Layout from 'common/components/Layout'
 import AuthProvider from 'common/contexts/AuthContext'
 import { BackgroundProvider } from 'common/contexts/BackgroundContext'
+import { PhaseProvider } from 'common/contexts/PhaseContext'
 import PhaseGuard from 'common/guards/PhaseGuard'
 import { REMEMBER_LOCALE } from 'config/env'
 import ErrorFallback from 'module/ErrorBoundary'
@@ -42,9 +43,11 @@ function MyApp({ Component, pageProps }: AppProps) {
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <AuthProvider>
           <Layout>
-            <PhaseGuard currentDate={new Date(pageProps.currentDate)}>
-              <Component {...pageProps} />
-            </PhaseGuard>
+            <PhaseProvider>
+              <PhaseGuard currentDate={new Date(pageProps.currentDate)}>
+                <Component {...pageProps} />
+              </PhaseGuard>
+            </PhaseProvider>
           </Layout>
         </AuthProvider>
       </ErrorBoundary>
