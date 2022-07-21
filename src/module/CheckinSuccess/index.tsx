@@ -11,16 +11,15 @@ const CheckinSuccess = () => {
   const router = useRouter()
 
   const back = useCallback(() => {
-    router.replace('/main')
+    // TODO: redirect to eStamp main page
+    // router.replace('/main')
   }, [router])
 
   return (
     <RootContainer>
       <ContentContainer>
         <Typography variant="h3">{t('success')}</Typography>
-        <Typography variant="subhead3" css={{ textAlign: 'center' }}>
-          {t('desc')}
-        </Typography>
+        <Typography css={{ textAlign: 'center' }}>{t('desc')}</Typography>
         <Button type="button" variant="eStamp" onClick={back}>
           {t('confirm')}
         </Button>
