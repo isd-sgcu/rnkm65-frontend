@@ -67,7 +67,7 @@ export const Typography = styled('div', {
     },
     color: {
       pink: {
-        color: '$pink500',
+        color: '$new-secondary',
       },
       blue: {
         color: '$blue',
