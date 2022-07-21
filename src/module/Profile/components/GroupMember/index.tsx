@@ -3,6 +3,7 @@ import Typography from 'common/components/Typography'
 import { useAuth } from 'common/contexts/AuthContext'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import { apiClient } from 'common/utils/axios'
+import useKing from 'module/Profile/hooks/useKing'
 import React, { useCallback } from 'react'
 import { useErrorHandler } from 'react-error-boundary'
 
@@ -10,12 +11,12 @@ import Member from './components/Member'
 import Placeholder from './components/Placeholder'
 import { GroupMemberProps } from './props'
 import { Container, MembersContainer } from './styled'
-import { isGroupKing } from './utils'
 
 const GroupMember = ({ disabled }: GroupMemberProps) => {
   const { group, user, refreshContext } = useAuth()
   const handleError = useErrorHandler()
   const { t } = useSSRTranslation('profile')
+  const isKing = useKing()
 
   const handleLeaveGroup = useCallback(async () => {
     try {
@@ -29,8 +30,7 @@ const GroupMember = ({ disabled }: GroupMemberProps) => {
   if (!group || !user) return null
 
   const { members } = group
-  const isKing = isGroupKing(group)
-  members.sort((a) => (isKing(a) ? 0 : 1))
+  members.sort((a) => (isKing(a) ? -1 : 1))
 
   return (
     <Container>
