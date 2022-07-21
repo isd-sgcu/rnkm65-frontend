@@ -1,5 +1,11 @@
 import { Phase } from 'common/constants/phase'
-import React, { createContext, useContext, useMemo, useState } from 'react'
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useMemo,
+  useState,
+} from 'react'
 
 import { IPhaseContext } from './types'
 
@@ -9,12 +15,18 @@ export const usePhase = () => useContext(PhaseContext)
 
 export const PhaseProvider = ({ children }: React.PropsWithChildren<{}>) => {
   const [phase, setPhase] = useState<Phase>(Phase.REGISTER)
+  const checkPhase = useCallback(
+    (allowPhase: Phase[]) => allowPhase.includes(phase),
+    [phase]
+  )
+
   const value = useMemo(
     () => ({
       phase,
       setPhase,
+      checkPhase,
     }),
-    [phase, setPhase]
+    [phase, setPhase, checkPhase]
   )
 
   return <PhaseContext.Provider value={value}>{children}</PhaseContext.Provider>

@@ -7,6 +7,8 @@ export enum Phase {
   ESTAMP = 'ESTAMP',
 }
 
+export const CAN_EDIT_PROFILE = [Phase.REGISTER, Phase.ESTAMP]
+
 export const CAN_REGISTER = [Phase.REGISTER, Phase.ESTAMP]
 
 export const CAN_ACCESS_PROFILE = [Phase.REGISTER, Phase.BAAN_SELECTION]

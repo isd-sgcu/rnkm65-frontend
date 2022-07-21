@@ -16,8 +16,8 @@ import InvitationProvider from './providers/InvitationProvider'
 import { Box, Container, GroupContainer, MessageContainer } from './styled'
 
 const Profile = () => {
-  const { phase } = usePhase()
-  const canAccessProfile = CAN_ACCESS_PROFILE.includes(phase)
+  const { checkPhase } = usePhase()
+  const canAccessProfile = checkPhase(CAN_ACCESS_PROFILE)
 
   const { t } = useTranslation()
   const { user, group } = useAuth()

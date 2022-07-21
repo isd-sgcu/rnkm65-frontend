@@ -21,8 +21,8 @@ const RegisterForm = () => {
   const { t } = useSSRTranslation('register')
   const router = useRouter()
   const type = (router.query.type as RegisterType) || RegisterType.Register
-  const { phase } = usePhase()
-  const canRegister = CAN_REGISTER.includes(phase)
+  const { checkPhase } = usePhase()
+  const canRegister = checkPhase(CAN_REGISTER)
 
   if (!canRegister) {
     return <LatePage />

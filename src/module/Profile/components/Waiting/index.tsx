@@ -1,7 +1,7 @@
 import Button from 'common/components/Button'
 import useBottomBackground from 'common/components/Layout/components/Background/hooks/useBottomBackground'
 import Typography from 'common/components/Typography'
-import { Phase } from 'common/constants/phase'
+import { CAN_EDIT_PROFILE } from 'common/constants/phase'
 import { usePhase } from 'common/contexts/PhaseContext'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
@@ -21,8 +21,8 @@ const Waiting = () => {
   const router = useRouter()
   useBottomBackground()
 
-  const { phase } = usePhase()
-  const canEditProfile = phase === Phase.REGISTER
+  const { checkPhase } = usePhase()
+  const canEditProfile = checkPhase(CAN_EDIT_PROFILE)
 
   return (
     <RootContainer>
