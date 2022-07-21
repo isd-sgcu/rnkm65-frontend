@@ -1,5 +1,6 @@
 import Typography from 'common/components/Typography'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
+import LatePage from 'module/LatePage'
 import { useRouter } from 'next/router'
 
 import ConfirmModal from './components/ConfirmModal'
@@ -12,13 +13,15 @@ import {
   SubmitButton,
   SubmitContainer,
 } from './styled'
-import { RegisterType } from './types'
+import { IRegisterFormPageProps, RegisterType } from './types'
 
-const RegisterForm = () => {
+const RegisterForm = ({ canRegister }: IRegisterFormPageProps) => {
   const { t } = useSSRTranslation('register')
   const router = useRouter()
   const type = (router.query.type as RegisterType) || RegisterType.Register
-
+  if (!canRegister) {
+    return <LatePage />
+  }
   return (
     <FormProvider>
       <RootContainer>

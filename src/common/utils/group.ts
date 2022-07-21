@@ -1,6 +1,7 @@
 import { AxiosResponse } from 'axios'
 import { IGroup } from 'common/types/group'
 import { GroupDTO } from 'dto/groupDTO'
+
 import { apiClient } from './axios'
 
 const transformGroupDTOtoIGroup = (group: GroupDTO): IGroup => ({
