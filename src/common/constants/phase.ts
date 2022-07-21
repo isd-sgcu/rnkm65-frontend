@@ -7,13 +7,17 @@ export enum Phase {
   ESTAMP = 'ESTAMP',
 }
 
-export const DEFAULT_ROUTE = ['/', '/login']
+export const CAN_REGISTER = [Phase.REGISTER, Phase.ESTAMP]
+
+export const CAN_ACCESS_PROFILE = [Phase.REGISTER, Phase.BAAN_SELECTION]
+
+export const DEFAULT_ROUTE = ['/', '/login', '/register']
 
 export const PHASE_DATA = [
   {
     phase: Phase.REGISTER,
     startTime: new Date('July 16, 2022 9:00 GMT+07:00').getTime(),
-    allowRoute: ['/register'],
+    allowRoute: [],
   },
   {
     phase: Phase.REGISTER_END,

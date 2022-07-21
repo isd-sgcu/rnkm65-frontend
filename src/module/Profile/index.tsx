@@ -1,6 +1,6 @@
 import Loading from 'common/components/Loading'
 import Typography from 'common/components/Typography'
-import { Phase } from 'common/constants/phase'
+import { CAN_ACCESS_PROFILE } from 'common/constants/phase'
 import { useAuth } from 'common/contexts/AuthContext'
 import { usePhase } from 'common/contexts/PhaseContext'
 import { APP_BASE_URL } from 'config/env'
@@ -17,8 +17,7 @@ import { Box, Container, GroupContainer, MessageContainer } from './styled'
 
 const Profile = () => {
   const { phase } = usePhase()
-  const canAccessProfile =
-    phase === Phase.REGISTER || phase === Phase.BAAN_SELECTION
+  const canAccessProfile = CAN_ACCESS_PROFILE.includes(phase)
 
   const { t } = useTranslation()
   const { user, group } = useAuth()

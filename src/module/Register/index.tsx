@@ -1,5 +1,5 @@
 import Typography from 'common/components/Typography'
-import { Phase } from 'common/constants/phase'
+import { CAN_REGISTER } from 'common/constants/phase'
 import { usePhase } from 'common/contexts/PhaseContext'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import LatePage from 'module/LatePage'
@@ -22,7 +22,7 @@ const RegisterForm = () => {
   const router = useRouter()
   const type = (router.query.type as RegisterType) || RegisterType.Register
   const { phase } = usePhase()
-  const canRegister = phase === Phase.REGISTER
+  const canRegister = CAN_REGISTER.includes(phase)
 
   if (!canRegister) {
     return <LatePage />
