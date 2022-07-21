@@ -1,4 +1,6 @@
 import { BaanSize, IBaan, IShortBaan } from 'common/types/baan'
+import { httpPut } from 'common/utils/axios'
+import { useRouter } from 'next/router'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 
 import { Baan, Filter } from './types'
@@ -20,6 +22,10 @@ export const useChoosenBaans = (
 ) => {
   const [choosenBaans, setChoosenBaans] =
     useState<IShortBaan[]>(initChoosenBaans)
+
+  const [isLoading, setLoading] = useState(false)
+
+  const router = useRouter()
 
   const baans = useMemo(
     () =>
@@ -95,8 +101,25 @@ export const useChoosenBaans = (
     setChoosenBaans(newBaans)
   }, [])
 
+  const submitBaan = useCallback(async () => {
+    setLoading(true)
+
+    const baanId = choosenBaans.map((v) => v.id)
+    try {
+      await httpPut('/group/select', {
+        baans: baanId,
+      })
+      localStorage.removeItem('choosenBaans')
+      router.replace('/')
+    } catch (err) {
+      console.log(err)
+      setLoading(false)
+    }
+  }, [choosenBaans, router])
+
   return {
     baans,
+    loading: isLoading,
     choosenBaans,
     onChooseBaan,
     onRemoveBaan,
@@ -105,5 +128,6 @@ export const useChoosenBaans = (
     displayBaans,
     filter,
     updateBaans,
+    submitBaan,
   }
 }

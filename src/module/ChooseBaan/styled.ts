@@ -11,6 +11,15 @@ export const RootContainer = styled('div', {
   },
 })
 
+export const ChoosenContainer = styled('div', {
+  position: 'sticky',
+  top: 0,
+  maxWidth: '450px',
+  '@md': {
+    maxWidth: 'none',
+  },
+})
+
 export const CatalogContainer = styled('div', {
   backgroundColor: '$new-gray',
   padding: '1.5rem',
@@ -22,7 +31,7 @@ export const CardContainer = styled('div', {
   paddingTop: '1rem',
   gridGap: '1rem',
   gridTemplateColumns: 'repeat(5, 1fr)',
-  justifContent: 'space-evenly',
+  justifyContent: 'space-evenly',
   '@xl': {
     gridTemplateColumns: 'repeat(4, 1fr)',
   },
@@ -30,7 +39,7 @@ export const CardContainer = styled('div', {
     gridTemplateColumns: 'repeat(3, 1fr)',
   },
   '@md': {
-    gridTemplateColumns: 'repeat(3, 1fr)',
+    gridTemplateColumns: 'repeat(2, 1fr)',
   },
   '@sm': {
     gridTemplateColumns: 'repeat(2, 1fr)',

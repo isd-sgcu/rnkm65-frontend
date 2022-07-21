@@ -1,0 +1,16 @@
+{
+    "title": "Select Baan",
+    "description": "Select 3 baans that you interested most",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "requiredBaanTitle": "You need to select 3 baans",
+    "submitBaanTitle": "Do you want to submit your choice ?",
+    "chooseBtn": "Choose",
+    "s": "Small (S)",
+    "m": "Medium (M)",
+    "l": "Large (L)",
+    "xl": "Extra Large (XL)",
+    "xxl": "Extra Extra Large (XXL)",
+    "search": "Search",
+    "searchPlaceholder": "Search baan"
+}
