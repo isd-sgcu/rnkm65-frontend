@@ -25,7 +25,7 @@ const Profile = () => {
 
   if (!user) return <Loading />
 
-  if (canAccessProfile) return <Waiting />
+  if (!canAccessProfile) return <Waiting />
 
   return (
     <InvitationProvider>
