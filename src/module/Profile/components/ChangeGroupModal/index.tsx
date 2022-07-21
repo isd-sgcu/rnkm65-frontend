@@ -20,8 +20,8 @@ const ChangeGroupModal = (props: ChangeGroupModalProps) => {
         <Trans
           i18nKey="profile:wantToChangeGroupOrNot"
           components={[
-            <InlineTypography color="pink" variant="h4" />,
-            <InlineTypography color="pink" variant="h4" />,
+            <InlineTypography color="new-secondary" variant="h4" />,
+            <InlineTypography color="new-secondary" variant="h4" />,
           ]}
           values={{
             leader: `<br />${leader.firstname} ${leader.lastname}`,
