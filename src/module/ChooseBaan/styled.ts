@@ -14,6 +14,11 @@ export const RootContainer = styled('div', {
 export const ChoosenContainer = styled('div', {
   position: 'sticky',
   top: 0,
+  minWidth: '300px',
+
+  '@md': {
+    minWidth: 'unset',
+  },
 })
 
 export const CatalogContainer = styled('div', {

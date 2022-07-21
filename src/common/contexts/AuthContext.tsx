@@ -3,6 +3,7 @@ import { IUser } from 'common/types/user'
 import { getGroupProfile } from 'common/utils/group'
 import { getUserProfile } from 'common/utils/user'
 import { APP_BASE_URL, SSO_BASE_URL } from 'config/env'
+import { useRouter } from 'next/router'
 import {
   createContext,
   useCallback,
@@ -33,6 +34,7 @@ const AuthProvider: React.FC = ({ children }) => {
   const [user, setUser] = useState<IUser>()
   const [group, setGroup] = useState<IGroup>()
   const isFetching = useRef(false)
+  const router = useRouter()
 
   const refreshContext = useCallback(async () => {
     if (isFetching.current) {
@@ -49,7 +51,7 @@ const AuthProvider: React.FC = ({ children }) => {
         throw new Error('Failed to validate token')
       }
 
-      const groupProfile = await getGroupProfile()
+      const groupProfile = await getGroupProfile(router.locale)
       if (groupProfile) {
         setGroup(groupProfile)
       }
@@ -59,6 +61,7 @@ const AuthProvider: React.FC = ({ children }) => {
     }
 
     isFetching.current = false
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {

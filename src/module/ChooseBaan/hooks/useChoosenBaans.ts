@@ -1,4 +1,5 @@
 import { AxiosError } from 'axios'
+import { useAuth } from 'common/contexts/AuthContext'
 import { BaanSize, IBaan, IShortBaan } from 'common/types/baan'
 import { httpPut } from 'common/utils/axios'
 import { useRouter } from 'next/router'
@@ -40,6 +41,8 @@ export const useChoosenBaans = (
   const [displayBaans, setDisplayBaans] = useState<Baan[]>(baans)
 
   const [filter, setFilter] = useState<Filter>(initialFilter)
+
+  const { refreshContext } = useAuth()
 
   // get choosen baans from local storage on mount
   useEffect(() => {
@@ -111,6 +114,7 @@ export const useChoosenBaans = (
         baans: baanId,
       })
       localStorage.removeItem('choosenBaans')
+      await refreshContext()
       router.replace('/')
     } catch (err) {
       const error = err as unknown as AxiosError
@@ -123,7 +127,7 @@ export const useChoosenBaans = (
         })
       )
     }
-  }, [choosenBaans, router])
+  }, [choosenBaans, refreshContext, router])
 
   return {
     baans,

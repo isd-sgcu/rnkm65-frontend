@@ -1,4 +1,4 @@
-import { IBaan } from './baan'
+import { IShortBaan } from './baan'
 import { IShortUser } from './user'
 
 export interface IGroup {
@@ -6,7 +6,7 @@ export interface IGroup {
   leaderID: string
   token: string
   members: IShortUser[]
-  baans: IBaan[] // !not in DTO yet
+  baans: IShortBaan[] // !not in DTO yet
 }
 
 export interface IGroupPublic {
