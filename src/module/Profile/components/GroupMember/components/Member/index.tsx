@@ -19,7 +19,7 @@ const Member = (props: MemberProps) => {
   const handleDelete = useCallback(async () => {
     try {
       await apiClient.delete(`/group/members/${id}`)
-      refreshContext()
+      await refreshContext()
     } catch (err) {
       handleError(err)
     }

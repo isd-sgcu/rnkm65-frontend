@@ -21,7 +21,7 @@ const GroupMember = ({ disabled }: GroupMemberProps) => {
   const handleLeaveGroup = useCallback(async () => {
     try {
       await apiClient.delete('/group/leave')
-      refreshContext()
+      await refreshContext()
     } catch (err) {
       handleError(err)
     }
