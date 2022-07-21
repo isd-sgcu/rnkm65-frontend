@@ -57,3 +57,6 @@ export const postJoinGroup = async (token: string): Promise<boolean> => {
 
   return true
 }
+
+export const canJoinGroup = (studentID: string) =>
+  studentID.substring(0, 2) === '65'

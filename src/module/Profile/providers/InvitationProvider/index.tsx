@@ -1,5 +1,6 @@
 import Loading from 'common/components/Loading'
 import { useAuth } from 'common/contexts/AuthContext'
+import { canJoinGroup } from 'common/utils/group'
 import ChangeGroupModal from 'module/Profile/components/ChangeGroupModal'
 import InfoModal from 'module/Profile/components/InfoModal'
 import JoinGroupModal from 'module/Profile/components/JoinGroupModal'
@@ -34,7 +35,7 @@ const InvitationProvider = (props: InvitationProviderProps) => {
     return <ChangeGroupModal {...dialog.props} />
   }
 
-  const canSelectBaan = user?.studentID.substring(0, 2) === '65'
+  const canSelectBaan = canJoinGroup(user?.studentID ?? '')
   return children(canSelectBaan)
 }
 

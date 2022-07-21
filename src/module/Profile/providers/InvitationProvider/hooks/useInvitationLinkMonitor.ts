@@ -1,6 +1,10 @@
 import { useAuth } from 'common/contexts/AuthContext'
 import { IGroupPublic } from 'common/types/group'
-import { getGroupPublicProfile, postJoinGroup } from 'common/utils/group'
+import {
+  canJoinGroup,
+  getGroupPublicProfile,
+  postJoinGroup,
+} from 'common/utils/group'
 import { useRouter } from 'next/router'
 import { useCallback, useEffect, useRef } from 'react'
 
@@ -123,6 +127,12 @@ const useInvitationLinkMonitor = ({
           },
         })
         setLoading(false)
+        return
+      }
+
+      if (!canJoinGroup(user?.studentID)) {
+        setLoading(false)
+        router.replace('/')
         return
       }
 
