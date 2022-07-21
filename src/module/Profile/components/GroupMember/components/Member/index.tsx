@@ -1,6 +1,7 @@
 import Typography from 'common/components/Typography'
+import { apiClient } from 'common/utils/axios'
 import Image from 'next/image'
-import React from 'react'
+import React, { useCallback } from 'react'
 import { IoClose } from 'react-icons/io5'
 
 import { ImageContainer } from '../../styled'
@@ -8,7 +9,13 @@ import { DeleteMemberButton, KingBadge, MemberContainer } from './styled'
 import { MemberProps } from './types'
 
 const Member = (props: MemberProps) => {
-  const { firstname, lastname, imageUrl, isKing, isDeletable } = props
+  const { user, isKing, isDeletable } = props
+  const { firstname, lastname, imageUrl, id } = user
+
+  const handleDelete = useCallback(() => {
+    apiClient.delete(`/group/members/${id}`)
+  }, [id])
+
   return (
     <MemberContainer>
       {isKing && (
@@ -17,7 +24,7 @@ const Member = (props: MemberProps) => {
         </KingBadge>
       )}
       {isDeletable && (
-        <DeleteMemberButton>
+        <DeleteMemberButton onClick={handleDelete}>
           <IoClose />
         </DeleteMemberButton>
       )}

@@ -8,13 +8,16 @@ import Member from './components/Member'
 import Placeholder from './components/Placeholder'
 import { GroupMemberProps } from './props'
 import { Container, MembersContainer } from './styled'
+import { isGroupKing } from './utils'
 
-const GroupMember = (props: GroupMemberProps) => {
-  const { members, disabled } = props
+const GroupMember = ({ disabled }: GroupMemberProps) => {
   const { group, user } = useAuth()
   const { t } = useSSRTranslation('profile')
 
-  const isKing = user?.id === group?.leaderID
+  if (!group || !user) return null
+
+  const { members } = group
+  const isKing = isGroupKing(group)
 
   return (
     <Container>
@@ -22,12 +25,12 @@ const GroupMember = (props: GroupMemberProps) => {
         {t('member')} ({members.length}/3)
       </Typography>
       <MembersContainer>
-        {members.map((member, idx) => (
+        {members.map((member) => (
           <Member
-            {...member}
-            key={`${member.firstname} ${member.lastname}`}
-            isKing={member.id === group?.leaderID}
-            isDeletable={disabled ? false : isKing && idx !== 0}
+            key={member.id}
+            user={member}
+            isKing={isKing(member)}
+            isDeletable={disabled ? false : isKing(user) && !isKing(member)}
           />
         ))}
         {members.length <= 1 && (
