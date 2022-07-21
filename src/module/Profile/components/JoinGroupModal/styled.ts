@@ -7,12 +7,6 @@ export const Title = styled(Typography, {
   color: '$blue',
 })
 
-export const Message = styled(Typography, {
-  textAlign: 'center',
-  color: '$blue',
-  margin: '0.5rem',
-})
-
 export const InlineTypography = styled(Typography, {
   display: 'inline',
 })

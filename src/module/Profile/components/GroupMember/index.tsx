@@ -1,5 +1,6 @@
 import Button from 'common/components/Button'
 import Typography from 'common/components/Typography'
+import { useAuth } from 'common/contexts/AuthContext'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import React from 'react'
 
@@ -10,10 +11,10 @@ import { Container, MembersContainer } from './styled'
 
 const GroupMember = (props: GroupMemberProps) => {
   const { members, disabled } = props
+  const { group, user } = useAuth()
   const { t } = useSSRTranslation('profile')
 
-  // TODO change this later
-  const isKing = true
+  const isKing = user?.id === group?.leaderID
 
   return (
     <Container>
@@ -25,7 +26,7 @@ const GroupMember = (props: GroupMemberProps) => {
           <Member
             {...member}
             key={`${member.firstname} ${member.lastname}`}
-            isKing={idx === 0 && members.length > 1}
+            isKing={member.id === group?.leaderID}
             isDeletable={disabled ? false : isKing && idx !== 0}
           />
         ))}

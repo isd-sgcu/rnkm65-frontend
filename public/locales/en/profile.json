@@ -18,10 +18,22 @@
   "cannotChangeGroup": "Unable to change groups",
   "becauseGroupFull": "The group is full",
   "becauseYouAreKing": "You are the group leader",
-  "wantToJoinGroupOrNot": "Are you sure you want to join <0>{{king}}</0>?",
-  "wantToChangeGroupOrNot": "Are you sure you want <0>{{action}}</0> to join <1>{{king}}</1>'s group?",
+  "wantToJoinGroupOrNot": "Are you sure you want to join <0>{{leader}}</0>'s group?",
+  "wantToChangeGroupOrNot": "Are you sure you want to <0>change group</0> to join <1>{{leader}}</1>'s group?",
   "wantToKickMemberOrNot": "Are you sure you want to kick <0>{{member}}</0> from the group?",
   "wantToConfirmAction": "Are you sure you want to <0>{{action}}</0>?",
+  "registrationComplete": "Registration Complete !",
+  "followMoreActivity": "Please stay tuned for the upcoming activities on 4 - 6 August.",
+  "askForMoreInfoAt": "In the meantime, if you have any further questions about the event, you can contact us at IG @rubpuenkaomai2022.",
+  "invitation": {
+    "groupProfileNotFound": "An Error Occurred",
+    "groupProfileNotFoundMessage": "Your profile could not be found in the system.",
+    "invalidInviteLink": "Invalid Invite Link",
+    "invalidInviteLinkMessage": "This group could not be found in the system. Please request a link from the group leader again.",
+    "joinOwnGroup": "You cannot join your own group.",
+    "joinOwnGroupMessage": "This link is only for sending to friends to join the group.",
+    "unknownError": "An Error Occurred"
+  },
   "areAlsoGroupMember": "<0>{{members}}</0> is also a member of this group",
   "announce": {
     "congrats": "Congraturation",
@@ -30,7 +42,7 @@
   },
   "waiting": {
     "title": "Please wait for group selection.",
-    "description": "Your registration has been completed.\n Please wait for group selection on <0>21 July 2022</0>.\nYou may contact <1>CU for Freshmen</1> for more information."
+    "description": "Your registration has been completed.\n Please wait for group selection on <0>23 July 2022</0>.\nYou may contact <1>CU for Freshmen</1> for more information."
   },
   "processingBaan": "Processing...",
   "goFollowCUForFreshmen": "For more information, please follow: \nCU for Freshman"

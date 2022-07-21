@@ -1,6 +1,6 @@
-import { IUser } from 'common/types/user'
+import { IShortUser } from 'common/types/user'
 
 export interface GroupMemberProps {
-  members: IUser[]
+  members: IShortUser[]
   disabled?: boolean
 }

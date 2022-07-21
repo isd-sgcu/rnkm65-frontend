@@ -17,4 +17,5 @@ export interface UserDTO {
   imageUrl?: string
   canSelectBaan?: boolean
   isVerify?: boolean
+  groupId?: string
 }
