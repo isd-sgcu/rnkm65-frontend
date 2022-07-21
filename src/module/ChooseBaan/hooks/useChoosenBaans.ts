@@ -1,3 +1,4 @@
+import { AxiosError } from 'axios'
 import { BaanSize, IBaan, IShortBaan } from 'common/types/baan'
 import { httpPut } from 'common/utils/axios'
 import { useRouter } from 'next/router'
@@ -112,8 +113,15 @@ export const useChoosenBaans = (
       localStorage.removeItem('choosenBaans')
       router.replace('/')
     } catch (err) {
-      console.log(err)
+      const error = err as unknown as AxiosError
       setLoading(false)
+      throw new Error(
+        JSON.stringify({
+          status: error.code,
+          message: error.message,
+          stack: error.stack?.substring(0, 300),
+        })
+      )
     }
   }, [choosenBaans, router])
 

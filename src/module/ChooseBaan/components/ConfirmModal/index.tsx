@@ -1,7 +1,7 @@
 import Button from 'common/components/Button'
 import Modal from 'common/components/Modal'
 import Typography from 'common/components/Typography'
-import useSSRTranslation from 'common/hooks/useSSRTranslation'
+import { useTranslation } from 'next-i18next'
 import { useCallback, useState } from 'react'
 
 import { ButtonContainer, modalCss, TitleConfirm } from './styled'
@@ -9,15 +9,27 @@ import { IConfirmModalProps } from './types'
 
 const ConfirmModal = (props: IConfirmModalProps) => {
   const { onClose, onConfirm, open, allowSubmit } = props
-  const { t } = useSSRTranslation('chooseBaan')
+  const { t } = useTranslation()
   const [error, setError] = useState('')
+  const [linkErr, setLinkErr] = useState('')
 
   const handleSubmit = useCallback(async () => {
     try {
       setError('')
       await onConfirm()
     } catch (err) {
-      setError((err as Error).message)
+      const innerErr = JSON.parse((err as Error).message) as {
+        status: string
+        message: string
+        stack: string
+      }
+
+      setError(innerErr.message)
+      setLinkErr(
+        `https://airtable.com/shrWFil4igZa2UZoV?prefill_errorMessage=${
+          (err as Error).message
+        }&hide_errorMessage=true`
+      )
     }
   }, [onConfirm])
 
@@ -26,10 +38,16 @@ const ConfirmModal = (props: IConfirmModalProps) => {
     onClose()
   }, [onClose])
 
+  const handleClickReport = useCallback(() => {
+    window.location.href = linkErr
+  }, [linkErr])
+
   return (
     <Modal modalClassName={modalCss()} open={open} onClose={onClose}>
       <TitleConfirm variant="subhead3">
-        {!allowSubmit ? t('requiredBaanTitle') : t('submitBaanTitle')}
+        {!allowSubmit
+          ? t('chooseBaan:requiredBaanTitle')
+          : t('chooseBaan:submitBaanTitle')}
       </TitleConfirm>
       <ButtonContainer>
         {allowSubmit ? (
@@ -40,7 +58,7 @@ const ConfirmModal = (props: IConfirmModalProps) => {
               variant="secondary"
               onClick={handleClose}
             >
-              {t('cancel')}
+              {t('chooseBaan:cancel')}
             </Button>
             <Button
               css={{ width: '50%' }}
@@ -48,7 +66,7 @@ const ConfirmModal = (props: IConfirmModalProps) => {
               variant="primary"
               onClick={handleSubmit}
             >
-              {t('submit')}
+              {t('chooseBaan:submit')}
             </Button>
           </>
         ) : (
@@ -58,7 +76,7 @@ const ConfirmModal = (props: IConfirmModalProps) => {
             variant="secondary"
             onClick={handleClose}
           >
-            {t('cancel')}
+            {t('common:acknowledge')}
           </Button>
         )}
       </ButtonContainer>
@@ -66,8 +84,15 @@ const ConfirmModal = (props: IConfirmModalProps) => {
         <Typography
           css={{ marginTop: '1rem', textAlign: 'center' }}
           color="error"
+          variant="h4"
         >
           {error}
+          <Typography
+            onClick={handleClickReport}
+            css={{ textDecoration: 'underline', cursor: 'pointer' }}
+          >
+            {t('common:reportIssue')}
+          </Typography>
         </Typography>
       )}
     </Modal>
