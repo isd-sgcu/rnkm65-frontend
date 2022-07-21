@@ -30,6 +30,7 @@ const useInvitationLinkMonitor = ({
         await postJoinGroup(invitedGroup.token)
       } catch (err) {
         const { message } = err as Error
+        // Group full
         if (message === 'group full') {
           setDialog({
             type: 'info',
@@ -111,6 +112,7 @@ const useInvitationLinkMonitor = ({
         return
       }
 
+      // Handle if group profile not found
       if (!user || !group) {
         setDialog({
           type: 'info',
@@ -130,6 +132,7 @@ const useInvitationLinkMonitor = ({
         return
       }
 
+      // Handle if user not allow to join group (not year 1)
       if (!canJoinGroup(user?.studentID)) {
         setLoading(false)
         router.replace('/')
