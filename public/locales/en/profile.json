@@ -22,8 +22,9 @@
   "wantToChangeGroupOrNot": "Are you sure you want to <0>change group</0> to join <1>{{leader}}</1>'s group?",
   "wantToKickMemberOrNot": "Are you sure you want to kick <0>{{member}}</0> from the group?",
   "wantToConfirmAction": "Are you sure you want to <0>{{action}}</0>?",
-  "registrationComplete": "Registration Complete!",
+  "registrationComplete": "Registration Complete !",
   "followMoreActivity": "Please stay tuned for the upcoming activities on 4 - 6 August.",
+  "askForMoreInfoAt": "In the meantime, if you have any further questions about the event, you can contact us at IG @rubpuenkaomai2022.",
   "invitation": {
     "groupProfileNotFound": "An Error Occurred",
     "groupProfileNotFoundMessage": "Your profile could not be found in the system.",

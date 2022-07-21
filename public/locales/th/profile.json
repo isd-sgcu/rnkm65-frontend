@@ -22,8 +22,9 @@
   "wantToChangeGroupOrNot": "คุณต้องการ <0>เปลี่ยนกลุ่ม</0> ไปเข้ากลุ่มของ <1>{{leader}}</1> หรือไม่?",
   "wantToKickMemberOrNot": "คุณต้องการเตะ <0>{{member}}</0> ออกจากกลุ่มหรือไม่?",
   "wantToConfirmAction": "คุณต้องการ <0>{{action}}</0> ใช่หรือไม่?",
-  "registrationComplete": "การลงทะเบียนสำเร็จ!",
-  "followMoreActivity": "แล้วพบกันในงานรับเพื่อนก้าวใหม่วันที่ 4 - 6 สิงหาคม",
+  "registrationComplete": "การลงทะเบียนสำเร็จ !",
+  "followMoreActivity": "แล้วพบกันในงานรับเพื่อนก้าวใหม่วันที่ 4 - 6 สิงหาคมนี้นะ!",
+  "askForMoreInfoAt": "หากระหว่างนี้มีข้อสงสัยเพิ่มเติมเกี่ยวกับงานสามารถติดต่อสอบถามได้ที่ IG @rubpuenkaomai2022",
   "invitation": {
     "groupProfileNotFound": "เกิดข้อผิดพลาด",
     "groupProfileNotFoundMessage": "ไม่พบ Profile ของคุณในระบบ",
@@ -43,5 +44,5 @@
     "description": "การลงทะเบียนของคุณเสร็จสิ้นเรียบร้อย\n กรุณาลงทะเบียนเลือกบ้านใน<0>วันที่ 23 กรกฎาคม 2565</0>\nสามารถสอบถามข้อมูลเพิ่มเติมได้ที่ <1>CU for Freshmen</1>"
   },
   "processingBaan": "ขณะนี้ระบบกำลังจัดบ้านอยู่",
-  "goFollowCUForFreshmen": "สามารถติดตามข่าวสารได้ที่เพจ\nCU For Freshman"
+  "goFollowCUForFreshmen": "สามารถติดตามข่าวสารได้ที่ IG\n@rubpuenkaomai2022"
 }

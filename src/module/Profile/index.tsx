@@ -46,13 +46,16 @@ const Profile = (props: IProfileProps) => {
             ) : (
               <MessageContainer>
                 <Box>
-                  <Typography variant="h4" color="blue">
+                  <Typography variant="h2" color="new-secondary">
                     {t('profile:registrationComplete')}
                   </Typography>
-                  <Typography variant="body" color="blue">
+                  <Typography variant="subhead2" color="blue">
                     {t('profile:followMoreActivity')}
                   </Typography>
                 </Box>
+                <Typography variant="body" color="blue">
+                  {t('profile:askForMoreInfoAt')}
+                </Typography>
               </MessageContainer>
             )}
           </div>
