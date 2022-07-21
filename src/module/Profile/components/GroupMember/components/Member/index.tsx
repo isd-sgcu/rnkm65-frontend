@@ -1,7 +1,9 @@
 import Typography from 'common/components/Typography'
+import { useAuth } from 'common/contexts/AuthContext'
 import { apiClient } from 'common/utils/axios'
 import Image from 'next/image'
 import React, { useCallback } from 'react'
+import { useErrorHandler } from 'react-error-boundary'
 import { IoClose } from 'react-icons/io5'
 
 import { ImageContainer } from '../../styled'
@@ -11,10 +13,17 @@ import { MemberProps } from './types'
 const Member = (props: MemberProps) => {
   const { user, isKing, isDeletable } = props
   const { firstname, lastname, imageUrl, id } = user
+  const { refreshContext } = useAuth()
+  const handleError = useErrorHandler()
 
-  const handleDelete = useCallback(() => {
-    apiClient.delete(`/group/members/${id}`)
-  }, [id])
+  const handleDelete = useCallback(async () => {
+    try {
+      await apiClient.delete(`/group/members/${id}`)
+      refreshContext()
+    } catch (err) {
+      handleError(err)
+    }
+  }, [handleError, id, refreshContext])
 
   return (
     <MemberContainer>
