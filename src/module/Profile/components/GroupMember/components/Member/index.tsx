@@ -1,6 +1,8 @@
 import Typography from 'common/components/Typography'
 import { useAuth } from 'common/contexts/AuthContext'
+import { useSwitch } from 'common/hooks/useSwitch'
 import { apiClient } from 'common/utils/axios'
+import KickMemberModal from 'module/Profile/components/KickMemberModal'
 import Image from 'next/image'
 import React, { useCallback } from 'react'
 import { useErrorHandler } from 'react-error-boundary'
@@ -15,25 +17,33 @@ const Member = (props: MemberProps) => {
   const { firstname, lastname, imageUrl, id } = user
   const { refreshContext } = useAuth()
   const handleError = useErrorHandler()
+  const { handleOpen, handleClose, state } = useSwitch(false)
 
   const handleDelete = useCallback(async () => {
     try {
       await apiClient.delete(`/group/members/${id}`)
       await refreshContext()
+      handleClose()
     } catch (err) {
       handleError(err)
     }
-  }, [handleError, id, refreshContext])
+  }, [handleClose, handleError, id, refreshContext])
 
   return (
     <MemberContainer>
+      <KickMemberModal
+        open={state}
+        member={user}
+        onAccept={handleDelete}
+        onDecline={handleClose}
+      />
       {isKing && (
         <KingBadge>
           <Image src="/kingBadge.svg" height={26} width={26} />
         </KingBadge>
       )}
       {isDeletable && (
-        <DeleteMemberButton onClick={handleDelete}>
+        <DeleteMemberButton onClick={handleOpen}>
           <IoClose />
         </DeleteMemberButton>
       )}
