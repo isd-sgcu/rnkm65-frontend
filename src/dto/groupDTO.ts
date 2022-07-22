@@ -11,11 +11,10 @@ export interface Member {
 }
 
 export interface GroupDTO {
-  // todo: change group dto
   id: string
   leaderID: string
   members: IShortUser[]
-  baans: ShortBaanDTO[] // !not in DTO yet
+  baans: ShortBaanDTO[]
   token: string
 }
 

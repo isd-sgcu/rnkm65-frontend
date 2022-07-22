@@ -6,7 +6,7 @@ export interface IGroup {
   leaderID: string
   token: string
   members: IShortUser[]
-  baans: IShortBaan[] // !not in DTO yet
+  baans: IShortBaan[]
 }
 
 export interface IGroupPublic {

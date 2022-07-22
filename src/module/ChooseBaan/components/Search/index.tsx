@@ -4,6 +4,7 @@ import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import { BaanSize } from 'common/types/baan'
 import { FC, memo } from 'react'
 
+import { BAAN_SIZE } from './constants'
 import {
   BaanFilter,
   ButtonFilterContainer,
@@ -16,29 +17,6 @@ interface Props {
   baanSize?: Array<BaanSize>
   onChooseBaanSize?: (baan: BaanSize) => void
 }
-
-const BAAN_SIZE = [
-  {
-    i18nLabel: 's',
-    size: BaanSize.Small,
-  },
-  {
-    i18nLabel: 'm',
-    size: BaanSize.Medium,
-  },
-  {
-    i18nLabel: 'l',
-    size: BaanSize.Large,
-  },
-  {
-    i18nLabel: 'xl',
-    size: BaanSize.ExtraLarge,
-  },
-  {
-    i18nLabel: 'xxl',
-    size: BaanSize.ExtraExtraLarge,
-  },
-]
 
 const Search: FC<Props> = ({ onSearch, value, baanSize, onChooseBaanSize }) => {
   const { t } = useSSRTranslation('chooseBaan')

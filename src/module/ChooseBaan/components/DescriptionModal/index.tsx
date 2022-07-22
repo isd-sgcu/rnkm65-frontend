@@ -7,6 +7,7 @@ import { useCallback } from 'react'
 import { FaInstagram } from 'react-icons/fa'
 import { RiFacebookCircleLine } from 'react-icons/ri'
 
+import { SocialLink } from './components/SocialLink'
 import {
   ButtonContainer,
   modalClassName,
@@ -49,9 +50,13 @@ const DescriptionModal = (props: IDescriptionModal) => {
         >
           {baan?.description ?? ''}
         </Typography>
+        <SocialLink
+          icon={<RiFacebookCircleLine size={24} />}
+          label={baan?.facebook}
+          url={baan?.facebookUrl}
+        />
         {baan?.facebook && (
           <SocialDescription>
-            <RiFacebookCircleLine size={24} />
             <a
               target="_blank"
               href={baan?.facebookUrl || ''}

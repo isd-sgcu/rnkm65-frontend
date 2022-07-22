@@ -68,7 +68,6 @@ const ChooseBaan: FC<{ data: IBaan[] }> = ({ data: initBaans }) => {
             <ChoosedBaan
               baans={choosenBaans}
               updateBaans={updateBaans}
-              // eslint-disable-next-line @typescript-eslint/no-unused-vars
               handleDelete={onRemoveBaan}
               handleConfirm={handleOpenSubmit}
             />
