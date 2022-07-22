@@ -46,7 +46,10 @@ const LoginPage = () => {
         const token = await exchangeTicketForToken(ticket.toString())
         if (!token) {
           setErrorMsg(t('unknownError'))
+
           router.replace('/login')
+          setLoading(false)
+
           return
         }
 
@@ -60,6 +63,8 @@ const LoginPage = () => {
           }
 
           router.replace('/login')
+          setLoading(false)
+
           return
         }
 
