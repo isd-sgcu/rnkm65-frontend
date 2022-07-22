@@ -50,7 +50,13 @@ export const useChoosenBaans = (initBaans: IBaan[]) => {
     const StoredBaansString = window.localStorage.getItem('choosenBaans')
     if (!StoredBaansString) return
     const StoredBaans = JSON.parse(StoredBaansString) as IShortBaan[]
-    setChoosenBaans(StoredBaans)
+    setChoosenBaans(
+      StoredBaans.map((val) => ({
+        id: val.id,
+        name: displayBaans.find(({ id }) => id === val.id)?.name || '',
+        imageUrl: val.imageUrl,
+      }))
+    )
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
