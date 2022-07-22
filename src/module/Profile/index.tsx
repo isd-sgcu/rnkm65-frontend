@@ -30,7 +30,7 @@ const Profile = () => {
     <InvitationProvider>
       {(canSelectBaan) => (
         <Container>
-          <UserProfile {...user} />
+          <UserProfile {...user} withoutEditButton />
           <div
             style={{
               flexGrow: 1,
