@@ -23,7 +23,7 @@ const Profile = () => {
   const { t } = useTranslation()
   const { user, group } = useAuth()
 
-  if (!user || !group) return <Loading />
+  if (!user) return <Loading />
 
   if (!canAccessProfile) return <Waiting />
 
