@@ -1,0 +1,23 @@
+{
+    "title": "Select Baan",
+    "description": "Select 3 baans that you interested most",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "requiredBaanTitle": "You need to select 3 baans",
+    "submitBaanTitle": "Do you want to submit your choice ?",
+    "chooseBtn": "Choose",
+    "s": "Small (S)",
+    "m": "Medium (M)",
+    "l": "Large (L)",
+    "xl": "Extra Large (XL)",
+    "xxl": "Extra Extra Large (XXL)",
+    "search": "Search",
+    "searchPlaceholder": "Search baan",
+    "error": {
+        "400": "Failed to update select baan, please try again",
+        "401": "Please login first",
+        "403": "Only leader can select baan",
+        "500": "Unknown error occurred. Please try again.",
+        "503": "Unknown error occurred. Please wait a few minute and try again."
+    }
+}

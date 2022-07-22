@@ -1,25 +1,24 @@
+import Image from 'common/components/Image'
 import Typography from 'common/components/Typography'
-import Image from 'next/image'
 import React from 'react'
 
 import {
   BaanContainer,
   ImageContainer,
   IndexContainer,
-  InformationContainer,
   StyledImage,
 } from './styled'
 import { BaanProps } from './types'
 
 const Baan = (props: BaanProps) => {
-  const { name, imageUrl, index, textPosition, enableModal, onClickModal } =
-    props
+  const { name, imageUrl, index, textPosition } = props
 
-  const handleClickInfo = (e: React.MouseEvent<HTMLDivElement>) => {
-    e.stopPropagation()
+  // Comment for rollback purpose
+  // const handleClickInfo = (e: React.MouseEvent<HTMLDivElement>) => {
+  //   e.stopPropagation()
 
-    if (onClickModal) onClickModal()
-  }
+  //   if (onClickModal) onClickModal()
+  // }
 
   return (
     <BaanContainer textPosition={textPosition}>
@@ -32,14 +31,21 @@ const Baan = (props: BaanProps) => {
           </IndexContainer>
         )}
 
-        <InformationContainer onClick={handleClickInfo} show={enableModal}>
+        {/* <InformationContainer onClick={handleClickInfo} show={enableModal}>
           <Typography color="white">i</Typography>
-        </InformationContainer>
+        </InformationContainer> */}
         <StyledImage>
           <Image src={imageUrl} layout="fill" objectFit="cover" />
         </StyledImage>
       </ImageContainer>
-      <Typography variant="body" color="blue">
+      <Typography
+        css={{
+          textAlign: textPosition === 'bottom' ? 'center' : 'unset',
+          maxWidth: '120px',
+        }}
+        variant="body"
+        color="blue"
+      >
         {name}
       </Typography>
     </BaanContainer>
