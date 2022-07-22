@@ -5,9 +5,8 @@ const getPhase = (currentDate: Date) => {
     return Phase[process.env.NEXT_PUBLIC_PHASE as keyof typeof Phase]
   }
 
-  return PHASE_DATA.reverse().find(
-    ({ startTime }) => currentDate.getTime() >= startTime
-  )!.phase
+  return PHASE_DATA.find(({ startTime }) => currentDate.getTime() >= startTime)!
+    .phase
 }
 
 export default getPhase
