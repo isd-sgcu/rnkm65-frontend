@@ -1,3 +1,4 @@
+import { Phase } from 'common/constants/phase'
 import { usePhase } from 'common/contexts/PhaseContext'
 import NotFound from 'module/NotFound'
 import { useRouter } from 'next/router'
@@ -19,7 +20,7 @@ const PhaseGuard = ({
     setPhase(phase)
   }, [phase, setPhase])
 
-  if (!allowRoute.includes(router.pathname)) {
+  if (!allowRoute.includes(router.pathname) && phase !== Phase.BYPASS) {
     return <NotFound />
   }
   // eslint-disable-next-line react/jsx-no-useless-fragment

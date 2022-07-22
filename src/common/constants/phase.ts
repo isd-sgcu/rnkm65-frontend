@@ -5,6 +5,7 @@ export enum Phase {
   BAAN_SELECTION_END = 'BAAN_SELECTION_END',
   BAAN_ANNOUNCE = 'BAAN_ANNOUNCE',
   ESTAMP = 'ESTAMP',
+  BYPASS = 'BYPASS',
 }
 
 export const CAN_EDIT_PROFILE = [Phase.REGISTER, Phase.ESTAMP]

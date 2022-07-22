@@ -16,7 +16,10 @@ export const usePhase = () => useContext(PhaseContext)
 export const PhaseProvider = ({ children }: React.PropsWithChildren<{}>) => {
   const [phase, setPhase] = useState<Phase>(Phase.REGISTER)
   const checkPhase = useCallback(
-    (allowPhase: Phase[]) => allowPhase.includes(phase),
+    (allowPhase: Phase[]) => {
+      if (phase === Phase.BYPASS) return true
+      return allowPhase.includes(phase)
+    },
     [phase]
   )
 
