@@ -10,7 +10,7 @@ export enum Phase {
 
 export const CAN_REGISTER = [Phase.REGISTER, Phase.ESTAMP]
 
-export const CAN_ACCESS_PROFILE = [Phase.REGISTER, Phase.BAAN_SELECTION]
+export const CAN_ACCESS_PROFILE = [Phase.BAAN_SELECTION]
 
 export const DEFAULT_ROUTE = ['/', '/login', '/register']
 
