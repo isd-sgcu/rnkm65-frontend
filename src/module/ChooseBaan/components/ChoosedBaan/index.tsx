@@ -58,7 +58,7 @@ const ChoosedBaan = (props: ChoosedBannProps) => {
 
       <ButtonContainer>
         <Link href="/" passHref>
-          <Button variant="secondary">{t('cancel')}</Button>
+          <Button variant="decline">{t('cancel')}</Button>
         </Link>
         <Button onClick={handleConfirm}>{t('submit')}</Button>
       </ButtonContainer>

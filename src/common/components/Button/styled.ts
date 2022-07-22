@@ -36,6 +36,16 @@ export const Button = styled('button', {
         color: '$white',
         backgroundColor: '$new-secondary',
       },
+      decline: {
+        color: '$new-secondary',
+        backgroundColor: '$white',
+        '&:hover': { backgroundColor: '$new-secondary-active' },
+        '&:disabled': {
+          backgroundColor: '$new-secondary-disabled',
+          color: '$new-gray',
+        },
+        border: '1px solid $new-secondary',
+      },
       eStamp: {
         fontSize: '1rem',
         fontWeight: 'normal',

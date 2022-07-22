@@ -70,7 +70,7 @@ const RegisterForm = () => {
           {type === RegisterType.Edit && (
             <SubmitButton
               type="button"
-              variant="secondary"
+              variant="decline"
               onClick={() => router.push('/')}
             >
               {t('back')}
