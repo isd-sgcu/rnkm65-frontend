@@ -33,6 +33,7 @@ export const MessageContainer = styled('div', {
   justifyContent: 'center',
   gap: '12px',
   width: '100%',
+  textAlign: 'center',
 })
 
 export const Box = styled('div', {
