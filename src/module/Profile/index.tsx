@@ -22,7 +22,7 @@ const Profile = () => {
   const { t } = useTranslation()
   const { user, group } = useAuth()
 
-  if (!user) return <Loading />
+  if (!user || !group) return <Loading />
 
   if (!canAccessProfile) return <Waiting />
 
@@ -45,7 +45,7 @@ const Profile = () => {
                   )}`}
                 />
                 <GroupContainer>
-                  <GroupMember members={group?.members ?? []} />
+                  <GroupMember />
                   <ChoosedBaan baans={group?.baans ?? []} />
                 </GroupContainer>
               </>

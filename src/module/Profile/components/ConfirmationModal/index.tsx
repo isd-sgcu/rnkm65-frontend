@@ -9,10 +9,10 @@ const ConfirmationModal = (props: ConfirmationModalProps) => {
   const {
     open,
     actionI18NKey,
-    acceptButtonI18NKey,
+    acceptButtonI18NKey = 'want',
     onAccept,
     onDecline,
-    declineButtonI18NKey,
+    declineButtonI18NKey = 'notWant',
   } = props
   const { t } = useTranslation('common')
 
