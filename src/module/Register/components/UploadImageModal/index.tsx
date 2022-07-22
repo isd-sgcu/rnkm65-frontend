@@ -61,16 +61,8 @@ const UploadModal = memo((props: IUploadModalProps) => {
       {tmpImg && (
         <ActionButtonContainer>
           <Button
+            css={{ fontSize: '1.25rem', marginRight: '1.25rem' }}
             variant="secondary"
-            css={{ fontSize: '1.25rem' }}
-            onClick={handleSubmitImage}
-            type="button"
-          >
-            {t(`${i18nPrefix}.submit`)}
-          </Button>
-          <Button
-            css={{ fontSize: '1.25rem' }}
-            variant="primary"
             onClick={() => {
               if (uploadAgainBtnRef.current) uploadAgainBtnRef.current()
               resetError()
@@ -78,6 +70,14 @@ const UploadModal = memo((props: IUploadModalProps) => {
             type="button"
           >
             {t(`${i18nPrefix}.uploadAgain`)}
+          </Button>
+          <Button
+            variant="primary"
+            css={{ fontSize: '1.25rem' }}
+            onClick={handleSubmitImage}
+            type="button"
+          >
+            {t(`${i18nPrefix}.submit`)}
           </Button>
         </ActionButtonContainer>
       )}

@@ -1,10 +1,20 @@
 import { BaanSize } from 'common/types/baan'
 
-export interface BaanDTO {
+export interface ShortBaanDTO {
   id: number
-  name: string
-  capacity: number
+  nameEN: string
+  nameTH: string
+  imageUrl: string
+}
+
+export interface BaanDTO extends ShortBaanDTO {
   size: BaanSize
-  image_url: string
-  description: string
+  descriptionEN: string
+  descriptionTH: string
+  facebook: string
+  facebookUrl: string
+  instagram: string
+  instagramUrl: string
+  line: string
+  lineUrl: string
 }

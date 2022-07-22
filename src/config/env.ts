@@ -14,3 +14,5 @@ export const APP_BASE_URL =
 
 export const SSO_BASE_URL =
   publicRuntimeConfig.env.SSO_BASE_URL || 'https://sso.cucheck.in'
+
+export const ACCESS_PROFILE = publicRuntimeConfig.env.ACCESS_PROFILE || false

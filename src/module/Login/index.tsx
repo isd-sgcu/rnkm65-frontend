@@ -32,6 +32,10 @@ const LoginPage = () => {
 
   useEffect(() => {
     const attemptAuthentication = async () => {
+      if (!router.isReady) {
+        return
+      }
+
       if (attemptAuthenticated.current) {
         return
       }

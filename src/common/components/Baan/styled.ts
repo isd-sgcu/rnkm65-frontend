@@ -2,8 +2,21 @@ import { styled } from 'config/stitches.config'
 
 export const BaanContainer = styled('div', {
   display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
+  flexGrow: 1,
+  variants: {
+    textPosition: {
+      bottom: {
+        flexDirection: 'column',
+        alignItems: 'center',
+      },
+      right: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: '15px',
+      },
+    },
+  },
+  defaultVariants: { textPosition: 'bottom' },
 })
 
 export const StyledImage = styled('div', {
@@ -37,5 +50,33 @@ export const IndexContainer = styled('div', {
   '@sm': {
     width: '25px',
     height: '25px',
+  },
+})
+
+export const InformationContainer = styled('div', {
+  position: 'absolute',
+  justifyContent: 'center',
+  alignItems: 'center',
+  top: 7,
+  right: 7,
+  zIndex: 1,
+  backgroundColor: '$new-primary',
+  width: '20px',
+  height: '20px',
+  borderRadius: '50%',
+  display: 'none',
+  cursor: 'pointer',
+
+  variants: {
+    show: {
+      true: {
+        display: 'flex',
+      },
+      false: {},
+    },
+  },
+
+  defaultVariants: {
+    show: false,
   },
 })

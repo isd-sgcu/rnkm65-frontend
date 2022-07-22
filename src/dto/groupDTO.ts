@@ -1,3 +1,7 @@
+import { IShortUser } from 'common/types/user'
+
+import { ShortBaanDTO } from './baanDTO'
+
 export interface Member {
   title: string
   firstname: string
@@ -7,6 +11,15 @@ export interface Member {
 }
 
 export interface GroupDTO {
-  baan_id: number[]
-  members: Member[]
+  id: string
+  leaderID: string
+  members: IShortUser[]
+  baans: ShortBaanDTO[]
+  token: string
+}
+
+export interface GroupPublicDTO {
+  id: string
+  token: string
+  leader: IShortUser
 }

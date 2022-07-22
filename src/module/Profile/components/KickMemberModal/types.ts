@@ -1,8 +1,8 @@
-import { Member } from 'dto/groupDTO'
+import { IShortUser } from 'common/types/user'
 
 export interface KickMemberModalProps {
   open: boolean
   onAccept: () => void
   onDecline: () => void
-  member: Member
+  member: IShortUser
 }
