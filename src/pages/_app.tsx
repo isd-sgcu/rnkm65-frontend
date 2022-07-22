@@ -2,7 +2,7 @@ import 'styles/globals.css'
 
 import Layout from 'common/components/Layout'
 import AuthProvider from 'common/contexts/AuthContext'
-import { BackgroundProvider } from 'common/contexts/BackgroundContext'
+import { LayoutProvider } from 'common/contexts/LayoutContext'
 import { PhaseProvider } from 'common/contexts/PhaseContext'
 import { REMEMBER_LOCALE } from 'config/env'
 import ErrorFallback from 'module/ErrorBoundary'
@@ -37,7 +37,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, [router])
 
   return (
-    <BackgroundProvider>
+    <LayoutProvider>
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <AuthProvider>
           <PhaseProvider>
@@ -47,7 +47,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           </PhaseProvider>
         </AuthProvider>
       </ErrorBoundary>
-    </BackgroundProvider>
+    </LayoutProvider>
   )
 }
 
