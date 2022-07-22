@@ -21,12 +21,6 @@ export const RootDescription = styled('div', {
   gap: '1rem',
 })
 
-export const SocialDescription = styled('div', {
-  display: 'flex',
-  alignItems: 'center',
-  gap: '0.5rem',
-})
-
 export const modalClassName = css({
   backgroundColor: '$new-gray !important',
   maxWidth: '600px',

@@ -13,7 +13,6 @@ import {
   modalClassName,
   RootDescription,
   RoundedImage,
-  SocialDescription,
 } from './styled'
 import { IDescriptionModal } from './types'
 
@@ -55,37 +54,11 @@ const DescriptionModal = (props: IDescriptionModal) => {
           label={baan?.facebook}
           url={baan?.facebookUrl}
         />
-        {baan?.facebook && (
-          <SocialDescription>
-            <a
-              target="_blank"
-              href={baan?.facebookUrl || ''}
-              rel="noopener noreferrer"
-            >
-              <Typography
-                css={{ cursor: 'pointer', textDecoration: 'underline' }}
-              >
-                {baan?.facebook ?? ''}
-              </Typography>
-            </a>
-          </SocialDescription>
-        )}
-        {baan?.ig && (
-          <SocialDescription>
-            <FaInstagram size={24} />
-            <a
-              target="_blank"
-              href={baan?.igUrl || ''}
-              rel="noopener noreferrer"
-            >
-              <Typography
-                css={{ cursor: 'pointer', textDecoration: 'underline' }}
-              >
-                {baan?.ig ?? ''}
-              </Typography>
-            </a>
-          </SocialDescription>
-        )}
+        <SocialLink
+          icon={<FaInstagram size={24} />}
+          label={baan?.ig}
+          url={baan?.igUrl}
+        />
         <ButtonContainer>
           {canSelect && (
             <Button
