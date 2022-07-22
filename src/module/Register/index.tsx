@@ -35,13 +35,20 @@ const RegisterForm = () => {
 
     const { phone = '', isVerify } = user
 
-    if (phone && isVerify) {
+    // Already has data in database and in register page
+    if (type === RegisterType.Register && phone && isVerify) {
+      router.replace('/')
+      return
+    }
+
+    // In Non-Register phase, in edit page, and has data in database
+    if (type === RegisterType.Edit && !canRegister && phone && isVerify) {
       router.replace('/')
       return
     }
 
     setLoading(false)
-  }, [router, type, user])
+  }, [canRegister, router, type, user])
 
   if (isLoading) return <Loading />
 
