@@ -33,7 +33,7 @@ const ConfirmModal = () => {
         <Button
           css={{ width: '100%' }}
           type="button"
-          variant="secondary"
+          variant="decline"
           onClick={handleClose}
         >
           {t('confirmModal.back')}

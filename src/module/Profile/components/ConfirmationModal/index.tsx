@@ -33,7 +33,7 @@ const ConfirmationModal = (props: ConfirmationModalProps) => {
         />
       </Title>
       <ButtonContainer>
-        <Button type="button" variant="secondary" onClick={onDecline}>
+        <Button type="button" variant="decline" onClick={onDecline}>
           {t(declineButtonI18NKey)}
         </Button>
         <Button type="button" variant="primary" onClick={onAccept}>
