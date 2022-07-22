@@ -1,6 +1,5 @@
 import Loading from 'common/components/Loading'
 import Typography from 'common/components/Typography'
-import { useAuth } from 'common/contexts/AuthContext'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import { useSwitch } from 'common/hooks/useSwitch'
 import { IBaan } from 'common/types/baan'
@@ -28,7 +27,6 @@ const ChooseBaan: FC<{ data: IBaan[] }> = ({ data: initBaans }) => {
     handleClose: handleCloseSubmit,
   } = useSwitch(false)
   const { t } = useSSRTranslation('chooseBaan')
-  const { group, user } = useAuth()
   const {
     displayBaans,
     choosenBaans,
@@ -40,7 +38,7 @@ const ChooseBaan: FC<{ data: IBaan[] }> = ({ data: initBaans }) => {
     onClickFilterSize,
     submitBaan,
     updateBaans,
-  } = useChoosenBaans(initBaans, group?.baans || [], user?.studentID)
+  } = useChoosenBaans(initBaans)
 
   const modalSelect = useMemo(
     () =>

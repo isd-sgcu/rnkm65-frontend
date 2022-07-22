@@ -18,13 +18,12 @@ const initialFilter: Filter = {
   ],
 }
 
-export const useChoosenBaans = (
-  initBaans: IBaan[],
-  initChoosenBaans: IShortBaan[],
-  userId?: string
-) => {
-  const [choosenBaans, setChoosenBaans] =
-    useState<IShortBaan[]>(initChoosenBaans)
+export const useChoosenBaans = (initBaans: IBaan[]) => {
+  const { user, group } = useAuth()
+
+  const [choosenBaans, setChoosenBaans] = useState<IShortBaan[]>(
+    group?.baans || []
+  )
 
   const [isLoading, setLoading] = useState(false)
 
@@ -71,12 +70,16 @@ export const useChoosenBaans = (
 
   useEffect(() => {
     setLoading(true)
-    if (userId && !userId.startsWith('65')) {
+    if (
+      user &&
+      group &&
+      (!user.studentID.startsWith('65') || user.id !== group.leaderID)
+    ) {
       router.replace('/')
       return
     }
     setLoading(false)
-  }, [router, userId])
+  }, [group, router, user])
 
   const onChooseBaan = useCallback(
     (id: number) => {
@@ -131,7 +134,7 @@ export const useChoosenBaans = (
       setLoading(false)
       throw new Error(
         JSON.stringify({
-          status: error.code,
+          status: error.response?.status || 500,
           message: error.message,
           stack: error.stack?.substring(0, 300),
         })

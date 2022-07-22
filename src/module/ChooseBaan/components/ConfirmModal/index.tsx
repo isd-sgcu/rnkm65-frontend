@@ -19,19 +19,19 @@ const ConfirmModal = (props: IConfirmModalProps) => {
       await onConfirm()
     } catch (err) {
       const innerErr = JSON.parse((err as Error).message) as {
-        status: string
+        status: number
         message: string
         stack: string
       }
 
-      setError(innerErr.message)
+      setError(t(`chooseBaan:error.${innerErr.status}`))
       setLinkErr(
         `https://airtable.com/shrWFil4igZa2UZoV?prefill_errorMessage=${
           (err as Error).message
         }&hide_errorMessage=true`
       )
     }
-  }, [onConfirm])
+  }, [onConfirm, t])
 
   const handleClose = useCallback(() => {
     setError('')
@@ -82,7 +82,7 @@ const ConfirmModal = (props: IConfirmModalProps) => {
       </ButtonContainer>
       {error && (
         <Typography
-          css={{ marginTop: '1rem', textAlign: 'center' }}
+          css={{ marginTop: '1rem', textAlign: 'center', fontSize: '1.25rem' }}
           color="error"
           variant="h4"
         >

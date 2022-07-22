@@ -10,7 +10,7 @@ export const SocialLink = (props: ISocialLinkProps) => {
       {icon}
       <a target="_blank" href={url || ''} rel="noopener noreferrer">
         <Typography css={{ cursor: 'pointer', textDecoration: 'underline' }}>
-          {url ?? ''}
+          {label ?? ''}
         </Typography>
       </a>
     </SocialDescription>
