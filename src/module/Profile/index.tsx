@@ -1,8 +1,11 @@
 import Loading from 'common/components/Loading'
 import Typography from 'common/components/Typography'
+import { CAN_ACCESS_PROFILE } from 'common/constants/phase'
 import { useAuth } from 'common/contexts/AuthContext'
+import { usePhase } from 'common/contexts/PhaseContext'
 import { APP_BASE_URL } from 'config/env'
 import { useTranslation } from 'next-i18next'
+import React from 'react'
 
 import ChoosedBaan from './components/ChoosedBaan'
 import GroupMember from './components/GroupMember'
@@ -11,16 +14,19 @@ import UserProfile from './components/UserProfile'
 import Waiting from './components/Waiting'
 import InvitationProvider from './providers/InvitationProvider'
 import { Box, Container, GroupContainer, MessageContainer } from './styled'
-import { IProfileProps } from './types'
 
-const Profile = (props: IProfileProps) => {
-  const { canAccessProfile } = props
+const Profile = () => {
+  const { checkPhase } = usePhase()
+  const canAccessProfile = checkPhase(CAN_ACCESS_PROFILE)
 
   const { t } = useTranslation()
   const { user, group } = useAuth()
+
   if (!user) return <Loading />
 
-  return canAccessProfile ? (
+  if (!canAccessProfile) return <Waiting />
+
+  return (
     <InvitationProvider>
       {(canSelectBaan) => (
         <Container>
@@ -62,8 +68,6 @@ const Profile = (props: IProfileProps) => {
         </Container>
       )}
     </InvitationProvider>
-  ) : (
-    <Waiting />
   )
 }
 

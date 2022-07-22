@@ -1,7 +1,12 @@
+import Loading from 'common/components/Loading'
 import Typography from 'common/components/Typography'
+import { CAN_REGISTER } from 'common/constants/phase'
+import { useAuth } from 'common/contexts/AuthContext'
+import { usePhase } from 'common/contexts/PhaseContext'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import LatePage from 'module/LatePage'
 import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 
 import ConfirmModal from './components/ConfirmModal'
 import FormUI from './components/FormUI'
@@ -13,15 +18,37 @@ import {
   SubmitButton,
   SubmitContainer,
 } from './styled'
-import { IRegisterFormPageProps, RegisterType } from './types'
+import { RegisterType } from './types'
 
-const RegisterForm = ({ canRegister }: IRegisterFormPageProps) => {
+const RegisterForm = () => {
   const { t } = useSSRTranslation('register')
   const router = useRouter()
   const type = (router.query.type as RegisterType) || RegisterType.Register
+  const { checkPhase } = usePhase()
+  const canRegister = checkPhase(CAN_REGISTER)
+  const [isLoading, setLoading] = useState(true)
+
+  const { user } = useAuth()
+
+  useEffect(() => {
+    if (!user) return
+
+    const { phone = '', isVerify } = user
+
+    if (phone && isVerify) {
+      router.replace('/')
+      return
+    }
+
+    setLoading(false)
+  }, [router, type, user])
+
+  if (isLoading) return <Loading />
+
   if (!canRegister) {
     return <LatePage />
   }
+
   return (
     <FormProvider>
       <RootContainer>
