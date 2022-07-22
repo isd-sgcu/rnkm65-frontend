@@ -1,7 +1,7 @@
 import Button from 'common/components/Button'
 import useBottomBackground from 'common/components/Layout/components/Background/hooks/useBottomBackground'
 import Typography from 'common/components/Typography'
-import { CAN_EDIT_PROFILE } from 'common/constants/phase'
+import { CAN_REGISTER } from 'common/constants/phase'
 import { usePhase } from 'common/contexts/PhaseContext'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
@@ -22,7 +22,7 @@ const Waiting = () => {
   useBottomBackground()
 
   const { checkPhase } = usePhase()
-  const canEditProfile = checkPhase(CAN_EDIT_PROFILE)
+  const canRegister = checkPhase(CAN_REGISTER)
 
   return (
     <RootContainer>
@@ -50,7 +50,7 @@ const Waiting = () => {
           </Description>
         </TextContainer>
       </Container>
-      {canEditProfile && (
+      {canRegister && (
         <Button
           css={{ width: '100%', maxWidth: '250px' }}
           onClick={() => router.push('/register?type=edit')}
