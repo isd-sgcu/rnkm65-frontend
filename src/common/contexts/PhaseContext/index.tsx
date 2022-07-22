@@ -1,4 +1,5 @@
 import axios from 'axios'
+import Layout from 'common/components/Layout'
 import Loading from 'common/components/Loading'
 import { Phase } from 'common/constants/phase'
 import getAllowRoute from 'common/utils/phase/getAllowRoute'
@@ -56,10 +57,19 @@ export const PhaseProvider = ({ children }: React.PropsWithChildren<{}>) => {
     [phase, setPhase, checkPhase]
   )
 
-  if (!phase) return <Loading />
+  if (!phase)
+    return (
+      <Layout>
+        <Loading />
+      </Layout>
+    )
 
   if (!allowRoute.includes(router.pathname) && phase !== Phase.BYPASS) {
-    return <NotFound />
+    return (
+      <Layout>
+        <NotFound />
+      </Layout>
+    )
   }
 
   return <PhaseContext.Provider value={value}>{children}</PhaseContext.Provider>

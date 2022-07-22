@@ -40,11 +40,11 @@ function MyApp({ Component, pageProps }: AppProps) {
     <BackgroundProvider>
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <AuthProvider>
-          <Layout>
-            <PhaseProvider>
+          <PhaseProvider>
+            <Layout>
               <Component {...pageProps} />
-            </PhaseProvider>
-          </Layout>
+            </Layout>
+          </PhaseProvider>
         </AuthProvider>
       </ErrorBoundary>
     </BackgroundProvider>
