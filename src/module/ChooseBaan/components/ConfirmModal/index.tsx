@@ -28,7 +28,7 @@ const ConfirmModal = (props: IConfirmModalProps) => {
       setLinkErr(
         `https://airtable.com/shrWFil4igZa2UZoV?prefill_errorMessage=${
           (err as Error).message
-        }&hide_errorMessage=true`
+        }(from:selectBaan)&hide_errorMessage=true`
       )
     }
   }, [onConfirm, t])
