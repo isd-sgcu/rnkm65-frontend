@@ -10,6 +10,7 @@ export const Container = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
+  justifyContent: 'space-between',
   '@md': {
     padding: '20px 10px 10px 10px',
     borderRadius: '10px',

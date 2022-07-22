@@ -39,23 +39,24 @@ const ChoosedBaan = (props: ChoosedBaanProps) => {
           {t('notChoosed')}
         </Typography>
       )}
-
-      {!notChangeable && (
-        <Link href="/chooseBaan" passHref>
-          <Button css={{ marginTop: '15px' }} disabled={!isKing(user)}>
-            {choosed ? t('changeBaan') : t('chooseBaan')}
-          </Button>
-        </Link>
-      )}
-      {!notChangeable && !isKing(user) && (
-        <Typography
-          variant="description"
-          color="error"
-          css={{ marginTop: '5px' }}
-        >
-          {choosed ? t('kingCanChange') : t('kingCanChoose')}
-        </Typography>
-      )}
+      <div>
+        {!notChangeable && (
+          <Link href="/chooseBaan" passHref>
+            <Button css={{ marginTop: '15px' }} disabled={!isKing(user)}>
+              {choosed ? t('changeBaan') : t('chooseBaan')}
+            </Button>
+          </Link>
+        )}
+        {!notChangeable && !isKing(user) && (
+          <Typography
+            variant="description"
+            color="error"
+            css={{ marginTop: '5px' }}
+          >
+            {choosed ? t('kingCanChange') : t('kingCanChoose')}
+          </Typography>
+        )}
+      </div>
     </Container>
   )
 }
