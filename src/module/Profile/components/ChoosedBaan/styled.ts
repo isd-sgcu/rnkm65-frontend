@@ -5,6 +5,7 @@ export const Container = styled('div', {
   background: '$new-gray',
   borderRadius: '20px',
   textAlign: 'center',
+  justifyContent: 'space-between',
   padding: '20px',
   flexGrow: 1,
   flexBasis: 0,

@@ -39,7 +39,10 @@ const Baan = (props: BaanProps) => {
         </StyledImage>
       </ImageContainer>
       <Typography
-        css={{ textAlign: textPosition === 'bottom' ? 'center' : 'unset' }}
+        css={{
+          textAlign: textPosition === 'bottom' ? 'center' : 'unset',
+          maxWidth: '120px',
+        }}
         variant="body"
         color="blue"
       >
