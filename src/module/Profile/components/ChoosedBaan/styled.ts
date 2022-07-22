@@ -1,4 +1,3 @@
-import Typography from 'common/components/Typography'
 import { styled } from 'config/stitches.config'
 
 export const Container = styled('div', {
@@ -12,6 +11,7 @@ export const Container = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
+  justifyContent: 'space-between',
   '@md': {
     padding: '20px 10px 10px 10px',
     borderRadius: '10px',
@@ -28,12 +28,4 @@ export const BaansContainer = styled('div', {
   justifyContent: 'center',
   '@sm': { gap: '7px' },
   '@xs': { gap: '5px' },
-})
-
-export const ConfirmText = styled(Typography, {
-  margin: '10px 0 -5px 0',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  color: '$new-success',
 })

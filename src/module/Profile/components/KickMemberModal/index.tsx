@@ -19,18 +19,18 @@ const KickMemberModal = (props: KickMemberModalProps) => {
       <Title variant="h4">
         <Trans
           i18nKey="profile:wantToKickMemberOrNot"
-          components={[<InlineTypography color="new-primary" variant="h4" />]}
+          components={[<InlineTypography color="new-secondary" variant="h4" />]}
           values={{
             member: `${member.firstname} ${member.lastname}<br />`,
           }}
         />
       </Title>
       <ButtonContainer>
-        <Button type="button" variant="primary" onClick={onAccept}>
-          {t('want')}
-        </Button>
         <Button type="button" variant="secondary" onClick={onDecline}>
           {t('notWant')}
+        </Button>
+        <Button type="button" variant="primary" onClick={onAccept}>
+          {t('want')}
         </Button>
       </ButtonContainer>
     </Modal>

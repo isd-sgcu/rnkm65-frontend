@@ -1,6 +1,7 @@
 import { IShortUser } from 'common/types/user'
 
-export interface MemberProps extends IShortUser {
+export interface MemberProps {
+  user: IShortUser
   isKing?: boolean
   isDeletable?: boolean
 }
