@@ -59,6 +59,9 @@ const Profile = () => {
                   <Typography variant="subhead2" color="blue">
                     {t('profile:followMoreActivity')}
                   </Typography>
+                  <Typography variant="subhead3" color="blue">
+                    {t('profile:baanSelectionOnlyForJunior')}
+                  </Typography>
                 </Box>
                 <Typography variant="body" color="blue">
                   {t('profile:askForMoreInfoAt')}
