@@ -4,7 +4,6 @@ import Layout from 'common/components/Layout'
 import AuthProvider from 'common/contexts/AuthContext'
 import { BackgroundProvider } from 'common/contexts/BackgroundContext'
 import { PhaseProvider } from 'common/contexts/PhaseContext'
-import PhaseGuard from 'common/guards/PhaseGuard'
 import { REMEMBER_LOCALE } from 'config/env'
 import ErrorFallback from 'module/ErrorBoundary'
 import type { AppContext, AppProps } from 'next/app'
@@ -43,10 +42,8 @@ function MyApp({ Component, pageProps }: AppProps) {
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <AuthProvider>
           <Layout>
-            <PhaseProvider>
-              <PhaseGuard currentDate={new Date(pageProps.currentDate)}>
-                <Component {...pageProps} />
-              </PhaseGuard>
+            <PhaseProvider currentDate={new Date(pageProps.currentDate)}>
+              <Component {...pageProps} />
             </PhaseProvider>
           </Layout>
         </AuthProvider>

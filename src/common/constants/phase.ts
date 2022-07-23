@@ -1,5 +1,5 @@
 export enum Phase {
-  REGISTER = 'REGISER',
+  REGISTER = 'REGISTER',
   REGISTER_END = 'REGISTER_END',
   BAAN_SELECTION = 'BAAN_SELECTION',
   BAAN_SELECTION_END = 'BAAN_SELECTION_END',
@@ -47,4 +47,4 @@ export const PHASE_DATA = [
     startTime: new Date('August 4, 2022 9:00 GMT+07:00').getTime(),
     allowRoute: ['/checkinSuccess'],
   },
-]
+].reverse()
