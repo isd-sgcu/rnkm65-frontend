@@ -1,6 +1,6 @@
 import Loading from 'common/components/Loading'
 import Typography from 'common/components/Typography'
-import { CAN_REGISTER } from 'common/constants/phase'
+import { CAN_EDIT_PROFILE, CAN_REGISTER } from 'common/constants/phase'
 import { useAuth } from 'common/contexts/AuthContext'
 import { usePhase } from 'common/contexts/PhaseContext'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
@@ -26,6 +26,7 @@ const RegisterForm = () => {
   const type = (router.query.type as RegisterType) || RegisterType.Register
   const { checkPhase } = usePhase()
   const canRegister = checkPhase(CAN_REGISTER)
+  const canEditProfile = checkPhase(CAN_EDIT_PROFILE)
   const [isLoading, setLoading] = useState(true)
 
   const { user } = useAuth()
@@ -41,18 +42,22 @@ const RegisterForm = () => {
       return
     }
 
-    // In Non-Register phase, in edit page, and has data in database
-    if (type === RegisterType.Edit && !canRegister && phone && isVerify) {
+    // In Non-Edit phase, in edit page, and has data in database
+    if (type === RegisterType.Edit && !canEditProfile && phone && isVerify) {
       router.replace('/')
       return
     }
 
     setLoading(false)
-  }, [canRegister, router, type, user])
+  }, [canEditProfile, router, type, user])
 
   if (isLoading) return <Loading />
 
-  if (!canRegister) {
+  if (!canRegister && type === RegisterType.Register) {
+    return <LatePage />
+  }
+
+  if (!canEditProfile && type === RegisterType.Edit) {
     return <LatePage />
   }
 

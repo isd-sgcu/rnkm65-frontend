@@ -1,6 +1,6 @@
 import Loading from 'common/components/Loading'
 import Typography from 'common/components/Typography'
-import { CAN_ACCESS_PROFILE, CAN_REGISTER } from 'common/constants/phase'
+import { CAN_ACCESS_PROFILE, CAN_EDIT_PROFILE } from 'common/constants/phase'
 import { useAuth } from 'common/contexts/AuthContext'
 import { usePhase } from 'common/contexts/PhaseContext'
 import { APP_BASE_URL } from 'config/env'
@@ -18,7 +18,7 @@ import { Box, Container, GroupContainer, MessageContainer } from './styled'
 const Profile = () => {
   const { checkPhase } = usePhase()
   const canAccessProfile = checkPhase(CAN_ACCESS_PROFILE)
-  const canRegister = checkPhase(CAN_REGISTER)
+  const canEditProfile = checkPhase(CAN_EDIT_PROFILE)
 
   const { t } = useTranslation()
   const { user, group } = useAuth()
@@ -31,7 +31,7 @@ const Profile = () => {
     <InvitationProvider>
       {(canSelectBaan) => (
         <Container>
-          <UserProfile {...user} withoutEditButton={!canRegister} />
+          <UserProfile {...user} withoutEditButton={!canEditProfile} />
           <div
             style={{
               flexGrow: 1,
