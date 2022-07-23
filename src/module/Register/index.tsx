@@ -42,6 +42,12 @@ const RegisterForm = () => {
       return
     }
 
+    // Try to edit data but did not have data yet
+    if (type === RegisterType.Edit && (!phone || !isVerify)) {
+      router.replace('/register')
+      return
+    }
+
     // In Non-Edit phase, in edit page, and has data in database
     if (type === RegisterType.Edit && !canEditProfile && phone && isVerify) {
       router.replace('/')
@@ -53,11 +59,10 @@ const RegisterForm = () => {
 
   if (isLoading) return <Loading />
 
-  if (!canRegister && type === RegisterType.Register) {
-    return <LatePage />
-  }
-
-  if (!canEditProfile && type === RegisterType.Edit) {
+  if (
+    (type === RegisterType.Register && !canRegister) ||
+    (type === RegisterType.Edit && !canEditProfile)
+  ) {
     return <LatePage />
   }
 
