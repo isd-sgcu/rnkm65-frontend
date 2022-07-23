@@ -18,7 +18,9 @@ export const LoadingImage = css({
       true: {
         animation: `${ImageSkeleton} 1s ease-in-out infinite`,
       },
-      false: {},
+      false: {
+        backgroundColor: '#A6A6A6',
+      },
     },
   },
 
