@@ -5,7 +5,7 @@ import { useAuth } from 'common/contexts/AuthContext'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import { useSwitch } from 'common/hooks/useSwitch'
 import { IFormSchema } from 'common/types/form'
-import { httpPost, httpPut } from 'common/utils/axios'
+import { httpPatch, httpPost, httpPut } from 'common/utils/axios'
 import { b64ToBlob } from 'common/utils/imageHelper'
 import { RegisterType } from 'module/Register/types'
 import { formSchema, templateForm } from 'module/Register/utils/schema'
@@ -24,8 +24,10 @@ import { IFormContext } from './types'
 
 const FormContext = createContext<IFormContext>({} as IFormContext)
 
-export const FormProvider = (props: React.PropsWithChildren<{}>) => {
-  const { children } = props
+export const FormProvider = (
+  props: React.PropsWithChildren<{ mode: RegisterType }>
+) => {
+  const { children, mode } = props
   const { user, refreshContext } = useAuth()
   const {
     state: openModal,
@@ -129,8 +131,10 @@ export const FormProvider = (props: React.PropsWithChildren<{}>) => {
       ...remain
     } = data
 
+    const updateFn = mode === RegisterType.Edit ? httpPatch : httpPut
+
     try {
-      await httpPut('/user', {
+      await updateFn('/user', {
         ...remain,
         email: email.trim(),
         phone: phoneNumber,
