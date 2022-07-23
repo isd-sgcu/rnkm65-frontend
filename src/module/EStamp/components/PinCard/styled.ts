@@ -1,14 +1,13 @@
 import { styled } from 'config/stitches.config'
 
 export const Card = styled('div', {
-  // width: 'min(100%, 345px)',
   width: '100%',
   height: '58px',
   display: 'flex',
   alignItems: 'center',
   overflow: 'hidden',
   boxShadow: '0px 1px 2px rgba(0, 0, 0, 0.05)',
-  border: '1px solid #E6E7EA',
+  border: '1px solid $new-border-gray',
   borderRadius: '6px',
   backgroundColor: '$white',
 })

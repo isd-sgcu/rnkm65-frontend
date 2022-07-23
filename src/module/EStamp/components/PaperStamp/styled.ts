@@ -7,7 +7,6 @@ export const StyledImage = styled('div', {
   height: 'min(87vw, 304px)',
   overflow: 'hidden',
   margin: '10px',
-  // zIndex: '-1',
 })
 export const PaperStampContainer = styled('div', {
   position: 'relative',

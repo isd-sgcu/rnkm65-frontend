@@ -12,18 +12,20 @@ const PaperStamp = (props: PaperStampProps) => {
         <Image src="/e-stamp/eStamp-background.svg" layout="fill" />
       </StyledImage>
       <StampPieceContainer>
-        {status.map((stampPieceStatus, inx) => (
-          <StampPiece
-            key={`stampPiece${Math.floor(inx / 3).toString()}${(
-              inx % 3
-            ).toString()}`}
-            row={Math.floor(inx / 3)}
-            column={inx % 3}
-            src={`/e-stamp/stamp-piece/${
-              stampPieceStatus ? 'color' : 'grey-scale'
-            }/${inx}.jpg`}
-          />
-        ))}
+        {status.map((stampPieceStatus, inx) => {
+          const row = Math.floor(inx / 3)
+          const column = inx % 3
+          return (
+            <StampPiece
+              key={`stampPiece${row}${column}`}
+              row={row}
+              column={column}
+              src={`/e-stamp/stamp-piece/${
+                stampPieceStatus ? 'color' : 'grey-scale'
+              }/${inx}.jpg`}
+            />
+          )
+        })}
       </StampPieceContainer>
     </PaperStampContainer>
   )

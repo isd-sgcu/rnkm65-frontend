@@ -20,7 +20,6 @@ export const PinContainer = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   gap: '20px',
-  // padding: '1rem 1rem',
 })
 export const PinCardContainer = styled('div', {
   width: '100%',

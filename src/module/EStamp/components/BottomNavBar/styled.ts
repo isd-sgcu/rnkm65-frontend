@@ -14,8 +14,8 @@ export const BackgroundMenu = styled('div', {
   width: '100vw',
   height: '72px',
   zIndex: '2',
-  backgroundColor: '#FAFAFA',
-  border: '1px solid #E6E7EA',
+  backgroundColor: '$new-background-gray',
+  border: '1px solid $new-border-gray',
 })
 export const StyledIcon = styled('div', {
   position: 'relative',
@@ -33,8 +33,8 @@ export const BackgroundButton = styled('div', {
   alignItems: 'center',
   justifyContent: 'center',
   marginTop: '-30px',
-  background: '#FAFAFA',
-  outline: '1px solid #E6E7EA',
+  background: '$new-background-gray',
+  outline: '1px solid $new-border-gray',
   zIndex: '-1',
 })
 
@@ -53,6 +53,6 @@ export const StyledButton = styled('button', {
   alignItems: 'center',
   justifyContent: 'center',
   marginTop: '-30px',
-  background: '#FAFAFA',
+  background: '$new-background-gray',
   zIndex: '2',
 })

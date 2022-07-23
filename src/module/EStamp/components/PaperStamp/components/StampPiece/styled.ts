@@ -1,11 +1,12 @@
 import { styled } from 'config/stitches.config'
 
+const stampPieceSize = 'calc(calc(100% - 10px) / 3)'
 export const StyledImage = styled('div', {
-  position: 'relative',
   borderRadius: '8px',
-  width: 'min(87vw, 304px)',
-  height: 'min(87vw, 304px)',
   overflow: 'hidden',
-  margin: '10px',
-  // zIndex: '-1',
+  position: 'absolute',
+  width: stampPieceSize,
+  height: stampPieceSize,
+  transform: 'translate(-50%, -50%)',
+  margin: '0px',
 })

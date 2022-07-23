@@ -1,6 +1,7 @@
 import Typography from 'common/components/Typography'
+import { PLACES_DATA } from 'common/constants/eStamp'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
-import React from 'react'
+import React, { useMemo } from 'react'
 
 import BottomNavBar from './components/BottomNavBar'
 import PaperStamp from './components/PaperStamp'
@@ -14,68 +15,13 @@ import {
 
 const EStamp = () => {
   const { t } = useSSRTranslation('eStamp')
-  const { places } = {
-    places: [
-      {
-        name: 'place1',
-        id: 1,
-        urlMap: 'https://www.google.co.th/',
-        status: true,
-      },
-      {
-        name: 'place2',
-        id: 2,
-        urlMap: 'https://www.google.co.th/',
-        status: true,
-      },
-      {
-        name: 'place3',
-        id: 3,
-        urlMap: 'https://www.google.co.th/',
-        status: false,
-      },
-      {
-        name: 'place4',
-        id: 4,
-        urlMap: 'https://www.google.co.th/',
-        status: false,
-      },
-      {
-        name: 'place5',
-        id: 5,
-        urlMap: 'https://www.google.co.th/',
-        status: true,
-      },
-      {
-        name: 'place6',
-        id: 6,
-        urlMap: 'https://www.google.co.th/',
-        status: false,
-      },
-      {
-        name: 'place7',
-        id: 7,
-        urlMap: 'https://www.google.co.th/',
-        status: false,
-      },
-      {
-        name: 'place8',
-        id: 8,
-        urlMap: 'https://www.google.co.th/',
-        status: false,
-      },
-      {
-        name: 'place9',
-        id: 9,
-        urlMap: 'https://www.google.co.th/',
-        status: true,
-      },
-    ],
-  }
-  const status = []
-  for (let i = 0; i < places.length; i += 1) {
-    status.push(places[i].status)
-  }
+  const places = PLACES_DATA
+  const status = useMemo(() => {
+    const tempStatus: boolean[] = []
+    places.map((place) => tempStatus.push(place.status))
+    return tempStatus
+  }, [places])
+
   return (
     <RootContainer>
       <StampContainer>
@@ -92,19 +38,16 @@ const EStamp = () => {
           {t('placeTitle')}
         </Typography>
         <PinCardContainer>
-          {places.map((place) => {
-            if (!place.status) {
-              return (
-                <PinCard
-                  name={place.name}
-                  key={place.id}
-                  urlMap={place.urlMap}
-                  id={place.id}
-                />
-              )
-            }
-            return null
-          })}
+          {places.map((place) =>
+            place.status ? null : (
+              <PinCard
+                name={place.name}
+                key={place.id}
+                urlMap={place.urlMap}
+                id={place.id}
+              />
+            )
+          )}
         </PinCardContainer>
       </PinContainer>
       <BottomNavBar />
