@@ -1,6 +1,7 @@
 import Typography from 'common/components/Typography'
 import { useAuth } from 'common/contexts/AuthContext'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
+import { canJoinGroup } from 'common/utils/group'
 import { templateForm } from 'module/Register/utils/schema'
 import { Trans } from 'next-i18next'
 import { Fragment, memo } from 'react'
@@ -33,8 +34,7 @@ const FormUI = memo(() => {
       </Typography>
       {templateForm.map((row, idx) => (
         <Fragment key={JSON.stringify(row)}>
-          {(idx !== templateForm.length - 1 ||
-            user?.studentID.startsWith('65')) && (
+          {(idx !== templateForm.length - 1 || canJoinGroup(user)) && (
             <FormContainer>
               {row.map((props) => (
                 <InnerFormController
