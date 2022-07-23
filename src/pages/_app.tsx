@@ -2,7 +2,8 @@ import 'styles/globals.css'
 
 import Layout from 'common/components/Layout'
 import AuthProvider from 'common/contexts/AuthContext'
-import { BackgroundProvider } from 'common/contexts/BackgroundContext'
+import { LayoutProvider } from 'common/contexts/LayoutContext'
+import { PhaseProvider } from 'common/contexts/PhaseContext'
 import { REMEMBER_LOCALE } from 'config/env'
 import ErrorFallback from 'module/ErrorBoundary'
 import type { AppProps } from 'next/app'
@@ -36,15 +37,17 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, [router])
 
   return (
-    <BackgroundProvider>
+    <LayoutProvider>
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <AuthProvider>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
+          <PhaseProvider>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </PhaseProvider>
         </AuthProvider>
       </ErrorBoundary>
-    </BackgroundProvider>
+    </LayoutProvider>
   )
 }
 

@@ -16,10 +16,10 @@ const ErrorFallback = ({ error }: FallbackProps) => {
   const { t } = useTranslation('common')
 
   const handleReportIssue = () => {
-    window.location.href = `https://airtable.com/shrWFil4igZa2UZoV?prefill_errorMessage=${`${error} ${error.stack?.slice(
+    window.location.href = `https://airtable.com/shrWFil4igZa2UZoV?prefill_errorMessage=${error} ${error.stack?.slice(
       0,
       300
-    )}`}&hide_errorMessage=true`
+    )}&hide_errorMessage=true`
   }
 
   return (

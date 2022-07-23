@@ -28,9 +28,9 @@ export const Tooltip = styled(Typography, {
   left: '50%',
   borderRadius: '2px',
   transform: 'translate(-50%, 0)',
-  backgroundColor: '$blue',
+  backgroundColor: '$new-gray',
   cursor: 'default',
-  color: '$white',
+  color: '$blue',
   display: 'none',
   '&::after': {
     content: ' ',
@@ -40,7 +40,7 @@ export const Tooltip = styled(Typography, {
     marginLeft: '-5px',
     borderWidth: '5px',
     borderStyle: 'solid',
-    borderColor: '$blue transparent transparent transparent',
+    borderColor: '$new-gray transparent transparent transparent',
   },
 })
 

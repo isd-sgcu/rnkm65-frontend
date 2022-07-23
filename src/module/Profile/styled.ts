@@ -29,9 +29,11 @@ export const MessageContainer = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   marginTop: '40px',
+  alignItems: 'center',
   justifyContent: 'center',
   gap: '12px',
   width: '100%',
+  textAlign: 'center',
 })
 
 export const Box = styled('div', {
@@ -44,7 +46,6 @@ export const Box = styled('div', {
   borderRadius: '20px',
   gap: '8px',
   padding: '40px 20px',
-  border: '2px solid $new-primary',
   width: '100%',
   '@md': {
     fontSize: '12px',

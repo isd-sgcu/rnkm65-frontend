@@ -8,7 +8,9 @@ import { DeleteMemberButton, KingBadge, MemberContainer } from './styled'
 import { MemberProps } from './types'
 
 const Member = (props: MemberProps) => {
-  const { firstname, lastname, imageUrl, isKing, isDeletable } = props
+  const { user, isKing, isDeletable, onDelete } = props
+  const { firstname, lastname, imageUrl } = user
+
   return (
     <MemberContainer>
       {isKing && (
@@ -17,7 +19,7 @@ const Member = (props: MemberProps) => {
         </KingBadge>
       )}
       {isDeletable && (
-        <DeleteMemberButton>
+        <DeleteMemberButton onClick={() => onDelete(user)}>
           <IoClose />
         </DeleteMemberButton>
       )}

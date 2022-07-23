@@ -6,7 +6,6 @@
 
   "choosedBaan": "บ้านรับน้องที่เลือก",
   "notChoosed": "ยังไม่ได้เลือก",
-  "saved": "ระบบได้ทำการบันทึกเรียบร้อยแล้ว",
   "changeBaan": "เปลี่ยนบ้าน",
   "changeGroup": "เปลี่ยนกลุ่ม",
   "chooseBaan": "เลือกบ้าน",
@@ -24,6 +23,7 @@
   "wantToConfirmAction": "คุณต้องการ <0>{{action}}</0> ใช่หรือไม่?",
   "registrationComplete": "การลงทะเบียนสำเร็จ !",
   "followMoreActivity": "แล้วพบกันในงานรับเพื่อนก้าวใหม่วันที่ 4 - 6 สิงหาคมนี้นะ!",
+  "baanSelectionOnlyForJunior": "(กิจกรรมเลือกบ้านมีไว้สำหรับ CU 106 เท่านั้น)",
   "askForMoreInfoAt": "หากระหว่างนี้มีข้อสงสัยเพิ่มเติมเกี่ยวกับงานสามารถติดต่อสอบถามได้ที่ IG @rubpuenkaomai2022",
   "invitation": {
     "groupProfileNotFound": "เกิดข้อผิดพลาด",

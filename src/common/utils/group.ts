@@ -4,15 +4,25 @@ import { GroupDTO, GroupPublicDTO } from 'dto/groupDTO'
 
 import { apiClient } from './axios'
 
-const transformGroupDTOtoIGroup = (group: GroupDTO): IGroup => ({
+const transformGroupDTOtoIGroup = (
+  group: GroupDTO,
+  locale: 'TH' | 'EN'
+): IGroup => ({
   id: group.id,
   leaderID: group.leaderID ?? '',
   members: group.members ?? [],
-  baans: group.baans ?? [],
+  baans:
+    group.baans?.map((val) => ({
+      id: val.id,
+      name: val[`name${locale}`],
+      imageUrl: val.imageUrl,
+    })) ?? [],
   token: group.token ?? '',
 })
 
-export const getGroupProfile = async (): Promise<IGroup | null> => {
+export const getGroupProfile = async (
+  locale?: string
+): Promise<IGroup | null> => {
   let res: AxiosResponse
   try {
     res = await apiClient.get<GroupDTO>('/group')
@@ -20,7 +30,8 @@ export const getGroupProfile = async (): Promise<IGroup | null> => {
     return null
   }
 
-  const group = transformGroupDTOtoIGroup(res.data)
+  const tLocale = (locale?.toUpperCase() as 'TH' | 'EN') || 'TH'
+  const group = transformGroupDTOtoIGroup(res.data, tLocale)
   return group
 }
 
