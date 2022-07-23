@@ -1,6 +1,5 @@
 import Typography from 'common/components/Typography'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
-import { canJoinGroup } from 'common/utils/group'
 import { templateForm } from 'module/Register/utils/schema'
 import { Trans } from 'next-i18next'
 import { Fragment, memo } from 'react'

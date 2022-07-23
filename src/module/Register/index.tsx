@@ -67,7 +67,7 @@ const RegisterForm = () => {
   }
 
   return (
-    <FormProvider>
+    <FormProvider mode={type}>
       <RootContainer>
         <Typography color="new-primary" variant="h1">
           {t(type)}
