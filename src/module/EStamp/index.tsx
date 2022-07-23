@@ -1,5 +1,6 @@
 import Typography from 'common/components/Typography'
 import { PLACES_DATA } from 'common/constants/eStamp'
+import useHideFooter from 'common/contexts/LayoutContext/hooks/useHideFooter'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import React, { useMemo } from 'react'
 
@@ -15,6 +16,8 @@ import {
 
 const EStamp = () => {
   const { t } = useSSRTranslation('eStamp')
+  useHideFooter()
+
   const places = PLACES_DATA
   const status = useMemo(() => {
     const tempStatus: boolean[] = []
