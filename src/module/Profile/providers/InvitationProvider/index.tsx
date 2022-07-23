@@ -35,7 +35,7 @@ const InvitationProvider = (props: InvitationProviderProps) => {
     return <ChangeGroupModal {...dialog.props} />
   }
 
-  const canSelectBaan = canJoinGroup(user?.studentID ?? '')
+  const canSelectBaan = canJoinGroup(user)
   return children(canSelectBaan)
 }
 

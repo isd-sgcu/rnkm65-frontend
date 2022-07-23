@@ -73,5 +73,6 @@ export const postJoinGroup = async (token: string): Promise<boolean> => {
 export const canJoinGroup = (user?: IUser) => {
   if (user?.studentID === '6332031221' || user?.studentID === '6332032921')
     return true
-  return user?.studentID.startsWith('65')
+
+  return (user?.studentID || '').startsWith('65')
 }
