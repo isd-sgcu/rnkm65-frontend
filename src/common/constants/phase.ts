@@ -16,8 +16,6 @@ export const CAN_EDIT_PROFILE = [
 
 export const CAN_REGISTER = [Phase.REGISTER, Phase.ESTAMP]
 
-export const CAN_ACCESS_PROFILE = [Phase.BAAN_SELECTION]
-
 export const DEFAULT_ROUTE = ['/', '/login', '/register']
 
 export const PHASE_DATA = [

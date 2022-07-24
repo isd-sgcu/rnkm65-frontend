@@ -5,7 +5,7 @@ import React from 'react'
 
 import { Container, HourglassContainer, TextContainer } from './styled'
 
-const WaitForBaanHourglass = () => {
+const WaitForBaanProcessing = () => {
   const { t } = useSSRTranslation('profile')
 
   return (
@@ -37,4 +37,4 @@ const WaitForBaanHourglass = () => {
   )
 }
 
-export default WaitForBaanHourglass
+export default WaitForBaanProcessing
