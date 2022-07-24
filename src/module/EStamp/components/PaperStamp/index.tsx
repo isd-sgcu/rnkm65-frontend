@@ -20,9 +20,8 @@ const PaperStamp = (props: PaperStampProps) => {
               key={`stampPiece${row}${column}`}
               row={row}
               column={column}
-              src={`/e-stamp/stamp-piece/${
-                stampPieceStatus ? 'color' : 'grey-scale'
-              }/${inx}.jpg`}
+              status={stampPieceStatus}
+              src={`/e-stamp/stamp-piece/${inx}.jpg`}
             />
           )
         })}

@@ -18,12 +18,7 @@ const EStamp = () => {
   const { t } = useSSRTranslation('eStamp')
   useHideFooter()
 
-  const places = PLACES_DATA
-  const status = useMemo(() => {
-    const tempStatus: boolean[] = []
-    places.map((place) => tempStatus.push(place.status))
-    return tempStatus
-  }, [places])
+  const status = useMemo(() => PLACES_DATA.map((place) => place.status), [])
 
   return (
     <RootContainer>
@@ -41,7 +36,7 @@ const EStamp = () => {
           {t('placeTitle')}
         </Typography>
         <PinCardContainer>
-          {places.map((place) =>
+          {PLACES_DATA.map((place) =>
             place.status ? null : (
               <PinCard
                 name={place.name}
