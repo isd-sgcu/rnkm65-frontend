@@ -1,7 +1,7 @@
+import Image from 'common/components/Image'
 import Typography from 'common/components/Typography'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import { IUserProfileProps } from 'common/types/user'
-import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { HiPencil } from 'react-icons/hi'

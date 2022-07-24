@@ -60,4 +60,10 @@ const httpDelete = <T = any>(
   config?: AxiosRequestConfig<any>
 ): Promise<AxiosResponse<T>> => apiClient.delete(url, config)
 
-export { apiClient, httpDelete, httpGet, httpPost, httpPut }
+const httpPatch = <T = any, U = any>(
+  url: string,
+  body: T,
+  config?: AxiosRequestConfig<any>
+): Promise<AxiosResponse<U>> => apiClient.patch(url, body, config)
+
+export { apiClient, httpDelete, httpGet, httpPatch, httpPost, httpPut }

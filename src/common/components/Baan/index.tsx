@@ -1,5 +1,6 @@
 import Image from 'common/components/Image'
 import Typography from 'common/components/Typography'
+import { BAAN_SIZE } from 'common/constants/baan'
 import React from 'react'
 
 import {
@@ -11,7 +12,7 @@ import {
 import { BaanProps } from './types'
 
 const Baan = (props: BaanProps) => {
-  const { name, imageUrl, index, textPosition } = props
+  const { name, imageUrl, index, textPosition, size } = props
 
   // Comment for rollback purpose
   // const handleClickInfo = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -46,6 +47,7 @@ const Baan = (props: BaanProps) => {
         variant="body"
         color="blue"
       >
+        {size ? `${BAAN_SIZE[size]}: ` : ''}
         {name}
       </Typography>
     </BaanContainer>

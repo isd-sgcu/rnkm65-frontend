@@ -16,7 +16,8 @@ const Image = (props: ImageProps) => {
       {...remain}
       onLoadStart={startLoading}
       onLoadingComplete={finishLoading}
-      className={`${loading ? LoadingImage() : ''} ${className}`}
+      onError={finishLoading}
+      className={`${LoadingImage({ loading })} ${className}`}
     />
   )
 }

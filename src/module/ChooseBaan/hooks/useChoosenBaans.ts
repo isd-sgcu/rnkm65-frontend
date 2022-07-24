@@ -2,6 +2,7 @@ import { AxiosError } from 'axios'
 import { useAuth } from 'common/contexts/AuthContext'
 import { BaanSize, IBaan, IShortBaan } from 'common/types/baan'
 import { httpPut } from 'common/utils/axios'
+import { canJoinGroup } from 'common/utils/group'
 import { useRouter } from 'next/router'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 
@@ -76,11 +77,7 @@ export const useChoosenBaans = (initBaans: IBaan[]) => {
 
   useEffect(() => {
     setLoading(true)
-    if (
-      user &&
-      group &&
-      (!user.studentID.startsWith('65') || user.id !== group.leaderID)
-    ) {
+    if (user && group && (!canJoinGroup(user) || user.id !== group.leaderID)) {
       router.replace('/')
       return
     }
