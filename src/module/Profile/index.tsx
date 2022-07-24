@@ -1,3 +1,4 @@
+/* eslint-disable no-fallthrough */
 import Loading from 'common/components/Loading'
 import { Phase } from 'common/constants/phase'
 import { useAuth } from 'common/contexts/AuthContext'
@@ -23,15 +24,19 @@ const Profile = () => {
     case Phase.REGISTER:
     case Phase.REGISTER_END:
       return <WaitForBaanSelection />
+
     case Phase.BAAN_SELECTION:
       if (canSelectBaan) return <BaanSelecton />
-      return <CannotSelectBaan />
+
     case Phase.BAAN_SELECTION_END:
       if (canSelectBaan) return <WaitForBaanProcessing />
-      return <CannotSelectBaan />
+
     case Phase.BAAN_ANNOUNCE:
       if (canSelectBaan) return <AnnounceBaan />
+
+      // fallthrough for not 106
       return <CannotSelectBaan />
+
     case Phase.ESTAMP:
       // TODO: Implement profile page for e-stamp
       return null
