@@ -1,6 +1,8 @@
 import Hidden from 'common/components/Hidden'
+import Typography from 'common/components/Typography'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useCallback } from 'react'
 
@@ -8,6 +10,7 @@ import LogoutButton from './components/LogoutButton'
 import LogoutIcon from './components/LogoutIcon'
 import MobileIcon from './components/MobileIcon'
 import TextButton from './components/TextButton'
+import { StyledLink } from './components/TextButton/styled'
 import ToggleLanguageButton from './components/ToggleLanguageButton'
 import { HeaderContainer, IconContainer, Logo, LogoContainer } from './styled'
 
@@ -44,6 +47,17 @@ const Header = () => {
           {t('howToRegister')}
         </TextButton>
       </Hidden> */}
+
+      {router.pathname !== '/' && router.pathname !== '/login' && (
+        <Hidden variant="lgdown">
+          <Link href="/back" passHref>
+            <StyledLink>
+              <Typography variant="subhead3">{t('goBack')}</Typography>
+            </StyledLink>
+          </Link>
+        </Hidden>
+      )}
+
       <Hidden variant="lgdown">
         <TextButton onClick={handleReportIssue}>{t('reportIssue')}</TextButton>
       </Hidden>
@@ -55,6 +69,22 @@ const Header = () => {
       </Hidden>
 
       {/* Mobile */}
+      {router.pathname !== '/' && router.pathname !== '/login' && (
+        <Hidden variant="xlup">
+          <Link passHref href="/">
+            <a>
+              <IconContainer>
+                {/* <MobileIcon
+            src="/how-to-register.svg"
+            onClick={handleHowToRegister}
+          /> */}
+                <MobileIcon src="/home-icon.svg" onClick={() => {}} />
+              </IconContainer>
+            </a>
+          </Link>
+        </Hidden>
+      )}
+
       <Hidden variant="xlup">
         <IconContainer>
           {/* <MobileIcon
