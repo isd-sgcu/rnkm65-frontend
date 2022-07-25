@@ -3,6 +3,7 @@ import Loading from 'common/components/Loading'
 import { Phase } from 'common/constants/phase'
 import { useAuth } from 'common/contexts/AuthContext'
 import { usePhase } from 'common/contexts/PhaseContext'
+import { haveBaan } from 'common/utils/baan'
 import { canJoinGroup } from 'common/utils/group'
 import React from 'react'
 
@@ -17,6 +18,7 @@ const Profile = () => {
 
   const { phase } = usePhase()
   const canSelectBaan = canJoinGroup(user)
+  const haveSelectedBaan = haveBaan(group)
 
   if (!user || !group) return <Loading />
 
@@ -29,11 +31,13 @@ const Profile = () => {
       if (canSelectBaan) return <BaanSelecton />
 
     case Phase.BAAN_SELECTION_END:
-      if (canSelectBaan) return <WaitForBaanProcessing />
+      if (canSelectBaan && haveSelectedBaan) return <WaitForBaanProcessing />
 
     case Phase.BAAN_ANNOUNCE:
-      if (canSelectBaan) return <AnnounceBaan />
+      if (canSelectBaan && haveSelectedBaan) return <AnnounceBaan />
 
+      // fallthrough for not select baan
+      if (canSelectBaan) return <>ไม่ได้เลือกบ้าน</>
       // fallthrough for not 106
       return <CannotSelectBaan />
 
