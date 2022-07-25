@@ -2,7 +2,7 @@ export enum PageType {
   checkin = 'checkin',
   checkout = 'checkout',
   checkinSuccess = 'checkinSuccess',
-  checkOutSuccess = 'checkOutSuccess',
+  checkoutSuccess = 'checkoutSuccess',
   error = 'error',
 }
 

@@ -12,7 +12,7 @@ export const useCheckinHooks = (pageMode: PageType) => {
   const handleSubmit = useCallback(async () => {
     if (
       pageStatus === PageType.checkinSuccess ||
-      pageStatus === PageType.checkOutSuccess ||
+      pageStatus === PageType.checkoutSuccess ||
       pageStatus === PageType.error
     ) {
       router.push('/')
@@ -27,7 +27,7 @@ export const useCheckinHooks = (pageMode: PageType) => {
       }
 
       if (pageStatus === PageType.checkout) {
-        setPageStatus(PageType.checkOutSuccess)
+        setPageStatus(PageType.checkoutSuccess)
       }
     } catch (err) {
       setPageStatus(PageType.error)

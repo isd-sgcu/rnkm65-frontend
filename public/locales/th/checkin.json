@@ -1,0 +1,22 @@
+{
+    "checkin": {
+        "title": "ต้องการเช็กอินหรือไม่ ?",
+        "description": "คุณกำลังจะเช็กอินเข้างาน Freshmen’s Night",
+        "buttonText": "Check - in"
+    },
+    "checkinSuccess": {
+        "title": "เช็กอินสำเร็จ !",
+        "description": "คุณได้เช็กอินเข้างาน Freshmen’s Night แล้ว ขอให้สนุกนะ",
+        "buttonText": "ตกลง"
+    },
+    "checkout": {
+        "title": "ต้องการเช็กเอาท์หรือไม่ ?",
+        "description": "คุณกำลังจะเช็กเอาท์ออกจากงาน Freshmen’s Night",
+        "buttonText": "Check - out"
+    },
+    "checkoutSuccess": {
+        "title": "เช็กเอาท์สำเร็จ !",
+        "description": "คุณได้เช็กเอาท์ออกจากงาน Freshmen’s Night แล้ว ขอบคุณที่เข้าร่วมกิจกรรม",
+        "buttonText": "ตกลง"
+    }
+}
