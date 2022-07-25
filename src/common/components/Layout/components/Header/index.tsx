@@ -12,7 +12,13 @@ import MobileIcon from './components/MobileIcon'
 import TextButton from './components/TextButton'
 import { StyledLink } from './components/TextButton/styled'
 import ToggleLanguageButton from './components/ToggleLanguageButton'
-import { HeaderContainer, IconContainer, Logo, LogoContainer } from './styled'
+import {
+  HeaderContainer,
+  IconContainer,
+  LeftSideContainer,
+  Logo,
+  LogoContainer,
+} from './styled'
 
 const Header = () => {
   const { t } = useSSRTranslation()
@@ -36,11 +42,21 @@ const Header = () => {
 
   return (
     <HeaderContainer>
-      <LogoContainer>
-        <Logo onClick={handleLogoClick}>
-          <Image src="/logo.png" layout="fill" />
-        </Logo>
-      </LogoContainer>
+      <LeftSideContainer>
+        <LogoContainer>
+          <Logo onClick={handleLogoClick}>
+            <Image src="/logo.png" layout="fill" />
+          </Logo>
+        </LogoContainer>
+
+        <Link passHref href="/eStamp">
+          <a>
+            <IconContainer>
+              <MobileIcon src="/estamp-icon.svg" onClick={() => {}} />
+            </IconContainer>
+          </a>
+        </Link>
+      </LeftSideContainer>
 
       {/* <Hidden variant="lgdown">
         <TextButton onClick={handleHowToRegister}>
