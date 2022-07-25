@@ -9,7 +9,7 @@ import React from 'react'
 
 import AnnounceBaan from './pages/AnnounceBaan'
 import BaanSelecton from './pages/BaanSelecton'
-import CannotSelectBaan from './pages/CannotSelectBaan'
+import NotSelectBaan from './pages/NotSelectBaan'
 import WaitForBaanProcessing from './pages/WaitForBaanProcessing'
 import WaitForBaanSelection from './pages/WaitForBaanSelection'
 
@@ -36,10 +36,8 @@ const Profile = () => {
     case Phase.BAAN_ANNOUNCE:
       if (canSelectBaan && haveSelectedBaan) return <AnnounceBaan />
 
-      // fallthrough for not select baan
-      if (canSelectBaan) return <>ไม่ได้เลือกบ้าน</>
-      // fallthrough for not 106
-      return <CannotSelectBaan />
+      // fallthrough for not 106 and not select baan
+      return <NotSelectBaan />
 
     case Phase.ESTAMP:
       // TODO: Implement profile page for e-stamp

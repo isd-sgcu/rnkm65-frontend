@@ -1,4 +1,6 @@
 import Typography from 'common/components/Typography'
+import { useAuth } from 'common/contexts/AuthContext'
+import { canJoinGroup } from 'common/utils/group'
 import WithUserProfile from 'module/Profile/components/WithUserProfile'
 import InvitationProvider from 'module/Profile/providers/InvitationProvider'
 import { useTranslation } from 'next-i18next'
@@ -6,8 +8,10 @@ import React from 'react'
 
 import { Box, MessageContainer } from './styled'
 
-const CannotSelectBaan = () => {
+const NotSelectBaan = () => {
   const { t } = useTranslation()
+  const { user } = useAuth()
+  const canSelectBaan = canJoinGroup(user)
 
   return (
     <InvitationProvider>
@@ -21,7 +25,9 @@ const CannotSelectBaan = () => {
               {t('profile:followMoreActivity')}
             </Typography>
             <Typography variant="subhead3" color="blue">
-              {t('profile:baanSelectionOnlyForJunior')}
+              {canSelectBaan
+                ? t('profile:notSelectBaan')
+                : t('profile:baanSelectionOnlyForJunior')}
             </Typography>
           </Box>
           <Typography variant="body" color="blue">
@@ -33,4 +39,4 @@ const CannotSelectBaan = () => {
   )
 }
 
-export default CannotSelectBaan
+export default NotSelectBaan
