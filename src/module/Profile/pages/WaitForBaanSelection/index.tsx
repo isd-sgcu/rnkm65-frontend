@@ -16,7 +16,7 @@ import {
   TextContainer,
 } from './styled'
 
-const Waiting = () => {
+const WaitForBaanSelection = () => {
   const { t } = useTranslation('profile')
   const router = useRouter()
   useBottomBackground()
@@ -62,4 +62,4 @@ const Waiting = () => {
   )
 }
 
-export default Waiting
+export default WaitForBaanSelection
