@@ -1,5 +1,7 @@
 import Hidden from 'common/components/Hidden'
 import Typography from 'common/components/Typography'
+import { Phase } from 'common/constants/phase'
+import { usePhase } from 'common/contexts/PhaseContext'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -23,6 +25,8 @@ import {
 const Header = () => {
   const { t } = useSSRTranslation()
   const router = useRouter()
+  const { phase } = usePhase()
+  const showHowTo = phase === Phase.BAAN_SELECTION
 
   const handleReportIssue = useCallback(() => {
     // TODO change url
@@ -34,11 +38,9 @@ const Header = () => {
     router.push('/')
   }, [router])
 
-  // We don't have time to do this
-  // const handleHowToRegister = useCallback(() => {
-  //   // TODO change url
-  //   window.location.href = 'https://www.google.com/'
-  // }, [])
+  const handleHowToSelectBaan = useCallback(() => {
+    window.open('https://www.instagram.com/p/CgT2KRSpVsG', '_blank')
+  }, [])
 
   return (
     <HeaderContainer>
@@ -74,6 +76,14 @@ const Header = () => {
         </Hidden>
       )}
 
+      {/*  {showHowTo && (
+         <Hidden variant="lgdown">
+           <TextButton onClick={handleHowToSelectBaan}>
+             {t('howToSelectBaan')}
+           </TextButton>
+         </Hidden>
+       )} */}
+
       <Hidden variant="lgdown">
         <TextButton onClick={handleReportIssue}>{t('reportIssue')}</TextButton>
       </Hidden>
@@ -103,10 +113,12 @@ const Header = () => {
 
       <Hidden variant="xlup">
         <IconContainer>
-          {/* <MobileIcon
-            src="/how-to-register.svg"
-            onClick={handleHowToRegister}
-          /> */}
+          {showHowTo && (
+            <MobileIcon
+              src="/how-to-register.svg"
+              onClick={handleHowToSelectBaan}
+            />
+          )}
           <MobileIcon src="/report-issue.svg" onClick={handleReportIssue} />
           <LogoutIcon />
         </IconContainer>

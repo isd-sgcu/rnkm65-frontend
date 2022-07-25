@@ -1,5 +1,5 @@
+import Image from 'common/components/Image'
 import Typography from 'common/components/Typography'
-import Image from 'next/image'
 import React from 'react'
 import { IoClose } from 'react-icons/io5'
 

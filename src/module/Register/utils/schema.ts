@@ -152,23 +152,4 @@ export const templateForm: Array<Array<ITemplateFormItem>> = [
       },
     },
   ],
-  [
-    {
-      fieldKey: 'canSelectBaan',
-      type: 'radio_input',
-      style: {
-        gridColumn: '1 / 10',
-      },
-      option: [
-        {
-          i18nKey: 'wantToJoin',
-          value: 'true',
-        },
-        {
-          i18nKey: 'dontWantToJoin',
-          value: 'false',
-        },
-      ],
-    },
-  ],
 ]

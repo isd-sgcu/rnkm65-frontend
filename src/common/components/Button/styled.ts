@@ -39,7 +39,7 @@ export const Button = styled('button', {
       decline: {
         color: '$new-secondary',
         backgroundColor: '$white',
-        '&:hover': { backgroundColor: '$new-secondary-active' },
+        '&:hover': { backgroundColor: '$new-gray' },
         '&:disabled': {
           backgroundColor: '$new-secondary-disabled',
           color: '$new-gray',

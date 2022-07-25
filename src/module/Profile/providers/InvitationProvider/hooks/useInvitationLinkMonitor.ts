@@ -133,7 +133,7 @@ const useInvitationLinkMonitor = ({
       }
 
       // Handle if user not allow to join group (not year 1)
-      if (!canJoinGroup(user?.studentID)) {
+      if (!canJoinGroup(user)) {
         setLoading(false)
         router.replace('/')
         return

@@ -26,5 +26,7 @@ export const getBaanInfo = async (locale?: string): Promise<Array<IBaan>> => {
 
   const localeStr = (locale?.toUpperCase() as 'TH' | 'EN') || 'TH'
 
+  if (!baan) return []
+
   return baan.map((b) => convertBaanDTOtoIBaan(b, localeStr))
 }

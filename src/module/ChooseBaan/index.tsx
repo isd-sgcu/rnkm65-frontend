@@ -91,6 +91,7 @@ const ChooseBaan: FC<{ data: IBaan[] }> = ({ data: initBaans }) => {
                 index={baan.order ?? undefined}
                 facebook={baan.facebook}
                 ig={baan.ig}
+                size={baan.size}
                 onClickModal={open(baan)}
               />
             ))}
