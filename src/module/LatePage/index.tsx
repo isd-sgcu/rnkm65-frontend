@@ -1,10 +1,16 @@
 import useBottomBackground from 'common/components/Layout/components/Background/hooks/useBottomBackground'
+import Typography from 'common/components/Typography'
+import { useAuth } from 'common/contexts/AuthContext'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
+import { canJoinGroup } from 'common/utils/group'
 
 import { Box, Container, Link, Title } from './styled'
 
 const LatePage = () => {
   const { t } = useSSRTranslation('late')
+  const { user } = useAuth()
+  const canSelectBaan = canJoinGroup(user)
+
   useBottomBackground()
 
   return (
@@ -17,6 +23,9 @@ const LatePage = () => {
             CU for Freshmen
           </Link>
         </span>
+        {canSelectBaan && (
+          <Typography color="new-secondary">{t('remark')}</Typography>
+        )}
       </Box>
     </Container>
   )
