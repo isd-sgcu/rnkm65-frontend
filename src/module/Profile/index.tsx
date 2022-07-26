@@ -3,12 +3,13 @@ import Loading from 'common/components/Loading'
 import { Phase } from 'common/constants/phase'
 import { useAuth } from 'common/contexts/AuthContext'
 import { usePhase } from 'common/contexts/PhaseContext'
+import { haveBaan } from 'common/utils/baan'
 import { canJoinGroup } from 'common/utils/group'
 import React from 'react'
 
 import AnnounceBaan from './pages/AnnounceBaan'
 import BaanSelecton from './pages/BaanSelecton'
-import CannotSelectBaan from './pages/CannotSelectBaan'
+import NotSelectBaan from './pages/NotSelectBaan'
 import WaitForBaanProcessing from './pages/WaitForBaanProcessing'
 import WaitForBaanSelection from './pages/WaitForBaanSelection'
 
@@ -17,6 +18,7 @@ const Profile = () => {
 
   const { phase } = usePhase()
   const canSelectBaan = canJoinGroup(user)
+  const haveSelectedBaan = haveBaan(group)
 
   if (!user || !group) return <Loading />
 
@@ -29,13 +31,13 @@ const Profile = () => {
       if (canSelectBaan) return <BaanSelecton />
 
     case Phase.BAAN_SELECTION_END:
-      if (canSelectBaan) return <WaitForBaanProcessing />
+      if (canSelectBaan && haveSelectedBaan) return <WaitForBaanProcessing />
 
     case Phase.BAAN_ANNOUNCE:
-      if (canSelectBaan) return <AnnounceBaan />
+      if (canSelectBaan && haveSelectedBaan) return <AnnounceBaan />
 
-      // fallthrough for not 106
-      return <CannotSelectBaan />
+      // fallthrough for not 106 and not select baan
+      return <NotSelectBaan />
 
     case Phase.ESTAMP:
       // TODO: Implement profile page for e-stamp
