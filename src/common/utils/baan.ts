@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { IBaan } from 'common/types/baan'
+import { IGroup } from 'common/types/group'
 import { API_BASE_URL } from 'config/env'
 import { BaanDTO } from 'dto/baanDTO'
 
@@ -30,3 +31,5 @@ export const getBaanInfo = async (locale?: string): Promise<Array<IBaan>> => {
 
   return baan.map((b) => convertBaanDTOtoIBaan(b, localeStr))
 }
+
+export const haveBaan = (group?: IGroup) => group?.baans?.length !== 0

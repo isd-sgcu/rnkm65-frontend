@@ -1,6 +1,6 @@
-import useBottomBackground from 'common/components/Layout/components/Background/hooks/useBottomBackground'
 import Typography from 'common/components/Typography'
 import { useAuth } from 'common/contexts/AuthContext'
+import useBottomBackground from 'common/contexts/LayoutContext/hooks/useBottomBackground'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import { canJoinGroup } from 'common/utils/group'
 

@@ -1,4 +1,5 @@
 import Typography from 'common/components/Typography'
+import { IBaan } from 'common/types/baan'
 import Image from 'next/image'
 import { GrFacebook, GrInstagram } from 'react-icons/gr'
 
@@ -10,15 +11,14 @@ import {
   CardImage,
   CardTitle,
 } from './styled'
-import { IBaanCardProps } from './types'
 
-const BaanCard: React.FC<IBaanCardProps> = (props) => {
-  const { baanName, description, ig, facebook } = props
+const BaanCard: React.FC<IBaan> = (props) => {
+  const { name, description, ig, facebook } = props
   return (
     <CardContainer>
       <CardTitle>
         <Typography variant="h4" css={{ color: '$white', textAlign: 'center' }}>
-          {baanName}
+          {name}
         </Typography>
       </CardTitle>
       <CardBody>

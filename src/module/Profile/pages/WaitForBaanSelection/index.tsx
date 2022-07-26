@@ -1,7 +1,7 @@
 import Button from 'common/components/Button'
-import useBottomBackground from 'common/components/Layout/components/Background/hooks/useBottomBackground'
 import Typography from 'common/components/Typography'
 import { CAN_REGISTER } from 'common/constants/phase'
+import useBottomBackground from 'common/contexts/LayoutContext/hooks/useBottomBackground'
 import { usePhase } from 'common/contexts/PhaseContext'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
@@ -16,7 +16,7 @@ import {
   TextContainer,
 } from './styled'
 
-const Waiting = () => {
+const WaitForBaanSelection = () => {
   const { t } = useTranslation('profile')
   const router = useRouter()
   useBottomBackground()
@@ -62,4 +62,4 @@ const Waiting = () => {
   )
 }
 
-export default Waiting
+export default WaitForBaanSelection
