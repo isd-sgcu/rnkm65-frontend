@@ -1,3 +1,5 @@
+import { IBaan } from './baan'
+
 export interface IShortUser {
   id: string
   firstname: string
@@ -25,4 +27,5 @@ export interface IUser {
   canSelectBaan: boolean
   isVerify: boolean
   groupId: string
+  baan?: IBaan
 }

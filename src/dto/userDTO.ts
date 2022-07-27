@@ -1,3 +1,5 @@
+import { BaanDTO } from './baanDTO'
+
 export interface UserDTO {
   id: string
   studentID: string
@@ -18,4 +20,5 @@ export interface UserDTO {
   canSelectBaan?: boolean
   isVerify?: boolean
   groupId?: string
+  baan?: BaanDTO
 }

@@ -1,3 +1,4 @@
+import { useAuth } from 'common/contexts/AuthContext'
 import { IBaan } from 'common/types/baan'
 import WithUserProfile from 'module/Profile/components/WithUserProfile'
 
@@ -13,13 +14,16 @@ const MOCK_BAAN = {
   ig: 'ig',
 } as IBaan
 
-const AnnounceBaan = () => (
-  <WithUserProfile>
-    <AnnounceContainer>
-      <AnnounceText baanName={MOCK_BAAN.name} />
-      <BaanCard {...MOCK_BAAN} />
-    </AnnounceContainer>
-  </WithUserProfile>
-)
+const AnnounceBaan = () => {
+  const { user } = useAuth()
+  return (
+    <WithUserProfile>
+      <AnnounceContainer>
+        <AnnounceText baanName={MOCK_BAAN.name} />
+        <BaanCard {...(user?.baan || MOCK_BAAN)} />
+      </AnnounceContainer>
+    </WithUserProfile>
+  )
+}
 
 export default AnnounceBaan
