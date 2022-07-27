@@ -40,6 +40,16 @@ export const PHASE_DATA = [
     allowRoute: [],
   },
   {
+    phase: Phase.BAAN_SELECTION,
+    startTime: new Date('July 28, 2022 0:00 GMT+07:00').getTime(),
+    allowRoute: ['/chooseBaan'],
+  },
+  {
+    phase: Phase.BAAN_SELECTION_END,
+    startTime: new Date('July 29, 2022 0:00 GMT+07:00').getTime(),
+    allowRoute: [],
+  },
+  {
     phase: Phase.BAAN_ANNOUNCE,
     startTime: new Date('August 1, 2022 20:00 GMT+07:00').getTime(),
     allowRoute: [],
