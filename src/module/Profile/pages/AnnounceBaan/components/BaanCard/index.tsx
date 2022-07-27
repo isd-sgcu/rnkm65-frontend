@@ -1,3 +1,4 @@
+import { SocialLink } from 'common/components/SocialLink'
 import Typography from 'common/components/Typography'
 import { IBaan } from 'common/types/baan'
 import Image from 'next/image'
@@ -37,18 +38,16 @@ const BaanCard: React.FC<IBaan> = (props) => {
           </Typography>
         </CardBodyHeader>
         <CardContact>
-          {facebook && (
-            <Typography css={{ display: 'flex', alignItems: 'center' }}>
-              <GrFacebook size={20} style={{ marginRight: '0.5rem' }} />
-              {facebook}
-            </Typography>
-          )}
-          {ig && (
-            <Typography css={{ display: 'flex', alignItems: 'center' }}>
-              <GrInstagram size={20} style={{ marginRight: '0.5rem' }} />
-              {ig}
-            </Typography>
-          )}
+          <SocialLink
+            icon={<GrFacebook size={20} style={{ marginRight: '0.5rem' }} />}
+            label={facebook}
+            url=""
+          />
+          <SocialLink
+            icon={<GrInstagram size={20} style={{ marginRight: '0.5rem' }} />}
+            label={ig}
+            url=""
+          />
         </CardContact>
       </CardBody>
     </CardContainer>

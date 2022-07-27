@@ -1,4 +1,5 @@
 import { IBaan } from 'common/types/baan'
+import WithUserProfile from 'module/Profile/components/WithUserProfile'
 
 import AnnounceText from './components/AnnounceText'
 import BaanCard from './components/BaanCard'
@@ -13,10 +14,12 @@ const MOCK_BAAN = {
 } as IBaan
 
 const AnnounceBaan = () => (
-  <AnnounceContainer>
-    <AnnounceText baanName={MOCK_BAAN.name} />
-    <BaanCard {...MOCK_BAAN} />
-  </AnnounceContainer>
+  <WithUserProfile>
+    <AnnounceContainer>
+      <AnnounceText baanName={MOCK_BAAN.name} />
+      <BaanCard {...MOCK_BAAN} />
+    </AnnounceContainer>
+  </WithUserProfile>
 )
 
 export default AnnounceBaan

@@ -1,13 +1,13 @@
 import Button from 'common/components/Button'
 import Image from 'common/components/Image'
 import Modal from 'common/components/Modal'
+import { SocialLink } from 'common/components/SocialLink'
 import Typography from 'common/components/Typography'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import { useCallback } from 'react'
 import { FaInstagram } from 'react-icons/fa'
 import { RiFacebookCircleLine } from 'react-icons/ri'
 
-import { SocialLink } from './components/SocialLink'
 import {
   ButtonContainer,
   modalClassName,
