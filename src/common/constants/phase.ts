@@ -46,7 +46,7 @@ export const PHASE_DATA = [
   },
   {
     phase: Phase.BAAN_SELECTION_END,
-    startTime: new Date('July 29, 2022 12:00 GMT+07:00').getTime(),
+    startTime: new Date('July 29, 2022 0:00 GMT+07:00').getTime(),
     allowRoute: [],
   },
   {
