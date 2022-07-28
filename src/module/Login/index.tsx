@@ -1,9 +1,9 @@
 import Button from 'common/components/Button'
 import Checkbox from 'common/components/Checkbox'
-import useBottomBackground from 'common/components/Layout/components/Background/hooks/useBottomBackground'
 import Loading from 'common/components/Loading'
 import Typography from 'common/components/Typography'
 import { useAuth } from 'common/contexts/AuthContext'
+import useBottomBackground from 'common/contexts/LayoutContext/hooks/useBottomBackground'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import { exchangeTicketForToken } from 'common/utils/auth'
 import { useRouter } from 'next/router'
@@ -46,7 +46,10 @@ const LoginPage = () => {
         const token = await exchangeTicketForToken(ticket.toString())
         if (!token) {
           setErrorMsg(t('unknownError'))
+
           router.replace('/login')
+          setLoading(false)
+
           return
         }
 
@@ -60,6 +63,8 @@ const LoginPage = () => {
           }
 
           router.replace('/login')
+          setLoading(false)
+
           return
         }
 

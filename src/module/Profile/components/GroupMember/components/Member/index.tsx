@@ -1,11 +1,7 @@
+import Image from 'common/components/Image'
 import Typography from 'common/components/Typography'
-import { useAuth } from 'common/contexts/AuthContext'
-import { useSwitch } from 'common/hooks/useSwitch'
-import { apiClient } from 'common/utils/axios'
-import KickMemberModal from 'module/Profile/components/KickMemberModal'
-import Image from 'next/image'
-import React, { useCallback } from 'react'
-import { useErrorHandler } from 'react-error-boundary'
+import { css } from 'config/stitches.config'
+import React from 'react'
 import { IoClose } from 'react-icons/io5'
 
 import { ImageContainer } from '../../styled'
@@ -13,37 +9,23 @@ import { DeleteMemberButton, KingBadge, MemberContainer } from './styled'
 import { MemberProps } from './types'
 
 const Member = (props: MemberProps) => {
-  const { user, isKing, isDeletable } = props
-  const { firstname, lastname, imageUrl, id } = user
-  const { refreshContext } = useAuth()
-  const handleError = useErrorHandler()
-  const { handleOpen, handleClose, state } = useSwitch(false)
-
-  const handleDelete = useCallback(async () => {
-    try {
-      await apiClient.delete(`/group/members/${id}`)
-      await refreshContext()
-      handleClose()
-    } catch (err) {
-      handleError(err)
-    }
-  }, [handleClose, handleError, id, refreshContext])
+  const { user, isKing, isDeletable, onDelete } = props
+  const { firstname, lastname, imageUrl } = user
 
   return (
     <MemberContainer>
-      <KickMemberModal
-        open={state}
-        member={user}
-        onAccept={handleDelete}
-        onDecline={handleClose}
-      />
       {isKing && (
         <KingBadge>
-          <Image src="/kingBadge.svg" height={26} width={26} />
+          <Image
+            src="/kingBadge.svg"
+            height={26}
+            width={26}
+            className={css({ backgroundColor: 'transparent !important' })()}
+          />
         </KingBadge>
       )}
       {isDeletable && (
-        <DeleteMemberButton onClick={handleOpen}>
+        <DeleteMemberButton onClick={() => onDelete(user)}>
           <IoClose />
         </DeleteMemberButton>
       )}

@@ -26,7 +26,7 @@ const KickMemberModal = (props: KickMemberModalProps) => {
         />
       </Title>
       <ButtonContainer>
-        <Button type="button" variant="secondary" onClick={onDecline}>
+        <Button type="button" variant="decline" onClick={onDecline}>
           {t('notWant')}
         </Button>
         <Button type="button" variant="primary" onClick={onAccept}>

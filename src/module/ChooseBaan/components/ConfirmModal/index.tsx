@@ -55,7 +55,7 @@ const ConfirmModal = (props: IConfirmModalProps) => {
             <Button
               css={{ width: '50%' }}
               type="button"
-              variant="secondary"
+              variant="decline"
               onClick={handleClose}
             >
               {t('chooseBaan:cancel')}

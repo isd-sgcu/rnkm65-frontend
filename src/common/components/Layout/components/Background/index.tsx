@@ -1,4 +1,4 @@
-import { useBackground } from 'common/contexts/BackgroundContext'
+import { useLayout } from 'common/contexts/LayoutContext'
 import Image from 'next/image'
 
 import {
@@ -12,10 +12,10 @@ import {
 } from './styled'
 
 const Background = () => {
-  const { type } = useBackground()
+  const { backgroundType } = useLayout()
 
   const background =
-    type === 'default' ? (
+    backgroundType === 'default' ? (
       <>
         <TopRightBGContainer>
           <Image src="/background/top-right.svg" layout="fill" />

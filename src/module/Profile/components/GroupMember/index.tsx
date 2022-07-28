@@ -9,8 +9,10 @@ import React, { useCallback } from 'react'
 import { useErrorHandler } from 'react-error-boundary'
 
 import ConfirmationModal from '../ConfirmationModal'
+import KickMemberModal from '../KickMemberModal'
 import Member from './components/Member'
 import Placeholder from './components/Placeholder'
+import { useDeleteUserModal } from './hooks/useDeleteUserModal'
 import { GroupMemberProps } from './props'
 import { Container, MembersContainer } from './styled'
 
@@ -20,6 +22,14 @@ const GroupMember = ({ disabled }: GroupMemberProps) => {
   const { t } = useSSRTranslation('profile')
   const isKing = useKing()
   const { handleOpen, handleClose, state } = useSwitch(false)
+
+  const {
+    handleCloseDelete,
+    handleDelete,
+    handleOpenDelete,
+    openDeleteModal,
+    deletedMember,
+  } = useDeleteUserModal()
 
   const handleLeaveGroup = useCallback(async () => {
     try {
@@ -44,6 +54,12 @@ const GroupMember = ({ disabled }: GroupMemberProps) => {
         onAccept={handleLeaveGroup}
         actionI18NKey="profile:leaveGroup"
       />
+      <KickMemberModal
+        open={openDeleteModal}
+        member={deletedMember}
+        onAccept={handleDelete}
+        onDecline={handleCloseDelete}
+      />
       <Typography variant="h3" color="new-primary">
         {t('member')} ({members.length}/3)
       </Typography>
@@ -52,6 +68,7 @@ const GroupMember = ({ disabled }: GroupMemberProps) => {
           <Member
             key={member.id}
             user={member}
+            onDelete={handleOpenDelete}
             isKing={isKing(member) && members.length !== 1}
             isDeletable={disabled ? false : isKing(user) && !isKing(member)}
           />
@@ -63,7 +80,7 @@ const GroupMember = ({ disabled }: GroupMemberProps) => {
           <Placeholder color="#AE1C5D" backgroundColor="#fff" />
         )}
       </MembersContainer>
-      {!isKing(user) && (
+      {!isKing(user) && !disabled && (
         <Button css={{ marginTop: '20px' }} onClick={handleOpen}>
           {t('leaveGroup')}
         </Button>
