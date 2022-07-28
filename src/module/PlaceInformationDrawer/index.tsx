@@ -1,9 +1,8 @@
 import Button from 'common/components/Button'
 import Image from 'common/components/Image'
-import { LoadingImage } from 'common/components/Image/styled'
 import Typography from 'common/components/Typography'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 
 import {
   Box,
@@ -11,46 +10,53 @@ import {
   PlaceDetailsContainer,
   TextBox,
 } from './styled'
+import { PlaceInformationDrawerProps } from './types'
 
-const PlaceInformationDrawer = () => {
-  const { t } = useSSRTranslation('placeInformationDrawer')
+const PlaceInformationDrawer = ({
+  title,
+  titleEn,
+  imgUrl,
+  detail,
+  detailEn,
+  time,
+  timeEn,
+}: PlaceInformationDrawerProps) => {
+  const { i18n, t } = useSSRTranslation('placeInformationDrawer')
 
   const [checkInBtn, setCheckInBtn] = useState(false)
+  const checkInBtnClickHandler = useCallback(() => {
+    setCheckInBtn(true)
+  }, [])
 
   return (
-    // <Drawer open={openDrawer}>
     <Box>
       <CloseButtonContainer>
-        <Image
-          src="/cross.svg"
-          height={30}
-          width={30}
-          className={LoadingImage()}
-        />
+        <Image src="/cross.svg" height={30} width={30} />
       </CloseButtonContainer>
       <Typography variant="h3" color="new-primary">
-        {t('Chamchuri9.title')}
+        {i18n.language === 'en' ? titleEn : title}
       </Typography>
-      <Image src={t('Chamchuri9.imgUrl')} width={500} height={250} />
+      <Image src={imgUrl} width={500} height={250} />
       <PlaceDetailsContainer>
         <TextBox>
-          <Typography color="new-primary">{t('Chamchuri9.detail')}</Typography>
+          <Typography color="new-primary">
+            {i18n.language === 'en' ? detailEn : detail}
+          </Typography>
           <hr />
-          <Typography color="new-primary">{t('Chamchuri9.time')}</Typography>
+          <Typography color="new-primary">
+            {i18n.language === 'en' ? timeEn : time}
+          </Typography>
         </TextBox>
         <Button
           type="button"
           variant="eStamp"
           disabled={checkInBtn}
-          onClick={() => {
-            setCheckInBtn(true)
-          }}
+          onClick={checkInBtnClickHandler}
         >
-          {checkInBtn ? 'Done' : 'Check - in'}
+          {checkInBtn ? t('checkInBtnDone') : t('checkInBtn')}
         </Button>
       </PlaceDetailsContainer>
     </Box>
-    // </Drawer>
   )
 }
 
