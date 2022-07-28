@@ -1,70 +1,57 @@
 import Button from 'common/components/Button'
 import Image from 'common/components/Image'
+import { LoadingImage } from 'common/components/Image/styled'
 import Typography from 'common/components/Typography'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import React, { useState } from 'react'
 
-import { Box, ImageContainer, TextBox } from './styled'
+import {
+  Box,
+  CloseButtonContainer,
+  PlaceDetailsContainer,
+  TextBox,
+} from './styled'
 
 const PlaceInformationDrawer = () => {
   // const data=Chamchuri9
   const { t } = useSSRTranslation('placeInformationDrawer')
 
-  const [CheckInBtn, setCheckInBtn] = useState(false)
-
-  let Btn = (
-    <Button
-      type="button"
-      variant="eStamp"
-      css={{ width: '80%' }}
-      onClick={() => {
-        setCheckInBtn(true)
-      }}
-    >
-      Check - in
-    </Button>
-  )
-
-  if (CheckInBtn) {
-    Btn = (
-      <Button
-        type="button"
-        variant="eStamp"
-        css={{ color: '$new-primary', backgroundColor: '$white', width: '80%' }}
-        onClick={() => {}}
-      >
-        Done
-      </Button>
-    )
-  }
+  const [checkInBtn, setCheckInBtn] = useState(false)
 
   return (
-    //  <Drawer
-    //      direction='bottom'
-    //      open={isDrawerOpen}
-    //      onClose={() => setisDrawerOpen(false)}
-    //      className='Box'
-    //  >
+    // <Drawer open={openDrawer}>
     <Box>
-      <ImageContainer>
-        <Image src="/cross.svg" height={40} width={40} onClick={() => {}} />
-      </ImageContainer>
-      <Typography variant="h3" css={{ marginTop: '20px' }}>
+      <CloseButtonContainer>
+        <Image
+          src="/cross.svg"
+          height={30}
+          width={30}
+          className={LoadingImage()}
+        />
+      </CloseButtonContainer>
+      <Typography variant="h3" color="new-primary" css={{ marginTop: '20px' }}>
         {t('Chamchuri9.title')}
       </Typography>
       <Image src={t('Chamchuri9.imgUrl')} width={500} height={250} />
-      <TextBox>
-        <Typography variant="body" css={{ padding: '10px' }}>
-          {t('Chamchuri9.detail')}
-        </Typography>
-        <hr />
-        <Typography variant="body" css={{ padding: '10px' }}>
-          {t('Chamchuri9.time')}
-        </Typography>
-      </TextBox>
-      {Btn}
+      <PlaceDetailsContainer>
+        <TextBox>
+          <Typography color="new-primary">{t('Chamchuri9.detail')}</Typography>
+          <hr />
+          <Typography color="new-primary">{t('Chamchuri9.time')}</Typography>
+        </TextBox>
+        <Button
+          type="button"
+          variant="eStamp"
+          disabled={checkInBtn}
+          onClick={() => {
+            setCheckInBtn(true)
+          }}
+        >
+          {checkInBtn ? 'Done' : 'Check - in'}
+        </Button>
+      </PlaceDetailsContainer>
     </Box>
-    //  </Drawer>
+    // </Drawer>
   )
 }
 

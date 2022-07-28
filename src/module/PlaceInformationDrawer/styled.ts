@@ -1,29 +1,24 @@
-import { styled } from '@stitches/react'
+import { styled } from 'config/stitches.config'
 
 export const Box = styled('div', {
   position: 'relative',
-  borderRadius: '30px',
+  borderRadius: '30px 30px 0 0',
   boxShadow: '0px -1px 3px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.06)',
-  Width: '100vw',
+  height: 'calc(100vh - 106px)',
   maxWidth: '420px',
-  height: 'auto',
-  fontFamily: '$FCSubjectRounded',
-  fontWeight: '400',
-  background: '#FAFAFA',
+  background: '$white',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
   rowGap: '1.25rem',
-  paddingTop: '1.25rem',
-  paddingBottom: '1.25rem',
-  marginTop: '4vh',
+  padding: '2rem 0',
+  '@sm': {
+    height: 'calc(100vh - 68px)',
+  },
 })
 
 export const TextBox = styled('div', {
-  marginLeft: '40px',
-  marginRight: '40px',
-  maxHeight: '30vh',
-  overflow: 'auto',
+  overflowY: 'scroll',
   width: 'fit-content',
   '&::-webkit-scrollbar': {
     width: '4px',
@@ -38,13 +33,19 @@ export const TextBox = styled('div', {
   },
 })
 
-export const CheckInButton = styled('button', {
-  width: '300px',
-  height: '45px',
-  borderRadius: '6px',
+export const CloseButtonContainer = styled('div', {
+  position: 'absolute',
+  top: '20px',
+  right: '20px',
+  cursor: 'pointer',
 })
 
-export const ImageContainer = styled('div', {
-  position: 'absolute',
-  right: '20px',
+export const PlaceDetailsContainer = styled('div', {
+  margin: '0 2rem',
+  display: 'flex',
+  height: '50%',
+  flex: 1,
+  flexDirection: 'column',
+  justifyContent: 'space-between',
+  rowGap: '3rem',
 })
