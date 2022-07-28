@@ -11,14 +11,14 @@ export const Box = styled('div', {
   flexDirection: 'column',
   alignItems: 'center',
   rowGap: '1.25rem',
-  padding: '2rem 0',
+  padding: '3.5rem 0',
   '@sm': {
     height: 'calc(100vh - 68px)',
   },
 })
 
 export const TextBox = styled('div', {
-  overflowY: 'scroll',
+  overflowY: 'auto',
   width: 'fit-content',
   '&::-webkit-scrollbar': {
     width: '4px',

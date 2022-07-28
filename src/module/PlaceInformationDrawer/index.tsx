@@ -28,7 +28,7 @@ const PlaceInformationDrawer = () => {
           className={LoadingImage()}
         />
       </CloseButtonContainer>
-      <Typography variant="h3" color="new-primary" css={{ marginTop: '20px' }}>
+      <Typography variant="h3" color="new-primary">
         {t('Chamchuri9.title')}
       </Typography>
       <Image src={t('Chamchuri9.imgUrl')} width={500} height={250} />
