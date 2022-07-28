@@ -13,7 +13,6 @@ import {
 } from './styled'
 
 const PlaceInformationDrawer = () => {
-  // const data=Chamchuri9
   const { t } = useSSRTranslation('placeInformationDrawer')
 
   const [checkInBtn, setCheckInBtn] = useState(false)
