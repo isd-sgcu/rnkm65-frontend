@@ -4,9 +4,20 @@ export const RootContainer = styled('div', {
   padding: '2rem',
   gap: '1rem',
   display: 'flex',
+  maxWidth: '1200px',
 
   '@md': {
     flexDirection: 'column',
+  },
+})
+
+export const ChoosenContainer = styled('div', {
+  position: 'sticky',
+  top: 0,
+  minWidth: '300px',
+
+  '@md': {
+    minWidth: 'unset',
   },
 })
 
@@ -21,7 +32,7 @@ export const CardContainer = styled('div', {
   paddingTop: '1rem',
   gridGap: '1rem',
   gridTemplateColumns: 'repeat(5, 1fr)',
-  justifContent: 'space-evenly',
+  justifyContent: 'space-evenly',
   '@xl': {
     gridTemplateColumns: 'repeat(4, 1fr)',
   },
@@ -29,7 +40,7 @@ export const CardContainer = styled('div', {
     gridTemplateColumns: 'repeat(3, 1fr)',
   },
   '@md': {
-    gridTemplateColumns: 'repeat(3, 1fr)',
+    gridTemplateColumns: 'repeat(2, 1fr)',
   },
   '@sm': {
     gridTemplateColumns: 'repeat(2, 1fr)',

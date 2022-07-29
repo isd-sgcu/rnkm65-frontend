@@ -1,58 +1,83 @@
+import Loading from 'common/components/Loading'
 import Typography from 'common/components/Typography'
+import useSSRTranslation from 'common/hooks/useSSRTranslation'
+import { useSwitch } from 'common/hooks/useSwitch'
 import { IBaan } from 'common/types/baan'
-import React, { FC } from 'react'
+import React, { FC, useMemo } from 'react'
 
 import CardBaan from './components/CardBaan'
 import ChoosedBaan from './components/ChoosedBaan'
+import ConfirmModal from './components/ConfirmModal'
 import DescriptionModal from './components/DescriptionModal'
 import Search from './components/Search'
 import { useBaanModal } from './hooks/useBaanModal'
 import { useChoosenBaans } from './hooks/useChoosenBaans'
-import { CardContainer, CatalogContainer, RootContainer } from './styled'
+import {
+  CardContainer,
+  CatalogContainer,
+  ChoosenContainer,
+  RootContainer,
+} from './styled'
 
 const ChooseBaan: FC<{ data: IBaan[] }> = ({ data: initBaans }) => {
   const { close, open, baan: cBaan, openModal } = useBaanModal()
   const {
+    state: submitModal,
+    handleOpen: handleOpenSubmit,
+    handleClose: handleCloseSubmit,
+  } = useSwitch(false)
+  const { t } = useSSRTranslation('chooseBaan')
+  const {
     displayBaans,
     choosenBaans,
+    filter,
+    loading,
     onChooseBaan,
     onRemoveBaan,
     onSearch,
+    onClickFilterSize,
+    submitBaan,
     updateBaans,
-    filter,
-  } = useChoosenBaans(initBaans, [])
+  } = useChoosenBaans(initBaans)
+
+  const modalSelect = useMemo(
+    () =>
+      choosenBaans.length < 3 &&
+      !choosenBaans.find((val) => val.id === cBaan?.id),
+    [cBaan?.id, choosenBaans]
+  )
 
   return (
     <div>
+      {loading && <Loading />}
       <RootContainer>
         <div>
-          <div
-            style={{
-              position: 'sticky',
-              top: 0,
-            }}
-          >
-            <Typography variant="h1" color="blue">
-              เลือกบ้าน
+          <ChoosenContainer>
+            <Typography variant="h2" color="blue">
+              {t('title')}
             </Typography>
             <Typography
               variant="subhead3"
               color="blue"
-              css={{ marginTop: '-15px', whiteSpace: 'nowrap' }}
+              css={{ marginTop: '-15px' }}
             >
-              เลือก 3 บ้านที่สนใจมากที่สุด
+              {t('description')}
             </Typography>
             <ChoosedBaan
               baans={choosenBaans}
               updateBaans={updateBaans}
-              // eslint-disable-next-line @typescript-eslint/no-unused-vars
               handleDelete={onRemoveBaan}
-              // handleConfirm={() => {}}
+              handleConfirm={handleOpenSubmit}
             />
-          </div>
+          </ChoosenContainer>
         </div>
         <CatalogContainer>
-          <Search onSearch={onSearch} value={filter.search} />
+          <Search
+            onSearch={onSearch}
+            value={filter.search}
+            baanSize={filter.size}
+            onChooseBaanSize={onClickFilterSize}
+          />
           <CardContainer>
             {displayBaans.map((baan) => (
               <CardBaan
@@ -66,11 +91,13 @@ const ChooseBaan: FC<{ data: IBaan[] }> = ({ data: initBaans }) => {
                 index={baan.order ?? undefined}
                 facebook={baan.facebook}
                 ig={baan.ig}
+                size={baan.size}
                 onClickModal={open(baan)}
               />
             ))}
           </CardContainer>
           <DescriptionModal
+            canSelect={modalSelect}
             baan={cBaan ?? undefined}
             open={openModal}
             onClose={close}
@@ -78,6 +105,12 @@ const ChooseBaan: FC<{ data: IBaan[] }> = ({ data: initBaans }) => {
           />
         </CatalogContainer>
       </RootContainer>
+      <ConfirmModal
+        allowSubmit={choosenBaans.length === 3}
+        onClose={handleCloseSubmit}
+        onConfirm={submitBaan}
+        open={submitModal}
+      />
     </div>
   )
 }

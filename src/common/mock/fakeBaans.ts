@@ -50,6 +50,8 @@ const generateBaan = (len: number) =>
     size: BaanSize.Small,
     facebook: 'facebook',
     ig: 'ig',
+    facebookUrl: '',
+    igUrl: '',
   }))
 
 export const baans: IBaan[] = generateBaan(10)

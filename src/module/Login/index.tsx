@@ -1,13 +1,13 @@
 import Button from 'common/components/Button'
 import Checkbox from 'common/components/Checkbox'
-import useBottomBackground from 'common/components/Layout/components/Background/hooks/useBottomBackground'
 import Loading from 'common/components/Loading'
 import Typography from 'common/components/Typography'
 import { useAuth } from 'common/contexts/AuthContext'
+import useBottomBackground from 'common/contexts/LayoutContext/hooks/useBottomBackground'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import { exchangeTicketForToken } from 'common/utils/auth'
 import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import {
   ContentContainer,
@@ -23,6 +23,7 @@ const LoginPage = () => {
   const [errorMsg, setErrorMsg] = useState('')
   const { t } = useSSRTranslation('login')
   const { login, refreshContext, user } = useAuth()
+  const attemptAuthenticated = useRef(false)
   useBottomBackground()
 
   const handleToggle = () => {
@@ -31,12 +32,24 @@ const LoginPage = () => {
 
   useEffect(() => {
     const attemptAuthentication = async () => {
+      if (!router.isReady) {
+        return
+      }
+
+      if (attemptAuthenticated.current) {
+        return
+      }
+      attemptAuthenticated.current = true
+
       const { ticket } = router.query
       if (ticket) {
         const token = await exchangeTicketForToken(ticket.toString())
         if (!token) {
           setErrorMsg(t('unknownError'))
+
           router.replace('/login')
+          setLoading(false)
+
           return
         }
 
@@ -50,6 +63,8 @@ const LoginPage = () => {
           }
 
           router.replace('/login')
+          setLoading(false)
+
           return
         }
 

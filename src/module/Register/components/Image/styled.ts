@@ -1,5 +1,5 @@
+import Image from 'common/components/Image'
 import { css, styled } from 'config/stitches.config'
-import Image from 'next/image'
 
 export const FallbackImage = styled('div', {
   backgroundColor: '$new-gray',

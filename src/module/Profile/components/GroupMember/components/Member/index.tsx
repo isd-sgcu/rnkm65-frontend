@@ -1,5 +1,6 @@
+import Image from 'common/components/Image'
 import Typography from 'common/components/Typography'
-import Image from 'next/image'
+import { css } from 'config/stitches.config'
 import React from 'react'
 import { IoClose } from 'react-icons/io5'
 
@@ -8,16 +9,23 @@ import { DeleteMemberButton, KingBadge, MemberContainer } from './styled'
 import { MemberProps } from './types'
 
 const Member = (props: MemberProps) => {
-  const { firstname, lastname, imageUrl, isKing, isDeletable } = props
+  const { user, isKing, isDeletable, onDelete } = props
+  const { firstname, lastname, imageUrl } = user
+
   return (
     <MemberContainer>
       {isKing && (
         <KingBadge>
-          <Image src="/kingBadge.svg" height={26} width={26} />
+          <Image
+            src="/kingBadge.svg"
+            height={26}
+            width={26}
+            className={css({ backgroundColor: 'transparent !important' })()}
+          />
         </KingBadge>
       )}
       {isDeletable && (
-        <DeleteMemberButton>
+        <DeleteMemberButton onClick={() => onDelete(user)}>
           <IoClose />
         </DeleteMemberButton>
       )}

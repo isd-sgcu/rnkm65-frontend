@@ -6,7 +6,6 @@
 
   "choosedBaan": "บ้านรับน้องที่เลือก",
   "notChoosed": "ยังไม่ได้เลือก",
-  "saved": "ระบบได้ทำการบันทึกเรียบร้อยแล้ว",
   "changeBaan": "เปลี่ยนบ้าน",
   "changeGroup": "เปลี่ยนกลุ่ม",
   "chooseBaan": "เลือกบ้าน",
@@ -18,11 +17,24 @@
   "cannotChangeGroup": "คุณไม่สามารถเปลี่ยนกลุ่มได้",
   "becauseGroupFull": "เนื่องจากสมาชิกในกลุ่มเต็มแล้ว",
   "becauseYouAreKing": "เนื่องจากคุณเป็นหัวหน้ากลุ่มอยู่",
-  "wantToJoinGroupOrNot": "คุณต้องการเข้ากลุ่มของ <0>{{king}}</0> หรือไม่?",
-  "wantToChangeGroupOrNot": "คุณต้องการ <0>{{action}}</0> ไปเข้ากลุ่มของ <1>{{king}}</1> หรือไม่?",
+  "wantToJoinGroupOrNot": "คุณต้องการเข้ากลุ่มของ <0>{{leader}}</0> หรือไม่?",
+  "wantToChangeGroupOrNot": "คุณต้องการ <0>เปลี่ยนกลุ่ม</0> ไปเข้ากลุ่มของ <1>{{leader}}</1> หรือไม่?",
   "wantToKickMemberOrNot": "คุณต้องการเตะ <0>{{member}}</0> ออกจากกลุ่มหรือไม่?",
   "wantToConfirmAction": "คุณต้องการ <0>{{action}}</0> ใช่หรือไม่?",
-  "areAlsoGroupMember": "<0>{{members}}</0> เป็นสมาชิกในกลุ่มนี้ด้วย",
+  "registrationComplete": "การลงทะเบียนสำเร็จ !",
+  "followMoreActivity": "แล้วพบกันในงานรับเพื่อนก้าวใหม่วันที่ 4 - 6 สิงหาคมนี้นะ!",
+  "baanSelectionOnlyForJunior": "(กิจกรรมเลือกบ้านมีไว้สำหรับ CU 106 เท่านั้น)",
+  "notSelectBaan": "(คุณไม่ได้เลือกบ้านในเวลาที่กำหนด)",
+  "askForMoreInfoAt": "หากระหว่างนี้มีข้อสงสัยเพิ่มเติมเกี่ยวกับงานสามารถติดต่อสอบถามได้ที่ IG @rubpuenkaomai2022",
+  "invitation": {
+    "groupProfileNotFound": "เกิดข้อผิดพลาด",
+    "groupProfileNotFoundMessage": "ไม่พบ Profile ของคุณในระบบ",
+    "invalidInviteLink": "Invite Link ไม่ถูกต้อง",
+    "invalidInviteLinkMessage": "ไม่พบกลุ่มนี้ในระบบ โปรดขอลิงก์จากหัวหน้ากลุ่มอีกครั้ง",
+    "joinOwnGroup": "คุณไม่สามารถเข้ากลุ่มของตัวเองได้",
+    "joinOwnGroupMessage": "ลิงก์นี้มีไว้สำหรับส่งให้เพื่อนกดเข้าร่วมกลุ่มเท่านั้น",
+    "unknownError": "เกิดข้อผิดพลาด"
+  },
   "announce": {
     "congrats": "ยินดีด้วย",
     "join": "คุณได้เข้า <0>{{baan}}</0>",
@@ -30,8 +42,8 @@
   },
   "waiting": {
     "title": "กรุณารอเลือกบ้าน",
-    "description": "การลงทะเบียนของคุณเสร็จสิ้นเรียบร้อย\n กรุณาลงทะเบียนเลือกบ้านใน<0>วันที่ 21 กรกฎาคม 2565</0>\nสามารถสอบถามข้อมูลเพิ่มเติมได้ที่ <1>CU for Freshmen</1>"
+    "description": "การลงทะเบียนของคุณเสร็จสิ้นเรียบร้อย\n กรุณาลงทะเบียนเลือกบ้านใน<0>วันที่ 23 กรกฎาคม 2565</0>\nสามารถสอบถามข้อมูลเพิ่มเติมได้ที่ <1>CU for Freshmen</1>"
   },
   "processingBaan": "ขณะนี้ระบบกำลังจัดบ้านอยู่",
-  "goFollowCUForFreshmen": "สามารถติดตามข่าวสารได้ที่เพจ\nCU For Freshman"
+  "goFollowCUForFreshmen": "สามารถติดตามข่าวสารได้ที่ IG\n@rubpuenkaomai2022"
 }

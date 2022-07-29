@@ -1,4 +1,5 @@
 import { useAuth } from 'common/contexts/AuthContext'
+import { useLayout } from 'common/contexts/LayoutContext'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import Script from 'next/script'
@@ -14,6 +15,7 @@ import { ContentContainer, LayoutContainer } from './styled'
 const Layout = ({ children }: PropsWithChildren<{}>) => {
   const router = useRouter()
   const { isAuthenticated } = useAuth()
+  const { isHideFooter } = useLayout()
 
   const location = useMemo(() => {
     return router.pathname.split('/')[1]
@@ -58,23 +60,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <Header />
       <ContentContainer>{children}</ContentContainer>
       {location !== 'eStamp' ? 
-        <Footer />
+        !isHideFooter && <Footer />
         : <Camera />
       }
-      {process.env.NODE_ENV === 'production' && (
-        <>
-          <Script src="https://www.googletagmanager.com/gtag/js?id=G-WT8THZVG3B" />
-          <Script id="google-analytics" strategy="afterInteractive">
-            {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){window.dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', 'G-WT8THZVG3B');
-        `}
-          </Script>
-        </>
-      )}
     </LayoutContainer>
   )
 }

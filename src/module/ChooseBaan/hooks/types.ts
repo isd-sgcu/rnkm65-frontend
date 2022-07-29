@@ -7,5 +7,5 @@ export interface Baan extends IBaan {
 
 export interface Filter {
   search: string
-  size: BaanSize | null
+  size: Array<BaanSize>
 }

@@ -1,6 +1,8 @@
-import { IUser } from 'common/types/user'
+import { IShortUser } from 'common/types/user'
 
-export interface MemberProps extends IUser {
+export interface MemberProps {
+  user: IShortUser
   isKing?: boolean
   isDeletable?: boolean
+  onDelete(user: IShortUser): void
 }

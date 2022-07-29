@@ -1,69 +1,54 @@
+/* eslint-disable no-fallthrough */
 import Loading from 'common/components/Loading'
+import { Phase } from 'common/constants/phase'
 import { useAuth } from 'common/contexts/AuthContext'
-import { IUser } from 'common/types/user'
+import { usePhase } from 'common/contexts/PhaseContext'
+import { haveBaan } from 'common/utils/baan'
+import { canJoinGroup } from 'common/utils/group'
 import React from 'react'
 
-import ChoosedBaan from './components/ChoosedBaan'
-import GroupMember from './components/GroupMember'
-import InviteLink from './components/InviteLink'
-import UserProfile from './components/UserProfile'
-import Waiting from './components/Waiting'
-import { Container, GroupContainer } from './styled'
-import { IProfileProps } from './types'
+import AnnounceBaan from './pages/AnnounceBaan'
+import BaanSelecton from './pages/BaanSelecton'
+import NotSelectBaan from './pages/NotSelectBaan'
+import WaitForBaanProcessing from './pages/WaitForBaanProcessing'
+import WaitForBaanSelection from './pages/WaitForBaanSelection'
 
-const tmpUser = {
-  title: 'Mr.',
-  id: 'uuid',
-  studentID: '6530000021',
-  faculty: 'Faculty of Engineering',
-  year: '1',
-  firstname: 'Kamisato',
-  lastname: 'Ayaka',
-  nickname: '',
-  email: '',
-  phone: '',
-  lineID: '',
-  disease: '',
-  allergyFood: '',
-  allergyMedicine: '',
-  foodRestriction: '',
-  imageUrl: '/tmp.jpg',
-  vaccineCertificateUrl: '',
-  canSelectBaan: true,
-  isVerify: true,
-} as IUser
+const Profile = () => {
+  const { user, group } = useAuth()
 
-const tmpBaan = {
-  id: 0,
-  name: 'Yashiro Commission',
-  imageUrl: '/tmp.jpg',
-}
+  const { phase } = usePhase()
+  const canSelectBaan = canJoinGroup(user)
+  const haveSelectedBaan = haveBaan(group)
 
-const Profile = (props: IProfileProps) => {
-  const { canAccessProfile } = props
+  if (!user || !group) return <Loading />
 
-  const { user } = useAuth()
-  if (!user) return <Loading />
+  switch (phase) {
+    case Phase.REGISTER:
+    case Phase.REGISTER_END:
+      return <WaitForBaanSelection />
 
-  return canAccessProfile ? (
-    <Container>
-      <UserProfile {...user} />
-      <div
-        style={{
-          flexGrow: 1,
-          width: '100%',
-        }}
-      >
-        <InviteLink inviteLink="www.youtube.com/watch?v=dQw4w9WgXcQ" />
-        <GroupContainer>
-          <GroupMember members={[tmpUser]} />
-          <ChoosedBaan baans={[tmpBaan, tmpBaan, tmpBaan]} />
-        </GroupContainer>
-      </div>
-    </Container>
-  ) : (
-    <Waiting />
-  )
+    case Phase.BAAN_SELECTION:
+      if (canSelectBaan) return <BaanSelecton />
+
+    case Phase.BAAN_SELECTION_END:
+      if (canSelectBaan && haveSelectedBaan) return <WaitForBaanProcessing />
+
+    case Phase.BAAN_ANNOUNCE:
+      if (canSelectBaan && haveSelectedBaan) return <AnnounceBaan />
+
+      // fallthrough for not 106 and not select baan
+      return <NotSelectBaan />
+
+    case Phase.ESTAMP:
+      // TODO: Implement profile page for e-stamp
+      return null
+
+    // BYPASS
+    case Phase.BYPASS:
+      return <BaanSelecton />
+    default:
+      return null
+  }
 }
 
 export default Profile

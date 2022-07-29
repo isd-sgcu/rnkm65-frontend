@@ -1,5 +1,6 @@
 import Baan from 'common/components/Baan'
 import Button from 'common/components/Button'
+import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import Link from 'next/link'
 import { memo } from 'react'
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
@@ -14,6 +15,8 @@ import { ChoosedBannProps } from './types'
 
 const ChoosedBaan = (props: ChoosedBannProps) => {
   const { baans, handleDelete, handleConfirm, updateBaans } = props
+  const { t } = useSSRTranslation('chooseBaan')
+
   return (
     <Container>
       <DragDropContext
@@ -33,11 +36,11 @@ const ChoosedBaan = (props: ChoosedBannProps) => {
             <div {...provided.droppableProps} ref={provided.innerRef}>
               {baans.map((baan, idx) => (
                 <Draggable key={baan.id} draggableId={`${baan.id}`} index={idx}>
-                  {(provided) => (
+                  {(innerProvided) => (
                     <div
-                      ref={provided.innerRef}
-                      {...provided.draggableProps}
-                      {...provided.dragHandleProps}
+                      ref={innerProvided.innerRef}
+                      {...innerProvided.draggableProps}
+                      {...innerProvided.dragHandleProps}
                     >
                       <BaanContainer>
                         <Baan {...baan} index={idx + 1} textPosition="right" />
@@ -54,10 +57,10 @@ const ChoosedBaan = (props: ChoosedBannProps) => {
       </DragDropContext>
 
       <ButtonContainer>
-        <Button onClick={handleConfirm}>ยืนยัน</Button>
         <Link href="/" passHref>
-          <Button variant="error">ยกเลิก</Button>
+          <Button variant="decline">{t('cancel')}</Button>
         </Link>
+        <Button onClick={handleConfirm}>{t('submit')}</Button>
       </ButtonContainer>
     </Container>
   )

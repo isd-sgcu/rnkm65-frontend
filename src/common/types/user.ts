@@ -1,3 +1,10 @@
+export interface IShortUser {
+  id: string
+  firstname: string
+  lastname: string
+  imageUrl: string
+}
+
 export interface IUser {
   id: string
   studentID: string
@@ -17,8 +24,5 @@ export interface IUser {
   imageUrl: string
   canSelectBaan: boolean
   isVerify: boolean
-}
-
-export interface IUserProfileProps extends IUser {
-  withoutEditButton?: boolean
+  groupId: string
 }
