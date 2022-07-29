@@ -46,15 +46,3 @@ export const BackButton = styled('button', {
     filter: 'drop-shadow(0 1px 1px rgb(0 0 0 / 0.05))',
 })
 
-//button to go back to come to QR page
-export const CameraButton = styled('button', {
-    position : 'absolute',
-    bottom : '0',
-    width : '80px',
-    height : '80px',
-    border : '$white',
-    borderRadius : '9999px',
-    backgroundColor : '$white',
-    cursor : 'pointer',
-    zIndex : '2',
-})

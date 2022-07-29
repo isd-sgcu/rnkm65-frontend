@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { useRouter } from 'next/router'
 import { useState, useCallback } from 'react'
 import { QrReader } from 'react-qr-reader'
 import { CameraBg } from './camerabg'
-import { BackButton, Camera, CameraContainer, QRcontainer } from './styled'
+import {
+  BackButton,
+  Camera,
+  CameraContainer,
+  QRcontainer,
+} from './styled'
 
 const Qr = () => {
   const [data, setData] = useState('No Result')
@@ -16,10 +21,9 @@ const Qr = () => {
 
   return (
     <QRcontainer>
-      
       <CameraContainer>
         <Camera>
-        <BackButton onClick={handleBackClick}>X</BackButton>
+          <BackButton onClick={handleBackClick}>X</BackButton>
           <QrReader
             scanDelay={300}
             onResult={(result) => {
@@ -35,7 +39,7 @@ const Qr = () => {
             videoStyle={{
               width: 'initial',
               paddingBottom: '5px',
-              paddingTop: '1px'
+              paddingTop: '1px',
             }}
             ViewFinder={CameraBg}
           />

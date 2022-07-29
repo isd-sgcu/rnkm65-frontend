@@ -1,4 +1,3 @@
-import QR from 'common/components/QR'
-
+import QR from 'common/components/Qr'
 
 export default QR
