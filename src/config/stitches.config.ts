@@ -15,6 +15,7 @@ export const { styled, getCssText, keyframes, globalCss, css } = createStitches(
         error: '#FF4A4A',
         confirm: '#27AE60',
         gray: '#A6A6A6',
+        gray300: '#D1D5DB',
         black: '#000000',
         white: '#FFFFFF',
         // NEW CI
