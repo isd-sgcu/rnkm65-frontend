@@ -6,7 +6,7 @@ export const CameraButton = styled('button', {
     width : '100px',
     height : '100px',
     border : '$white',
-    borderRadius : '9999px',
+    borderRadius : '50%',
     backgroundColor : '$white',
     cursor : 'pointer',
     zIndex : '2',
