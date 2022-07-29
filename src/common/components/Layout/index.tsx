@@ -54,20 +54,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <Header />
       <ContentContainer>{children}</ContentContainer>
       {!isHideFooter && <Footer />}
-      {process.env.NODE_ENV === 'production' && (
-        <>
-          <Script src="https://www.googletagmanager.com/gtag/js?id=G-WT8THZVG3B" />
-          <Script id="google-analytics" strategy="afterInteractive">
-            {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){window.dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', 'G-WT8THZVG3B');
-        `}
-          </Script>
-        </>
-      )}
     </LayoutContainer>
   )
 }

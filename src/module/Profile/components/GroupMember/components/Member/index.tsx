@@ -1,5 +1,6 @@
+import Image from 'common/components/Image'
 import Typography from 'common/components/Typography'
-import Image from 'next/image'
+import { css } from 'config/stitches.config'
 import React from 'react'
 import { IoClose } from 'react-icons/io5'
 
@@ -15,7 +16,12 @@ const Member = (props: MemberProps) => {
     <MemberContainer>
       {isKing && (
         <KingBadge>
-          <Image src="/kingBadge.svg" height={26} width={26} />
+          <Image
+            src="/kingBadge.svg"
+            height={26}
+            width={26}
+            className={css({ backgroundColor: 'transparent !important' })()}
+          />
         </KingBadge>
       )}
       {isDeletable && (

@@ -80,7 +80,7 @@ const GroupMember = ({ disabled }: GroupMemberProps) => {
           <Placeholder color="#AE1C5D" backgroundColor="#fff" />
         )}
       </MembersContainer>
-      {!isKing(user) && (
+      {!isKing(user) && !disabled && (
         <Button css={{ marginTop: '20px' }} onClick={handleOpen}>
           {t('leaveGroup')}
         </Button>

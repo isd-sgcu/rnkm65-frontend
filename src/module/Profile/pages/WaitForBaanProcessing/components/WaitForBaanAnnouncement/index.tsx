@@ -5,7 +5,7 @@ import React from 'react'
 
 import { Container, HourglassContainer, TextContainer } from './styled'
 
-const WaitForBaanHourglass = () => {
+const WaitForBaanProcessing = () => {
   const { t } = useSSRTranslation('profile')
 
   return (
@@ -18,14 +18,19 @@ const WaitForBaanHourglass = () => {
           variant="h3"
           color="new-primary"
           css={{
-            '@lg': { textAlign: 'center', marginTop: '16px' },
+            marginBottom: '20px',
+            '@lg': {
+              textAlign: 'center',
+              marginTop: '16px',
+              marginBottom: '0',
+            },
           }}
         >
           {t('processingBaan')}
         </Typography>
         <Typography
-          variant="subhead2"
-          color="blue"
+          variant="subhead3"
+          color="new-primary"
           css={{
             '@lg': { textAlign: 'center', whiteSpace: 'pre-line' },
           }}
@@ -37,4 +42,4 @@ const WaitForBaanHourglass = () => {
   )
 }
 
-export default WaitForBaanHourglass
+export default WaitForBaanProcessing

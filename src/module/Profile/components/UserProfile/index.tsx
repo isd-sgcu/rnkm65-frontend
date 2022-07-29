@@ -1,15 +1,21 @@
+import Image from 'common/components/Image'
 import Typography from 'common/components/Typography'
+import { CAN_EDIT_PROFILE } from 'common/constants/phase'
+import { useAuth } from 'common/contexts/AuthContext'
+import { usePhase } from 'common/contexts/PhaseContext'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
-import { IUserProfileProps } from 'common/types/user'
-import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { HiPencil } from 'react-icons/hi'
 
 import { Container, EditProfileButton, ImageContainer } from './styled'
 
-const UserProfile = (props: IUserProfileProps) => {
-  const { firstname, lastname, imageUrl, withoutEditButton } = props
+const UserProfile = () => {
+  const { checkPhase } = usePhase()
+  const { user } = useAuth()
+  const withoutEditButton = !checkPhase(CAN_EDIT_PROFILE)
+
+  const { firstname, lastname, imageUrl } = user!
   const { t } = useSSRTranslation('profile')
 
   return (

@@ -8,9 +8,13 @@ export enum Phase {
   BYPASS = 'BYPASS',
 }
 
-export const CAN_REGISTER = [Phase.REGISTER, Phase.ESTAMP]
+export const CAN_EDIT_PROFILE = [
+  Phase.REGISTER,
+  Phase.BAAN_SELECTION,
+  Phase.ESTAMP,
+]
 
-export const CAN_ACCESS_PROFILE = [Phase.BAAN_SELECTION]
+export const CAN_REGISTER = [Phase.REGISTER, Phase.ESTAMP]
 
 export const DEFAULT_ROUTE = ['/', '/login', '/register']
 
@@ -32,7 +36,7 @@ export const PHASE_DATA = [
   },
   {
     phase: Phase.BAAN_SELECTION_END,
-    startTime: new Date('July 27, 2022 12.00 GMT+07:00').getTime(),
+    startTime: new Date('July 27, 2022 12:00 GMT+07:00').getTime(),
     allowRoute: [],
   },
   {
