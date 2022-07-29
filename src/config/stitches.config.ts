@@ -27,6 +27,8 @@ export const { styled, getCssText, keyframes, globalCss, css } = createStitches(
         'new-error': '#BB0B0B',
         'new-error-active': '#A30B0B',
         'new-footer': '#101223',
+        'new-background-gray': '#FAFAFA',
+        'new-border-gray': '#E6E7EA',
       },
       fonts: {
         FCSubjectRounded: "'FCSubjectRounded', sans-serif",
