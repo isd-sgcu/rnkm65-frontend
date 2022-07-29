@@ -3,12 +3,11 @@ import { useLayout } from 'common/contexts/LayoutContext'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import Script from 'next/script'
-import React, { PropsWithChildren, useMemo } from 'react'
+import React, { PropsWithChildren } from 'react'
 
 
 import Background from './components/Background'
 import Footer from './components/Footer'
-import Camera from './components/Camera'
 import Header from './components/Header'
 import { ContentContainer, LayoutContainer } from './styled'
 
@@ -16,10 +15,6 @@ const Layout = ({ children }: PropsWithChildren<{}>) => {
   const router = useRouter()
   const { isAuthenticated } = useAuth()
   const { isHideFooter } = useLayout()
-
-  const location = useMemo(() => {
-    return router.pathname.split('/')[1]
-  }, [router])
 
   return (
     <LayoutContainer>
@@ -59,10 +54,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <Background />
       <Header />
       <ContentContainer>{children}</ContentContainer>
-      {location !== 'eStamp' ? 
-        !isHideFooter && <Footer />
-        : <Camera />
-      }
+      {!isHideFooter && <Footer />}
     </LayoutContainer>
   )
 }

@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 import {
   BackgroundButton,
@@ -11,11 +12,18 @@ import {
 const BottomNavBar = () => (
   <CameraMenuContainer>
     <BackgroundMenu />
-    <StyledButton>
-      <StyledIcon>
-        <Image src="/e-stamp/camera-icon.svg" layout="fill" />
-      </StyledIcon>
-    </StyledButton>
+    <Link
+      href={{
+        pathname: '/eStamp/[slug]',
+        query: { slug: 'qr' },
+      }}
+    >
+      <StyledButton>
+        <StyledIcon>
+          <Image src="/e-stamp/camera-icon.svg" layout="fill" />
+        </StyledIcon>
+      </StyledButton>
+    </Link>
     <BackgroundButton />
   </CameraMenuContainer>
 )
