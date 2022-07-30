@@ -23,7 +23,7 @@ export const Box = styled('div', {
   justifyContent: 'center',
   alignItems: 'center',
   padding: '40px',
-  gap: '50px',
+  gap: '20px',
   background: '#ECEDF2',
   borderRadius: '20px',
   fontFamily: '$FCSubjectRounded',
@@ -39,6 +39,7 @@ export const Title = styled('h1', {
   fontFamily: '$FCSubjectRounded',
   margin: '20px 0',
   top: '-120px',
+  color: '$new-primary',
 
   '@md': {
     fontSize: '48px',

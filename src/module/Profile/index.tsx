@@ -1,78 +1,54 @@
+/* eslint-disable no-fallthrough */
 import Loading from 'common/components/Loading'
-import Typography from 'common/components/Typography'
-import { CAN_ACCESS_PROFILE, CAN_EDIT_PROFILE } from 'common/constants/phase'
+import { Phase } from 'common/constants/phase'
 import { useAuth } from 'common/contexts/AuthContext'
 import { usePhase } from 'common/contexts/PhaseContext'
-import { APP_BASE_URL } from 'config/env'
-import { useTranslation } from 'next-i18next'
+import { haveBaan } from 'common/utils/baan'
+import { canJoinGroup } from 'common/utils/group'
 import React from 'react'
 
-import ChoosedBaan from './components/ChoosedBaan'
-import GroupMember from './components/GroupMember'
-import InviteLink from './components/InviteLink'
-import UserProfile from './components/UserProfile'
-import Waiting from './components/Waiting'
-import InvitationProvider from './providers/InvitationProvider'
-import { Box, Container, GroupContainer, MessageContainer } from './styled'
+import AnnounceBaan from './pages/AnnounceBaan'
+import BaanSelecton from './pages/BaanSelecton'
+import NotSelectBaan from './pages/NotSelectBaan'
+import WaitForBaanProcessing from './pages/WaitForBaanProcessing'
+import WaitForBaanSelection from './pages/WaitForBaanSelection'
 
 const Profile = () => {
-  const { checkPhase } = usePhase()
-  const canAccessProfile = checkPhase(CAN_ACCESS_PROFILE)
-  const canEditProfile = checkPhase(CAN_EDIT_PROFILE)
-
-  const { t } = useTranslation()
   const { user, group } = useAuth()
+
+  const { phase } = usePhase()
+  const canSelectBaan = canJoinGroup(user)
+  const haveSelectedBaan = haveBaan(group)
 
   if (!user || !group) return <Loading />
 
-  if (!canAccessProfile) return <Waiting />
+  switch (phase) {
+    case Phase.REGISTER:
+    case Phase.REGISTER_END:
+      return <WaitForBaanSelection />
 
-  return (
-    <InvitationProvider>
-      {(canSelectBaan) => (
-        <Container>
-          <UserProfile {...user} withoutEditButton={!canEditProfile} />
-          <div
-            style={{
-              flexGrow: 1,
-              width: '100%',
-            }}
-          >
-            {canSelectBaan ? (
-              <>
-                <InviteLink
-                  inviteLink={`${APP_BASE_URL}/?join=${encodeURIComponent(
-                    group ? group.token : 'GROUP_TOKEN_NOT_FOUND'
-                  )}`}
-                />
-                <GroupContainer>
-                  <GroupMember />
-                  <ChoosedBaan baans={group?.baans ?? []} />
-                </GroupContainer>
-              </>
-            ) : (
-              <MessageContainer>
-                <Box>
-                  <Typography variant="h2" color="new-secondary">
-                    {t('profile:registrationComplete')}
-                  </Typography>
-                  <Typography variant="subhead2" color="blue">
-                    {t('profile:followMoreActivity')}
-                  </Typography>
-                  <Typography variant="subhead3" color="blue">
-                    {t('profile:baanSelectionOnlyForJunior')}
-                  </Typography>
-                </Box>
-                <Typography variant="body" color="blue">
-                  {t('profile:askForMoreInfoAt')}
-                </Typography>
-              </MessageContainer>
-            )}
-          </div>
-        </Container>
-      )}
-    </InvitationProvider>
-  )
+    case Phase.BAAN_SELECTION:
+      if (canSelectBaan) return <BaanSelecton />
+
+    case Phase.BAAN_SELECTION_END:
+      if (canSelectBaan && haveSelectedBaan) return <WaitForBaanProcessing />
+
+    case Phase.BAAN_ANNOUNCE:
+      if (canSelectBaan && haveSelectedBaan) return <AnnounceBaan />
+
+      // fallthrough for not 106 and not select baan
+      return <NotSelectBaan />
+
+    case Phase.ESTAMP:
+      // TODO: Implement profile page for e-stamp
+      return null
+
+    // BYPASS
+    case Phase.BYPASS:
+      return <BaanSelecton />
+    default:
+      return null
+  }
 }
 
 export default Profile

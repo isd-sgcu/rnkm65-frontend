@@ -25,6 +25,7 @@
   "followMoreActivity": "Please stay tuned for the upcoming activities on 4 - 6 August.",
   "askForMoreInfoAt": "In the meantime, if you have any further questions about the event, you can contact us at IG @rubpuenkaomai2022.",
   "baanSelectionOnlyForJunior": "(Baan selection activity is for CU 106 only)",
+  "notSelectBaan": "(You did not select baan in the provided time)",
   "invitation": {
     "groupProfileNotFound": "An Error Occurred",
     "groupProfileNotFoundMessage": "Your profile could not be found in the system.",
