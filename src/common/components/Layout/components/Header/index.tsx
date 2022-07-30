@@ -22,6 +22,15 @@ import {
   LogoContainer,
 } from './styled'
 
+const CURRENT_PHASE = process.env.NEXT_PUBLIC_PHASE as
+  | 'REGISTER'
+  | 'REGISTER_END'
+  | 'BAAN_SELECTION'
+  | 'BAAN_SELECTION_END'
+  | 'BAAN_ANNOUNCE'
+  | 'ESTAMP'
+  | 'BYPASS'
+
 const Header = () => {
   const { t } = useSSRTranslation()
   const router = useRouter()
@@ -60,11 +69,11 @@ const Header = () => {
         </Link>
       </LeftSideContainer>
 
-      {/* <Hidden variant="lgdown">
+      {/* {CURRENT_PHASE === "REGISTER" && (<Hidden variant="lgdown">
         <TextButton onClick={handleHowToRegister}>
           {t('howToRegister')}
         </TextButton>
-      </Hidden> */}
+      </Hidden>)} */}
 
       {router.pathname !== '/' && router.pathname !== '/login' && (
         <Hidden variant="lgdown">
@@ -76,13 +85,13 @@ const Header = () => {
         </Hidden>
       )}
 
-      {/*  {showHowTo && (
-         <Hidden variant="lgdown">
-           <TextButton onClick={handleHowToSelectBaan}>
-             {t('howToSelectBaan')}
-           </TextButton>
-         </Hidden>
-       )} */}
+      {CURRENT_PHASE === 'BAAN_SELECTION' && showHowTo && (
+        <Hidden variant="lgdown">
+          <TextButton onClick={handleHowToSelectBaan}>
+            {t('howToSelectBaan')}
+          </TextButton>
+        </Hidden>
+      )}
 
       <Hidden variant="lgdown">
         <TextButton onClick={handleReportIssue}>{t('reportIssue')}</TextButton>
