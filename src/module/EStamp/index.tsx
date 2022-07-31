@@ -55,7 +55,7 @@ const EStamp = () => {
         </PinCardContainer>
       </PinContainer>
       {open && <Qr onClose={() => setOpen(false)} />}
-      <BottomNavBar onClick={() => setOpen(true)} />
+      {!open && <BottomNavBar onClick={() => setOpen(true)} />}
     </RootContainer>
   )
 }
