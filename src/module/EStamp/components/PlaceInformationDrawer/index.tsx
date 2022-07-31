@@ -13,7 +13,10 @@ import {
 } from './styled'
 import { PlaceInformationDrawerProps } from './types'
 
-const PlaceInformationDrawer = ({ data }: PlaceInformationDrawerProps) => {
+const PlaceInformationDrawer = ({
+  data,
+  onClose,
+}: PlaceInformationDrawerProps) => {
   const [checkInBtn, setCheckInBtn] = useState(false)
   const checkInBtnClickHandler = useCallback(() => {
     setCheckInBtn(true)
@@ -27,14 +30,14 @@ const PlaceInformationDrawer = ({ data }: PlaceInformationDrawerProps) => {
         </LoadingSpinnerContainer>
       ) : (
         <>
-          <CloseButtonContainer>
+          <CloseButtonContainer onClick={onClose}>
             <Image src="/cross.svg" height={30} width={30} />
           </CloseButtonContainer>
           <Typography variant="h3" color="new-primary">
             {data.title}
           </Typography>
           <ImageContainer>
-            <Image src={data.imgUrl} width={500} height={250} />
+            <Image src="/จามจุรี9.png" width={500} height={250} />
           </ImageContainer>
           <PlaceDetailsContainer>
             <TextBox>

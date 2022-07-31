@@ -1,19 +1,23 @@
 import { styled } from 'config/stitches.config'
 
 export const QrContainer = styled('div', {
-  position: 'relative',
+  position: 'fixed',
   width: '100%',
   maxWidth: '500px',
+  top: 106,
   height: 'calc(100vh - 106px)',
   '@md': {
+    top: 96,
     height: 'calc(100vh - 96px)',
   },
   '@sm': {
+    top: 68,
     height: 'calc(100vh - 68px)',
   },
   display: 'flex',
   flexDirection: 'column',
   transition: 'all 0.5s ease-in-out',
+  zIndex: 3,
 })
 
 export const Camera = styled('div', {
@@ -37,6 +41,6 @@ export const BackButton = styled('button', {
   border: 'none',
   outline: 'none',
   cursor: 'pointer',
-  zIndex: 2,
   filter: 'drop-shadow(0 1px 1px rgb(0 0 0 / 0.05))',
+  zIndex: 4,
 })

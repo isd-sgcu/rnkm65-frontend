@@ -1,8 +1,10 @@
+import { useAutoAnimate } from '@formkit/auto-animate/react'
 import Typography from 'common/components/Typography'
 import { PLACES_DATA } from 'common/constants/eStamp'
 import useHideFooter from 'common/contexts/LayoutContext/hooks/useHideFooter'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
-import React, { useMemo } from 'react'
+import dynamic from 'next/dynamic'
+import React, { useMemo, useState } from 'react'
 
 import BottomNavBar from './components/BottomNavBar'
 import PaperStamp from './components/PaperStamp'
@@ -14,14 +16,18 @@ import {
   StampContainer,
 } from './styled'
 
+const Qr = dynamic(() => import('./components/Qr'))
+
 const EStamp = () => {
   const { t } = useSSRTranslation('eStamp')
+  const [open, setOpen] = useState(false)
+  const [parent] = useAutoAnimate<HTMLDivElement>()
   useHideFooter()
 
   const status = useMemo(() => PLACES_DATA.map((place) => place.status), [])
 
   return (
-    <RootContainer>
+    <RootContainer ref={parent}>
       <StampContainer>
         <Typography variant="h3" color="blue">
           บัตรสะสม
@@ -48,7 +54,8 @@ const EStamp = () => {
           )}
         </PinCardContainer>
       </PinContainer>
-      <BottomNavBar />
+      {open && <Qr onClose={() => setOpen(false)} />}
+      <BottomNavBar onClick={() => setOpen(true)} />
     </RootContainer>
   )
 }

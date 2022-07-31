@@ -1,4 +1,4 @@
-interface PlaceInformation {
+export interface PlaceInformation {
   title: string
   titleEn: string
   imgUrl: string
@@ -10,4 +10,5 @@ interface PlaceInformation {
 
 export interface PlaceInformationDrawerProps {
   data: PlaceInformation | undefined
+  onClose: () => void
 }
