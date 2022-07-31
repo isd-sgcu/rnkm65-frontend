@@ -8,6 +8,7 @@ export const CameraMenuContainer = styled('div', {
   justifyContent: 'center',
   zIndex: '2',
 })
+
 export const BackgroundMenu = styled('div', {
   position: 'absolute',
   display: 'flex',
@@ -17,6 +18,7 @@ export const BackgroundMenu = styled('div', {
   backgroundColor: '$new-background-gray',
   border: '1px solid $new-border-gray',
 })
+
 export const StyledIcon = styled('div', {
   position: 'relative',
   width: '56px',
@@ -39,12 +41,8 @@ export const BackgroundButton = styled('div', {
 })
 
 export const StyledButton = styled('button', {
-  transition: '0.15s',
   width: '100px',
   height: '100px',
-  '&:hover': {
-    backgroundColor: '$gray',
-  },
   color: '$white',
   border: 'none',
   cursor: 'pointer',
@@ -56,3 +54,5 @@ export const StyledButton = styled('button', {
   background: '$new-background-gray',
   zIndex: '2',
 })
+
+
