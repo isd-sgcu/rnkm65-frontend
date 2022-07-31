@@ -2,6 +2,7 @@ import Button from 'common/components/Button'
 import Loading from 'common/components/Loading'
 import Typography from 'common/components/Typography'
 import { useLayout } from 'common/contexts/LayoutContext'
+import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
 import React from 'react'
 
@@ -13,7 +14,7 @@ const FreshmenNightCheck = (props: IFreshmenNightCheck) => {
   const { mode } = props
   const { t } = useTranslation('checkin')
 
-  const { handleSubmit, isLoading, i18nKey } = useCheckinHooks(
+  const { handleSubmit, isLoading, i18nKey, pageMode } = useCheckinHooks(
     mode || PageType.checkin
   )
   const { setHideFooter } = useLayout()
@@ -28,11 +29,22 @@ const FreshmenNightCheck = (props: IFreshmenNightCheck) => {
           {t(`${i18nKey}.description`)}
         </Typography>
         <Button
+          variant="eStamp"
           onClick={handleSubmit}
           css={{ width: '100%', marginTop: '1.5rem' }}
         >
-          {t(`${i18nKey}.buttonText`)}
+          {t('confirm')}
         </Button>
+        {(pageMode === PageType.checkin || pageMode === PageType.checkout) && (
+          <Link href="/" passHref>
+            <Button
+              variant="eStampSecondary"
+              css={{ width: '100%', marginTop: '1rem' }}
+            >
+              {t('cancel')}
+            </Button>
+          </Link>
+        )}
       </CheckinContainer>
     </div>
   )

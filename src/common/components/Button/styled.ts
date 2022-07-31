@@ -48,9 +48,17 @@ export const Button = styled('button', {
       },
       eStamp: {
         fontSize: '1rem',
-        fontWeight: 'normal',
         color: '$white',
         backgroundColor: '$new-primary',
+        width: '100%',
+        borderRadius: '6px',
+        padding: '8px 16px',
+      },
+      eStampSecondary: {
+        fontSize: '1rem',
+        color: '$new-primary',
+        border: '1px solid $new-gray',
+        backgroundColor: '$white',
         width: '100%',
         borderRadius: '6px',
         padding: '8px 16px',

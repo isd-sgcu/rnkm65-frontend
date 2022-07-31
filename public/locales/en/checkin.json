@@ -18,5 +18,7 @@
         "title": "Check-out Success !",
         "description": "You have check-out from the Freshmen’s Night. Thanks for joining.",
         "buttonText": "Confirm"
-    }
+    },
+    "confirm": "Confirm",
+    "cancel": "Cancel"
 }

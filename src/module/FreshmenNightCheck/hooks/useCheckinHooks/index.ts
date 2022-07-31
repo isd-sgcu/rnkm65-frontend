@@ -39,6 +39,7 @@ export const useCheckinHooks = (pageMode: PageType) => {
   return {
     isLoading,
     i18nKey,
+    pageMode,
     handleSubmit,
   }
 }
