@@ -16,7 +16,12 @@ export const HeaderContainer = styled('div', {
   },
 })
 
-export const LogoContainer = styled('div', {
+export const LogoContainer = styled('div', {})
+
+export const LeftSideContainer = styled('div', {
+  display: 'flex',
+  alignItems: 'center',
+  gap: '15px',
   flexGrow: 1,
 })
 

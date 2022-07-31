@@ -1,8 +1,10 @@
 import Hidden from 'common/components/Hidden'
+import Typography from 'common/components/Typography'
 import { Phase } from 'common/constants/phase'
 import { usePhase } from 'common/contexts/PhaseContext'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useCallback } from 'react'
 
@@ -10,8 +12,24 @@ import LogoutButton from './components/LogoutButton'
 import LogoutIcon from './components/LogoutIcon'
 import MobileIcon from './components/MobileIcon'
 import TextButton from './components/TextButton'
+import { StyledLink } from './components/TextButton/styled'
 import ToggleLanguageButton from './components/ToggleLanguageButton'
-import { HeaderContainer, IconContainer, Logo, LogoContainer } from './styled'
+import {
+  HeaderContainer,
+  IconContainer,
+  LeftSideContainer,
+  Logo,
+  LogoContainer,
+} from './styled'
+
+const CURRENT_PHASE = process.env.NEXT_PUBLIC_PHASE as
+  | 'REGISTER'
+  | 'REGISTER_END'
+  | 'BAAN_SELECTION'
+  | 'BAAN_SELECTION_END'
+  | 'BAAN_ANNOUNCE'
+  | 'ESTAMP'
+  | 'BYPASS'
 
 const Header = () => {
   const { t } = useSSRTranslation()
@@ -35,19 +53,46 @@ const Header = () => {
 
   return (
     <HeaderContainer>
-      <LogoContainer>
-        <Logo onClick={handleLogoClick}>
-          <Image src="/logo.png" layout="fill" />
-        </Logo>
-      </LogoContainer>
+      <LeftSideContainer>
+        <LogoContainer>
+          <Logo onClick={handleLogoClick}>
+            <Image src="/logo.png" layout="fill" />
+          </Logo>
+        </LogoContainer>
 
-      {showHowTo && (
+        <Link passHref href="/eStamp">
+          <a>
+            <IconContainer>
+              <MobileIcon src="/estamp-icon.svg" onClick={() => {}} />
+            </IconContainer>
+          </a>
+        </Link>
+      </LeftSideContainer>
+
+      {/* {CURRENT_PHASE === "REGISTER" && (<Hidden variant="lgdown">
+        <TextButton onClick={handleHowToRegister}>
+          {t('howToRegister')}
+        </TextButton>
+      </Hidden>)} */}
+
+      {router.pathname !== '/' && router.pathname !== '/login' && (
+        <Hidden variant="lgdown">
+          <Link href="/back" passHref>
+            <StyledLink>
+              <Typography variant="subhead3">{t('goBack')}</Typography>
+            </StyledLink>
+          </Link>
+        </Hidden>
+      )}
+
+      {CURRENT_PHASE === 'BAAN_SELECTION' && showHowTo && (
         <Hidden variant="lgdown">
           <TextButton onClick={handleHowToSelectBaan}>
             {t('howToSelectBaan')}
           </TextButton>
         </Hidden>
       )}
+
       <Hidden variant="lgdown">
         <TextButton onClick={handleReportIssue}>{t('reportIssue')}</TextButton>
       </Hidden>
@@ -59,6 +104,22 @@ const Header = () => {
       </Hidden>
 
       {/* Mobile */}
+      {router.pathname !== '/' && router.pathname !== '/login' && (
+        <Hidden variant="xlup">
+          <Link passHref href="/">
+            <a>
+              <IconContainer>
+                {/* <MobileIcon
+            src="/how-to-register.svg"
+            onClick={handleHowToRegister}
+          /> */}
+                <MobileIcon src="/home-icon.svg" onClick={() => {}} />
+              </IconContainer>
+            </a>
+          </Link>
+        </Hidden>
+      )}
+
       <Hidden variant="xlup">
         <IconContainer>
           {showHowTo && (
