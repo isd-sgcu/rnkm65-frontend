@@ -1,4 +1,4 @@
-export interface PlaceInformationDrawerProps {
+interface PlaceInformation {
   title: string
   titleEn: string
   imgUrl: string
@@ -6,4 +6,8 @@ export interface PlaceInformationDrawerProps {
   detailEn: string
   time: string
   timeEn: string
+}
+
+export interface PlaceInformationDrawerProps {
+  data: PlaceInformation | undefined
 }
