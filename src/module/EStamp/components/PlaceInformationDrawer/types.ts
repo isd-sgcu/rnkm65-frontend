@@ -1,4 +1,5 @@
 import { IEvent } from 'common/types/event'
+
 export interface PlaceInformation extends IEvent {
   isChecked: boolean
 }
