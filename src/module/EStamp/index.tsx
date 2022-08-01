@@ -5,7 +5,7 @@ import Typography from 'common/components/Typography'
 import { PLACES_DATA } from 'common/constants/eStamp'
 import useHideFooter from 'common/contexts/LayoutContext/hooks/useHideFooter'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
-import { checkedEvents, events } from 'common/mock/fakeEvents'
+import { getAllCheckedEvents } from 'common/utils/event'
 import dynamic from 'next/dynamic'
 import React, { useMemo, useState } from 'react'
 
@@ -18,21 +18,26 @@ import {
   RootContainer,
   StampContainer,
 } from './styled'
+import { EStampProps } from './types'
 
 const Qr = dynamic(() => import('./components/Qr'))
 
-const EStamp = () => {
+const EStamp = ({ events }: EStampProps) => {
   const { t } = useSSRTranslation('eStamp')
   const [open, setOpen] = useState(false)
   const [parent] = useAutoAnimate<HTMLDivElement>()
-  const { data, isLoading } = useQuery(['events'], () => checkedEvents, {
-    initialData: [],
-  })
+  const { data, isLoading } = useQuery(
+    ['events'],
+    () => getAllCheckedEvents(true),
+    {
+      initialData: [],
+    }
+  )
   useHideFooter()
 
   const status = useMemo(
     () => events.map((event) => !!data?.find((d) => d.id === event.id)),
-    [data]
+    [events, data]
   )
 
   if (isLoading) return <Loading />

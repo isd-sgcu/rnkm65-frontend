@@ -1,8 +1,10 @@
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import Button from 'common/components/Button'
 import Typography from 'common/components/Typography'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
+import { checkInEvent } from 'common/utils/event'
 import Image from 'next/image'
-import React from 'react'
+import React, { useCallback } from 'react'
 
 import {
   Box,
@@ -19,6 +21,12 @@ const PlaceInformationDrawer = ({
   onClose,
 }: PlaceInformationDrawerProps) => {
   const { t, i18n } = useSSRTranslation('eStamp')
+  const queryClient = useQueryClient()
+  const { mutate, isLoading } = useMutation(
+    () => checkInEvent(data?.id || '', true),
+    { onSuccess: () => queryClient.invalidateQueries(['events']) }
+  )
+  const buttonClickHandler = useCallback(() => mutate(), [mutate])
 
   return (
     <Box css={data ? {} : { justifyContent: 'center' }}>
@@ -45,10 +53,19 @@ const PlaceInformationDrawer = ({
                   : data.descriptionTH}
               </Typography>
             </TextBox>
-            <Button type="button" variant="eStamp" disabled={data.isChecked}>
-              {data.isChecked
-                ? t('placeInformationDrawer.doneButton')
-                : t('placeInformationDrawer.checkInButton')}
+            <Button
+              type="button"
+              variant="eStamp"
+              disabled={data.isChecked || isLoading}
+              onClick={buttonClickHandler}
+            >
+              {isLoading && (
+                <Image src="/loadingSpinner.svg" width={200} height={200} />
+              )}
+              {!isLoading &&
+                (data.isChecked
+                  ? t('placeInformationDrawer.doneButton')
+                  : t('placeInformationDrawer.checkInButton'))}
             </Button>
           </PlaceDetailsContainer>
         </>
