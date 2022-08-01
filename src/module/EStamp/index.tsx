@@ -2,7 +2,6 @@ import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { useQuery } from '@tanstack/react-query'
 import Loading from 'common/components/Loading'
 import Typography from 'common/components/Typography'
-import { PLACES_DATA } from 'common/constants/eStamp'
 import useHideFooter from 'common/contexts/LayoutContext/hooks/useHideFooter'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import { getAllCheckedEvents } from 'common/utils/event'
@@ -23,7 +22,7 @@ import { EStampProps } from './types'
 const Qr = dynamic(() => import('./components/Qr'))
 
 const EStamp = ({ events }: EStampProps) => {
-  const { t } = useSSRTranslation('eStamp')
+  const { t, i18n } = useSSRTranslation('eStamp')
   const [open, setOpen] = useState(false)
   const [parent] = useAutoAnimate<HTMLDivElement>()
   const { data, isLoading } = useQuery(
@@ -67,16 +66,15 @@ const EStamp = ({ events }: EStampProps) => {
               {t('placeTitle')}
             </Typography>
             <PinCardContainer>
-              {PLACES_DATA.map((place) =>
-                place.status ? null : (
+              {events
+                .filter((event) => !data.find((e) => e.id === event.id))
+                .map((event) => (
                   <PinCard
-                    name={place.name}
-                    key={place.id}
-                    urlMap={place.urlMap}
-                    id={place.id}
+                    key={event.id}
+                    imgUrl={event.imageURL}
+                    name={i18n.language === 'en' ? event.nameEN : event.nameTH}
                   />
-                )
-              )}
+                ))}
             </PinCardContainer>
           </PinContainer>
           <BottomNavBar onClick={() => setOpen(true)} />
