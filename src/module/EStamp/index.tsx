@@ -45,7 +45,7 @@ const EStamp = ({ events }: EStampProps) => {
     <RootContainer ref={parent}>
       <StampContainer>
         <Typography variant="h3" color="blue">
-          บัตรสะสม
+          {t('title')}
         </Typography>
         <Typography variant="h2" color="blue">
           E - STAMP
