@@ -3,9 +3,8 @@ import { IUser } from 'common/types/user'
 import { UserDTO } from 'dto/userDTO'
 
 import { apiClient } from './axios'
-import { convertBaanDTOtoIBaan } from './baan'
 
-const transformUserDTOtoIUser = (user: UserDTO, locale: 'TH' | 'EN') => ({
+const transformUserDTOtoIUser = (user: UserDTO) => ({
   id: user.id,
   studentID: user.studentID,
   faculty: user.faculty,
@@ -25,19 +24,18 @@ const transformUserDTOtoIUser = (user: UserDTO, locale: 'TH' | 'EN') => ({
   canSelectBaan: user.canSelectBaan ?? false,
   isVerify: user.isVerify ?? false,
   groupId: user.groupId ?? '',
-  baan: user.baan && convertBaanDTOtoIBaan(user.baan, locale),
+  baan: user.baanId,
 })
 
-const getUserProfile = async (locale?: string): Promise<IUser | null> => {
+const getUserProfile = async (): Promise<IUser | null> => {
   let res: AxiosResponse
-  const localeStr = (locale?.toUpperCase() as 'TH' | 'EN') || 'TH'
   try {
     res = await apiClient.get<UserDTO>('/auth/me')
   } catch (err) {
     return null
   }
 
-  const user = transformUserDTOtoIUser(res.data, localeStr)
+  const user = transformUserDTOtoIUser(res.data)
   return user
 }
 

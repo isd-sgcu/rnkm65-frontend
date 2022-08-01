@@ -33,3 +33,17 @@ export const getBaanInfo = async (locale?: string): Promise<Array<IBaan>> => {
 }
 
 export const haveBaan = (group?: IGroup) => group?.baans?.length !== 0
+
+export const getBaanInfoById = async (
+  id: string,
+  locale?: string
+): Promise<IBaan> => {
+  const res = await axios.get(`${API_BASE_URL}/baan/${id}`)
+  const baan = res.data as BaanDTO
+
+  const localeStr = (locale?.toUpperCase() as 'TH' | 'EN') || 'TH'
+
+  if (!baan) return {} as IBaan
+
+  return convertBaanDTOtoIBaan(baan, localeStr)
+}

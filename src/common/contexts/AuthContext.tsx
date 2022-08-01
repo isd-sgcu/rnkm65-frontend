@@ -44,7 +44,7 @@ const AuthProvider: React.FC = ({ children }) => {
 
     const token = localStorage.getItem('token')
     if (token) {
-      const userProfile = await getUserProfile(router.locale)
+      const userProfile = await getUserProfile()
       if (!userProfile) {
         // TODO: Handle error
         localStorage.clear()

@@ -1,26 +1,30 @@
+import Loading from 'common/components/Loading'
 import { useAuth } from 'common/contexts/AuthContext'
 import { IBaan } from 'common/types/baan'
 import WithUserProfile from 'module/Profile/components/WithUserProfile'
 
 import AnnounceText from './components/AnnounceText'
 import BaanCard from './components/BaanCard'
+import { useBaanData } from './hooks/useBaanData'
 import { AnnounceContainer } from './styled'
 
-const MOCK_BAAN = {
-  name: 'baanName',
-  imageUrl: 'imageUrl',
-  description: 'description',
-  facebook: 'facebook',
-  ig: 'ig',
-} as IBaan
+// const MOCK_BAAN = {
+//   name: 'baanName',
+//   imageUrl: 'imageUrl',
+//   description: 'description',
+//   facebook: 'facebook',
+//   ig: 'ig',
+// } as IBaan
 
 const AnnounceBaan = () => {
   const { user } = useAuth()
+  const { baan, isLoading } = useBaanData(user?.baanId)
   return (
     <WithUserProfile>
+      {isLoading && <Loading />}
       <AnnounceContainer>
-        <AnnounceText baanName={MOCK_BAAN.name} />
-        <BaanCard {...(user?.baan || MOCK_BAAN)} />
+        <AnnounceText baanName={baan?.name || ''} />
+        <BaanCard {...(baan || ({} as IBaan))} />
       </AnnounceContainer>
     </WithUserProfile>
   )
