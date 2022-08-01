@@ -8,9 +8,9 @@ import { CameraBg } from './camerabg'
 import { BackButton, Camera, QrContainer } from './styled'
 import { QrProps } from './types'
 
-const Qr = ({ onClose }: QrProps) => {
+const Qr = ({ onClose, events, checkedEvents }: QrProps) => {
   const [parent] = useAutoAnimate<HTMLDivElement>()
-  const [data] = useState<PlaceInformation | undefined>(undefined)
+  const [data, setData] = useState<PlaceInformation | undefined>(undefined)
 
   return (
     <QrContainer
@@ -30,6 +30,13 @@ const Qr = ({ onClose }: QrProps) => {
               onResult={(result) => {
                 if (result) {
                   console.log(result.getText())
+                  const event = events.find((e) => e.id === '1')
+                  if (event) {
+                    setData({
+                      ...event,
+                      isChecked: !!checkedEvents.find((e) => e.id === event.id),
+                    })
+                  }
                 }
               }}
               constraints={{ facingMode: 'user' }}

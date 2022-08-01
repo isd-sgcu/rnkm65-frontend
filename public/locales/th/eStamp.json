@@ -1,3 +1,7 @@
 {
-  "placeTitle": "สถานที่ที่เหลือ"
+  "placeTitle": "สถานที่ที่เหลือ",
+  "placeInformationDrawer": {
+    "checkInButton": "เช็คอิน",
+    "doneButton": "เช็คอินเรียบร้อย"
+  }
 }

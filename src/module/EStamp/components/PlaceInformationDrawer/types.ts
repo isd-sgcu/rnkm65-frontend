@@ -1,11 +1,6 @@
-export interface PlaceInformation {
-  title: string
-  titleEn: string
-  imgUrl: string
-  detail: string
-  detailEn: string
-  time: string
-  timeEn: string
+import { IEvent } from 'common/types/event'
+export interface PlaceInformation extends IEvent {
+  isChecked: boolean
 }
 
 export interface PlaceInformationDrawerProps {

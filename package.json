@@ -13,6 +13,7 @@
     "@formkit/auto-animate": "1.0.0-beta.1",
     "@hookform/resolvers": "^2.9.1",
     "@stitches/react": "^1.2.8",
+    "@tanstack/react-query": "^4.0.10",
     "@types/react-beautiful-dnd": "^13.1.2",
     "axios": "^0.26.1",
     "husky": "^7.0.4",

@@ -1,7 +1,8 @@
 import Button from 'common/components/Button'
 import Typography from 'common/components/Typography'
+import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import Image from 'next/image'
-import React, { useCallback, useState } from 'react'
+import React from 'react'
 
 import {
   Box,
@@ -17,10 +18,7 @@ const PlaceInformationDrawer = ({
   data,
   onClose,
 }: PlaceInformationDrawerProps) => {
-  const [checkInBtn, setCheckInBtn] = useState(false)
-  const checkInBtnClickHandler = useCallback(() => {
-    setCheckInBtn(true)
-  }, [])
+  const { t, i18n } = useSSRTranslation('eStamp')
 
   return (
     <Box css={data ? {} : { justifyContent: 'center' }}>
@@ -34,24 +32,23 @@ const PlaceInformationDrawer = ({
             <Image src="/cross.svg" height={30} width={30} />
           </CloseButtonContainer>
           <Typography variant="h3" color="new-primary">
-            {data.title}
+            {i18n.language === 'en' ? data.nameEN : data.nameTH}
           </Typography>
           <ImageContainer>
             <Image src="/จามจุรี9.png" width={500} height={250} />
           </ImageContainer>
           <PlaceDetailsContainer>
             <TextBox>
-              <Typography color="new-primary">{data.detail}</Typography>
-              <hr />
-              <Typography color="new-primary">{data.time}</Typography>
+              <Typography color="new-primary" css={{ whiteSpace: 'pre-line' }}>
+                {i18n.language === 'en'
+                  ? data.descriptionEN
+                  : data.descriptionTH}
+              </Typography>
             </TextBox>
-            <Button
-              type="button"
-              variant="eStamp"
-              disabled={checkInBtn}
-              onClick={checkInBtnClickHandler}
-            >
-              {checkInBtn ? 'Done' : 'Check - in'}
+            <Button type="button" variant="eStamp" disabled={data.isChecked}>
+              {data.isChecked
+                ? t('placeInformationDrawer.doneButton')
+                : t('placeInformationDrawer.checkInButton')}
             </Button>
           </PlaceDetailsContainer>
         </>

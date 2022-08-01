@@ -1,8 +1,11 @@
 import { useAutoAnimate } from '@formkit/auto-animate/react'
+import { useQuery } from '@tanstack/react-query'
+import Loading from 'common/components/Loading'
 import Typography from 'common/components/Typography'
 import { PLACES_DATA } from 'common/constants/eStamp'
 import useHideFooter from 'common/contexts/LayoutContext/hooks/useHideFooter'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
+import { checkedEvents, events } from 'common/mock/fakeEvents'
 import dynamic from 'next/dynamic'
 import React, { useMemo, useState } from 'react'
 
@@ -22,9 +25,17 @@ const EStamp = () => {
   const { t } = useSSRTranslation('eStamp')
   const [open, setOpen] = useState(false)
   const [parent] = useAutoAnimate<HTMLDivElement>()
+  const { data, isLoading } = useQuery(['events'], () => checkedEvents, {
+    initialData: [],
+  })
   useHideFooter()
 
-  const status = useMemo(() => PLACES_DATA.map((place) => place.status), [])
+  const status = useMemo(
+    () => events.map((event) => !!data?.find((d) => d.id === event.id)),
+    [data]
+  )
+
+  if (isLoading) return <Loading />
 
   return (
     <RootContainer ref={parent}>
@@ -37,25 +48,35 @@ const EStamp = () => {
         </Typography>
         <PaperStamp status={status} />
       </StampContainer>
-      <PinContainer>
-        <Typography variant="subhead2" color="blue">
-          {t('placeTitle')}
-        </Typography>
-        <PinCardContainer>
-          {PLACES_DATA.map((place) =>
-            place.status ? null : (
-              <PinCard
-                name={place.name}
-                key={place.id}
-                urlMap={place.urlMap}
-                id={place.id}
-              />
-            )
-          )}
-        </PinCardContainer>
-      </PinContainer>
-      {open && <Qr onClose={() => setOpen(false)} />}
-      {!open && <BottomNavBar onClick={() => setOpen(true)} />}
+      {open && (
+        <Qr
+          onClose={() => setOpen(false)}
+          events={events}
+          checkedEvents={data}
+        />
+      )}
+      {!open && (
+        <>
+          <PinContainer>
+            <Typography variant="subhead2" color="blue">
+              {t('placeTitle')}
+            </Typography>
+            <PinCardContainer>
+              {PLACES_DATA.map((place) =>
+                place.status ? null : (
+                  <PinCard
+                    name={place.name}
+                    key={place.id}
+                    urlMap={place.urlMap}
+                    id={place.id}
+                  />
+                )
+              )}
+            </PinCardContainer>
+          </PinContainer>
+          <BottomNavBar onClick={() => setOpen(true)} />
+        </>
+      )}
     </RootContainer>
   )
 }
