@@ -8,14 +8,6 @@ import BaanCard from './components/BaanCard'
 import { useBaanData } from './hooks/useBaanData'
 import { AnnounceContainer } from './styled'
 
-// const MOCK_BAAN = {
-//   name: 'baanName',
-//   imageUrl: 'imageUrl',
-//   description: 'description',
-//   facebook: 'facebook',
-//   ig: 'ig',
-// } as IBaan
-
 const AnnounceBaan = () => {
   const { user } = useAuth()
   const { baan, isLoading } = useBaanData(user?.baanId)
