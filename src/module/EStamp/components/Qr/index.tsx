@@ -1,4 +1,5 @@
 import { useAutoAnimate } from '@formkit/auto-animate/react'
+import { convertUrlToEventId } from 'common/utils/event'
 import React, { useMemo } from 'react'
 import { QrReader } from 'react-qr-reader'
 
@@ -36,8 +37,8 @@ const Qr = ({ onClose, onScan, event, checkedEvents }: QrProps) => {
               scanDelay={300}
               onResult={(result) => {
                 if (result) {
-                  console.log(result.getText())
-                  onScan('1')
+                  const eventId = convertUrlToEventId(result.getText())
+                  if (eventId) onScan(eventId)
                 }
               }}
               constraints={{ facingMode: 'user' }}

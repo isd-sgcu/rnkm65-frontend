@@ -49,6 +49,13 @@ const EStamp = ({ events }: EStampProps) => {
     },
     [events]
   )
+  const openDrawerHandler = useCallback(() => {
+    setOpen(true)
+  }, [])
+  const closeDrawerHandler = useCallback(() => {
+    setScanedEvent(undefined)
+    setOpen(false)
+  }, [])
 
   useEffect(() => {
     if (router.query.eventId) {
@@ -72,7 +79,7 @@ const EStamp = ({ events }: EStampProps) => {
       </StampContainer>
       {open && (
         <Qr
-          onClose={() => setOpen(false)}
+          onClose={closeDrawerHandler}
           onScan={qrScanHandler}
           event={scanedEvent}
           checkedEvents={data}
@@ -96,7 +103,7 @@ const EStamp = ({ events }: EStampProps) => {
                 ))}
             </PinCardContainer>
           </PinContainer>
-          <BottomNavBar onClick={() => setOpen(true)} />
+          <BottomNavBar onClick={openDrawerHandler} />
         </>
       )}
     </RootContainer>

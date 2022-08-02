@@ -1,5 +1,6 @@
 import { checkedEvents, events } from 'common/mock/fakeEvents'
 import { IEvent } from 'common/types/event'
+import { APP_BASE_URL } from 'config/env'
 
 import { httpGet } from './axios'
 
@@ -23,4 +24,13 @@ export const checkInEvent = async (id: string, mock?: boolean) => {
     }
   }
   throw new Error('TODO: implement this!')
+}
+
+export const convertUrlToEventId = (url: string, mock?: boolean) => {
+  if (mock) return '1'
+  if (url.startsWith(`${APP_BASE_URL}/eStamp`)) {
+    const params = new URLSearchParams(new URL(url).searchParams)
+    return params.get('eventId')
+  }
+  return null
 }

@@ -9,7 +9,7 @@ const PaperStamp = (props: PaperStampProps) => {
   return (
     <PaperStampContainer>
       <StyledImage>
-        <Image src="/e-stamp/eStamp-background.svg" layout="fill" />
+        <Image src="/e-stamp/eStamp-background.svg" layout="fill" priority />
       </StyledImage>
       <StampPieceContainer>
         {status.map((stampPieceStatus, inx) => {
@@ -18,8 +18,6 @@ const PaperStamp = (props: PaperStampProps) => {
           return (
             <StampPiece
               key={`stampPiece${row}${column}`}
-              row={row}
-              column={column}
               status={stampPieceStatus}
               src={`/e-stamp/stamp-piece/${inx}.jpg`}
             />
