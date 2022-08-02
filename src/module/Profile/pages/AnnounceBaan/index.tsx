@@ -13,11 +13,14 @@ const AnnounceBaan = () => {
   const { baan, isLoading } = useBaanData(user?.baanId)
   return (
     <WithUserProfile>
-      {isLoading && <Loading />}
-      <AnnounceContainer>
-        <AnnounceText baanName={baan?.name || ''} />
-        <BaanCard {...(baan || ({} as IBaan))} />
-      </AnnounceContainer>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <AnnounceContainer>
+          <AnnounceText baanName={baan?.name || ''} />
+          <BaanCard {...(baan || ({} as IBaan))} />
+        </AnnounceContainer>
+      )}
     </WithUserProfile>
   )
 }
