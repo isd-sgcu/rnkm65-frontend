@@ -24,7 +24,7 @@ const transformUserDTOtoIUser = (user: UserDTO) => ({
   canSelectBaan: user.canSelectBaan ?? false,
   isVerify: user.isVerify ?? false,
   groupId: user.groupId ?? '',
-  baan: user.baanId,
+  baanId: user.baanId,
 })
 
 const getUserProfile = async (): Promise<IUser | null> => {
