@@ -2,13 +2,36 @@ import Typography from 'common/components/Typography'
 import Image from 'next/image'
 import React from 'react'
 
-import { FooterContainer, LogoContainer } from './styled'
+import { sponserMetadata } from './constants'
+import {
+  FooterContainer,
+  LogoContainer,
+  SponserLogo,
+  SponserLogoContainer,
+} from './styled'
 
 const Footer = () => (
   <FooterContainer>
     <LogoContainer>
       <Image src="/ISDlogo.svg" layout="fill" />
     </LogoContainer>
+    <SponserLogoContainer>
+      {sponserMetadata.map((val) => (
+        <SponserLogo
+          key={val.name}
+          css={{
+            width: val.width,
+            height: val.height,
+          }}
+        >
+          <Image
+            alt={val.name}
+            src={`/sponsor/${val.filename}`}
+            layout="fill"
+          />
+        </SponserLogo>
+      ))}
+    </SponserLogoContainer>
     <Typography variant="description">
       Freshers&apos; Fair, Student Government of Chulalongkorn University
       <br /> Copyright © 2022
