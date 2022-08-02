@@ -1,7 +1,8 @@
 import { IEvent } from 'common/types/event'
 
 export interface QrProps {
+  onScan: (_: string) => void
   onClose: () => void
-  events: IEvent[]
+  event: IEvent | undefined
   checkedEvents: IEvent[]
 }

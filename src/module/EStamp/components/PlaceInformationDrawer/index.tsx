@@ -23,7 +23,10 @@ const PlaceInformationDrawer = ({
   const { t, i18n } = useSSRTranslation('eStamp')
   const queryClient = useQueryClient()
   const { mutate, isLoading } = useMutation(
-    () => checkInEvent(data?.id || '', true),
+    ['events'],
+    async () => {
+      if (data) await checkInEvent(data.id, true)
+    },
     { onSuccess: () => queryClient.invalidateQueries(['events']) }
   )
   const buttonClickHandler = useCallback(() => mutate(), [mutate])

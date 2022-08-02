@@ -4,9 +4,11 @@ import Loading from 'common/components/Loading'
 import Typography from 'common/components/Typography'
 import useHideFooter from 'common/contexts/LayoutContext/hooks/useHideFooter'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
+import { IEvent } from 'common/types/event'
 import { getAllCheckedEvents } from 'common/utils/event'
 import dynamic from 'next/dynamic'
-import React, { useMemo, useState } from 'react'
+import { useRouter } from 'next/router'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 
 import BottomNavBar from './components/BottomNavBar'
 import PaperStamp from './components/PaperStamp'
@@ -22,8 +24,10 @@ import { EStampProps } from './types'
 const Qr = dynamic(() => import('./components/Qr'))
 
 const EStamp = ({ events }: EStampProps) => {
+  const router = useRouter()
   const { t, i18n } = useSSRTranslation('eStamp')
   const [open, setOpen] = useState(false)
+  const [scanedEvent, setScanedEvent] = useState<IEvent | undefined>(undefined)
   const [parent] = useAutoAnimate<HTMLDivElement>()
   const { data, isLoading } = useQuery(
     ['events'],
@@ -38,6 +42,20 @@ const EStamp = ({ events }: EStampProps) => {
     () => events.map((event) => !!data?.find((d) => d.id === event.id)),
     [events, data]
   )
+  const qrScanHandler = useCallback(
+    (eId: string) => {
+      const event = events.find((e) => e.id === eId)
+      if (event) setScanedEvent(event)
+    },
+    [events]
+  )
+
+  useEffect(() => {
+    if (router.query.eventId) {
+      qrScanHandler(router.query.eventId.toString())
+      setOpen(true)
+    }
+  }, [router.query, qrScanHandler])
 
   if (isLoading) return <Loading />
 
@@ -55,7 +73,8 @@ const EStamp = ({ events }: EStampProps) => {
       {open && (
         <Qr
           onClose={() => setOpen(false)}
-          events={events}
+          onScan={qrScanHandler}
+          event={scanedEvent}
           checkedEvents={data}
         />
       )}

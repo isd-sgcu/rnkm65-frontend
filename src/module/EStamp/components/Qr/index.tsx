@@ -1,5 +1,5 @@
 import { useAutoAnimate } from '@formkit/auto-animate/react'
-import React, { useMemo, useState } from 'react'
+import React, { useMemo } from 'react'
 import { QrReader } from 'react-qr-reader'
 
 import PlaceInformationDrawer from '../PlaceInformationDrawer'
@@ -8,30 +8,28 @@ import { CameraBg } from './camerabg'
 import { BackButton, Camera, QrContainer } from './styled'
 import { QrProps } from './types'
 
-const Qr = ({ onClose, events, checkedEvents }: QrProps) => {
+const Qr = ({ onClose, onScan, event, checkedEvents }: QrProps) => {
   const [parent] = useAutoAnimate<HTMLDivElement>()
-  const [eventId, setEventId] = useState<string | undefined>(undefined)
   const data: PlaceInformation | undefined = useMemo(() => {
-    const event = events.find((e) => e.id === eventId)
     if (event)
       return {
         ...event,
-        isChecked: !!checkedEvents.find((e) => e.id === eventId),
+        isChecked: !!checkedEvents.find((e) => e.id === event.id),
       }
     return undefined
-  }, [checkedEvents, eventId, events])
+  }, [checkedEvents, event])
 
   return (
     <QrContainer
       ref={parent}
       css={
-        eventId
+        event
           ? {}
           : { backgroundColor: '#D9D9D9', '@sm': { top: 0, height: '100vh' } }
       }
     >
       <Camera>
-        {!eventId && (
+        {!event && (
           <>
             <BackButton onClick={onClose}>X</BackButton>
             <QrReader
@@ -39,7 +37,7 @@ const Qr = ({ onClose, events, checkedEvents }: QrProps) => {
               onResult={(result) => {
                 if (result) {
                   console.log(result.getText())
-                  setEventId('1')
+                  onScan('1')
                 }
               }}
               constraints={{ facingMode: 'user' }}
