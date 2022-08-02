@@ -51,7 +51,7 @@ export const PHASE_DATA = [
   },
   {
     phase: Phase.BAAN_ANNOUNCE,
-    startTime: new Date('August 2, 2022 20:00 GMT+07:00').getTime(),
+    startTime: new Date('August 3, 2022 20:00 GMT+07:00').getTime(),
     allowRoute: [],
   },
   {
