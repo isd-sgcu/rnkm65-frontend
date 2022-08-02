@@ -5,7 +5,7 @@ import Typography from 'common/components/Typography'
 import useHideFooter from 'common/contexts/LayoutContext/hooks/useHideFooter'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import { IEvent } from 'common/types/event'
-import { getAllCheckedEvents } from 'common/utils/event'
+import { getAllCheckedEvents, getAllEvents } from 'common/utils/event'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
@@ -19,16 +19,22 @@ import {
   RootContainer,
   StampContainer,
 } from './styled'
-import { EStampProps } from './types'
 
 const Qr = dynamic(() => import('./components/Qr'))
 
-const EStamp = ({ events }: EStampProps) => {
+const EStamp = () => {
   const router = useRouter()
   const { t, i18n } = useSSRTranslation('eStamp')
   const [open, setOpen] = useState(false)
   const [scanedEvent, setScanedEvent] = useState<IEvent | undefined>(undefined)
   const [parent] = useAutoAnimate<HTMLDivElement>()
+  const { data: events, isLoading: eventsIsLoading } = useQuery(
+    ['allEvents'],
+    () => getAllEvents(true),
+    {
+      initialData: [],
+    }
+  )
   const { data, isLoading } = useQuery(
     ['events'],
     () => getAllCheckedEvents(true),
@@ -64,7 +70,7 @@ const EStamp = ({ events }: EStampProps) => {
     }
   }, [router.query, qrScanHandler])
 
-  if (isLoading) return <Loading />
+  if (eventsIsLoading || isLoading) return <Loading />
 
   return (
     <RootContainer ref={parent}>

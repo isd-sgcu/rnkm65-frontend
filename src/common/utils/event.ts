@@ -1,18 +1,28 @@
 import { checkedEvents, events } from 'common/mock/fakeEvents'
-import { IEvent } from 'common/types/event'
+import {
+  getAllCheckedEventsSchema,
+  getAllEventsSchema,
+  IGetAllCheckedEvent,
+  IGetAllEvent,
+} from 'common/types/event'
 import { APP_BASE_URL } from 'config/env'
 
-import { httpGet } from './axios'
+import { apiClient } from './axios'
 
 export const getAllEvents = async (mock?: boolean) => {
   if (mock) return events
-  return (await httpGet<{ eventList: IEvent[] }>('/estamp?eventType=estamp'))
-    .data.eventList
+  const { data } = await apiClient.get<IGetAllEvent>('/estamp?eventType=estamp')
+  if (await getAllEventsSchema.isValid(data))
+    return getAllEventsSchema.validateSync(data).event
+  throw new Error('Schema not match (getAllEvents)')
 }
 
 export const getAllCheckedEvents = async (mock?: boolean) => {
   if (mock) return checkedEvents
-  return (await httpGet<{ eventList: IEvent[] }>('/estamp/user')).data.eventList
+  const { data } = await apiClient.get<IGetAllCheckedEvent>('/estamp/user')
+  if (await getAllCheckedEventsSchema.isValid(data))
+    return getAllCheckedEventsSchema.validateSync(data).eventList
+  throw new Error('Schema not match (getAllCheckedEvents)')
 }
 
 export const checkInEvent = async (id: string, mock?: boolean) => {
