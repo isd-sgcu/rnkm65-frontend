@@ -11,9 +11,15 @@ const AnnounceText: React.FC<IAnnounceTextProps> = (props) => {
 
   return (
     <AnnounceTextContainer>
-      <Typography variant="h2">{t('announce.congrats')}</Typography>
+      <Typography color="new-primary" variant="h2">
+        {t('announce.congrats')}
+      </Typography>
       <JoinBaanContainer>
-        <Typography css={{ '@md': { textAlign: 'center' } }} variant="h3">
+        <Typography
+          color="new-primary"
+          css={{ '@md': { textAlign: 'center' } }}
+          variant="h3"
+        >
           <Trans
             i18nKey="profile:announce.join"
             components={[
@@ -27,7 +33,9 @@ const AnnounceText: React.FC<IAnnounceTextProps> = (props) => {
           />
         </Typography>
       </JoinBaanContainer>
-      <Typography variant="subhead3">{t('announce.comingSoon')}</Typography>
+      <Typography color="new-primary" variant="subhead3">
+        {t('announce.comingSoon')}
+      </Typography>
     </AnnounceTextContainer>
   )
 }
