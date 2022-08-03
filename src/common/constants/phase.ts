@@ -57,6 +57,6 @@ export const PHASE_DATA = [
   {
     phase: Phase.ESTAMP,
     startTime: new Date('August 4, 2022 9:00 GMT+07:00').getTime(),
-    allowRoute: ['/checkinSuccess', '/eStamp'],
+    allowRoute: ['/eStamp', '/checkin/[id]'],
   },
 ].reverse()
