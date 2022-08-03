@@ -60,13 +60,16 @@ const Header = () => {
           </Logo>
         </LogoContainer>
 
-        <Link passHref href="/eStamp">
-          <a>
-            <IconContainer>
-              <MobileIcon src="/estamp-icon.svg" onClick={() => {}} />
-            </IconContainer>
-          </a>
-        </Link>
+        {CURRENT_PHASE === 'ESTAMP' && (
+          <Link passHref href="/eStamp">
+            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+            <a>
+              <IconContainer>
+                <MobileIcon src="/estamp-icon.svg" onClick={() => {}} />
+              </IconContainer>
+            </a>
+          </Link>
+        )}
       </LeftSideContainer>
 
       {/* {CURRENT_PHASE === "REGISTER" && (<Hidden variant="lgdown">
@@ -107,6 +110,7 @@ const Header = () => {
       {router.pathname !== '/' && router.pathname !== '/login' && (
         <Hidden variant="xlup">
           <Link passHref href="/">
+            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
             <a>
               <IconContainer>
                 {/* <MobileIcon

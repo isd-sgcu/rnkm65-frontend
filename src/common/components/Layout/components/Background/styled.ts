@@ -23,7 +23,7 @@ export const TopRightBGContainer = styled('div', {
 
 export const BottomLeftBGContainer = styled('div', {
   position: 'absolute',
-  bottom: 0,
+  bottom: 10,
   left: 0,
   width: '220px',
   height: '500px',
@@ -49,7 +49,7 @@ export const BottomRightBGContainer = styled('div', {
   '@sm': {
     display: 'block',
     position: 'absolute',
-    bottom: 0,
+    bottom: 10,
     right: 0,
     height: '90vw',
     width: '70vw',
@@ -60,12 +60,12 @@ export const BottomBGContainerDesktop = styled('div', {
   position: 'absolute',
   width: '100vw',
   height: '27vw',
-  bottom: 0,
+  bottom: '50px',
   '@lg': {
-    bottom: '40px',
+    bottom: '75px',
   },
   '@md': {
-    bottom: '50px',
+    bottom: '90px',
   },
   '@sm': {
     display: 'none',
@@ -79,7 +79,7 @@ export const BottomBGContainerMobile = styled('div', {
     position: 'absolute',
     width: '100vw',
     height: '50vw',
-    bottom: 0,
+    bottom: 70,
   },
   '@xs': {
     height: '60vw',
