@@ -16,7 +16,7 @@ export const CAN_EDIT_PROFILE = [
 
 export const CAN_REGISTER = [Phase.REGISTER, Phase.ESTAMP]
 
-export const DEFAULT_ROUTE = ['/', '/login', '/register']
+export const DEFAULT_ROUTE = ['/', '/login', '/register', '/checkin/[id]']
 
 export const PHASE_DATA = [
   {
@@ -57,6 +57,6 @@ export const PHASE_DATA = [
   {
     phase: Phase.ESTAMP,
     startTime: new Date('August 5, 2022 8:00 GMT+07:00').getTime(),
-    allowRoute: ['/checkinSuccess', '/eStamp'],
+    allowRoute: ['/eStamp'],
   },
 ].reverse()

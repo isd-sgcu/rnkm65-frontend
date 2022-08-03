@@ -1,0 +1,26 @@
+{
+  "checkin": {
+    "title": "ต้องการเช็กอินหรือไม่ ?",
+    "description": "คุณกำลังจะเช็กอินเข้างาน {{location}}",
+    "buttonText": "Check - in"
+  },
+  "checkinSuccess": {
+    "title": "เช็กอินสำเร็จ !",
+    "description": "คุณได้เช็กอินเข้างาน {{location}} แล้ว ขอให้สนุกนะ",
+    "buttonText": "ตกลง"
+  },
+  "checkout": {
+    "title": "ต้องการเช็กเอาท์หรือไม่ ?",
+    "description": "คุณกำลังจะเช็กเอาท์ออกจากงาน {{location}}",
+    "buttonText": "Check - out"
+  },
+  "checkoutSuccess": {
+    "title": "เช็กเอาท์สำเร็จ !",
+    "description": "คุณได้เช็กเอาท์ออกจากงาน {{location}} แล้ว ขอบคุณที่เข้าร่วมกิจกรรม",
+    "buttonText": "ตกลง"
+  },
+  "confirm": "ยืนยัน",
+  "cancel": "ยกเลิก",
+  "main_event": "รับเพื่อนก้าวใหม่",
+  "freshmen_night": "Freshmen Night"
+}
