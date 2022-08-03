@@ -2,7 +2,7 @@ import Typography from 'common/components/Typography'
 import Image from 'next/image'
 import React from 'react'
 
-import { sponserMetadata } from './constants'
+import { sponsorMetadata } from './constants'
 import {
   FooterContainer,
   LogoContainer,
@@ -16,7 +16,7 @@ const Footer = () => (
       <Image src="/ISDlogo.svg" layout="fill" />
     </LogoContainer>
     <SponserLogoContainer>
-      {sponserMetadata.map((val) => (
+      {sponsorMetadata.map((val) => (
         <SponserLogo
           key={val.name}
           css={{

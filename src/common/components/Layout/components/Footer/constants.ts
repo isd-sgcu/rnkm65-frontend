@@ -1,4 +1,4 @@
-export const sponserMetadata = [
+export const sponsorMetadata = [
   {
     name: 'major-cineplex',
     filename: 'major.png',
