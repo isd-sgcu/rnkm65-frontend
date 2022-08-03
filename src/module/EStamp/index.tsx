@@ -1,4 +1,3 @@
-import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { useQuery } from '@tanstack/react-query'
 import Loading from 'common/components/Loading'
 import Typography from 'common/components/Typography'
