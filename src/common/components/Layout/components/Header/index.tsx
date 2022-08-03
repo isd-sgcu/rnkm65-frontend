@@ -22,15 +22,6 @@ import {
   LogoContainer,
 } from './styled'
 
-const CURRENT_PHASE = process.env.NEXT_PUBLIC_PHASE as
-  | 'REGISTER'
-  | 'REGISTER_END'
-  | 'BAAN_SELECTION'
-  | 'BAAN_SELECTION_END'
-  | 'BAAN_ANNOUNCE'
-  | 'ESTAMP'
-  | 'BYPASS'
-
 const Header = () => {
   const { t } = useSSRTranslation()
   const router = useRouter()
@@ -60,7 +51,7 @@ const Header = () => {
           </Logo>
         </LogoContainer>
 
-        {CURRENT_PHASE === 'ESTAMP' && (
+        {phase === 'ESTAMP' && (
           <Link passHref href="/eStamp">
             {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
             <a>
@@ -72,7 +63,7 @@ const Header = () => {
         )}
       </LeftSideContainer>
 
-      {/* {CURRENT_PHASE === "REGISTER" && (<Hidden variant="lgdown">
+      {/* {phase === "REGISTER" && (<Hidden variant="lgdown">
         <TextButton onClick={handleHowToRegister}>
           {t('howToRegister')}
         </TextButton>
@@ -88,7 +79,7 @@ const Header = () => {
         </Hidden>
       )}
 
-      {CURRENT_PHASE === 'BAAN_SELECTION' && showHowTo && (
+      {phase === 'BAAN_SELECTION' && showHowTo && (
         <Hidden variant="lgdown">
           <TextButton onClick={handleHowToSelectBaan}>
             {t('howToSelectBaan')}
