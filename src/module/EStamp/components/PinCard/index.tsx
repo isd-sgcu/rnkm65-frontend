@@ -9,8 +9,10 @@ const PinCard = ({ name }: PinCardProps) => (
     <StyledImage>
       <Image
         src="/e-stamp/pincard-image.webp"
+        sizes="64px"
         layout="fill"
         objectFit="contain"
+        alt="missing estamp"
       />
     </StyledImage>
     <Typography variant="subhead3" color="blue">

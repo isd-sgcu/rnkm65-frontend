@@ -26,7 +26,13 @@ const PaperStamp = (props: PaperStampProps) => {
   return (
     <PaperStampContainer>
       <StyledImage>
-        <Image src="/e-stamp/eStamp-background.svg" layout="fill" priority />
+        <Image
+          src="/e-stamp/eStamp-background.svg"
+          layout="fill"
+          sizes="304px"
+          alt="estamps container"
+          priority
+        />
       </StyledImage>
       <StampPieceContainer>{stampPieces}</StampPieceContainer>
     </PaperStampContainer>

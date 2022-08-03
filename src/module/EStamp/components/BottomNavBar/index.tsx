@@ -12,9 +12,14 @@ import { BottomNavBarProps } from './types'
 const BottomNavBar = ({ onClick }: BottomNavBarProps) => (
   <CameraMenuContainer>
     <BackgroundMenu />
-    <StyledButton onClick={onClick}>
+    <StyledButton onClick={onClick} aria-label="Open QR code scanner">
       <StyledIcon>
-        <Image src="/e-stamp/camera-icon.svg" layout="fill" />
+        <Image
+          src="/e-stamp/camera-icon.svg"
+          layout="fill"
+          sizes="64px"
+          alt="QR Scanner icon"
+        />
       </StyledIcon>
     </StyledButton>
     <BackgroundButton />

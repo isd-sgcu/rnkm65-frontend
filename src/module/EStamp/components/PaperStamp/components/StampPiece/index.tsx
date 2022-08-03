@@ -11,7 +11,13 @@ const StampPiece = (props: StampPieceProps) => {
         filter: status ? 'grayscale(0)' : 'grayscale(1)',
       }}
     >
-      <Image src={src} layout="fill" objectFit="contain" />
+      <Image
+        src={src}
+        layout="fill"
+        objectFit="contain"
+        sizes="128px"
+        alt="estamp"
+      />
     </StyledImage>
   )
 }
