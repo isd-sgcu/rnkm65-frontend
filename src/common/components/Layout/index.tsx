@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import Script from 'next/script'
 import React, { PropsWithChildren } from 'react'
 
+
 import Background from './components/Background'
 import Footer from './components/Footer'
 import Header from './components/Header'

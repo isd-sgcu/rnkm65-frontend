@@ -25,8 +25,5 @@ export interface IUser {
   canSelectBaan: boolean
   isVerify: boolean
   groupId: string
-}
-
-export interface IUserProfileProps extends IUser {
-  withoutEditButton?: boolean
+  baanId?: string
 }

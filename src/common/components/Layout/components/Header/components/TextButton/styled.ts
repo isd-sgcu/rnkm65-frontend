@@ -9,3 +9,13 @@ export const StyledButton = styled('button', {
     textDecoration: 'underline',
   },
 })
+
+export const StyledLink = styled('a', {
+  color: '$blue',
+  backgroundColor: 'transparent',
+  cursor: 'pointer',
+  border: 'none',
+  '&:hover': {
+    textDecoration: 'underline',
+  },
+})

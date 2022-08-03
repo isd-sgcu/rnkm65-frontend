@@ -53,6 +53,11 @@ export const Button = styled('button', {
         width: '100%',
         borderRadius: '6px',
         padding: '8px 16px',
+        '&:disabled': {
+          backgroundColor: '$white',
+          border: '1px solid $gray300',
+          color: '$new-primary',
+        },
       },
       eStampSecondary: {
         fontSize: '1rem',
