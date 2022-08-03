@@ -29,16 +29,21 @@ export const useCheckinHooks = () => {
       }
       setLocation(eventPlace)
 
-      const res = await apiClient.post<CheckinDTO>('/qr/checkin/verify', {
-        event_type: eventType,
-      })
-      setToken(res.data.checkin_token)
-      setPageStatus(
-        res.data.checkin_type === CheckinType.CHECK_IN
-          ? PageType.checkin
-          : PageType.checkout
-      )
-      setLoading(false)
+      try {
+        const res = await apiClient.post<CheckinDTO>('/qr/checkin/verify', {
+          event_type: eventType,
+        })
+        setToken(res.data.checkin_token)
+        setPageStatus(
+          res.data.checkin_type === CheckinType.CHECK_IN
+            ? PageType.checkin
+            : PageType.checkout
+        )
+      } catch (err) {
+        setPageStatus(PageType.error)
+      } finally {
+        setLoading(false)
+      }
     }
     fetchToken()
   }, [router])
