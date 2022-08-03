@@ -7,10 +7,13 @@ import { PinCardProps } from './types'
 const PinCard = ({ name }: PinCardProps) => (
   <Card>
     <StyledImage>
-      <Image src="/จามจุรี9.png" layout="fill" />
-      {/** use image in public as a substitute since imageUrl get from backend can't be used */}
+      <Image
+        src="/e-stamp/pincard-image.jpeg"
+        layout="fill"
+        objectFit="contain"
+      />
     </StyledImage>
-    <Typography variant="subhead3" color="blue" css={{ marginLeft: '16px' }}>
+    <Typography variant="subhead3" color="blue">
       {name}
     </Typography>
   </Card>

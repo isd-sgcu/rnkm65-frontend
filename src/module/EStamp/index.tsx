@@ -45,7 +45,7 @@ const EStamp = () => {
   useHideFooter()
 
   const status = useMemo(
-    () => events.map((event) => !!data?.find((d) => d.id === event.id)),
+    () => events.map((event) => !!data.find((d) => d.id === event.id)),
     [events, data]
   )
   const qrScanHandler = useCallback(
@@ -69,6 +69,20 @@ const EStamp = () => {
       setOpen(true)
     }
   }, [router.query, qrScanHandler])
+
+  const pinCards = useMemo(
+    () =>
+      events
+        .filter((event) => !data.find((e) => e.id === event.id))
+        .map((event) => (
+          <PinCard
+            key={event.id}
+            imgUrl={event.imageURL}
+            name={i18n.language === 'en' ? event.nameEN : event.nameTH}
+          />
+        )),
+    [events, data, i18n.language]
+  )
 
   if (eventsIsLoading || isLoading) return <Loading />
 
@@ -97,17 +111,7 @@ const EStamp = () => {
             <Typography variant="subhead2" color="blue">
               {t('placeTitle')}
             </Typography>
-            <PinCardContainer>
-              {events
-                .filter((event) => !data.find((e) => e.id === event.id))
-                .map((event) => (
-                  <PinCard
-                    key={event.id}
-                    imgUrl={event.imageURL}
-                    name={i18n.language === 'en' ? event.nameEN : event.nameTH}
-                  />
-                ))}
-            </PinCardContainer>
+            <PinCardContainer>{pinCards}</PinCardContainer>
           </PinContainer>
           <BottomNavBar onClick={openDrawerHandler} />
         </>
