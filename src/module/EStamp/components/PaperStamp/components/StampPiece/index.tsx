@@ -13,7 +13,7 @@ const StampPiece = ({ src, status }: StampPieceProps) => (
       src={src}
       layout="fill"
       objectFit="contain"
-      sizes="128px"
+      sizes="93px"
       alt="estamp"
     />
   </StyledImage>

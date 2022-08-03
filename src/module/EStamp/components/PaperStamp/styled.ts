@@ -22,7 +22,6 @@ export const StampPieceContainer = styled('div', {
   top: '7.5%',
   left: '7%',
   display: 'grid',
-  columnGap: '3px',
   gridTemplateRows: 'repeat(3, 1fr)',
   gridTemplateColumns: 'repeat(3, 1fr)',
 })

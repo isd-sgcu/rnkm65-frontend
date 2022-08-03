@@ -1,7 +1,7 @@
 import { getAllEvents } from 'common/utils/event'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-export async function getServerSideProps({ locale }: { locale: string }) {
+export async function getStaticProps({ locale }: { locale: string }) {
   const [props, events] = await Promise.all([
     serverSideTranslations(locale, ['common', 'eStamp']),
     getAllEvents(),
