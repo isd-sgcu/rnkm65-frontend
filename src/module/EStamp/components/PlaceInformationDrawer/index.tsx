@@ -25,7 +25,7 @@ const PlaceInformationDrawer = ({
   const { mutate, isLoading } = useMutation(
     ['events'],
     async () => {
-      if (data) await checkInEvent(data.id, true)
+      if (data) await checkInEvent(data.id)
     },
     { onSuccess: () => queryClient.invalidateQueries(['events']) }
   )
@@ -63,7 +63,7 @@ const PlaceInformationDrawer = ({
               onClick={buttonClickHandler}
             >
               {isLoading && (
-                <Image src="/loadingSpinner.svg" width={200} height={200} />
+                <Image src="/loadingSpinner.svg" width={16} height={16} />
               )}
               {!isLoading &&
                 (data.isChecked

@@ -30,14 +30,14 @@ const EStamp = () => {
   const [parent] = useAutoAnimate<HTMLDivElement>()
   const { data: events, isLoading: eventsIsLoading } = useQuery(
     ['allEvents'],
-    () => getAllEvents(true),
+    () => getAllEvents(),
     {
       initialData: [],
     }
   )
   const { data, isLoading } = useQuery(
     ['events'],
-    () => getAllCheckedEvents(true),
+    () => getAllCheckedEvents(),
     {
       initialData: [],
     }

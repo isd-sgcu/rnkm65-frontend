@@ -13,7 +13,9 @@ export const getAllEvents = async (mock?: boolean) => {
   if (mock) return events
   const { data } = await apiClient.get<IGetAllEvent>('/estamp?eventType=estamp')
   if (await getAllEventsSchema.isValid(data))
-    return getAllEventsSchema.validateSync(data).event
+    return getAllEventsSchema
+      .validateSync(data)
+      .event.sort((a, b) => a.id.localeCompare(b.id))
   throw new Error('Schema not match (getAllEvents)')
 }
 
@@ -33,7 +35,7 @@ export const checkInEvent = async (id: string, mock?: boolean) => {
       return
     }
   }
-  throw new Error('TODO: implement this!')
+  await apiClient.post('/qr/estamp/confirm', { event_id: id })
 }
 
 export const convertUrlToEventId = (url: string, mock?: boolean) => {
