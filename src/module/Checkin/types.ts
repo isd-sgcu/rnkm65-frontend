@@ -5,7 +5,3 @@ export enum PageType {
   checkoutSuccess = 'checkoutSuccess',
   error = 'error',
 }
-
-export interface IFreshmenNightCheck {
-  mode: PageType
-}
