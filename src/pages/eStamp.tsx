@@ -1,5 +1,5 @@
+import withGuard from 'common/guards/withGuard'
 import EStamp from 'module/EStamp'
-import { getServerSideProps } from 'module/EStamp/utils/serverSideFetch'
 
-export { getServerSideProps }
-export default EStamp
+export { getServerSideProps } from 'module/EStamp/utils/serverSideFetch'
+export default withGuard(EStamp)
