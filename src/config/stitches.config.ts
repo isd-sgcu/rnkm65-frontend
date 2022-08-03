@@ -15,6 +15,7 @@ export const { styled, getCssText, keyframes, globalCss, css } = createStitches(
         error: '#FF4A4A',
         confirm: '#27AE60',
         gray: '#A6A6A6',
+        gray300: '#D1D5DB',
         black: '#000000',
         white: '#FFFFFF',
         // NEW CI
@@ -27,6 +28,8 @@ export const { styled, getCssText, keyframes, globalCss, css } = createStitches(
         'new-error': '#BB0B0B',
         'new-error-active': '#A30B0B',
         'new-footer': '#101223',
+        'new-background-gray': '#FAFAFA',
+        'new-border-gray': '#E6E7EA',
       },
       fonts: {
         FCSubjectRounded: "'FCSubjectRounded', sans-serif",

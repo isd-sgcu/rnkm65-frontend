@@ -25,4 +25,5 @@ export interface IUser {
   canSelectBaan: boolean
   isVerify: boolean
   groupId: string
+  baanId?: string
 }

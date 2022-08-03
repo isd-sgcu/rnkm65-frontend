@@ -1,6 +1,7 @@
+import Image from 'common/components/Image'
+import { SocialLink } from 'common/components/SocialLink'
 import Typography from 'common/components/Typography'
 import { IBaan } from 'common/types/baan'
-import Image from 'next/image'
 import { GrFacebook, GrInstagram } from 'react-icons/gr'
 
 import {
@@ -13,7 +14,8 @@ import {
 } from './styled'
 
 const BaanCard: React.FC<IBaan> = (props) => {
-  const { name, description, ig, facebook } = props
+  const { name, description, ig, facebook, imageUrl, facebookUrl, igUrl } =
+    props
   return (
     <CardContainer>
       <CardTitle>
@@ -28,8 +30,8 @@ const BaanCard: React.FC<IBaan> = (props) => {
               objectFit="cover"
               width="180"
               height="180"
-              src="/tmp.jpg"
-              alt="handle"
+              src={imageUrl}
+              alt={name}
             />
           </CardImage>
           <Typography css={{ wordBreak: 'break-word' }}>
@@ -37,18 +39,16 @@ const BaanCard: React.FC<IBaan> = (props) => {
           </Typography>
         </CardBodyHeader>
         <CardContact>
-          {facebook && (
-            <Typography css={{ display: 'flex', alignItems: 'center' }}>
-              <GrFacebook size={20} style={{ marginRight: '0.5rem' }} />
-              {facebook}
-            </Typography>
-          )}
-          {ig && (
-            <Typography css={{ display: 'flex', alignItems: 'center' }}>
-              <GrInstagram size={20} style={{ marginRight: '0.5rem' }} />
-              {ig}
-            </Typography>
-          )}
+          <SocialLink
+            icon={<GrFacebook size={20} style={{ marginRight: '0.5rem' }} />}
+            label={facebook}
+            url={facebookUrl}
+          />
+          <SocialLink
+            icon={<GrInstagram size={20} style={{ marginRight: '0.5rem' }} />}
+            label={ig}
+            url={igUrl}
+          />
         </CardContact>
       </CardBody>
     </CardContainer>
