@@ -27,7 +27,6 @@ const EStamp = ({ events }: EStampProps) => {
   const { t, i18n } = useSSRTranslation('eStamp')
   const [open, setOpen] = useState(false)
   const [scanedEvent, setScanedEvent] = useState<IEvent | undefined>(undefined)
-  const [parent] = useAutoAnimate<HTMLDivElement>()
   const { data, isLoading } = useQuery(
     ['events'],
     () => getAllCheckedEvents(),
@@ -84,7 +83,7 @@ const EStamp = ({ events }: EStampProps) => {
   if (isLoading) return <Loading />
 
   return (
-    <RootContainer ref={parent}>
+    <RootContainer>
       <StampContainer>
         <Typography variant="h3" color="blue">
           {t('title')}

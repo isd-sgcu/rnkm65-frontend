@@ -30,32 +30,30 @@ const Qr = ({ open, onClose, onScan, event, checkedEvents }: QrProps) => {
 
   return (
     <QrContainer css={css}>
-      {!event && (
+      {open && !event && (
         <Camera>
           <BackButton onClick={onClose}>X</BackButton>
-          {open && (
-            <QrReader
-              scanDelay={300}
-              onResult={(result) => {
-                if (result) {
-                  const eventId = convertUrlToEventId(result.getText())
-                  if (eventId) onScan(eventId)
-                }
-              }}
-              constraints={{ facingMode: 'user' }}
-              videoContainerStyle={{
-                position: 'relative',
-              }}
-              containerStyle={{ width: '100%', height: '100%' }}
-              videoStyle={{
-                width: 'initial',
-                paddingBottom: '5px',
-                paddingTop: '1px',
-                backgroundColor: '#FAFAFA',
-              }}
-              ViewFinder={CameraBg}
-            />
-          )}
+          <QrReader
+            scanDelay={300}
+            onResult={(result) => {
+              if (result) {
+                const eventId = convertUrlToEventId(result.getText())
+                if (eventId) onScan(eventId)
+              }
+            }}
+            constraints={{ facingMode: 'user' }}
+            videoContainerStyle={{
+              position: 'relative',
+            }}
+            containerStyle={{ width: '100%', height: '100%' }}
+            videoStyle={{
+              width: 'initial',
+              paddingBottom: '5px',
+              paddingTop: '1px',
+              backgroundColor: '#FAFAFA',
+            }}
+            ViewFinder={CameraBg}
+          />
         </Camera>
       )}
       <PlaceInformationDrawer data={data} onClose={onClose} />
