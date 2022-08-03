@@ -8,7 +8,7 @@ const PinCard = ({ name }: PinCardProps) => (
   <Card>
     <StyledImage>
       <Image
-        src="/e-stamp/pincard-image.jpeg"
+        src="/e-stamp/pincard-image.webp"
         layout="fill"
         objectFit="contain"
       />

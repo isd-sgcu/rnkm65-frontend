@@ -16,7 +16,7 @@ const PaperStamp = (props: PaperStampProps) => {
           <StampPiece
             key={`stampPiece${order}`}
             status={stampPieceStatus}
-            src={`https://storage.googleapis.com/rnkm-public/E-Stamp-${order}.svg`}
+            src={`/e-stamp/E-Stamp-${order}.webp`}
           />
         )
       }),

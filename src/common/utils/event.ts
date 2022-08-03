@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { checkedEvents, events } from 'common/mock/fakeEvents'
 import {
   getAllCheckedEventsSchema,
@@ -5,13 +6,15 @@ import {
   IGetAllCheckedEvent,
   IGetAllEvent,
 } from 'common/types/event'
-import { APP_BASE_URL } from 'config/env'
+import { API_BASE_URL, APP_BASE_URL } from 'config/env'
 
 import { apiClient } from './axios'
 
 export const getAllEvents = async (mock?: boolean) => {
   if (mock) return events
-  const { data } = await apiClient.get<IGetAllEvent>('/estamp?eventType=estamp')
+  const { data } = await axios.get<IGetAllEvent>(
+    `${API_BASE_URL}/estamp?eventType=estamp`
+  )
   if (await getAllEventsSchema.isValid(data))
     return getAllEventsSchema
       .validateSync(data)

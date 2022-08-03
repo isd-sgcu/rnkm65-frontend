@@ -10,12 +10,11 @@ import ErrorFallback from 'module/ErrorBoundary'
 import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
 import { appWithTranslation } from 'next-i18next'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 
-const queryClient = new QueryClient()
-
 function MyApp({ Component, pageProps }: AppProps) {
+  const [queryClient] = useState(() => new QueryClient())
   const router = useRouter()
 
   useEffect(() => {
