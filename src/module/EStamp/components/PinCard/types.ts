@@ -1,4 +1,4 @@
 export type PinCardProps = {
   name: string
-  imgUrl: string
+  imageURL: string
 }

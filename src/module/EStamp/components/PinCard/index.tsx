@@ -4,11 +4,11 @@ import Image from 'next/image'
 import { Card, StyledImage } from './styled'
 import { PinCardProps } from './types'
 
-const PinCard = ({ name }: PinCardProps) => (
+const PinCard = ({ name, imageURL }: PinCardProps) => (
   <Card>
     <StyledImage>
       <Image
-        src="/e-stamp/pincard-image.webp"
+        src={imageURL}
         sizes="64px"
         layout="fill"
         objectFit="contain"

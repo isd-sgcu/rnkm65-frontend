@@ -11,6 +11,7 @@ export const Card = styled('div', {
   border: '1px solid $new-border-gray',
   borderRadius: '6px',
   backgroundColor: '$white',
+  paddingRight: '1rem',
 })
 
 export const StyledImage = styled('div', {

@@ -44,8 +44,12 @@ const EStamp = () => {
   )
   useHideFooter()
 
-  const status = useMemo(
-    () => events.map((event) => !!data.find((d) => d.id === event.id)),
+  const estamps = useMemo(
+    () =>
+      events.map((event) => ({
+        id: event.id,
+        status: !!data.find((d) => d.id === event.id),
+      })),
     [events, data]
   )
   const qrScanHandler = useCallback(
@@ -77,7 +81,7 @@ const EStamp = () => {
         .map((event) => (
           <PinCard
             key={event.id}
-            imgUrl={event.imageURL}
+            imageURL={event.imageURL}
             name={i18n.language === 'en' ? event.nameEN : event.nameTH}
           />
         )),
@@ -95,7 +99,7 @@ const EStamp = () => {
         <Typography variant="h2" color="blue">
           E - STAMP
         </Typography>
-        <PaperStamp status={status} />
+        <PaperStamp estamps={estamps} />
       </StampContainer>
       {open && (
         <Qr

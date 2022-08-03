@@ -1,3 +1,3 @@
 export type PaperStampProps = {
-  status: Array<boolean>
+  estamps: Array<{ status: boolean; id: string }>
 }
