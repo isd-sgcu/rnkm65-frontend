@@ -34,7 +34,8 @@ const Profile = () => {
       if (canSelectBaan && haveSelectedBaan) return <WaitForBaanProcessing />
 
     case Phase.BAAN_ANNOUNCE:
-      if (canSelectBaan && haveSelectedBaan) return <AnnounceBaan />
+      if (canSelectBaan && haveSelectedBaan && user.baanId)
+        return <AnnounceBaan />
 
       // fallthrough for not 106 and not select baan
       return <NotSelectBaan />

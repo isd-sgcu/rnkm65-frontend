@@ -1,14 +1,19 @@
 import { styled } from 'config/stitches.config'
 
 export const CardContainer = styled('div', {
-  backgroundColor: '$purple400',
+  backgroundColor: '$new-gray',
   border: '2px solid $blue',
   borderRadius: '1rem',
   minWidth: '300px',
+  maxWidth: '300px',
+
+  '@lg': {
+    maxWidth: 'none',
+  },
 })
 
 export const CardTitle = styled('div', {
-  backgroundColor: '$blue',
+  backgroundColor: '$new-primary',
   borderTopLeftRadius: '0.75rem',
   borderTopRightRadius: '0.75rem',
   padding: '0.5rem',
@@ -27,14 +32,22 @@ export const CardBody = styled('div', {
 })
 
 export const CardImage = styled('div', {
-  width: '180px',
-  height: '180px',
+  minWidth: '180px',
+  maxWidth: '180px',
+  height: 'auto',
   overflow: 'hidden',
   borderRadius: '1rem',
 
+  '@lg': {
+    minWidth: '120px',
+    maxWidth: '120px',
+  },
+
   '@sm': {
-    width: '30vw',
-    height: '30vw',
+    width: '60vw',
+    minWidth: 'auto',
+    maxWidth: 'auto',
+    height: 'auto',
   },
 })
 

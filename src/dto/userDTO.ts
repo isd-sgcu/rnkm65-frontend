@@ -18,4 +18,5 @@ export interface UserDTO {
   canSelectBaan?: boolean
   isVerify?: boolean
   groupId?: string
+  baanId?: string
 }
