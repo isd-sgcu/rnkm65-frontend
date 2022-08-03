@@ -95,25 +95,23 @@ const EStamp = ({ events }: EStampProps) => {
         </Typography>
         <PaperStamp estamps={estamps} />
       </StampContainer>
-      {open && (
-        <Qr
-          onClose={closeDrawerHandler}
-          onScan={qrScanHandler}
-          event={scanedEvent}
-          checkedEvents={data}
-        />
-      )}
-      {!open && (
-        <>
-          <PinContainer>
-            <Typography variant="subhead2" color="blue">
-              {t('placeTitle')}
-            </Typography>
-            <PinCardContainer>{pinCards}</PinCardContainer>
-          </PinContainer>
-          <BottomNavBar onClick={openDrawerHandler} />
-        </>
-      )}
+      <Qr
+        open={open}
+        onClose={closeDrawerHandler}
+        onScan={qrScanHandler}
+        event={scanedEvent}
+        checkedEvents={data}
+      />
+      <PinContainer css={open ? { display: 'none' } : {}}>
+        <Typography variant="subhead2" color="blue">
+          {t('placeTitle')}
+        </Typography>
+        <PinCardContainer>{pinCards}</PinCardContainer>
+      </PinContainer>
+      <BottomNavBar
+        css={open ? { display: 'none' } : {}}
+        onClick={openDrawerHandler}
+      />
     </RootContainer>
   )
 }

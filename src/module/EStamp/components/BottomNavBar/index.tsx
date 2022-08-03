@@ -9,8 +9,8 @@ import {
 } from './styled'
 import { BottomNavBarProps } from './types'
 
-const BottomNavBar = ({ onClick }: BottomNavBarProps) => (
-  <CameraMenuContainer>
+const BottomNavBar = ({ css, onClick }: BottomNavBarProps) => (
+  <CameraMenuContainer css={css}>
     <BackgroundMenu />
     <StyledButton onClick={onClick} aria-label="Open QR code scanner">
       <StyledIcon>

@@ -1,7 +1,6 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@formkit/auto-animate': 1.0.0-beta.1
   '@hookform/resolvers': ^2.9.1
   '@stitches/react': ^1.2.8
   '@tanstack/react-query': ^4.0.10
@@ -45,7 +44,6 @@ specifiers:
   yup: ^0.32.11
 
 dependencies:
-  '@formkit/auto-animate': 1.0.0-beta.1_react@17.0.2
   '@hookform/resolvers': 2.9.7_react-hook-form@7.34.0
   '@stitches/react': 1.2.8_react@17.0.2
   '@tanstack/react-query': 4.0.10_sfoxds7t5ydpegc3knd667wn6m
@@ -60,7 +58,7 @@ dependencies:
   react-copy-to-clipboard: 5.1.0_react@17.0.2
   react-div-100vh: 0.7.0_react@17.0.2
   react-dom: 17.0.2_react@17.0.2
-  react-easy-crop: 4.4.1_sfoxds7t5ydpegc3knd667wn6m
+  react-easy-crop: 4.4.2_sfoxds7t5ydpegc3knd667wn6m
   react-error-boundary: 3.1.4_react@17.0.2
   react-hook-form: 7.34.0_react@17.0.2
   react-icons: 4.4.0_react@17.0.2
@@ -122,20 +120,6 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
-
-  /@formkit/auto-animate/1.0.0-beta.1_react@17.0.2:
-    resolution: {integrity: sha512-I3OWOBaPZKSJL4bsooXI8kC3q7bcgibD2oML0P/Lir6MnbvUe/0/7EH8br024juvM/Ulm9C9xGx9CJUQYrOWSA==}
-    peerDependencies:
-      react: ^16.8.0
-      vue: ^3.0.0
-    peerDependenciesMeta:
-      react:
-        optional: true
-      vue:
-        optional: true
-    dependencies:
-      react: 17.0.2
-    dev: false
 
   /@hookform/resolvers/2.9.7_react-hook-form@7.34.0:
     resolution: {integrity: sha512-BloehX3MOLwuFEwT4yZnmolPjVmqyn8VsSuodLfazbCIqxBHsQ4qUZsi+bvNNCduRli1AGWFrkDLGD5QoNzsoA==}
@@ -2483,8 +2467,8 @@ packages:
       react: 17.0.2
       scheduler: 0.20.2
 
-  /react-easy-crop/4.4.1_sfoxds7t5ydpegc3knd667wn6m:
-    resolution: {integrity: sha512-GNeGK36bBVEHjYbVSBxfpuTIEhBxy/AWwPEe9afc3l0KikqSd64Bpi4SnR8snGbTaTioa2LYo16LKmp0IcZkiw==}
+  /react-easy-crop/4.4.2_sfoxds7t5ydpegc3knd667wn6m:
+    resolution: {integrity: sha512-ciRvUTeLgWm/U9YoG8NtxJ4l78cti6HPDlFLs7M84/CQlPu5/S4e8dKNp0V1zGqmeatJnpU5whjj+rS0NBqfiw==}
     peerDependencies:
       react: '>=16.4.0'
       react-dom: '>=16.4.0'

@@ -16,7 +16,7 @@ export const QrContainer = styled('div', {
   },
   display: 'flex',
   flexDirection: 'column',
-  transition: 'all 0.5s ease-in-out',
+  transition: 'top 0.3s ease',
   zIndex: 3,
 })
 
@@ -27,7 +27,6 @@ export const Camera = styled('div', {
   alignItems: 'center',
   flexDirection: 'column',
   overflow: 'hidden',
-  transition: 'all 0.5s ease-in-out',
 })
 
 export const BackButton = styled('button', {

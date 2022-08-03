@@ -1,4 +1,4 @@
-import { useAutoAnimate } from '@formkit/auto-animate/react'
+import { CSS } from '@stitches/react'
 import { convertUrlToEventId } from 'common/utils/event'
 import React, { useMemo } from 'react'
 import { QrReader } from 'react-qr-reader'
@@ -9,8 +9,7 @@ import { CameraBg } from './camerabg'
 import { BackButton, Camera, QrContainer } from './styled'
 import { QrProps } from './types'
 
-const Qr = ({ onClose, onScan, event, checkedEvents }: QrProps) => {
-  const [parent] = useAutoAnimate<HTMLDivElement>()
+const Qr = ({ open, onClose, onScan, event, checkedEvents }: QrProps) => {
   const data: PlaceInformation | undefined = useMemo(() => {
     if (event)
       return {
@@ -20,19 +19,21 @@ const Qr = ({ onClose, onScan, event, checkedEvents }: QrProps) => {
     return undefined
   }, [checkedEvents, event])
 
+  const css: CSS = { top: '100%' }
+  if (open) {
+    css.top = undefined
+    if (!event) {
+      css.backgroundColor = '#D9D9D9'
+      css['@sm'] = { top: 0, height: '100vh' }
+    }
+  }
+
   return (
-    <QrContainer
-      ref={parent}
-      css={
-        event
-          ? {}
-          : { backgroundColor: '#D9D9D9', '@sm': { top: 0, height: '100vh' } }
-      }
-    >
-      <Camera>
-        {!event && (
-          <>
-            <BackButton onClick={onClose}>X</BackButton>
+    <QrContainer css={css}>
+      {!event && (
+        <Camera>
+          <BackButton onClick={onClose}>X</BackButton>
+          {open && (
             <QrReader
               scanDelay={300}
               onResult={(result) => {
@@ -54,10 +55,9 @@ const Qr = ({ onClose, onScan, event, checkedEvents }: QrProps) => {
               }}
               ViewFinder={CameraBg}
             />
-          </>
-        )}
-      </Camera>
-
+          )}
+        </Camera>
+      )}
       <PlaceInformationDrawer data={data} onClose={onClose} />
     </QrContainer>
   )
