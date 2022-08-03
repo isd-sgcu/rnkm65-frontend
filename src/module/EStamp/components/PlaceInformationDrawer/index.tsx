@@ -46,7 +46,7 @@ const PlaceInformationDrawer = ({
             {i18n.language === 'en' ? data.nameEN : data.nameTH}
           </Typography>
           <ImageContainer>
-            <Image src="/จามจุรี9.png" width={500} height={250} />
+            <Image src={data.imageURL} width={500} height={250} />
           </ImageContainer>
           <PlaceDetailsContainer>
             <TextBox>
