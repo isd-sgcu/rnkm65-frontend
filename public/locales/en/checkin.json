@@ -19,6 +19,11 @@
     "description": "You have check-out from the {{location}}. Thanks for joining.",
     "buttonText": "Confirm"
   },
+  "error": {
+    "title": "Something went wrong",
+    "description": "Could not check in/out from {{location}}. Please try again.",
+    "buttonText": "OK"
+  },
   "confirm": "Confirm",
   "cancel": "Cancel",
   "main_event": "Freshers' Fair",
