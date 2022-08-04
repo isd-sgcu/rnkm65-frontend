@@ -37,7 +37,7 @@ export const BackgroundButton = styled('div', {
   justifyContent: 'center',
   marginTop: '-30px',
   background: '$new-background-gray',
-  outline: '1px solid $new-border-gray',
+  outline: 'none',
   zIndex: '-1',
 })
 
