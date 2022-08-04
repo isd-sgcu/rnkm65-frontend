@@ -1,11 +1,9 @@
-import Loading from 'common/components/Loading'
 import Typography from 'common/components/Typography'
 import { useAuth } from 'common/contexts/AuthContext'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import WithUserProfile from 'module/Profile/components/WithUserProfile'
 
 import Link from './components/Link'
-import { useCheckInData } from './hooks/useCheckInData'
 import {
   ActionContainer,
   HeaderContainer,
@@ -15,31 +13,11 @@ import {
 
 const EStampProfile = () => {
   const { user } = useAuth()
-  // const { baan, isLoading: isBaanLoading } = useBaanData(user?.baanId)
   const { t } = useSSRTranslation('profile')
 
-  const { isLoading: isCheckInLoading } = useCheckInData()
-
-  if (isCheckInLoading) return <Loading />
   return (
     <WithUserProfile>
       <ActionContainer>
-        {/* <HeaderContainer>
-            <div>
-              <Typography variant="subhead3" color="white">
-                {t(`checkInCheckOut`)}
-              </Typography>
-
-              <Typography variant="body" color="white">
-                Main Event : {t(`${mainEvent_i18nKey}Button`)}
-              </Typography>
-
-              <Typography variant="body" color="white">
-                Freshmen Night : {t(`${freshmenNight_i18nKey}Button`)}
-              </Typography>
-            </div>
-          </HeaderContainer> */}
-
         <HeaderContainer>
           <Typography variant="subhead3" color="white">
             {t('scanQR')}
@@ -67,10 +45,6 @@ const EStampProfile = () => {
                 {user?.year === '1' ? t('redeemTicketInfo') : t('onlyCU106')}
               </Typography>
             </div>
-
-            {/* <Button type="button" variant="eStampProfile">
-              {t('redeemTicketButton')}
-            </Button> */}
           </HeaderContainer>
 
           {user?.year === '1' && (
