@@ -25,5 +25,6 @@ export interface IUser {
   canSelectBaan: boolean
   isVerify: boolean
   groupId: string
+  isGotTicket: boolean
   baanId?: string
 }

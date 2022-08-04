@@ -19,4 +19,5 @@ export interface UserDTO {
   isVerify?: boolean
   groupId?: string
   baanId?: string
+  isGotTicket?: boolean
 }
