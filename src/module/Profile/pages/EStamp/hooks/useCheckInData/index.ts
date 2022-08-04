@@ -29,7 +29,7 @@ export const useCheckInData = () => {
 
   useEffect(() => {
     const fetchEvent = async (
-      eventType: string,
+      eventType: number,
       onData: (res: AxiosResponse<CheckinDTO, any>) => void,
       onError: (err: unknown) => void
     ) => {
@@ -47,8 +47,8 @@ export const useCheckInData = () => {
 
     const fetchToken = async () => {
       // fetch both event types
-      const MainEventType = CHECKIN_LOCATION[1]
-      const FreshmenNightType = CHECKIN_LOCATION[2]
+      const MainEventType = 1
+      const FreshmenNightType = 2
 
       // digusting code, im sry again
       await Promise.all([
