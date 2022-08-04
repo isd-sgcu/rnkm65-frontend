@@ -60,9 +60,12 @@ const EStamp = ({ events }: EStampProps) => {
   useEffect(() => {
     if (router.query.eventId) {
       qrScanHandler(router.query.eventId.toString())
+      router.replace({ pathname: router.pathname }, undefined, {
+        shallow: true,
+      })
       if (scanedEvent) setOpen(true)
     }
-  }, [router.query, scanedEvent, qrScanHandler])
+  }, [router, scanedEvent, qrScanHandler])
 
   const pinCards = useMemo(
     () =>
