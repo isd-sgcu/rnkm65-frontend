@@ -44,9 +44,17 @@ const Qr = ({ open, onClose, onScan, event, checkedEvents }: QrProps) => {
               if (result) {
                 const scannedText = result.getText()
 
-                // Handle if user uses eStamp QR reader to scan check-in/out QR code
-                if (scannedText.startsWith(`${APP_BASE_URL}/checkin`))
+                // Handle if user uses eStamp QR reader to scan
+                // (a) check-in/out QR Code
+                if (scannedText.startsWith(`${APP_BASE_URL}/checkin`)) {
                   router.push(scannedText)
+                  return
+                }
+                // (b) ticket redemption QR Code
+                if (scannedText === `${APP_BASE_URL}/ticket`) {
+                  router.push(scannedText)
+                  return
+                }
 
                 const eventId = convertUrlToEventId(scannedText)
                 if (eventId) onScan(eventId)
