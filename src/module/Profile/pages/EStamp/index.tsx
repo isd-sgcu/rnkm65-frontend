@@ -69,8 +69,8 @@ const EStampProfile = () => {
             </div>
 
             {/* <Button type="button" variant="eStampProfile">
-                {t('redeemTicketButton')}
-              </Button> */}
+              {t('redeemTicketButton')}
+            </Button> */}
           </HeaderContainer>
 
           {user?.year === '1' && (
