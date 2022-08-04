@@ -46,9 +46,9 @@ const AuthProvider: React.FC = ({ children }) => {
     if (token) {
       const userProfile = await getUserProfile()
       if (!userProfile) {
-        // TODO: Handle error
         localStorage.clear()
-        throw new Error('Failed to validate token')
+        window.location.href = '/login'
+        return
       }
 
       const groupProfile = await getGroupProfile(router.locale)
