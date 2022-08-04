@@ -45,7 +45,7 @@ const EStampProfile = () => {
             {t('scanQR')}
           </Typography>
 
-          <Link href="/eStamp?eventId=CAMERA">{t('scanQRButton')}</Link>
+          <Link href="/eStamp?openCamera=1">{t('scanQRButton')}</Link>
         </HeaderContainer>
 
         <HeaderContainer>
