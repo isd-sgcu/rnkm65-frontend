@@ -1,11 +1,10 @@
 import Typography from 'common/components/Typography'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import { templateForm } from 'module/Register/utils/schema'
-import { Trans } from 'next-i18next'
 import { Fragment, memo } from 'react'
 
 import InnerFormController from './components/InnerFormController'
-import { FormContainer, FormLink, FormRootContainer } from './styled'
+import { FormContainer, FormRootContainer } from './styled'
 
 const FormUI = memo(() => {
   const { t } = useSSRTranslation('register')
@@ -15,7 +14,7 @@ const FormUI = memo(() => {
       <Typography color="new-secondary" variant="h3">
         {t('annoucement')}
       </Typography>
-      <Typography color="new-primary" variant="body">
+      {/* <Typography color="new-primary" variant="body">
         <Trans
           i18nKey="register:notRegisterMorProm"
           components={[
@@ -28,7 +27,7 @@ const FormUI = memo(() => {
             />,
           ]}
         />
-      </Typography>
+      </Typography> */}
       {templateForm.map((row) => (
         <Fragment key={JSON.stringify(row)}>
           <FormContainer>

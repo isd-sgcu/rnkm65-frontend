@@ -58,8 +58,12 @@ const EStamp = ({ events }: EStampProps) => {
   }, [])
 
   useEffect(() => {
-    if (router.query.eventId) {
-      qrScanHandler(router.query.eventId.toString())
+    if (router.query.openCamera) setOpen(!!router.query.openCamera)
+  }, [router.query.openCamera])
+
+  useEffect(() => {
+    if (router.query.eventId || router.query.openCamera) {
+      if (router.query.eventId) qrScanHandler(router.query.eventId.toString())
       router.replace({ pathname: router.pathname }, undefined, {
         shallow: true,
       })
@@ -67,18 +71,21 @@ const EStamp = ({ events }: EStampProps) => {
     }
   }, [router, scanedEvent, qrScanHandler])
 
+  const remainingPlaces = useMemo(
+    () => events.filter((event) => !data.find((e) => e.id === event.id)),
+    [data, events]
+  )
+
   const pinCards = useMemo(
     () =>
-      events
-        .filter((event) => !data.find((e) => e.id === event.id))
-        .map((event) => (
-          <PinCard
-            key={event.id}
-            imageURL={event.imageURL}
-            name={i18n.language === 'en' ? event.nameEN : event.nameTH}
-          />
-        )),
-    [events, data, i18n.language]
+      remainingPlaces.map((event) => (
+        <PinCard
+          key={event.id}
+          imageURL={event.imageURL}
+          name={i18n.language === 'en' ? event.nameEN : event.nameTH}
+        />
+      )),
+    [i18n.language, remainingPlaces]
   )
 
   if (isLoading) return <Loading />
@@ -101,12 +108,14 @@ const EStamp = ({ events }: EStampProps) => {
         event={scanedEvent}
         checkedEvents={data}
       />
-      <PinContainer css={open ? { display: 'none' } : {}}>
-        <Typography variant="subhead2" color="blue">
-          {t('placeTitle')}
-        </Typography>
-        <PinCardContainer>{pinCards}</PinCardContainer>
-      </PinContainer>
+      {remainingPlaces.length !== 0 && (
+        <PinContainer css={open ? { display: 'none' } : {}}>
+          <Typography variant="subhead2" color="blue">
+            {t('placeTitle')}
+          </Typography>
+          <PinCardContainer>{pinCards}</PinCardContainer>
+        </PinContainer>
+      )}
       <BottomNavBar
         css={open ? { display: 'none' } : {}}
         onClick={openDrawerHandler}

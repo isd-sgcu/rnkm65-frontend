@@ -11,11 +11,15 @@ const PinCard = ({ name, imageURL }: PinCardProps) => (
         src={imageURL}
         sizes="64px"
         layout="fill"
-        objectFit="contain"
+        objectFit="cover"
         alt="missing estamp"
       />
     </StyledImage>
-    <Typography variant="subhead3" color="blue">
+    <Typography
+      variant="subhead3"
+      color="blue"
+      css={{ lineHeight: '1.75rem', '@sm': { lineHeight: '1.5rem' } }}
+    >
       {name}
     </Typography>
   </Card>
