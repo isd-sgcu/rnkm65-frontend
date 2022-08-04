@@ -80,11 +80,10 @@ const EStampProfile = () => {
               <div>
                 <Typography variant="h4" color="white">
                   {t('redeemTicket')}
-                  {user?.year !== '1' && t('onlyCU106')}
                 </Typography>
 
                 <Typography variant="body" color="white">
-                  {t('redeemTicketInfo')}
+                  {user?.year === '1' ? t('redeemTicketInfo') : t('onlyCU106')}
                 </Typography>
               </div>
 
