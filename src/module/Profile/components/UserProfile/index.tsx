@@ -9,7 +9,12 @@ import React from 'react'
 import { HiPencil } from 'react-icons/hi'
 
 import { useBaanData } from './hooks/useBaanData'
-import { Container, EditProfileButton, ImageContainer } from './styled'
+import {
+  Container,
+  EditProfileButton,
+  ImageContainer,
+  InfoContainer,
+} from './styled'
 
 const UserProfile = () => {
   const { phase, checkPhase } = usePhase()
@@ -26,7 +31,7 @@ const UserProfile = () => {
       <ImageContainer>
         <Image src={imageUrl} layout="fill" objectFit="cover" />
       </ImageContainer>
-      <div>
+      <InfoContainer>
         <Typography variant="h3" color="blue">
           {firstname}
           <br />
@@ -53,7 +58,7 @@ const UserProfile = () => {
             </EditProfileButton>
           </Link>
         )}
-      </div>
+      </InfoContainer>
     </Container>
   )
 }
