@@ -46,5 +46,21 @@
     "description": "Your registration has been completed.\n Please wait for group selection on <0>23 July 2022</0>.\nYou may contact <1>CU for Freshmen</1> for more information."
   },
   "processingBaan": "Processing...",
-  "goFollowCUForFreshmen": "For more information, please follow: \nCU for Freshman"
+  "goFollowCUForFreshmen": "For more information, please follow: \nCU for Freshman",
+  "year": "Year",
+  "profile": "Profile",
+  "checkInCheckOut": "Check-In / Check-Out Status",
+  "checkinButton": "Checked In",
+  "checkoutButton": "Checked Out",
+  "redeemTicket": "Redeem Ticket for Freshmen Night",
+  "redeemTicketInfo": "Tickets can only be redeemed by scanning the QR Code provided at the event's entrance.",
+  "onlyCU106": " Only For CU106",
+  "redeemTicketButton": "Redeem",
+  "ticketStatus": "TICKET STATUS",
+  "unRedeemed": "Unredeemed",
+  "redeemed": "Redeemed",
+  "eStampPage": "E-Stamp",
+  "eStampButton": "Go to E-Stamp Page",
+  "scanQR": "Scan QR Code",
+  "scanQRButton": "Scan"
 }

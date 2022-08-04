@@ -7,6 +7,16 @@ export const Container = styled('div', {
   '@md': {
     flexDirection: 'row',
   },
+  variants: {
+    variant: {
+      normal: {
+        flexDirection: 'column',
+      },
+      eStamp: {
+        flexDirection: 'row',
+      },
+    },
+  },
 })
 
 export const ImageContainer = styled('div', {
