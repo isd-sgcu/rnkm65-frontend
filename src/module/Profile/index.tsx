@@ -9,6 +9,7 @@ import React from 'react'
 
 import AnnounceBaan from './pages/AnnounceBaan'
 import BaanSelecton from './pages/BaanSelecton'
+import EStampProfile from './pages/EStamp'
 import NotSelectBaan from './pages/NotSelectBaan'
 import WaitForBaanProcessing from './pages/WaitForBaanProcessing'
 import WaitForBaanSelection from './pages/WaitForBaanSelection'
@@ -41,8 +42,7 @@ const Profile = () => {
       return <NotSelectBaan />
 
     case Phase.ESTAMP:
-      // TODO: Implement profile page for e-stamp
-      return null
+      return <EStampProfile />
 
     // BYPASS
     case Phase.BYPASS:
