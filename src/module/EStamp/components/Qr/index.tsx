@@ -1,5 +1,7 @@
 import { CSS } from '@stitches/react'
 import { convertUrlToEventId } from 'common/utils/event'
+import { APP_BASE_URL } from 'config/env'
+import { useRouter } from 'next/router'
 import React, { useMemo } from 'react'
 import { QrReader } from 'react-qr-reader'
 
@@ -10,6 +12,7 @@ import { BackButton, Camera, QrContainer } from './styled'
 import { QrProps } from './types'
 
 const Qr = ({ open, onClose, onScan, event, checkedEvents }: QrProps) => {
+  const router = useRouter()
   const data: PlaceInformation | undefined = useMemo(() => {
     if (event)
       return {
@@ -39,7 +42,21 @@ const Qr = ({ open, onClose, onScan, event, checkedEvents }: QrProps) => {
             scanDelay={300}
             onResult={(result) => {
               if (result) {
-                const eventId = convertUrlToEventId(result.getText())
+                const scannedText = result.getText()
+
+                // Handle if user uses eStamp QR reader to scan
+                // (a) check-in/out QR Code
+                if (scannedText.startsWith(`${APP_BASE_URL}/checkin`)) {
+                  router.push(scannedText)
+                  return
+                }
+                // (b) ticket redemption QR Code
+                if (scannedText === `${APP_BASE_URL}/ticket`) {
+                  router.push(scannedText)
+                  return
+                }
+
+                const eventId = convertUrlToEventId(scannedText)
                 if (eventId) onScan(eventId)
               }
             }}
