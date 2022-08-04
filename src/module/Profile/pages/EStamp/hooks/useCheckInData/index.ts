@@ -58,8 +58,9 @@ export const useCheckInData = () => {
             setMainEventToken(res.data.checkin_token)
             setMainEventStatus(
               res.data.checkin_type === CheckinType.CHECK_IN
-                ? PageType.checkin
-                : PageType.checkout
+                ? // flip
+                  PageType.checkout
+                : PageType.checkin
             )
           },
           (err) => {
@@ -73,8 +74,9 @@ export const useCheckInData = () => {
             setFreshmenNightToken(res.data.checkin_token)
             setFreshmenNightStatus(
               res.data.checkin_type === CheckinType.CHECK_IN
-                ? PageType.checkin
-                : PageType.checkout
+                ? // flip
+                  PageType.checkout
+                : PageType.checkin
             )
           },
           (err) => {
