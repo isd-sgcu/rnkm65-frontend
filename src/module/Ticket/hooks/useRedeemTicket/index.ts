@@ -6,16 +6,23 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 
 export const useRedeemTicket = () => {
   const { user, refreshContext } = useAuth()
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
   const [pageStatus, setPageStatus] = useState(PageType.redeem)
   const i18nKey = useMemo(() => PageType[pageStatus], [pageStatus])
   const router = useRouter()
 
   useEffect(() => {
+    if (user?.year !== '1') {
+      router.replace('/')
+      return
+    }
+
     if (user?.isGotTicket) {
       setPageStatus(PageType.alreadyRedeem)
     }
-  }, [user?.isGotTicket])
+
+    setLoading(false)
+  }, [user, router])
 
   const handleSubmit = useCallback(async () => {
     if (
