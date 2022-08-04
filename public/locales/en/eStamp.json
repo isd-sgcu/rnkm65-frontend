@@ -1,3 +1,8 @@
 {
-  "placeTitle": "Remaining places"
+  "title": "Collection",
+  "placeTitle": "Remaining places",
+  "placeInformationDrawer": {
+    "checkInButton": "Check - in",
+    "doneButton": "Done"
+  }
 }

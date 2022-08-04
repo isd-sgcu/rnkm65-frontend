@@ -71,7 +71,7 @@ const Header = () => {
 
       {router.pathname !== '/' && router.pathname !== '/login' && (
         <Hidden variant="lgdown">
-          <Link href="/back" passHref>
+          <Link href="/" passHref>
             <StyledLink>
               <Typography variant="subhead3">{t('goBack')}</Typography>
             </StyledLink>

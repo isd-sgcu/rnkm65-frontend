@@ -1,0 +1,26 @@
+{
+  "checkin": {
+    "title": "Do you want to check-in ?",
+    "description": "You are about to check-in to the {{location}}.",
+    "buttonText": "Check - in"
+  },
+  "checkinSuccess": {
+    "title": "Check-in Success !",
+    "description": "You have check-in to the {{location}}. Have fun.",
+    "buttonText": "Confirm"
+  },
+  "checkout": {
+    "title": "Do you want to check-out ?",
+    "description": "You are about to check-out from the {{location}}.",
+    "buttonText": "Check - out"
+  },
+  "checkoutSuccess": {
+    "title": "Check-out Success !",
+    "description": "You have check-out from the {{location}}. Thanks for joining.",
+    "buttonText": "Confirm"
+  },
+  "confirm": "Confirm",
+  "cancel": "Cancel",
+  "main_event": "Freshers' Fair",
+  "freshmen_night": "Freshmen Night"
+}
