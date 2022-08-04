@@ -39,7 +39,7 @@ const Ticket = () => {
               variant="eStampSecondary"
               css={{ width: '100%', marginTop: '1rem' }}
             >
-              {t('cancel')}
+              {t('common:cancel')}
             </Button>
           </Link>
         )}
