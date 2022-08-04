@@ -50,11 +50,15 @@
   "year": "Year",
   "profile": "Profile",
   "checkInCheckOut": "Check-In / Check-Out",
-  "checkInButton": "Check In",
-  "checkOutButton": "Check Out",
-  "redeemTicket": "Redeem Ticket",
+  "checkinButton": "Check In",
+  "checkoutButton": "Check Out",
+  "redeemTicket": "Redeem Ticket (Only For CU106)",
   "redeemTicketButton": "Redeem",
   "ticketStatus": "TICKET STATUS",
   "unRedeemed": "Unredeemed",
-  "redeemed": "Redeemed"
+  "redeemed": "Redeemed",
+  "eStampPage": "E-Stamp",
+  "eStampButton": "Go to E-Stamp Page",
+  "scanQR": "Scan QR Code",
+  "scanQRButton": "Scan"
 }

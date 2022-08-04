@@ -49,11 +49,15 @@
   "year": "ชั้นปีที่",
   "profile": "โปรไฟล์",
   "checkInCheckOut": "เช็กอิน / เช็กเอาท์",
-  "checkInButton": "เช็กอิน",
-  "checkOutButton": "เช็กเอาท์",
-  "redeemTicket": "รับบัตร",
+  "checkinButton": "เช็กอิน",
+  "checkoutButton": "เช็กเอาท์",
+  "redeemTicket": "รับบัตร (เฉพาะ CU106)",
   "redeemTicketButton": "รับบัตร",
   "ticketStatus": "สถานะบัตร",
   "unRedeemed": "ยังไม่ได้รับบัตร",
-  "redeemed": "ได้รับบัตรแล้ว"
+  "redeemed": "ได้รับบัตรแล้ว",
+  "eStampPage": "E-Stamp",
+  "eStampButton": "ไปที่หน้า E-Stamp",
+  "scanQR": "สแกน QR Code",
+  "scanQRButton": "เปิดกล้อง"
 }

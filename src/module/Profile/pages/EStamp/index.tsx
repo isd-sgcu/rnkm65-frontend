@@ -17,65 +17,81 @@ import { Trans } from 'next-i18next'
 import UserProfile from 'module/Profile/components/UserProfile'
 import Button from 'common/components/Button'
 import Link from './components/Link'
+import { useCheckInData } from './hooks/useCheckInData'
 
 const EStampProfile = () => {
   const { user } = useAuth()
-  const { baan, isLoading } = useBaanData(user?.baanId)
+  // const { baan, isLoading: isBaanLoading } = useBaanData(user?.baanId)
   const { t } = useSSRTranslation('profile')
 
+  // const {
+  //   isLoading: isCheckInLoading,
+  //   i18nKey,
+  //   pageStatus,
+  //   location,
+  // } = useCheckInData()
+
   return (
-    <>
-      {isLoading ? (
-        <Loading />
-      ) : (
-        <EStampProfileContainer>
-          <Typography
-            color="new-primary"
-            css={{ textAlign: 'center' }}
-            variant="h3"
-          >
-            {t('profile')}
+    <EStampProfileContainer>
+      <Typography
+        color="new-primary"
+        css={{ textAlign: 'center' }}
+        variant="h3"
+      >
+        {t('profile')}
+      </Typography>
+      <UserProfile />
+      <ActionContainer>
+        <HeaderContainer>
+          <Typography variant="subhead3" color="white">
+            {t('scanQR')}
           </Typography>
-          <UserProfile />
-          <ActionContainer>
-            <HeaderContainer>
-              <Typography variant="h4" color="white">
-                {t('checkInCheckOut')}
+
+          <Link href="/eStamp?eventId=CAMERA">{t('scanQRButton')}</Link>
+        </HeaderContainer>
+
+        {/* <HeaderContainer>
+            <div>
+              <Typography variant="subhead3" color="white">
+                รับเพื่อนก้าวใหม่ : {t(`${'checkin'}Button`)}แล้ว
               </Typography>
 
-              {
-                // TODO : get check in / check out status
-              }
-              <Link href="/">{t('checkInButton')}</Link>
-            </HeaderContainer>
+              <Typography variant="subhead3" color="white">
+                Freshmen Night : {t(`${'checkin'}Button`)}แล้ว
+              </Typography>
+            </div>
+          </HeaderContainer> */}
 
-            <RedeemTicketContainer>
-              <HeaderContainer>
-                <Typography variant="h4" color="white">
-                  {t('redeemTicket')}
-                </Typography>
+        <HeaderContainer>
+          <Typography variant="h4" color="white">
+            {t('eStampPage')}
+          </Typography>
 
-                <Button type="button" variant="eStampProfile">
-                  {t('redeemTicketButton')}
-                </Button>
-              </HeaderContainer>
+          <Link href="/eStamp">{t('eStampButton')}</Link>
+        </HeaderContainer>
 
-              <TicketStatusContainer>
-                <Typography variant="h4" color="new-secondary">
-                  {t('ticketStatus')}
-                </Typography>
-                <Typography variant="subhead3" color="new-primary">
-                  {
-                    // TODO : get ticket status from backend
-                  }
-                  {t('unRedeemed')}
-                </Typography>
-              </TicketStatusContainer>
-            </RedeemTicketContainer>
-          </ActionContainer>
-        </EStampProfileContainer>
-      )}
-    </>
+        <RedeemTicketContainer>
+          <HeaderContainer>
+            <Typography variant="h4" color="white">
+              {t('redeemTicket')}
+            </Typography>
+
+            {/* <Button type="button" variant="eStampProfile">
+                {t('redeemTicketButton')}
+              </Button> */}
+          </HeaderContainer>
+
+          <TicketStatusContainer>
+            <Typography variant="h4" color="new-secondary">
+              {t('ticketStatus')}
+            </Typography>
+            <Typography variant="subhead3" color="new-primary">
+              {user?.isGotTicket ? t('unRedeemed') : t('redeemed')}
+            </Typography>
+          </TicketStatusContainer>
+        </RedeemTicketContainer>
+      </ActionContainer>
+    </EStampProfileContainer>
   )
 }
 
