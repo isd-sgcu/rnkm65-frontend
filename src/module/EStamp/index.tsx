@@ -29,7 +29,7 @@ const EStamp = ({ events }: EStampProps) => {
     ['events'],
     () => getAllCheckedEvents(),
     {
-      initialData: [],
+      initialData: events,
     }
   )
   useHideFooter()
