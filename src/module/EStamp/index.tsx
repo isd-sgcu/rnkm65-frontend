@@ -5,13 +5,13 @@ import useHideFooter from 'common/contexts/LayoutContext/hooks/useHideFooter'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import { IEvent } from 'common/types/event'
 import { getAllCheckedEvents } from 'common/utils/event'
-import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 
 import BottomNavBar from './components/BottomNavBar'
 import PaperStamp from './components/PaperStamp'
 import PinCard from './components/PinCard'
+import Qr from './components/Qr'
 import {
   PinCardContainer,
   PinContainer,
@@ -20,12 +20,10 @@ import {
 } from './styled'
 import { EStampProps } from './types'
 
-const Qr = dynamic(() => import('./components/Qr'))
-
 const EStamp = ({ events }: EStampProps) => {
   const router = useRouter()
   const { t, i18n } = useSSRTranslation('eStamp')
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(!!router.query.openCamera)
   const [scanedEvent, setScanedEvent] = useState<IEvent | undefined>(undefined)
   const { data, isLoading } = useQuery(
     ['events'],
@@ -62,9 +60,12 @@ const EStamp = ({ events }: EStampProps) => {
   useEffect(() => {
     if (router.query.eventId) {
       qrScanHandler(router.query.eventId.toString())
-      setOpen(true)
+      router.replace({ pathname: router.pathname }, undefined, {
+        shallow: true,
+      })
+      if (scanedEvent) setOpen(true)
     }
-  }, [router.query, qrScanHandler])
+  }, [router, scanedEvent, qrScanHandler])
 
   const pinCards = useMemo(
     () =>

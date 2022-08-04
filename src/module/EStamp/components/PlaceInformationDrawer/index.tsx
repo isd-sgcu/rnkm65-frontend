@@ -42,7 +42,11 @@ const PlaceInformationDrawer = ({
           <CloseButtonContainer onClick={onClose}>
             <Image src="/cross.svg" height={30} width={30} />
           </CloseButtonContainer>
-          <Typography variant="h3" color="new-primary">
+          <Typography
+            variant="h3"
+            color="new-primary"
+            css={{ margin: '0 2rem', textAlign: 'center' }}
+          >
             {i18n.language === 'en' ? data.nameEN : data.nameTH}
           </Typography>
           <ImageContainer>
