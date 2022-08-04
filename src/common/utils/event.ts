@@ -43,7 +43,7 @@ export const checkInEvent = async (id: string, mock?: boolean) => {
 
 export const convertUrlToEventId = (url: string, mock?: boolean) => {
   if (mock) return '1'
-  if (url.startsWith(`${APP_BASE_URL}/eStamp`)) {
+  if (url.toLowerCase().startsWith(`${APP_BASE_URL}/estamp`)) {
     const params = new URLSearchParams(new URL(url).searchParams)
     return params.get('eventId')
   }
