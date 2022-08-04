@@ -1,12 +1,5 @@
 import { styled } from 'config/stitches.config'
 
-export const EStampProfileContainer = styled('div', {
-  display: 'flex',
-  flexDirection: 'column',
-  gap: '3rem',
-  paddingBottom: '4rem',
-})
-
 export const JoinBaanContainer = styled('div', {
   display: 'flex',
   flexWrap: 'wrap',
@@ -17,7 +10,11 @@ export const ActionContainer = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   gap: '1rem',
-  padding: '1.5rem',
+  paddingLeft: '1.5rem',
+
+  '@md': {
+    paddingLeft: 0,
+  },
 })
 
 export const HeaderContainer = styled('div', {
@@ -32,14 +29,14 @@ export const HeaderContainer = styled('div', {
 export const RedeemTicketContainer = styled('div', {
   display: 'flex',
   flexDirection: 'column',
+  background: '$new-gray',
+  borderRadius: '0 0 0.5rem 0.5rem',
 })
 
 export const TicketStatusContainer = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   padding: '1.5rem 2rem',
-  background: '$new-gray',
-  borderRadius: '0 0 0.5rem 0.5rem',
   justifyContent: 'center',
   alignItems: 'center',
   gap: '0.5rem',

@@ -1,49 +1,30 @@
-import Typography from 'common/components/Typography'
 import Loading from 'common/components/Loading'
+import Typography from 'common/components/Typography'
 import { useAuth } from 'common/contexts/AuthContext'
-import { IBaan } from 'common/types/baan'
-import { useBaanData } from './hooks/useBaanData'
+import useSSRTranslation from 'common/hooks/useSSRTranslation'
+import WithUserProfile from 'module/Profile/components/WithUserProfile'
 
+import Link from './components/Link'
+import { useCheckInData } from './hooks/useCheckInData'
 import {
   ActionContainer,
   HeaderContainer,
-  EStampProfileContainer,
-  JoinBaanContainer,
   RedeemTicketContainer,
   TicketStatusContainer,
 } from './styled'
-import useSSRTranslation from 'common/hooks/useSSRTranslation'
-import { Trans } from 'next-i18next'
-import UserProfile from 'module/Profile/components/UserProfile'
-import Button from 'common/components/Button'
-import Link from './components/Link'
-import { useCheckInData } from './hooks/useCheckInData'
 
 const EStampProfile = () => {
   const { user } = useAuth()
   // const { baan, isLoading: isBaanLoading } = useBaanData(user?.baanId)
   const { t } = useSSRTranslation('profile')
 
-  const {
-    isLoading: isCheckInLoading,
-    mainEvent_i18nKey,
-    freshmenNight_i18nKey,
-  } = useCheckInData()
+  const { isLoading: isCheckInLoading } = useCheckInData()
 
   if (isCheckInLoading) return <Loading />
-  else
-    return (
-      <EStampProfileContainer>
-        <Typography
-          color="new-primary"
-          css={{ textAlign: 'center' }}
-          variant="h3"
-        >
-          {t('profile')}
-        </Typography>
-        <UserProfile />
-        <ActionContainer>
-          {/* <HeaderContainer>
+  return (
+    <WithUserProfile>
+      <ActionContainer>
+        {/* <HeaderContainer>
             <div>
               <Typography variant="subhead3" color="white">
                 {t(`checkInCheckOut`)}
@@ -59,53 +40,53 @@ const EStampProfile = () => {
             </div>
           </HeaderContainer> */}
 
+        <HeaderContainer>
+          <Typography variant="subhead3" color="white">
+            {t('scanQR')}
+          </Typography>
+
+          <Link href="/eStamp?eventId=CAMERA">{t('scanQRButton')}</Link>
+        </HeaderContainer>
+
+        <HeaderContainer>
+          <Typography variant="h4" color="white">
+            {t('eStampPage')}
+          </Typography>
+
+          <Link href="/eStamp">{t('eStampButton')}</Link>
+        </HeaderContainer>
+
+        <RedeemTicketContainer>
           <HeaderContainer>
-            <Typography variant="subhead3" color="white">
-              {t('scanQR')}
-            </Typography>
+            <div>
+              <Typography variant="h4" color="white">
+                {t('redeemTicket')}
+              </Typography>
 
-            <Link href="/eStamp?eventId=CAMERA">{t('scanQRButton')}</Link>
-          </HeaderContainer>
+              <Typography variant="body" color="white">
+                {user?.year === '1' ? t('redeemTicketInfo') : t('onlyCU106')}
+              </Typography>
+            </div>
 
-          <HeaderContainer>
-            <Typography variant="h4" color="white">
-              {t('eStampPage')}
-            </Typography>
-
-            <Link href="/eStamp">{t('eStampButton')}</Link>
-          </HeaderContainer>
-
-          <RedeemTicketContainer>
-            <HeaderContainer>
-              <div>
-                <Typography variant="h4" color="white">
-                  {t('redeemTicket')}
-                </Typography>
-
-                <Typography variant="body" color="white">
-                  {user?.year === '1' ? t('redeemTicketInfo') : t('onlyCU106')}
-                </Typography>
-              </div>
-
-              {/* <Button type="button" variant="eStampProfile">
+            {/* <Button type="button" variant="eStampProfile">
                 {t('redeemTicketButton')}
               </Button> */}
-            </HeaderContainer>
+          </HeaderContainer>
 
-            {user?.year === '1' && (
-              <TicketStatusContainer>
-                <Typography variant="h4" color="new-secondary">
-                  {t('ticketStatus')}
-                </Typography>
-                <Typography variant="subhead3" color="new-primary">
-                  {user?.isGotTicket ? t('redeemed') : t('unRedeemed')}
-                </Typography>
-              </TicketStatusContainer>
-            )}
-          </RedeemTicketContainer>
-        </ActionContainer>
-      </EStampProfileContainer>
-    )
+          {user?.year === '1' && (
+            <TicketStatusContainer>
+              <Typography variant="h4" color="new-secondary">
+                {t('ticketStatus')}
+              </Typography>
+              <Typography variant="subhead3" color="new-primary">
+                {user?.isGotTicket ? t('redeemed') : t('unRedeemed')}
+              </Typography>
+            </TicketStatusContainer>
+          )}
+        </RedeemTicketContainer>
+      </ActionContainer>
+    </WithUserProfile>
+  )
 }
 
 export default EStampProfile
