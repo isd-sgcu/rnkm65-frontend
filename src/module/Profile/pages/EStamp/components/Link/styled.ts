@@ -9,4 +9,7 @@ export const LinkElement = styled('a', {
   borderRadius: '10rem',
   padding: '8px 16px',
   '&:hover': { backgroundColor: '$new-gray' },
+  '@sm': {
+    fontSize: '1rem',
+  },
 })

@@ -17,6 +17,7 @@ export const ActionContainer = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   gap: '1rem',
+  padding: '1.5rem',
 })
 
 export const HeaderContainer = styled('div', {
