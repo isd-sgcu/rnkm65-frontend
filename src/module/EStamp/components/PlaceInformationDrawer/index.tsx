@@ -11,6 +11,7 @@ import {
   CloseButtonContainer,
   ImageContainer,
   LoadingSpinnerContainer,
+  PlaceContainer,
   PlaceDetailsContainer,
   TextBox,
 } from './styled'
@@ -42,39 +43,49 @@ const PlaceInformationDrawer = ({
           <CloseButtonContainer onClick={onClose}>
             <Image src="/cross.svg" height={30} width={30} />
           </CloseButtonContainer>
-          <Typography
-            variant="h3"
-            color="new-primary"
-            css={{ margin: '0 2rem', textAlign: 'center' }}
-          >
-            {i18n.language === 'en' ? data.nameEN : data.nameTH}
-          </Typography>
-          <ImageContainer>
-            <Image src={data.imageURL} width={500} height={250} />
-          </ImageContainer>
-          <PlaceDetailsContainer>
-            <TextBox>
-              <Typography color="new-primary" css={{ whiteSpace: 'pre-line' }}>
-                {i18n.language === 'en'
-                  ? data.descriptionEN
-                  : data.descriptionTH}
-              </Typography>
-            </TextBox>
-            <Button
-              type="button"
-              variant="eStamp"
-              disabled={data.isChecked || isLoading}
-              onClick={buttonClickHandler}
+          <PlaceContainer>
+            <Typography
+              variant="h3"
+              color="new-primary"
+              css={{ margin: '0 2rem', textAlign: 'center' }}
             >
-              {isLoading && (
-                <Image src="/loadingSpinner.svg" width={16} height={16} />
-              )}
-              {!isLoading &&
-                (data.isChecked
-                  ? t('placeInformationDrawer.doneButton')
-                  : t('placeInformationDrawer.checkInButton'))}
-            </Button>
-          </PlaceDetailsContainer>
+              {i18n.language === 'en' ? data.nameEN : data.nameTH}
+            </Typography>
+            <ImageContainer>
+              <Image
+                src={data.imageURL}
+                width={500}
+                height={250}
+                objectFit="cover"
+              />
+            </ImageContainer>
+            <PlaceDetailsContainer>
+              <TextBox>
+                <Typography
+                  color="new-primary"
+                  css={{ whiteSpace: 'pre-line' }}
+                >
+                  {i18n.language === 'en'
+                    ? data.descriptionEN
+                    : data.descriptionTH}
+                </Typography>
+              </TextBox>
+              <Button
+                type="button"
+                variant="eStamp"
+                disabled={data.isChecked || isLoading}
+                onClick={buttonClickHandler}
+              >
+                {isLoading && (
+                  <Image src="/loadingSpinner.svg" width={16} height={16} />
+                )}
+                {!isLoading &&
+                  (data.isChecked
+                    ? t('placeInformationDrawer.doneButton')
+                    : t('placeInformationDrawer.checkInButton'))}
+              </Button>
+            </PlaceDetailsContainer>
+          </PlaceContainer>
         </>
       )}
     </Box>
