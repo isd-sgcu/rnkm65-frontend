@@ -50,11 +50,13 @@ globalCss({
     {
       fontFamily: 'FCSubjectRounded',
       src: 'url("../fonts/FC Subject Rounded Regular [Non-commercial use].otf") format("opentype")',
+      fontDisplay: 'swap',
     },
     {
       fontFamily: 'FCSubjectRounded',
       src: 'url("../fonts/FC Subject Rounded Bold [Non-commercial use].otf") format("opentype")',
       fontWeight: 'bold',
+      fontDisplay: 'swap',
     },
   ],
 })()

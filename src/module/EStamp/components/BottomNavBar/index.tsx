@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import Link from 'next/link'
 
 import {
   BackgroundButton,
@@ -8,22 +7,21 @@ import {
   StyledButton,
   StyledIcon,
 } from './styled'
+import { BottomNavBarProps } from './types'
 
-const BottomNavBar = () => (
-  <CameraMenuContainer>
+const BottomNavBar = ({ css, onClick }: BottomNavBarProps) => (
+  <CameraMenuContainer css={css}>
     <BackgroundMenu />
-    <Link
-      href={{
-        pathname: '/eStamp/[slug]',
-        query: { slug: 'qr' },
-      }}
-    >
-      <StyledButton>
-        <StyledIcon>
-          <Image src="/e-stamp/camera-icon.svg" layout="fill" />
-        </StyledIcon>
-      </StyledButton>
-    </Link>
+    <StyledButton onClick={onClick} aria-label="Open QR code scanner">
+      <StyledIcon>
+        <Image
+          src="/e-stamp/camera-icon.svg"
+          layout="fill"
+          sizes="64px"
+          alt="QR Scanner icon"
+        />
+      </StyledIcon>
+    </StyledButton>
     <BackgroundButton />
   </CameraMenuContainer>
 )

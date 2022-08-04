@@ -1,31 +1,42 @@
 import Image from 'next/image'
+import { useMemo } from 'react'
 
 import StampPiece from './components/StampPiece'
-import { PaperStampContainer, StampPieceContainer, StyledImage } from './styled'
+import {
+  EStampsContainer,
+  PaperStampContainer,
+  StampPieceContainer,
+} from './styled'
 import { PaperStampProps } from './types'
 
-const PaperStamp = (props: PaperStampProps) => {
-  const { status } = props
+const PaperStamp = ({ estamps }: PaperStampProps) => {
+  const stampPieces = useMemo(
+    () =>
+      estamps.map((estamp, inx) => {
+        const order = (inx + 1).toString().padStart(2, '0')
+        return (
+          <StampPiece
+            key={estamp.id}
+            status={estamp.status}
+            src={`https://storage.googleapis.com/rnkm-public/E-Stamp-${order}.png`}
+          />
+        )
+      }),
+    [estamps]
+  )
+
   return (
     <PaperStampContainer>
-      <StyledImage>
-        <Image src="/e-stamp/eStamp-background.svg" layout="fill" />
-      </StyledImage>
-      <StampPieceContainer>
-        {status.map((stampPieceStatus, inx) => {
-          const row = Math.floor(inx / 3)
-          const column = inx % 3
-          return (
-            <StampPiece
-              key={`stampPiece${row}${column}`}
-              row={row}
-              column={column}
-              status={stampPieceStatus}
-              src={`/e-stamp/stamp-piece/${inx}.jpg`}
-            />
-          )
-        })}
-      </StampPieceContainer>
+      <EStampsContainer>
+        <Image
+          src="/e-stamp/eStamp-background.png"
+          layout="fill"
+          sizes="304px"
+          alt="estamps container"
+          priority
+        />
+      </EStampsContainer>
+      <StampPieceContainer>{stampPieces}</StampPieceContainer>
     </PaperStampContainer>
   )
 }

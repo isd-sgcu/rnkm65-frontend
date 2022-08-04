@@ -1,6 +1,7 @@
 import Hidden from 'common/components/Hidden'
 import Typography from 'common/components/Typography'
 import { Phase } from 'common/constants/phase'
+import { useAuth } from 'common/contexts/AuthContext'
 import { usePhase } from 'common/contexts/PhaseContext'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import Image from 'next/image'
@@ -22,20 +23,13 @@ import {
   LogoContainer,
 } from './styled'
 
-const CURRENT_PHASE = process.env.NEXT_PUBLIC_PHASE as
-  | 'REGISTER'
-  | 'REGISTER_END'
-  | 'BAAN_SELECTION'
-  | 'BAAN_SELECTION_END'
-  | 'BAAN_ANNOUNCE'
-  | 'ESTAMP'
-  | 'BYPASS'
-
 const Header = () => {
   const { t } = useSSRTranslation()
   const router = useRouter()
   const { phase } = usePhase()
   const showHowTo = phase === Phase.BAAN_SELECTION
+
+  const { isAuthenticated } = useAuth()
 
   const handleReportIssue = useCallback(() => {
     // TODO change url
@@ -60,8 +54,8 @@ const Header = () => {
           </Logo>
         </LogoContainer>
 
-        {CURRENT_PHASE === 'ESTAMP' && (
-          <Link passHref href="/eStamp">
+        {phase === 'ESTAMP' && isAuthenticated && (
+          <Link passHref href="/eStamp?openCamera=1">
             {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
             <a>
               <IconContainer>
@@ -72,7 +66,7 @@ const Header = () => {
         )}
       </LeftSideContainer>
 
-      {/* {CURRENT_PHASE === "REGISTER" && (<Hidden variant="lgdown">
+      {/* {phase === "REGISTER" && (<Hidden variant="lgdown">
         <TextButton onClick={handleHowToRegister}>
           {t('howToRegister')}
         </TextButton>
@@ -88,7 +82,7 @@ const Header = () => {
         </Hidden>
       )}
 
-      {CURRENT_PHASE === 'BAAN_SELECTION' && showHowTo && (
+      {phase === 'BAAN_SELECTION' && showHowTo && (
         <Hidden variant="lgdown">
           <TextButton onClick={handleHowToSelectBaan}>
             {t('howToSelectBaan')}
@@ -114,9 +108,9 @@ const Header = () => {
             <a>
               <IconContainer>
                 {/* <MobileIcon
-            src="/how-to-register.svg"
-            onClick={handleHowToRegister}
-          /> */}
+                  src="/how-to-register.svg"
+                  onClick={handleHowToRegister}
+                /> */}
                 <MobileIcon src="/home-icon.svg" onClick={() => {}} />
               </IconContainer>
             </a>

@@ -25,14 +25,14 @@ const Checkin = () => {
       <CheckinContainer>
         <Typography variant="h3">{t(`${i18nKey}.title`)}</Typography>
         <Typography variant="subhead3">
-          {t(`${i18nKey}.description`, { location: t(location) })}
+          {t(`${i18nKey}.description`, { location: t(`location.${location}`) })}
         </Typography>
         <Button
           variant="eStamp"
           onClick={handleSubmit}
           css={{ width: '100%', marginTop: '1.5rem' }}
         >
-          {t('confirm')}
+          {t(`${i18nKey}.buttonText`)}
         </Button>
         {(pageStatus === PageType.checkin ||
           pageStatus === PageType.checkout) && (
@@ -41,7 +41,7 @@ const Checkin = () => {
               variant="eStampSecondary"
               css={{ width: '100%', marginTop: '1rem' }}
             >
-              {t('cancel')}
+              {t('common:cancel')}
             </Button>
           </Link>
         )}

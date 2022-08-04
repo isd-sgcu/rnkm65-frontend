@@ -1,5 +1,6 @@
 import 'styles/globals.css'
 
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import Layout from 'common/components/Layout'
 import AuthProvider from 'common/contexts/AuthContext'
 import { LayoutProvider } from 'common/contexts/LayoutContext'
@@ -9,10 +10,11 @@ import ErrorFallback from 'module/ErrorBoundary'
 import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
 import { appWithTranslation } from 'next-i18next'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const [queryClient] = useState(() => new QueryClient())
   const router = useRouter()
 
   useEffect(() => {
@@ -37,17 +39,19 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, [router])
 
   return (
-    <LayoutProvider>
-      <ErrorBoundary FallbackComponent={ErrorFallback}>
-        <AuthProvider>
-          <PhaseProvider>
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-          </PhaseProvider>
-        </AuthProvider>
-      </ErrorBoundary>
-    </LayoutProvider>
+    <QueryClientProvider client={queryClient}>
+      <LayoutProvider>
+        <ErrorBoundary FallbackComponent={ErrorFallback}>
+          <AuthProvider>
+            <PhaseProvider>
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
+            </PhaseProvider>
+          </AuthProvider>
+        </ErrorBoundary>
+      </LayoutProvider>
+    </QueryClientProvider>
   )
 }
 

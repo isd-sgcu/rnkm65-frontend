@@ -72,6 +72,15 @@ export const Button = styled('button', {
         color: '$white',
         backgroundColor: '$error',
       },
+      eStampProfile: {
+        fontSize: '1.25rem',
+        fontWeight: 'normal',
+        backgroundColor: '$white',
+        color: '$new-primary',
+        borderRadius: '10rem',
+        padding: '8px 16px',
+        '&:hover': { backgroundColor: '$new-gray' },
+      },
     },
   },
   defaultVariants: {

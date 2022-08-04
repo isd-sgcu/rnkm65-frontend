@@ -7,6 +7,7 @@ export const CameraMenuContainer = styled('div', {
   width: '100vw',
   justifyContent: 'center',
   zIndex: '2',
+  transition: 'display 0.3s ease',
 })
 
 export const BackgroundMenu = styled('div', {
@@ -54,5 +55,3 @@ export const StyledButton = styled('button', {
   background: '$new-background-gray',
   zIndex: '2',
 })
-
-

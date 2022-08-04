@@ -1,0 +1,22 @@
+{
+  "redeem": {
+    "title": "Are you sure you want to redeem your ticket?",
+    "description": "Please press confirm at the event's entrance. You can only redeem your ticket once.",
+    "buttonText": "Confirm"
+  },
+  "redeemSuccess": {
+    "title": "Redemption complete !",
+    "description": "Ticket redemption complete. Have fun.",
+    "buttonText": "OK"
+  },
+  "alreadyRedeem": {
+    "title": "You have only ",
+    "description": "Sorry, you can only redeem your ticket once.",
+    "buttonText": "OK"
+  },
+  "error": {
+    "title": "Something went wrong.",
+    "description": "Could not redeem your ticket. Please try again.",
+    "buttonText": "OK"
+  }
+}

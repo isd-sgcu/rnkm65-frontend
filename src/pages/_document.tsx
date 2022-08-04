@@ -1,3 +1,4 @@
+import { API_BASE_URL } from 'config/env'
 import { getCssText } from 'config/stitches.config'
 import NextDocument, { Head, Html, Main, NextScript } from 'next/document'
 import React from 'react'
@@ -34,6 +35,8 @@ export default class Document extends NextDocument {
             sizes="16x16"
             href="/favicon-16x16.png"
           />
+          <link rel="preconnect" href={API_BASE_URL} />
+          <link rel="dns-prefetch" href={API_BASE_URL} />
         </Head>
         <body>
           <Main />

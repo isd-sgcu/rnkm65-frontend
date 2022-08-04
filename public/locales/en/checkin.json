@@ -24,8 +24,8 @@
     "description": "Could not check in/out from {{location}}. Please try again.",
     "buttonText": "OK"
   },
-  "confirm": "Confirm",
-  "cancel": "Cancel",
-  "main_event": "Freshers' Fair",
-  "freshmen_night": "Freshmen Night"
+  "location": {
+    "main_event": "Freshers' Fair",
+    "freshmen_night": "Freshmen Night"
+  }
 }

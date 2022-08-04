@@ -4,9 +4,25 @@ export const Container = styled('div', {
   gap: '20px',
   display: 'flex',
   flexDirection: 'column',
+
   '@md': {
     flexDirection: 'row',
   },
+
+  variants: {
+    variant: {
+      normal: {
+        flexDirection: 'column',
+      },
+      eStamp: {
+        flexDirection: 'row',
+      },
+    },
+  },
+})
+
+export const InfoContainer = styled('div', {
+  minWidth: '180px',
 })
 
 export const ImageContainer = styled('div', {

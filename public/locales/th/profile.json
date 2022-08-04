@@ -45,5 +45,21 @@
     "description": "การลงทะเบียนของคุณเสร็จสิ้นเรียบร้อย\n กรุณาลงทะเบียนเลือกบ้านใน<0>วันที่ 23 กรกฎาคม 2565</0>\nสามารถสอบถามข้อมูลเพิ่มเติมได้ที่ <1>CU for Freshmen</1>"
   },
   "processingBaan": "ขณะนี้ระบบกำลังจัดบ้านอยู่",
-  "goFollowCUForFreshmen": "สามารถติดตามข่าวสารได้ที่ IG\n@rubpuenkaomai2022"
+  "goFollowCUForFreshmen": "สามารถติดตามข่าวสารได้ที่ IG\n@rubpuenkaomai2022",
+  "year": "ชั้นปีที่",
+  "profile": "โปรไฟล์",
+  "checkInCheckOut": "สถานะการเช็กอิน / เช็กเอาท์",
+  "checkinButton": "เช็กอินแล้ว",
+  "checkoutButton": "เช็กเอาท์แล้ว",
+  "redeemTicket": "รับบัตร Freshmen Night",
+  "redeemTicketInfo": "รับบัตรได้จากการสแกน QR Code หน้างาน Freshmen Night เท่านั้น",
+  "onlyCU106": "จำกัดเฉพาะ CU106 เท่านั้น",
+  "redeemTicketButton": "รับบัตร",
+  "ticketStatus": "สถานะบัตร",
+  "unRedeemed": "ยังไม่ได้รับบัตร",
+  "redeemed": "ได้รับบัตรแล้ว",
+  "eStampPage": "E-Stamp",
+  "eStampButton": "ไปที่หน้า E-Stamp",
+  "scanQR": "สแกน QR Code",
+  "scanQRButton": "เปิดกล้อง"
 }

@@ -5,7 +5,7 @@ import { MobileIconProps } from './types'
 
 const MobileIcon = ({ src, onClick }: MobileIconProps) => (
   <div style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
-    <Image src={src} height={28} width={28} onClick={onClick} />
+    <Image src={src} layout="fixed" height={28} width={28} onClick={onClick} />
   </div>
 )
 
