@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import Button from 'common/components/Button'
+import ImageWithLoadingSkeleton from 'common/components/Image'
 import Typography from 'common/components/Typography'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import { checkInEvent } from 'common/utils/event'
@@ -52,7 +53,7 @@ const PlaceInformationDrawer = ({
               {i18n.language === 'en' ? data.nameEN : data.nameTH}
             </Typography>
             <ImageContainer>
-              <Image
+              <ImageWithLoadingSkeleton
                 src={data.imageURL}
                 width={500}
                 height={250}
