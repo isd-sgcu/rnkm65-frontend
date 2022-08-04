@@ -19,14 +19,16 @@ const Qr = ({ open, onClose, onScan, event, checkedEvents }: QrProps) => {
     return undefined
   }, [checkedEvents, event])
 
-  const css: CSS = { top: '100%' }
-  if (open) {
-    css.top = undefined
-    if (!event) {
-      css.backgroundColor = '#D9D9D9'
-      css['@sm'] = { top: 0, height: '100vh' }
+  const css = useMemo(() => {
+    const cssOptions: CSS = {}
+    if (!open) {
+      cssOptions.top = '100%'
+    } else if (open && !event) {
+      cssOptions.backgroundColor = '#D9D9D9'
+      cssOptions['@sm'] = { top: 0, height: '100vh' }
     }
-  }
+    return cssOptions
+  }, [open, event])
 
   return (
     <QrContainer css={css}>
@@ -41,7 +43,7 @@ const Qr = ({ open, onClose, onScan, event, checkedEvents }: QrProps) => {
                 if (eventId) onScan(eventId)
               }
             }}
-            constraints={{ facingMode: 'user' }}
+            constraints={{ facingMode: { ideal: 'environment' } }}
             videoContainerStyle={{
               position: 'relative',
             }}
