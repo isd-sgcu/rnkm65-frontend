@@ -72,23 +72,32 @@ const EStampProfile = () => {
 
         <RedeemTicketContainer>
           <HeaderContainer>
-            <Typography variant="h4" color="white">
-              {t('redeemTicket')}
-            </Typography>
+            <div>
+              <Typography variant="h4" color="white">
+                {t('redeemTicket')}
+                {user?.year !== '1' && t('onlyCU106')}
+              </Typography>
+
+              <Typography variant="body" color="white">
+                {t('redeemTicketInfo')}
+              </Typography>
+            </div>
 
             {/* <Button type="button" variant="eStampProfile">
                 {t('redeemTicketButton')}
               </Button> */}
           </HeaderContainer>
 
-          <TicketStatusContainer>
-            <Typography variant="h4" color="new-secondary">
-              {t('ticketStatus')}
-            </Typography>
-            <Typography variant="subhead3" color="new-primary">
-              {user?.isGotTicket ? t('unRedeemed') : t('redeemed')}
-            </Typography>
-          </TicketStatusContainer>
+          {user?.year === '1' && (
+            <TicketStatusContainer>
+              <Typography variant="h4" color="new-secondary">
+                {t('ticketStatus')}
+              </Typography>
+              <Typography variant="subhead3" color="new-primary">
+                {user?.isGotTicket ? t('unRedeemed') : t('redeemed')}
+              </Typography>
+            </TicketStatusContainer>
+          )}
         </RedeemTicketContainer>
       </ActionContainer>
     </EStampProfileContainer>
