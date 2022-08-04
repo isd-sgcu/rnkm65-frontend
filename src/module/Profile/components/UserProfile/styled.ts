@@ -4,9 +4,12 @@ export const Container = styled('div', {
   gap: '20px',
   display: 'flex',
   flexDirection: 'column',
+  minWidth: '330px',
+
   '@md': {
     flexDirection: 'row',
   },
+
   variants: {
     variant: {
       normal: {
