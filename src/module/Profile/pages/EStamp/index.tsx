@@ -43,7 +43,7 @@ const EStampProfile = () => {
         </Typography>
         <UserProfile />
         <ActionContainer>
-          <HeaderContainer>
+          {/* <HeaderContainer>
             <div>
               <Typography variant="subhead3" color="white">
                 {t(`checkInCheckOut`)}
@@ -57,7 +57,7 @@ const EStampProfile = () => {
                 Freshmen Night : {t(`${freshmenNight_i18nKey}Button`)}
               </Typography>
             </div>
-          </HeaderContainer>
+          </HeaderContainer> */}
 
           <HeaderContainer>
             <Typography variant="subhead3" color="white">
