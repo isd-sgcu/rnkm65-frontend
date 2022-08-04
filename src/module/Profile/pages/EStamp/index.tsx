@@ -40,35 +40,35 @@ const EStampProfile = () => {
           <ActionContainer>
             <HeaderContainer>
               <Typography variant="h4" color="white">
-                Check In / Check Out
+                {t('checkInCheckOut')}
               </Typography>
 
               {
                 // TODO : get check in / check out status
               }
-              <Link href="/">Check In</Link>
+              <Link href="/">{t('checkInButton')}</Link>
             </HeaderContainer>
 
             <RedeemTicketContainer>
               <HeaderContainer>
                 <Typography variant="h4" color="white">
-                  Redeem Ticket
+                  {t('redeemTicket')}
                 </Typography>
 
                 <Button type="button" variant="eStampProfile">
-                  Redeem
+                  {t('redeemTicketButton')}
                 </Button>
               </HeaderContainer>
 
               <TicketStatusContainer>
                 <Typography variant="h4" color="new-secondary">
-                  TICKET STATUS:
+                  {t('ticketStatus')}
                 </Typography>
                 <Typography variant="subhead3" color="new-primary">
                   {
                     // TODO : get ticket status from backend
                   }
-                  ยังไม่ได้รับบัตร
+                  {t('unRedeemed')}
                 </Typography>
               </TicketStatusContainer>
             </RedeemTicketContainer>

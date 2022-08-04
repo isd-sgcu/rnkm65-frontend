@@ -47,5 +47,13 @@
   "processingBaan": "ขณะนี้ระบบกำลังจัดบ้านอยู่",
   "goFollowCUForFreshmen": "สามารถติดตามข่าวสารได้ที่ IG\n@rubpuenkaomai2022",
   "year": "ชั้นปีที่",
-  "profile": "โปรไฟล์"
+  "profile": "โปรไฟล์",
+  "checkInCheckOut": "เช็กอิน / เช็กเอาท์",
+  "checkInButton": "เช็กอิน",
+  "checkOutButton": "เช็กเอาท์",
+  "redeemTicket": "รับบัตร",
+  "redeemTicketButton": "รับบัตร",
+  "ticketStatus": "สถานะบัตร",
+  "unRedeemed": "ยังไม่ได้รับบัตร",
+  "redeemed": "ได้รับบัตรแล้ว"
 }

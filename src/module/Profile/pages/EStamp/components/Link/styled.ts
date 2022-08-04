@@ -1,6 +1,7 @@
 import { styled } from 'config/stitches.config'
 
 export const LinkElement = styled('a', {
+  fontFamily: '$FCSubjectRounded',
   fontSize: '1.25rem',
   fontWeight: 'normal',
   backgroundColor: '$white',

@@ -48,5 +48,13 @@
   "processingBaan": "Processing...",
   "goFollowCUForFreshmen": "For more information, please follow: \nCU for Freshman",
   "year": "Year",
-  "profile": "Profile"
+  "profile": "Profile",
+  "checkInCheckOut": "Check-In / Check-Out",
+  "checkInButton": "Check In",
+  "checkOutButton": "Check Out",
+  "redeemTicket": "Redeem Ticket",
+  "redeemTicketButton": "Redeem",
+  "ticketStatus": "TICKET STATUS",
+  "unRedeemed": "Unredeemed",
+  "redeemed": "Redeemed"
 }
