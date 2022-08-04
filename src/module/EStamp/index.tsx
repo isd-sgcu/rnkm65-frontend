@@ -25,11 +25,11 @@ const EStamp = ({ events }: EStampProps) => {
   const { t, i18n } = useSSRTranslation('eStamp')
   const [open, setOpen] = useState(!!router.query.openCamera)
   const [scanedEvent, setScanedEvent] = useState<IEvent | undefined>(undefined)
-  const { data, isLoading } = useQuery(
+  const { data, isFetched } = useQuery(
     ['events'],
     () => getAllCheckedEvents(),
     {
-      initialData: events,
+      initialData: [],
     }
   )
   useHideFooter()
@@ -87,8 +87,7 @@ const EStamp = ({ events }: EStampProps) => {
       )),
     [i18n.language, remainingPlaces]
   )
-
-  if (isLoading) return <Loading />
+  if (!isFetched) return <Loading />
 
   return (
     <RootContainer>
