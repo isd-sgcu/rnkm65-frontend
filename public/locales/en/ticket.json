@@ -18,7 +18,5 @@
     "title": "Something went wrong.",
     "description": "Could not redeem your ticket. Please try again.",
     "buttonText": "OK"
-  },
-  "confirm": "Confirm",
-  "cancel": "Cancel"
+  }
 }

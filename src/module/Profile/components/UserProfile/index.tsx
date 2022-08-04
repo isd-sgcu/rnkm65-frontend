@@ -7,8 +7,8 @@ import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import Link from 'next/link'
 import React from 'react'
 import { HiPencil } from 'react-icons/hi'
-import { useBaanData } from './hooks/useBaanData'
 
+import { useBaanData } from './hooks/useBaanData'
 import { Container, EditProfileButton, ImageContainer } from './styled'
 
 const UserProfile = () => {
@@ -19,7 +19,7 @@ const UserProfile = () => {
   const { firstname, lastname, year, imageUrl } = user!
   const { t } = useSSRTranslation('profile')
 
-  const { baan, isLoading } = useBaanData(user?.baanId)
+  const { baan } = useBaanData(user?.baanId)
 
   return (
     <Container variant={phase === Phase.ESTAMP ? 'eStamp' : 'normal'}>

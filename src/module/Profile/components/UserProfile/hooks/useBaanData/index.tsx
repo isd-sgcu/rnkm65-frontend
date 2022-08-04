@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import { useErrorHandler } from 'react-error-boundary'
 
 export const useBaanData = (baanId?: string) => {
-  const [baan, setBaan] = useState<IBaan>()
+  const [baan, setBaan] = useState<IBaan | undefined>(undefined)
   const [isLoading, setIsLoading] = useState(true)
   const { locale } = useRouter()
 
@@ -22,7 +22,7 @@ export const useBaanData = (baanId?: string) => {
         setIsLoading(false)
       }
     }
-
+    if (!baanId) return
     fetchBaan()
   }, [baanId, handleError, locale])
 

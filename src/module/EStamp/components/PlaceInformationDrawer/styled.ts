@@ -8,8 +8,7 @@ export const Box = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  rowGap: '1.25rem',
-  padding: '3.5rem 0',
+  paddingTop: '3.5rem',
   height: '100%',
 })
 
@@ -35,13 +34,21 @@ export const PlaceDetailsContainer = styled('div', {
   height: '100%',
   flexDirection: 'column',
   justifyContent: 'space-between',
-  overflow: 'hidden',
   rowGap: '2.5rem',
 })
 
 export const TextBox = styled('div', {
-  overflowY: 'auto',
   padding: '0 4px',
+})
+
+export const PlaceContainer = styled('div', {
+  overflowY: 'auto',
+  height: '100%',
+  paddingBottom: '2rem',
+  display: 'flex',
+  flexDirection: 'column',
+  rowGap: '1.25rem',
+
   '&::-webkit-scrollbar': {
     width: '4px',
   },

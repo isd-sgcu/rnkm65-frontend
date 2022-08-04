@@ -35,7 +35,6 @@
     "joinOwnGroupMessage": "This link is only for sending to friends to join the group.",
     "unknownError": "An Error Occurred"
   },
-  "areAlsoGroupMember": "<0>{{members}}</0> is also a member of this group",
   "announce": {
     "congrats": "Congraturation",
     "join": "You have joined <0>{{baan}}</0>",

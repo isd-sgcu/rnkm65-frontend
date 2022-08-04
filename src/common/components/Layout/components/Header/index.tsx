@@ -1,6 +1,7 @@
 import Hidden from 'common/components/Hidden'
 import Typography from 'common/components/Typography'
 import { Phase } from 'common/constants/phase'
+import { useAuth } from 'common/contexts/AuthContext'
 import { usePhase } from 'common/contexts/PhaseContext'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import Image from 'next/image'
@@ -28,6 +29,8 @@ const Header = () => {
   const { phase } = usePhase()
   const showHowTo = phase === Phase.BAAN_SELECTION
 
+  const { isAuthenticated } = useAuth()
+
   const handleReportIssue = useCallback(() => {
     // TODO change url
     window.location.href =
@@ -51,8 +54,8 @@ const Header = () => {
           </Logo>
         </LogoContainer>
 
-        {phase === 'ESTAMP' && (
-          <Link passHref href="/eStamp">
+        {phase === 'ESTAMP' && isAuthenticated && (
+          <Link passHref href="/eStamp?openCamera=1">
             {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
             <a>
               <IconContainer>
@@ -105,9 +108,9 @@ const Header = () => {
             <a>
               <IconContainer>
                 {/* <MobileIcon
-            src="/how-to-register.svg"
-            onClick={handleHowToRegister}
-          /> */}
+                  src="/how-to-register.svg"
+                  onClick={handleHowToRegister}
+                /> */}
                 <MobileIcon src="/home-icon.svg" onClick={() => {}} />
               </IconContainer>
             </a>

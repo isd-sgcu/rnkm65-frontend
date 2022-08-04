@@ -5,7 +5,10 @@ export const RootContainer = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  padding: '2rem 2rem',
+  padding: '0rem 2rem 5rem 2rem',
+  '@lg': {
+    paddingBottom: '2.5rem',
+  },
 })
 
 export const StampContainer = styled('div', {

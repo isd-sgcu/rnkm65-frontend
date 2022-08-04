@@ -24,8 +24,8 @@
     "description": "ไม่สามารถเช็กอิน-เช็กเอาท์จากงาน {{location}} กรุณาลองใหม่อีกครั้ง",
     "buttonText": "ตกลง"
   },
-  "confirm": "ยืนยัน",
-  "cancel": "ยกเลิก",
-  "main_event": "รับเพื่อนก้าวใหม่",
-  "freshmen_night": "Freshmen Night"
+  "location": {
+    "main_event": "รับเพื่อนก้าวใหม่",
+    "freshmen_night": "Freshmen Night"
+  }
 }

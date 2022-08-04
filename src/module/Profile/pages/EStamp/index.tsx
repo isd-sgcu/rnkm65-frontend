@@ -1,20 +1,14 @@
-import Button from 'common/components/Button'
 import Loading from 'common/components/Loading'
 import Typography from 'common/components/Typography'
 import { useAuth } from 'common/contexts/AuthContext'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
-import { IBaan } from 'common/types/baan'
-import UserProfile from 'module/Profile/components/UserProfile'
-import { Trans } from 'next-i18next'
+import WithUserProfile from 'module/Profile/components/WithUserProfile'
 
 import Link from './components/Link'
-import { useBaanData } from './hooks/useBaanData'
 import { useCheckInData } from './hooks/useCheckInData'
 import {
   ActionContainer,
-  EStampProfileContainer,
   HeaderContainer,
-  JoinBaanContainer,
   RedeemTicketContainer,
   TicketStatusContainer,
 } from './styled'
@@ -24,23 +18,11 @@ const EStampProfile = () => {
   // const { baan, isLoading: isBaanLoading } = useBaanData(user?.baanId)
   const { t } = useSSRTranslation('profile')
 
-  const {
-    isLoading: isCheckInLoading,
-    mainEvent_i18nKey,
-    freshmenNight_i18nKey,
-  } = useCheckInData()
+  const { isLoading: isCheckInLoading } = useCheckInData()
 
   if (isCheckInLoading) return <Loading />
   return (
-    <EStampProfileContainer>
-      <Typography
-        color="new-primary"
-        css={{ textAlign: 'center' }}
-        variant="h3"
-      >
-        {t('profile')}
-      </Typography>
-      <UserProfile />
+    <WithUserProfile>
       <ActionContainer>
         {/* <HeaderContainer>
             <div>
@@ -87,8 +69,8 @@ const EStampProfile = () => {
             </div>
 
             {/* <Button type="button" variant="eStampProfile">
-                {t('redeemTicketButton')}
-              </Button> */}
+              {t('redeemTicketButton')}
+            </Button> */}
           </HeaderContainer>
 
           {user?.year === '1' && (
@@ -103,7 +85,7 @@ const EStampProfile = () => {
           )}
         </RedeemTicketContainer>
       </ActionContainer>
-    </EStampProfileContainer>
+    </WithUserProfile>
   )
 }
 
