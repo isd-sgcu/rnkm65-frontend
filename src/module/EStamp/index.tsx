@@ -58,8 +58,12 @@ const EStamp = ({ events }: EStampProps) => {
   }, [])
 
   useEffect(() => {
-    if (router.query.eventId) {
-      qrScanHandler(router.query.eventId.toString())
+    if (router.query.openCamera) setOpen(!!router.query.openCamera)
+  }, [router.query.openCamera])
+
+  useEffect(() => {
+    if (router.query.eventId || router.query.openCamera) {
+      if (router.query.eventId) qrScanHandler(router.query.eventId.toString())
       router.replace({ pathname: router.pathname }, undefined, {
         shallow: true,
       })
