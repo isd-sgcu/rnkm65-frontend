@@ -14,7 +14,7 @@ export const CAN_EDIT_PROFILE = [
   Phase.ESTAMP,
 ]
 
-export const CAN_REGISTER = [Phase.REGISTER, Phase.ESTAMP]
+export const CAN_REGISTER = [Phase.REGISTER, Phase.ESTAMP, Phase.BAAN_ANNOUNCE]
 
 export const DEFAULT_ROUTE = ['/', '/login', '/register', '/checkin/[id]']
 
