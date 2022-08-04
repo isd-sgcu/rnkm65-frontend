@@ -1,3 +1,5 @@
-export type EStampProps = {
-  status: Array<boolean>
+import { IEvent } from 'common/types/event'
+
+export interface EStampProps {
+  events: IEvent[]
 }

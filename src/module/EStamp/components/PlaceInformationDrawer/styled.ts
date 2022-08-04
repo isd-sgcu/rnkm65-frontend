@@ -1,10 +1,8 @@
 import { styled } from 'config/stitches.config'
 
 export const Box = styled('div', {
-  position: 'relative',
   borderRadius: '30px 30px 0 0',
   boxShadow: '0px -1px 3px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.06)',
-  height: 'calc(100vh - 106px)',
   maxWidth: '500px',
   background: '$white',
   display: 'flex',
@@ -12,12 +10,12 @@ export const Box = styled('div', {
   alignItems: 'center',
   rowGap: '1.25rem',
   padding: '3.5rem 0',
-  '@md': {
-    height: 'calc(100vh - 96px)',
-  },
-  '@sm': {
-    height: 'calc(100vh - 68px)',
-  },
+  height: '100%',
+})
+
+export const LoadingSpinnerContainer = styled('div', {
+  width: 60,
+  height: 60,
 })
 
 export const CloseButtonContainer = styled('div', {
