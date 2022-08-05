@@ -2,7 +2,7 @@
   "title": "บัตรสะสม",
   "placeTitle": "สถานที่ที่เหลือ",
   "placeInformationDrawer": {
-    "checkInButton": "เช็คอิน",
-    "doneButton": "เช็คอินเรียบร้อย"
+    "checkInButton": "เช็กอิน",
+    "doneButton": "เช็กอินเรียบร้อย"
   }
 }

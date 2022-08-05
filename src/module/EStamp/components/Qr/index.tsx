@@ -75,7 +75,7 @@ const Qr = ({ open, onClose, onScan, event, checkedEvents }: QrProps) => {
           />
         </Camera>
       )}
-      <PlaceInformationDrawer data={data} onClose={onClose} />
+      <PlaceInformationDrawer open={open} data={data} onClose={onClose} />
     </QrContainer>
   )
 }
