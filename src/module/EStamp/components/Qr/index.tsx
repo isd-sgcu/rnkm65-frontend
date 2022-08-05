@@ -63,6 +63,7 @@ const Qr = ({ open, onClose, onScan, event, checkedEvents }: QrProps) => {
             constraints={{ facingMode: { ideal: 'environment' } }}
             videoContainerStyle={{
               position: 'relative',
+              alignItems: 'center',
             }}
             containerStyle={{ width: '100%', height: '100%' }}
             videoStyle={{
@@ -70,6 +71,9 @@ const Qr = ({ open, onClose, onScan, event, checkedEvents }: QrProps) => {
               paddingBottom: '5px',
               paddingTop: '1px',
               backgroundColor: '#FAFAFA',
+              transform: 'translate(-50%, -50%)',
+              top: '50%',
+              left: '50%',
             }}
             ViewFinder={CameraBg}
           />
