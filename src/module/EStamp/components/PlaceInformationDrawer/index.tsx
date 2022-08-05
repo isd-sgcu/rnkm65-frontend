@@ -5,7 +5,7 @@ import Typography from 'common/components/Typography'
 import useSSRTranslation from 'common/hooks/useSSRTranslation'
 import { checkInEvent } from 'common/utils/event'
 import Image from 'next/image'
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect } from 'react'
 
 import {
   Box,
@@ -32,6 +32,16 @@ const PlaceInformationDrawer = ({
     { onSuccess: () => queryClient.invalidateQueries(['events']) }
   )
   const buttonClickHandler = useCallback(() => mutate(), [mutate])
+
+  useEffect(() => {
+    if (data) {
+      document.body.style.overflow = 'hidden'
+    }
+
+    return () => {
+      document.body.style.overflow = 'auto'
+    }
+  }, [data])
 
   return (
     <Box css={data ? {} : { justifyContent: 'center' }}>
