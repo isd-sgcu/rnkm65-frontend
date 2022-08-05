@@ -42,9 +42,9 @@ export const TextBox = styled('div', {
 })
 
 export const PlaceContainer = styled('div', {
-  overflowY: 'auto',
+  overflowY: 'scroll',
   height: '100%',
-  paddingBottom: '2rem',
+  paddingBottom: '6rem',
   display: 'flex',
   flexDirection: 'column',
   rowGap: '1.25rem',
