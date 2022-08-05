@@ -20,6 +20,7 @@ import { PlaceInformationDrawerProps } from './types'
 
 const PlaceInformationDrawer = ({
   data,
+  open,
   onClose,
 }: PlaceInformationDrawerProps) => {
   const { t, i18n } = useSSRTranslation('eStamp')
@@ -44,7 +45,18 @@ const PlaceInformationDrawer = ({
   }, [data])
 
   return (
-    <Box css={data ? {} : { justifyContent: 'center' }}>
+    <Box
+      css={
+        data
+          ? {}
+          : {
+              justifyContent: 'center',
+              position: open ? 'relative' : 'absolute',
+              zIndex: 5,
+              bottom: 0,
+            }
+      }
+    >
       {!data ? (
         <LoadingSpinnerContainer>
           <Image src="/loadingSpinner.svg" width={200} height={200} />

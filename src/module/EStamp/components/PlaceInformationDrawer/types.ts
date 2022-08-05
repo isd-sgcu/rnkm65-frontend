@@ -6,5 +6,6 @@ export interface PlaceInformation extends IEvent {
 
 export interface PlaceInformationDrawerProps {
   data: PlaceInformation | undefined
+  open: boolean
   onClose: () => void
 }
