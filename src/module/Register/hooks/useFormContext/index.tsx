@@ -227,7 +227,11 @@ export const FormProvider = (
     const { id, phone = '', canSelectBaan, isVerify, ...rest } = user
 
     reset({
-      phoneNumber: phone === '-' ? '-' : phone.replaceAll('-', ''),
+      phoneNumber:
+        phone === '-'
+          ? '-'
+          : // phone.replaceAll('-', '')
+            phone.split('-').join(''),
       vaccineCertificateUrl: isVerify ? 'true' : 'false',
       canSelectBaan: canSelectBaan ? 'true' : 'false',
       ...rest,
