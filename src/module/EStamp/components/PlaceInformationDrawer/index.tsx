@@ -20,6 +20,7 @@ import { PlaceInformationDrawerProps } from './types'
 
 const PlaceInformationDrawer = ({
   data,
+  open,
   onClose,
 }: PlaceInformationDrawerProps) => {
   const { t, i18n } = useSSRTranslation('eStamp')
@@ -40,7 +41,7 @@ const PlaceInformationDrawer = ({
           ? {}
           : {
               justifyContent: 'center',
-              position: 'absolute',
+              position: open ? 'relative' : 'absolute',
               zIndex: 5,
               bottom: 0,
             }
