@@ -34,7 +34,18 @@ const PlaceInformationDrawer = ({
   const buttonClickHandler = useCallback(() => mutate(), [mutate])
 
   return (
-    <Box css={data ? {} : { justifyContent: 'center' }}>
+    <Box
+      css={
+        data
+          ? {}
+          : {
+              justifyContent: 'center',
+              position: 'absolute',
+              zIndex: 5,
+              bottom: 0,
+            }
+      }
+    >
       {!data ? (
         <LoadingSpinnerContainer>
           <Image src="/loadingSpinner.svg" width={200} height={200} />
