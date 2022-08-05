@@ -10,9 +10,7 @@ export const convertBaanDTOtoIBaan = (
 ): IBaan => ({
   id: baanDTO.id,
   name: baanDTO[`name${locale}`],
-  description: baanDTO[`description${locale}`]
-    .replaceAll(/[\n]*(?=[\n])/g, '')
-    .replaceAll('\n', '\n\n'),
+  description: baanDTO[`description${locale}`],
   facebook: baanDTO.facebook || '',
   facebookUrl: baanDTO.facebookUrl || '',
   imageUrl: baanDTO.imageUrl || '',
