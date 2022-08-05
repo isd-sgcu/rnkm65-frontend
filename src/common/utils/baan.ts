@@ -11,8 +11,12 @@ export const convertBaanDTOtoIBaan = (
   id: baanDTO.id,
   name: baanDTO[`name${locale}`],
   description: baanDTO[`description${locale}`]
-    .replaceAll(/[\n]*(?=[\n])/g, '')
-    .replaceAll('\n', '\n\n'),
+    // .replaceAll(/[\n]*(?=[\n])/g, '')
+    // .replaceAll('\n', '\n\n'),
+    .split(/[\n]*(?=[\n])/g)
+    .join('')
+    .split('\n')
+    .join('\n\n'),
   facebook: baanDTO.facebook || '',
   facebookUrl: baanDTO.facebookUrl || '',
   imageUrl: baanDTO.imageUrl || '',
