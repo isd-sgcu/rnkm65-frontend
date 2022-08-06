@@ -56,7 +56,7 @@ export const PHASE_DATA = [
   },
   {
     phase: Phase.ESTAMP,
-    startTime: new Date('August 5, 2022 1:30 GMT+07:00').getTime(),
+    startTime: new Date('August 10, 2022 1:30 GMT+07:00').getTime(),
     allowRoute: ['/eStamp', '/ticket'],
   },
 ].reverse()
