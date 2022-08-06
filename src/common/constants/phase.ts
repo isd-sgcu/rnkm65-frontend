@@ -14,7 +14,7 @@ export const CAN_EDIT_PROFILE = [
   Phase.ESTAMP,
 ]
 
-export const CAN_REGISTER = [Phase.REGISTER, Phase.ESTAMP, Phase.BAAN_ANNOUNCE]
+export const CAN_REGISTER = [Phase.REGISTER, Phase.ESTAMP]
 
 export const DEFAULT_ROUTE = ['/', '/login', '/register', '/checkin/[id]']
 
@@ -56,7 +56,7 @@ export const PHASE_DATA = [
   },
   {
     phase: Phase.ESTAMP,
-    startTime: new Date('August 10, 2022 1:30 GMT+07:00').getTime(),
+    startTime: new Date('August 5, 2099 08:00 GMT+07:00').getTime(),
     allowRoute: ['/eStamp', '/ticket'],
   },
 ].reverse()
